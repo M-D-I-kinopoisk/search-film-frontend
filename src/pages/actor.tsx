@@ -1,9 +1,9 @@
-const Users = () => {
+const Actor = () => {
     return (
         <div>
-            <h1>ПОЛЬЗОВАТЕЛИ</h1>
+            <h1>Актер</h1>
         </div>
     )
 }
 
-export default Users
+export default Actor
