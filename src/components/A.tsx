@@ -16,7 +16,7 @@ const A: React.FC<AProps> = ({text, href}) => {
             </Link>
             <div className={styles.div}>
                 <h1>ХАХАХАХААХХАХАХАХАХХАХАХАХАХАХАХАХА</h1>
-                <span>dasdsadasd</span>
+                <span>Веточка</span>
             </div>
         </>
     )
