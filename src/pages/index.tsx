@@ -1,16 +1,12 @@
-import A from '@/components/A'
-import Header from '@/components/Header/Header'
+import MainContainer from '@/components/MainContainer/MainContainer'
+import Home from '@/pages/Home'
 
-const Home = () => {
+const Main = () => {
     return (
-        <>
-        <Header/>
-        <div className='div'>
-            <A href='/' text='Главная'/>
-            <A href='/actor' text='Актер'/>
-        </div>
-        </>
+        <MainContainer title='Главная'>
+            <Home/>
+        </MainContainer>
     )
 }
 
-export default Home
+export default Main
