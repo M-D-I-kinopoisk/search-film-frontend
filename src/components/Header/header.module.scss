@@ -1,34 +1,34 @@
 .header {
+    position: relative;
+    z-index: 101;
     // background-color: aliceblue;
     color: rgba(255,255,255,.48);
-
+    display: flex;
+    height: 72px;
+    align-items: center;
+    // padding: 0 12px;
  
     &__logo {
-        
+        margin-right: 20px;
     }
 }
 
 
 
 .wrapper {
+    position: relative;
     max-width: 1240px;
     margin: 0 auto;
+    //  padding: 0 12px;
 }
 
 
 
-.DIV_1 {
+.navbar {
     
-    align-items: stretch;
+    align-items: center;
     background-position: 0px 0px;
     block-size: 72px;
-    // border-block-end-color: rgb(255, 255, 255);
-    // border-block-start-color: rgb(255, 255, 255);
-    // border-inline-end-color: rgb(255, 255, 255);
-    // border-inline-start-color: rgb(255, 255, 255);
-    // caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    // column-rule-color: rgb(255, 255, 255);
     display: flex;
     height: 72px;
     inline-size: 492.2px;
@@ -38,281 +38,78 @@
     min-inline-size: auto;
     min-width: auto;
     perspective-origin: 246.1px 36px;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
+
     text-size-adjust: 100%;
     transform-origin: 246.1px 36px;
     width: 492.2px;
     background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
     border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+    // font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
     margin: 0px 0px 0px 32px;
     outline: rgb(255, 255, 255) none 0px;
 }/*#DIV_1*/
 
-.DIV_1:after {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#DIV_1:after*/
-
-.DIV_1:before {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#DIV_1:before*/
-
-.NAV_2 {
-    
-    align-items: stretch;
-    background-position: 0px 0px;
-    block-size: 72px;
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
+.navbar__ul {
     display: flex;
-    height: 72px;
-    inline-size: 492.2px;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    perspective-origin: 246.1px 36px;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    transform-origin: 246.1px 36px;
-    width: 492.2px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#NAV_2*/
+  
+}
 
-.NAV_2:after {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#NAV_2:after*/
 
-.NAV_2:before {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#NAV_2:before*/
+.navbar__li {
+    padding-left: 16px;
+}
 
-.UL_3 {
-    gap: 16px;
-    align-items: stretch;
-    background-position: 0px 0px;
-    block-size: 72px;
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
+
+.navbar__a {
+    color: rgba(255,255,255,.48);
+    transition-duration: .4s;
+
+    &:hover {
+        color: white;
+    }
+}
+
+
+
+
+
+
+
+.header__right {
     display: flex;
-    height: 72px;
-    inline-size: 492.2px;
-    margin-block-end: 0px;
-    margin-block-start: 0px;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    padding-inline-start: 0px;
-    perspective-origin: 246.1px 36px;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    transform-origin: 246.1px 36px;
-    width: 492.2px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    margin: 0px;
-    outline: rgb(255, 255, 255) none 0px;
-    padding: 0px;
-}/*#UL_3*/
+    margin-left: auto;
+}
 
-.UL_3:after {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#UL_3:after*/
 
-.UL_3:before {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#UL_3:before*/
 
-#LI_4 {
+
+.DIV_1 {
+    align-content: center;
     align-items: center;
     background-position: 0px 0px;
-    block-size: 72px;
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: flex;
-    height: 72px;
-    inline-size: 64.9625px;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    perspective-origin: 32.475px 36px;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    transform-origin: 32.4813px 36px;
-    width: 64.9625px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#LI_4*/
-
-#LI_4:after {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#LI_4:after*/
-
-#LI_4:before {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#LI_4:before*/
-
-#A_5 {
-    align-items: center;
-    background-position: 0px 0px;
-    block-size: 40px;
+    block-size: 32px;
     border-block-end-color: rgba(0, 0, 0, 0);
     border-block-end-style: solid;
+    border-block-end-width: 0.8px;
     border-block-start-color: rgba(0, 0, 0, 0);
     border-block-start-style: solid;
+    border-block-start-width: 0.8px;
     border-end-end-radius: 8px;
     border-end-start-radius: 8px;
     border-inline-end-color: rgba(0, 0, 0, 0);
     border-inline-end-style: solid;
+    border-inline-end-width: 0.8px;
     border-inline-start-color: rgba(0, 0, 0, 0);
     border-inline-start-style: solid;
+    border-inline-start-width: 0.8px;
     border-start-end-radius: 8px;
     border-start-start-radius: 8px;
     bottom: 0px;
     box-sizing: border-box;
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
+    cursor: pointer;
     display: flex;
-    height: 40px;
-    inline-size: 64.9625px;
+    height: 32px;
+    inline-size: 150.488px;
     inset-block-end: 0px;
     inset-block-start: 0px;
     inset-inline-end: 0px;
@@ -323,142 +120,113 @@
     min-height: auto;
     min-inline-size: auto;
     min-width: auto;
-    padding-block-end: 10px;
-    padding-block-start: 10px;
-    perspective-origin: 32.475px 20px;
+    padding-block-end: 7px;
+    padding-block-start: 7px;
+    padding-inline-end: 11px;
+    padding-inline-start: 11px;
+    perspective-origin: 75.2375px 16px;
     position: relative;
     right: 0px;
-    text-align: left;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
+    text-align: center;
     text-size-adjust: 100%;
     top: 0px;
-    transform-origin: 32.4813px 20px;
-    white-space: nowrap;
-    width: 64.9625px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto border-box border-box;
-    border: 0px solid rgba(0, 0, 0, 0);
+    transform-origin: 75.2438px 16px;
+    width: 150.488px;
+    background: rgb(234, 0, 61) linear-gradient(270deg, rgb(234, 0, 61) 0px, rgb(196, 71, 255) 100%) repeat scroll 0px 0px / auto border-box border-box;
+    border: 0.8px solid rgba(0, 0, 0, 0);
     border-radius: 8px;
     flex-flow: column nowrap;
-    font: 0px / 0px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-    padding: 10px 0px;
+    // font: 0px / 0px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+    padding: 7px 11px;
     transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
-}/*#A_5*/
 
-#A_5:after {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-align: left;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    white-space: nowrap;
-    border: 0px none rgb(255, 255, 255);
-    font: 0px / 0px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#A_5:after*/
-
-#A_5:before {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-align: left;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    white-space: nowrap;
-    border: 0px none rgb(255, 255, 255);
-    font: 0px / 0px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#A_5:before*/
-
-#DIV_6 {
-    background-position: 0px 0px;
-    block-size: 20px;
-    border-block-end-color: rgba(255, 255, 255, 0.48);
-    border-block-start-color: rgba(255, 255, 255, 0.48);
-    border-inline-end-color: rgba(255, 255, 255, 0.48);
-    border-inline-start-color: rgba(255, 255, 255, 0.48);
-    caret-color: rgba(255, 255, 255, 0.48);
-    color: rgba(255, 255, 255, 0.48);
-    column-rule-color: rgba(255, 255, 255, 0.48);
-    cursor: pointer;
-    height: 20px;
-    inline-size: 64.9625px;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    perspective-origin: 32.475px 10px;
-    text-align: left;
-    text-decoration: none solid rgba(255, 255, 255, 0.48);
-    text-emphasis-color: rgba(255, 255, 255, 0.48);
-    text-size-adjust: 100%;
-    transform-origin: 32.4813px 10px;
-    white-space: nowrap;
-    width: 64.9625px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
-    border: 0px none rgba(255, 255, 255, 0.48);
-    font: 500 15px / 20px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgba(255, 255, 255, 0.48) none 0px;
-    transition: color 0.4s ease 0s;
-}/*#DIV_6*/
-
-#DIV_6:after {
-    border-block-end-color: rgba(255, 255, 255, 0.48);
-    border-block-start-color: rgba(255, 255, 255, 0.48);
-    border-inline-end-color: rgba(255, 255, 255, 0.48);
-    border-inline-start-color: rgba(255, 255, 255, 0.48);
-    caret-color: rgba(255, 255, 255, 0.48);
-    color: rgba(255, 255, 255, 0.48);
-    column-rule-color: rgba(255, 255, 255, 0.48);
-    cursor: pointer;
-    text-align: left;
-    text-decoration: none solid rgba(255, 255, 255, 0.48);
-    text-emphasis-color: rgba(255, 255, 255, 0.48);
-    text-size-adjust: 100%;
-    white-space: nowrap;
-    border: 0px none rgba(255, 255, 255, 0.48);
-    font: 500 15px / 20px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgba(255, 255, 255, 0.48) none 0px;
-}/*#DIV_6:after*/
-
-#DIV_6:before {
-    border-block-end-color: rgba(255, 255, 255, 0.48);
-    border-block-start-color: rgba(255, 255, 255, 0.48);
-    border-inline-end-color: rgba(255, 255, 255, 0.48);
-    border-inline-start-color: rgba(255, 255, 255, 0.48);
-    caret-color: rgba(255, 255, 255, 0.48);
-    color: rgba(255, 255, 255, 0.48);
-    column-rule-color: rgba(255, 255, 255, 0.48);
-    cursor: pointer;
-    text-align: left;
-    text-decoration: none solid rgba(255, 255, 255, 0.48);
-    text-emphasis-color: rgba(255, 255, 255, 0.48);
-    text-size-adjust: 100%;
-    white-space: nowrap;
-    border: 0px none rgba(255, 255, 255, 0.48);
-    font: 500 15px / 20px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgba(255, 255, 255, 0.48) none 0px;
-}/*#DIV_6:before*/
+}/*#DIV_1*/
 
 
+.DIV_1:hover {
+    color: aqua;
+}
+
+// .DIV_1:after {
+//     cursor: pointer;
+//     display: block;
+//     text-align: center;
+//     text-size-adjust: 100%;
+//     font: 0px / 0px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+// }/*#DIV_1:after*/
+
+// .DIV_1:before {
+//     cursor: pointer;
+//     display: block;
+//     text-align: center;
+//     text-size-adjust: 100%;
+//     font: 0px / 0px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+// }/*#DIV_1:before*/
+
+// .DIV_2 {
+//     background-position: 0px 0px;
+//     block-size: 16px;
+//     color: rgb(255, 255, 255);
+//     column-rule-color: rgb(255, 255, 255);
+//     cursor: pointer;
+//     height: 16px;
+//     inline-size: 126.887px;
+//     min-block-size: auto;
+//     min-height: auto;
+//     min-inline-size: auto;
+//     min-width: auto;
+//     perspective-origin: 63.4375px 8px;
+//     text-align: center;
+//     text-decoration: none solid rgb(255, 255, 255);
+//     text-emphasis-color: rgb(255, 255, 255);
+//     text-overflow: ellipsis;
+//     text-size-adjust: 100%;
+//     transform-origin: 63.4437px 8px;
+//     white-space: nowrap;
+//     width: 126.887px;
+//     background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
+//     border: 0px none rgb(255, 255, 255);
+//     font: 500 13px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+//     outline: rgb(255, 255, 255) none 0px;
+//     overflow: hidden;
+//     transition: color 0.4s ease 0s;
+// }/*#DIV_2*/
+
+// .DIV_2:after {
+//     border-block-end-color: rgb(255, 255, 255);
+//     border-block-start-color: rgb(255, 255, 255);
+//     border-inline-end-color: rgb(255, 255, 255);
+//     border-inline-start-color: rgb(255, 255, 255);
+//     caret-color: rgb(255, 255, 255);
+//     color: rgb(255, 255, 255);
+//     column-rule-color: rgb(255, 255, 255);
+//     cursor: pointer;
+//     text-align: center;
+//     text-decoration: none solid rgb(255, 255, 255);
+//     text-emphasis-color: rgb(255, 255, 255);
+//     text-size-adjust: 100%;
+//     white-space: nowrap;
+//     border: 0px none rgb(255, 255, 255);
+//     font: 500 13px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+//     outline: rgb(255, 255, 255) none 0px;
+// }/*#DIV_2:after*/
+
+// .DIV_2:before {
+//     border-block-end-color: rgb(255, 255, 255);
+//     border-block-start-color: rgb(255, 255, 255);
+//     border-inline-end-color: rgb(255, 255, 255);
+//     border-inline-start-color: rgb(255, 255, 255);
+//     caret-color: rgb(255, 255, 255);
+//     color: rgb(255, 255, 255);
+//     column-rule-color: rgb(255, 255, 255);
+//     cursor: pointer;
+//     text-align: center;
+//     text-decoration: none solid rgb(255, 255, 255);
+//     text-emphasis-color: rgb(255, 255, 255);
+//     text-size-adjust: 100%;
+//     white-space: nowrap;
+//     border: 0px none rgb(255, 255, 255);
+//     font: 500 13px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
+//     outline: rgb(255, 255, 255) none 0px;
+// }/*#DIV_2:before*/
 
