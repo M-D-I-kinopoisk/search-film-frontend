@@ -1,11 +1,23 @@
 import {useState} from 'react'
 import style from './header.module.scss'
 import Image from 'next/image'
+import Link from 'next/link'
+import DropDown from './DropDown/DropDown'
 import HeaderLink from '@/components/HeaderLinks/HeaderLink'
+
 
 const Header = () => {
     const [headerModul, setHeaderModul] = useState(false)
 
+    const handleMouseEnter = () => {
+      setHeaderModul(!headerModul)
+    }
+  
+    const handleMouseLeave = () => {
+      setHeaderModul(!headerModul)
+    }
+  
+    console.log(headerModul)
     return (
         <div className={style.wrapper}>
             <div className={style.header}>
@@ -67,10 +79,17 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
+                    {headerModul && <div>12334254535</div>}
+        <div className={style.header__right}>
+          <button className={style.DIV_1}>Оплатить подписку</button>
+          <button className={style.DIV_1}>Оплатить подписку</button>
+        </div>
+        <DropDown/>
                 </div>
             </div>
         </div>
     )
+  
 }
 
 export default Header
