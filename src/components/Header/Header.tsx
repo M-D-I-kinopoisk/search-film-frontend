@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import style from './header.module.scss'
 import Image from 'next/image'
 import DropDown from './DropDown/DropDown'
 import HeaderLink from '@/components/HeaderLinks/HeaderLink'
+import Link from 'next/link'
 
 const Header = () => {
   const [headerModul, setHeaderModul] = useState(false)
@@ -15,14 +16,14 @@ const Header = () => {
     if (e.target.id) {
         console.log(e.target.id)
         setCategoryDropDown(e.target.id)
-      
+
     } else {
         console.log(1)
         setCategoryDropDown((prev) => prev)
     }
      category = e.target.id
     console.log(e.target.id)
-    
+
     setHeaderModul(true)
   }
 
@@ -33,7 +34,7 @@ const Header = () => {
 //   console.log(headerModul)
   return (
     <div className={style.wrapper}>
-     
+
       <div className={style.header}>
       {headerModul && <DropDown categoryDropDown={categoryDropDown}  handleMouseEnter={(e) => handleMouseEnter(e)} handleMouseLeave={handleMouseLeave}/>}
         <div className={style.header__logo}>
@@ -109,10 +110,10 @@ const Header = () => {
           <button className={style.DIV_1}>Оплатить подписку</button>
           <button className={style.DIV_1}>Оплатить подписку</button>
         </div>
-        
-       
+
+
       </div>
-      
+
     </div>
     // </div>
   )
