@@ -4,6 +4,7 @@ import styles from '../scss/pages/home.module.scss'
 import {Swiper, SwiperSlide} from 'swiper/react'
 
 import 'swiper/css'
+import 'swiper/css/navigation'
 import {Autoplay, Navigation} from 'swiper'
 
 const Home: React.FC = () => {
