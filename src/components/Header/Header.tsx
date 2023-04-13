@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import style from './header.module.scss'
 import Image from 'next/image'
-import HeaderLink from '@/components/HeaderLinks/HeaderLink'
+import Link from 'next/link'
 
 const Header = () => {
     const [headerModul, setHeaderModul] = useState(false)
@@ -25,7 +25,7 @@ const Header = () => {
                             <li className={style.LI_4}>
                                 {/* это ссылочка на определенную страницу, к примеру "мой иви" ведет на главную.
                                  Все ссылки делаем Через вот этот компонент ниже */}
-                                <HeaderLink href='/' text='Мой Иви'/>
+                                <Link href='/'>Мой Иви</Link>
                                 <div className={style.DIV_6} onClick={() => setHeaderModul(!headerModul)}>123</div>
                                 {headerModul && <div>12334254535</div>}
                             </li>
