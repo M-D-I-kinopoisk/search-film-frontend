@@ -105,3 +105,10 @@ label {
 legend {
 	display: block;
 }
+
+svg path {
+  stroke:inherit;
+  stroke-width:inherit;
+  fill:inherit;
+  }
+
