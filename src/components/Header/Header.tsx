@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import style from './header.module.scss'
 import Image from 'next/image'
 import DropDown from './DropDown/DropDown'
