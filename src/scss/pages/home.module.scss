@@ -1,11 +1,58 @@
 .wrapper {
-  //max-width: 1240px;
-  //margin: 0 auto;
 
   .container {
-    max-width: 1240px;
+    max-width: 1262px;
     margin: 0 auto;
 
-    color: aqua;
+  }
+
+  .teaserList {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 25px;
+
+    li {
+      width: 620px;
+      height: 48px;
+
+      background-color: #56006e;
+      border-radius: 7px;
+
+      .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+
+        color: #fff;
+
+        img {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .teaserItem {
+      background-color: #1f1b2e;
+      background-size: auto 48px;
+
+      &:first-child {
+        background-image: url('https://solea-parent.dfs.ivi.ru/picture/bypass/teaserTilePattern_a.svg');
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+      }
+    }
+  }
+
+  .slide {
+    display: block;
+    height: 100%;
+
+    border-radius: 20px;
   }
 }
