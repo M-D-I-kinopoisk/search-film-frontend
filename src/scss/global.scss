@@ -30,17 +30,25 @@ body {
 
 .swiper-button-prev,
 .swiper-button-next {
-  width: calc(100% - 82%) !important;
+  display: flex;
+
+  width: calc(100% - 84%) !important;
   height: 500px !important;
   margin-top: -250px !important;
 
 }
 
 .swiper-button-prev {
+  justify-content: right !important;
+  padding-right: 10px;
+
   margin-left: -20px;
 }
 
 .swiper-button-next {
+  justify-content: left !important;
+  padding-left: 10px;
+
   margin-right: -20px;
 }
 
