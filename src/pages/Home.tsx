@@ -7,6 +7,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import {Autoplay, Navigation} from 'swiper'
 import Link from 'next/link'
+import TeaserBtn from '@/components/UI/TeaserBtn'
 
 const Home: React.FC = () => {
     return (
@@ -19,22 +20,53 @@ const Home: React.FC = () => {
                     modules={[Navigation, Autoplay]}
                     initialSlide={0}
                     slidesPerView={1.5}
+                    speed={800}
                     navigation={true}
                     loop={true}
                     centeredSlides={true}
                     className='mySwiper'>
-                <Link href='/'>
-                    <SwiperSlide>1</SwiperSlide>
-                </Link>
-                <SwiperSlide>2</SwiperSlide>
-                <SwiperSlide>3</SwiperSlide>
-                <SwiperSlide>4</SwiperSlide>
-                <SwiperSlide>5</SwiperSlide>
-                <SwiperSlide>6</SwiperSlide>
+                <SwiperSlide>
+                    1
+                    <Link href='/Actor' className={styles.slide}></Link>
+                </SwiperSlide>
+                <SwiperSlide>
+                    2
+                    <Link href='/Actor' className={styles.slide}></Link>
+                </SwiperSlide>
+                <SwiperSlide>
+                    3
+                    <Link href='/Actor' className={styles.slide}></Link>
+                </SwiperSlide>
+                <SwiperSlide>
+                    4
+                    <Link href='/Actor' className={styles.slide}></Link>
+                </SwiperSlide>
+                <SwiperSlide>
+                    5
+                    <Link href='/Actor' className={styles.slide}></Link>
+                </SwiperSlide>
+                <SwiperSlide>
+                    6
+                    <Link href='/Actor' className={styles.slide}></Link>
+                </SwiperSlide>
+                <SwiperSlide>
+                    7
+                    <Link href='/Actor' className={styles.slide}></Link>
+                </SwiperSlide>
+                <SwiperSlide>
+                    8
+                    <Link href='/Actor' className={styles.slide}></Link>
+                </SwiperSlide>
             </Swiper>
-
             <div className={styles.container}>
-
+                <ul className={styles.teaserList}>
+                    <TeaserBtn src='https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/lightning.svg'
+                               alt='/' width={24} height={32} text='30 дней подписки за 1 ₽'
+                               className={styles.teaserItem}/>
+                    <TeaserBtn src='https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/gift.svg'
+                               alt='/' width={56} height={32} text='Активировать сертификат'
+                               className={styles.teaserItem}/>
+                </ul>
             </div>
         </div>
     )

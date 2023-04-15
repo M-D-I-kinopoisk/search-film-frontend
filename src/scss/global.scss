@@ -8,8 +8,9 @@ body {
   color: rgb(var(--foreground-rgb));
   background-color: #100e19;
   color: rgba(255, 255, 255, .48);
-}
 
+  font-family: 'iviSans', sans-serif;
+}
 
 .swiper {
   height: 500px;
@@ -18,7 +19,7 @@ body {
 .swiper-slide {
   border-radius: 20px;
 
-  background: #fff;
+  background: #56006e;
   color: #100e19;
 
   opacity: 0.6;
