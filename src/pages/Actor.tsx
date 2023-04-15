@@ -3,6 +3,7 @@ import React from 'react'
 import MainContainer from '@/components/MainContainer/MainContainer'
 import ActorInfo from '@/components/ActorInfo/ActorInfo'
 import ActorFilms from '@/components/ActorFilms/ActorFilms'
+
 import style from '../scss/pages/actor.module.scss'
 
 const Actor: React.FC = () => {
@@ -32,7 +33,7 @@ const Actor: React.FC = () => {
             </div>
             <div className={style.wrapper}>
                 <div className={style.backlink}>
-                    <span className={style.leftarrow}>
+                    <span className={style.leftArrow}>
                         navigate_before
                     </span>
                     <span className=''>Назад</span>
