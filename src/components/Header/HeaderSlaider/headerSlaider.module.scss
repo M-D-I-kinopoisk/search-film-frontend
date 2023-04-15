@@ -1,0 +1,226 @@
+.headerSlaider {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+//   transition: margin 0.5s;
+}
+
+.headerSlaider__topBlock {
+    position: relative;
+  width: 244px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #312A44;
+  border-radius: 8px;
+  margin-bottom: 25px;
+//   transition: margin 0.5s;
+
+  &::before {
+    content: '';
+    background-image: linear-gradient(270deg,rgba(49,43,69,0),rgba(49,43,69,.96));
+    top: -2px;
+    left: -3px;
+    position: absolute;
+    height: 300px;
+    width: 50px;
+    z-index: 10;
+    border-radius: 8px;
+  }
+  &::after {
+    content: '';
+    background-image: linear-gradient(90deg,rgba(49,43,69,0),rgba(49,43,69,.96));
+    top: -2px;
+    left: 196px;
+    position: absolute;
+    height: 300px;
+    width: 50px;
+    z-index: 10;
+    border-radius: 8px;
+  }
+}
+
+.headerSlaider__sliders {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.headerSlaider__sliderTop {
+    border-radius: 8px;
+  display: flex;
+  gap: 7px;
+  position: relative;
+  top: -45px;
+  left: 0;
+  animation: sliderTop-activ infinite 15s linear;
+}
+
+@keyframes sliderTop-activ {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200px);
+  }
+}
+
+.headerSlaider__sliderCenter {
+  display: flex;
+  gap: 7px;
+  position: relative;
+  top: -35px;
+  left: -270px;
+  animation: sliderCenter-activ infinite 15s linear;
+}
+
+@keyframes sliderCenter-activ {
+  from {
+    transform: translateX();
+  }
+  to {
+    transform: translateX(200px);
+  }
+}
+
+.headerSlaider__sliderDown {
+  display: flex;
+  gap: 7px;
+  position: relative;
+  top: -27px;
+  left: 0;
+  animation: sliderTop-activ infinite 15s linear;
+}
+
+@keyframes sliderTop-activ {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200px);
+  }
+}
+
+.headerSlaider__sliderImg {
+  border-radius: 8px 8px 8px 8px;
+}
+
+.headerSlaider__toggleBlock {
+
+  margin-top: auto;
+  transition-duration: 2s;
+  position: relative;
+}
+
+.headerSlaider__detalisBlock {
+  position: absolute;
+  top: -61px;
+  display: flex;
+  height: 48px;
+  padding: 0 16px;
+  background-color: #312A44;
+  width: 100%;
+  transition: 0.6s;
+    &::before {
+        position: absolute;
+        content: '';
+        background-image: linear-gradient(180deg,rgba(49,43,69,0),rgba(49,43,69,.96));
+        width: 244px;
+        height: 48px;
+        top: -48px;
+        left: 0px;
+    }
+}
+
+
+.headerSlaider__detalisBlock_activ {
+  top: -125px;
+  transition: 0.4s;
+}
+
+.headerSlaider__logo {
+  background-color: #ea003d;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+
+.headerSlaider__detalistittle {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  font-style: normal;
+  height: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #fff;
+}
+
+.headerSlaider__detalisExtra {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  height: 16px;
+  color: #d9d7e0;
+}
+
+.headerSlaider__detalisBlock2 {
+  opacity: 0;
+  transition: 0.7s;
+
+}
+
+.headerSlaider__detalisBlock2_activ {
+  opacity: 1;
+  transition: 1.2s;
+}
+
+.headerSlaider__detalisBtn {
+  display: flex;
+  justify-content: center;
+  height: 32px;
+  border-radius: 8px;
+  padding: 7px 11px;
+  background-color: #ea003d;
+  color: #fff;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 700;
+  font-style: normal;
+  width: 212px;
+  margin-bottom: 15px;
+  margin-left: 16px;
+  margin-right: 16px;
+
+  &:hover {
+    background-color: #ff0f4d;
+  }
+}
+
+.headerSlaider__detalisNote {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+  text-align: center;
+  color: #a5a1b2;
+  margin-bottom: 15px;
+}
+
+.headerSlider__btnSmartTV {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 9px 15px;
+  background-color: #282338;
+  color: #fff;
+  gap: 5px;
+  justify-content: center;
+
+  &:hover {
+    border-color: #282338;
+    background-color: #3a3352;
+  }
+}

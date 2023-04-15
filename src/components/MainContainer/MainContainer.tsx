@@ -1,6 +1,7 @@
 import Header from '@/components/Header/Header'
 import Head from 'next/head'
 import React from 'react'
+import Footer from '../Footer/Footer'
 
 type MainContainerProps = {
     children: any,
@@ -19,6 +20,7 @@ const MainContainer: React.FC<MainContainerProps> = ({children, title}) => {
             <div>
                 {children}
             </div>
+            <Footer/>
         </>
     )
 }
