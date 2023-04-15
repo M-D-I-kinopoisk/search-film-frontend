@@ -2,7 +2,6 @@ import {useState} from 'react'
 import style from './header.module.scss'
 import Image from 'next/image'
 import DropDown from './DropDown/DropDown'
-import HeaderLink from '@/components/HeaderLinks/HeaderLink'
 import Link from 'next/link'
 
 const Header = () => {
@@ -13,24 +12,25 @@ const Header = () => {
   const [srollList, setScrollList] = useState(0)
 
   const handleMouseEnter = (e) => {
-    if (e.target.id) {
-      console.log(e.target.id)
-      setCategoryDropDown(e.target.id)
-      setScrollList(0)
-    } else {
-      console.log(1)
-      setCategoryDropDown((prev) => prev)
-    }
-
+    // if (e.target.id) {
+    //   console.log(handleMouseEnter)
+    //   console.log(e.target.id)
+    //   setCategoryDropDown(e.target.id)
+    //   setScrollList(0)
+    // } else {
+    //   console.log(1)
+    //   setCategoryDropDown((prev) => prev)
+    // }
+    setCategoryDropDown(e.target.id)
     setHeaderModul(true)
   }
 
   const handleMouseLeave = () => {
+    setCategoryDropDown('')
     setHeaderModul(false)
     setScrollList(0)
   }
 
-  //   console.log(headerModul)
   return (
     <div className={style.wrapper}>
       <div className={style.header}>
@@ -74,7 +74,7 @@ const Header = () => {
             </li>
             <li
               className={style.navbar__li}
-              id='movies'
+              id='header-movies'
               onMouseEnter={(e) => handleMouseEnter(e)}
             >
               <Link
@@ -87,7 +87,7 @@ const Header = () => {
             </li>
             <li
               className={style.navbar__li}
-              id='series'
+              id='header-series'
               onMouseEnter={(e) => handleMouseEnter(e)}
             >
               <Link
@@ -100,7 +100,7 @@ const Header = () => {
             </li>
             <li
               className={style.navbar__li}
-              id='animation'
+              id='header-animation'
               onMouseEnter={(e) => handleMouseEnter(e)}
             >
               <Link
@@ -113,6 +113,7 @@ const Header = () => {
             </li>
             <li className={style.navbar__li}>
               <Link
+                id='header-tv'
                 href='https://www.ivi.ru/tvplus'
                 title='TV+'
                 className={style.navbar__a}
@@ -133,7 +134,7 @@ const Header = () => {
               Оплатить подписку
             </Link>
           </div>
-          <div className={style.header__rightContainer}>
+          <div className={style.header__rightSearch}>
             <Link
               className={style.header__btтSearch}
               href={'https://www.ivi.ru/?ivi_search'}
@@ -147,14 +148,14 @@ const Header = () => {
                 height='20px'
               >
                 <path d='M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z' />
-              </svg>{' '}
+              </svg>
               Поиск
             </Link>
           </div>
           <div
+           id='header-notifications'
             onMouseEnter={(e) => handleMouseEnter(e)}
-            onMouseLeave={handleMouseLeave}
-            className={style.header__rightContainer}
+            className={style.header__notifications}
           >
             <Link
               className={style.header__btтSearch}
@@ -176,11 +177,11 @@ const Header = () => {
             </Link>
           </div>
           <div
+            id='header-user'
             onMouseEnter={(e) => handleMouseEnter(e)}
-            onMouseLeave={handleMouseLeave}
-            className={style.header__rightContainer}
+            className={style.header__rightUser}
           >
-            <Link className={style.header__btтUser} href={''}>
+            <Link className={style.header__btтUser} href={''} title='Войти в профиль'>
               <svg
                 className={style.header__btтSearchsvg}
                 fill='rgba(255,255,255,.48)'

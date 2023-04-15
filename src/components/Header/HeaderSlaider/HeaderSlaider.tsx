@@ -6,9 +6,6 @@ import { useState } from 'react'
 const HeaderSlaider = () => {
   const [toggleBlock, setToggleBlock] = useState(false)
 
-
-
-
   console.log(toggleBlock)
   return (
     <div className={style.headerSlaider}>
@@ -18,60 +15,90 @@ const HeaderSlaider = () => {
         onMouseLeave={() => setToggleBlock(false)}
       >
         <div className={style.headerSlaider__sliders}>
-          <div className={style.headerSlaider__sliderTop} >
+          <div className={style.headerSlaider__sliderTop}>
             <Image
-            className={style.headerSlaider__sliderImg}
+              className={style.headerSlaider__sliderImg}
               src={'/img/mini-film1.jpg'}
               width={128}
               height={72}
               alt={'film'}
             />
             <Image
-             className={style.headerSlaider__sliderImg}
+              className={style.headerSlaider__sliderImg}
               src={'/img/mini-film2.jpg'}
               width={128}
               height={72}
               alt={'film'}
             />
-              <Image
-             className={style.headerSlaider__sliderImg}
+            <Image
+              className={style.headerSlaider__sliderImg}
               src={'/img/mini-film3.jpg'}
               width={128}
               height={72}
               alt={'film'}
             />
-                <Image
-             className={style.headerSlaider__sliderImg}
+            <Image
+              className={style.headerSlaider__sliderImg}
               src={'/img/mini-film1.jpg'}
               width={128}
               height={72}
               alt={'film'}
             />
           </div>
-          <div className={style.headerSlaider__sliderCenter} >
+          <div className={style.headerSlaider__sliderCenter}>
             <Image
-            className={style.headerSlaider__sliderImg}
+              className={style.headerSlaider__sliderImg}
               src={'/img/mini-film1.jpg'}
               width={128}
               height={72}
               alt={'film'}
             />
             <Image
-             className={style.headerSlaider__sliderImg}
+              className={style.headerSlaider__sliderImg}
               src={'/img/mini-film2.jpg'}
               width={128}
               height={72}
               alt={'film'}
             />
-              <Image
-             className={style.headerSlaider__sliderImg}
+            <Image
+              className={style.headerSlaider__sliderImg}
               src={'/img/mini-film3.jpg'}
               width={128}
               height={72}
               alt={'film'}
             />
-                <Image
-             className={style.headerSlaider__sliderImg}
+            <Image
+              className={style.headerSlaider__sliderImg}
+              src={'/img/mini-film1.jpg'}
+              width={128}
+              height={72}
+              alt={'film'}
+            />
+          </div>
+          <div className={style.headerSlaider__sliderDown}>
+            <Image
+              className={style.headerSlaider__sliderImg}
+              src={'/img/mini-film1.jpg'}
+              width={128}
+              height={72}
+              alt={'film'}
+            />
+            <Image
+              className={style.headerSlaider__sliderImg}
+              src={'/img/mini-film2.jpg'}
+              width={128}
+              height={72}
+              alt={'film'}
+            />
+            <Image
+              className={style.headerSlaider__sliderImg}
+              src={'/img/mini-film3.jpg'}
+              width={128}
+              height={72}
+              alt={'film'}
+            />
+            <Image
+              className={style.headerSlaider__sliderImg}
               src={'/img/mini-film1.jpg'}
               width={128}
               height={72}
@@ -95,7 +122,7 @@ const HeaderSlaider = () => {
                 alt={'ivi'}
               />
             </div>
-            <div>
+            <div >
               <div className={style.headerSlaider__detalistittle}>
                 Подписка Иви
               </div>
@@ -128,15 +155,13 @@ const HeaderSlaider = () => {
         className={style.headerSlider__btnSmartTV}
         href={'https://www.ivi.ru/pages/tvsmart/'}
       >
-        <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
-          <Image
-            src={'/img/icon-smartTV.svg'}
-            width={22}
-            height={15}
-            alt={'TV'}
-          />
-          Смотреть на SmartTV
-        </div>
+        <Image
+          src={'/img/icon-smartTV.svg'}
+          width={22}
+          height={15}
+          alt={'TV'}
+        />
+        Смотреть на SmartTV
       </Link>
     </div>
   )

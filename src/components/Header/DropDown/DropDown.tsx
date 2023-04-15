@@ -2,6 +2,7 @@ import Link from 'next/link'
 import style from './DropDown.module.scss'
 import { FC, useState } from 'react'
 import HeaderSlaider from '../HeaderSlaider/HeaderSlaider'
+import Image from 'next/image'
 
 export interface DropDownProps {
   categoryDropDown: string
@@ -21,9 +22,7 @@ const DropDown: FC<DropDownProps> = ({
 }) => {
   let list = { genres: [], country: [], years: [], new: [] }
 
-  console.log(categoryDropDown)
-
-  if (categoryDropDown == 'movies') {
+  if (categoryDropDown == 'header-movies') {
     list = {
       genres: [
         { name: 'Артхаус', href: '/movies/arthouse' },
@@ -105,7 +104,7 @@ const DropDown: FC<DropDownProps> = ({
     }
   }
 
-  if (categoryDropDown == 'series') {
+  if (categoryDropDown == 'header-series') {
     list = {
       genres: [
         { name: 'Биография', href: '/series/arthouse' },
@@ -170,7 +169,7 @@ const DropDown: FC<DropDownProps> = ({
     }
   }
 
-  if (categoryDropDown == 'animation') {
+  if (categoryDropDown == 'header-animation') {
     list = {
       genres: [
         { name: 'Аниме', href: '/series/arthouse' },
@@ -208,113 +207,177 @@ const DropDown: FC<DropDownProps> = ({
         { name: 'Фильмы 2020 года', href: 'https://www.ivi.ru/animation/2023' },
       ],
       new: [
-        { name: 'Новинки', href: 'https://www.ivi.ru/new/series-new' },
+        { name: 'Новинки', href: 'https://www.ivi.ru/new/animation-new' },
         {
-          name: 'Иви.Рейтинг',
-          href: 'https://www.ivi.ru/series/all?ivi_rating_10_gte=7&sort=ivi&rating_part=main&rating_model=ready',
+          name: 'Мультики в HD',
+          href: 'https://www.ivi.ru/collections/cartoons-hd',
         },
         {
-          name: 'Сериалы в HD',
-          href: 'https://www.ivi.ru/collections/series-hd',
-        },
-        { name: 'Бесплатные сериалы', href: 'https://www.ivi.ru/new/soon-ivi' },
-        { name: 'Сериалы Amediateka', href: 'https://www.ivi.ru/trailers' },
-        {
-          name: 'Сериалы Paramount Play',
-          href: 'https://www.ivi.ru/goodmovies',
+          name: 'Мультфильмы Paramount Play / Nickelodeon',
+          href: 'https://www.ivi.ru/collections/animation-paramount-play',
         },
         {
-          name: 'Фильмы в HD',
-          href: 'https://www.ivi.ru/collections/movies-hd',
+          name: 'Мультфильмы Dreamworks',
+          href: 'https://www.ivi.ru/collections/dreamworks-cartoons',
+        },
+        {
+          name: 'Мультфильмы СТС Kids',
+          href: 'https://www.ivi.ru/collections/ctc-kids',
         },
       ],
     }
   }
+
+  console.log(categoryDropDown)
 
   return (
     <>
       <div className={style.dropDown}>
         <div
           className={style.dropDown__container}
-          onMouseEnter={handleMouseEnter}
+          // onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className={style.dropDown__block}>
-            {/* Cписок *Жанры* */}
-            <div>
-              <p style={{ color: 'white', marginBottom: '15px' }}>Жанры</p>
-              <ul className={style.dropDown__genres}>
-                {list.genres.map((element, indx) => {
-                  return (
-                    <div key={indx}>
-                      <li>
+          {(categoryDropDown == 'header-movies' ||
+            categoryDropDown == 'header-series' ||
+            categoryDropDown == 'header-animation') && (
+            <div className={style.dropDown__block}>
+              {/* Cписок *Жанры* */}
+              <div>
+                <p style={{ color: 'white', marginBottom: '15px' }}>Жанры</p>
+                <ul className={style.dropDown__genres}>
+                  {list.genres.map((element, indx) => {
+                    return (
+                      <div key={indx}>
+                        <li>
+                          <Link
+                            className={style.dropDown__a}
+                            href={element.href}
+                          >
+                            {element.name}
+                          </Link>
+                        </li>
+                      </div>
+                    )
+                  })}
+                </ul>
+              </div>
+              {/* Cписок *Страны и годы* */}
+              <div className={style.dropDown__countyYarsBlock}>
+                <p style={{ color: 'white', marginBottom: '15px' }}>Страны</p>
+                <ul className={style.dropDown__country}>
+                  {list.country.map((element, indx) => {
+                    return (
+                      <li key={indx}>
                         <Link className={style.dropDown__a} href={element.href}>
                           {element.name}
                         </Link>
                       </li>
-                    </div>
-                  )
-                })}
-              </ul>
+                    )
+                  })}
+                </ul>
+                <p
+                  style={{
+                    color: 'white',
+                    marginTop: '15px',
+                    marginBottom: '10px',
+                  }}
+                >
+                  Годы
+                </p>
+                <ul className={style.dropDown__country}>
+                  {list.years.map((element, indx) => {
+                    return (
+                      <li key={indx}>
+                        <Link className={style.dropDown__a} href={element.href}>
+                          {element.name}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+              {/* Cписок *новинки и слайдер справа* */}
+              <div className={style.dropDown__rightBlock}>
+                <ul className={style.dropDown__new}>
+                  {list.new.map((element, indx) => {
+                    return (
+                      <li key={indx} onMouseEnter={() => setScrollList(indx)}>
+                        <Link
+                          className={
+                            indx == srollList
+                              ? `${style.dropDown__newlink} ${style.dropDown__newlinkActiv}`
+                              : style.dropDown__newlink
+                          }
+                          href={element.href}
+                        >
+                          {element.name}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+                <HeaderSlaider />
+              </div>
             </div>
-            {/* Cписок *Страны и годы* */}
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <p style={{ color: 'white', marginBottom: '15px' }}>Страны</p>
-              <ul className={style.dropDown__country}>
-                {list.country.map((element, indx) => {
-                  return (
-                    <li key={indx}>
-                      <Link className={style.dropDown__a} href={element.href}>
-                        {element.name}
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-              <p
-                style={{
-                  color: 'white',
-                  marginTop: '15px',
-                  marginBottom: '10px',
-                }}
-              >
-                Годы
-              </p>
-              <ul className={style.dropDown__country}>
-                {list.years.map((element, indx) => {
-                  return (
-                    <li key={indx}>
-                      <Link className={style.dropDown__a} href={element.href}>
-                        {element.name}
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
+          )}
+          {/* Блок Уведомления  */}
+          {categoryDropDown === 'header-notifications' && (
+            <div className={style.dropDown__notifications}>
+              <Image
+                width={56}
+                height={56}
+                src={'/img/notification-icon.svg'}
+                alt={'notification'}
+              />
+              <p>Здесь появляются только важные сообщения</p>
             </div>
-            {/* Cписок *новинки и слайдер справа* */}
-            <div style={{ display: 'flex' , gap: '150px'}}>
-              <ul className={style.dropDown__new}>
-                {list.new.map((element, indx) => {
-                  return (
-                    <li key={indx} onMouseEnter={() => setScrollList(indx)}>
-                      <Link
-                        className={
-                          indx == srollList
-                            ? `${style.dropDown__newlink} ${style.dropDown__newlinkActiv}`
-                            : style.dropDown__newlink
-                        }
-                        href={element.href}
-                      >
-                        {element.name}
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-              <HeaderSlaider />
+          )}
+          {categoryDropDown === 'header-user' && (
+            <div className={style.dropDown__user}>
+              <div className={style.dropDown__userLeftBlock}>
+                <Link className={style.dropDown__userleftBlock_link} href={'https://www.ivi.ru/profile/purchases'}>
+                  <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'multimedia'}/>
+                  <p>Покупки</p>
+                </Link>
+                <Link className={style.dropDown__userleftBlock_link} href='https://www.ivi.ru/profile/favorites'>
+                  <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'favorites'}/>
+                  <p>Смотреть позже</p>
+                </Link>
+                <Link className={style.dropDown__userleftBlock_link}href='https://www.ivi.ru/profile/watched'>
+                  <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'watched'}/>
+                  <p>История просмотров</p>
+                </Link>
+                <Link className={style.dropDown__userleftBlock_link} href='https://www.ivi.ru/profile/subscriptions'>
+                  <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'subscriptions'}/>
+                  <p>Подписки</p>
+                </Link>
+                <Link className={style.dropDown__userleftBlock_link} href='https://www.ivi.ru/'>
+                  <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'ivi'}/>
+                  <p>Активация сертификата</p>
+                </Link>
+                <Link className={style.dropDown__userleftBlock_link} href='https://www.ivi.ru/'>
+                  <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'ivi'}/>
+                  <p>Вход по коду</p>
+                </Link>
+                <Link className={style.dropDown__userleftBlock_link} href='https://www.ivi.ru/profile/cards'>
+                  <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'cards'}/>
+                  <p>Способы оплаты</p>
+                </Link>
+                <Link className={style.dropDown__userleftBlock_link} href='https://www.ivi.ru/profile/referral'>
+                  <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'referral'}/>
+                  <p>Пригласить друзей</p>
+                </Link>
+              </div>
+              <div className={style.dropDown__userRightBlock}>
+                <button className={style.dropDown__userRightBlock_btn}>Войти или зарегистрироваться</button>
+                <div className={style.dropDown__userRightBlock_group}>
+                <Link style={{color : 'rgba(255, 255, 255, 0.72)'}} href={'https://www.ivi.ru/profile/settings'}>Настройки</Link>
+                <Link style={{color : 'rgba(255, 255, 255, 0.72)'}} href={'https://ask.ivi.ru/'}>Помощь</Link>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>

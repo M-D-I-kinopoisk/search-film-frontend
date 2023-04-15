@@ -8,6 +8,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background-color: #100e19;
   color: rgba(255,255,255,.48);
+  font-style: normal;
 }
 
 *,
@@ -81,6 +82,7 @@ input::-ms-clear {
 }
 
 button, input[type="submit"] {
+  border: 0; 
     display: inline-block;
     box-shadow: none;
     background-color: transparent;
@@ -111,4 +113,3 @@ svg path {
   stroke-width:inherit;
   fill:inherit;
   }
-
