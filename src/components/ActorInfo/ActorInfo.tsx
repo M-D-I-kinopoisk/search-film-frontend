@@ -1,5 +1,6 @@
 import React from 'react'
 import style from './ActorInfo.module.scss'
+import Image from 'next/image'
 
 type ActorInfoProps = {
 }
@@ -8,7 +9,11 @@ const ActorInfo: React.FC<ActorInfoProps> = () => {
     return (
         <div>
             <div className={style.img}>
-                <img src="https://thumbs.dfs.ivi.ru/storage33/contents/f/f/06672be611ab9b9e54579c4f645460.jpg/120x144/?q=85" />
+                <Image
+                    width={100}
+                    height={100}
+                    alt='актер'
+                    src='https://thumbs.dfs.ivi.ru/storage33/contents/f/f/06672be611ab9b9e54579c4f645460.jpg/120x144/?q=85' />
             </div>
 
             <h2 className={style.name}>
@@ -25,7 +30,7 @@ const ActorInfo: React.FC<ActorInfoProps> = () => {
                     Родился
                     21 сентября 1955 г. в...
                 </p>
-                <a href="">Развернуть</a>
+                <a >Развернуть</a>
             </div>
         </div>
     )

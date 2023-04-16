@@ -1,5 +1,6 @@
 import React from 'react'
 import style from './ActorFilmItem.module.scss'
+import Image from 'next/image'
 
 type ActorFilmItemProps = {
 }
@@ -8,8 +9,11 @@ const ActorFilmItem: React.FC<ActorFilmItemProps> = () => {
     return (
         <div className={style.item}>
             <div>
-                <img
-                    src="https://thumbs.dfs.ivi.ru/storage38/contents/0/0/55c8a2551297804e709c65c9b4ecc0.jpg/172x264/?q=85" />
+                <Image
+                    alt='фильм'
+                    width={100}
+                    height={100}
+                    src='https://thumbs.dfs.ivi.ru/storage38/contents/0/0/55c8a2551297804e709c65c9b4ecc0.jpg/172x264/?q=85' />
             </div>
 
             <div className={style.info}>

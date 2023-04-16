@@ -1,0 +1,62 @@
+.commentsItem {
+    width: 286px;
+    height: 162px;
+    margin-right: 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #1f1b2e;
+    padding: 20px 20px 52px;
+}
+
+.commentsItemName {
+    color: #a5a1b2;
+    margin-bottom: 8px;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.commentsItemDescription {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    height: 66px;
+    color: #fff;
+    font-style: normal;
+}
+
+.commentsItemBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.commentsItemDate {
+    color: #a5a1b2;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.commentsItemLikes {
+    width: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+        color: #73a32f;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    img {
+        width: 16px;
+        height: 16px;
+    }
+}

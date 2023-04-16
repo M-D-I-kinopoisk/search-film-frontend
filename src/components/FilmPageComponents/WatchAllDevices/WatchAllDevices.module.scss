@@ -1,0 +1,84 @@
+.devices {
+    margin-top: 40px;
+    height: 272px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.devicesInfoTitle {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.devicesInfoDescription {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    font-style: normal;
+    color: #a5a1b2;
+    margin-bottom: 24px;
+}
+
+.connectBtn {
+    background-color: #ea003d;
+    border-color: #ea003d;
+    width: 215px;
+    height: 40px;
+    border-width: 1px;
+    border-radius: 8px;
+    padding: 9px 15px;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    font-style: normal;
+}
+
+
+.devicesImg {
+    position: relative;
+    width: 536px;
+    height: 272px;
+    margin: auto;
+}
+
+.frameImg {
+    position: absolute;
+    width: 536px;
+    height: 272px;
+    z-index: 1;
+}
+
+.ipadImg {
+    position: absolute;
+    width: 200px;
+    height: 136px;
+    z-index: 3;
+    left: 375px;
+    top: 136px;
+}
+
+.mainImgIpad {
+    position: absolute;
+    width: 188px;
+    height: 102px;
+    z-index: 4;
+    left: 382px;
+    top: 165px;
+}
+
+.mainImgTv {
+    position: absolute;
+    width: 337px;
+    height: 192px;
+    z-index: 0;
+    left: 100px;
+    top: 3px;
+}

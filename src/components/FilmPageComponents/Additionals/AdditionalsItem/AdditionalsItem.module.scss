@@ -1,0 +1,31 @@
+.addMaterialsItem {
+    margin-right: 24px;
+}
+
+.addMaterialsItemImg {
+    img {
+        width: 286px;
+        height: 160px;
+    }
+}
+
+.addMaterialsItemName {
+    color: #d9d7e0;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    font-style: normal;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.addMaterialsItemВuration {
+    margin-top: 4px;
+    cursor: pointer;
+    color: #a5a1b2;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+    height: 16px;
+}

@@ -1,0 +1,141 @@
+
+.info {
+    width: 37.5%;
+
+    h2 {
+        font-size: 56px;
+        line-height: 56px;
+        font-weight: 700;
+        font-style: normal;
+        text-align: center;
+        width: 441px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+
+.description {
+    text-align: center;
+    margin-bottom: 24px;
+    height: 71px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    span {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 400;
+        font-style: normal;
+    }
+}
+
+
+.params {
+    display: flex;
+    justify-content: center;
+
+    div {
+        margin-left: 4px;
+    }
+
+    img {
+        width: 15px;
+        height: 15px;
+        margin-left: 4px;
+    }
+
+    &:nth-child(1) {
+        margin-left: 0;
+    }
+}
+
+.hd {
+    box-shadow: 0 4px 12px transparent;
+    height: 20px;
+    background-color: rgba(255, 255, 255, .16);
+    padding: 2px 6px;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.information {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    font-style: normal;
+    color: rgba(255, 255, 255, .72);
+}
+
+.details {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    font-style: normal;
+    color: rgba(255, 255, 255, .48);
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.rate {
+    background-color: rgba(255, 255, 255, .08);
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.rateWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.balls {
+    width: 64px;
+    height: 64px;
+    background-color: #73a32f;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ballsDescription {
+    margin-left: 16px;
+
+    h2 {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+        color: #fff;
+    }
+
+    p {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 400;
+        font-style: normal;
+        color: rgba(255, 255, 255, .72);
+    }
+}
+
+.rateBtn {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, .32);
+    width: 72px;
+    height: 24px;
+    border-width: 1px;
+    border-radius: 6px;
+    padding: 3px 7px;
+    color: #fff;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+}
