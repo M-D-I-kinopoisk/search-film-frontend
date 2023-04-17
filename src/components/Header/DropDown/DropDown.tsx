@@ -1,9 +1,16 @@
 import Link from 'next/link'
-import style from './DropDown.module.scss'
 import {FC} from 'react'
 import HeaderSlider from '@/components/Header/HeaderSlider/HeaderSlider'
+import {BiMoviePlay} from 'react-icons/Bi'
 import {MdNotificationsActive} from 'react-icons/Md'
-import Image from 'next/image'
+import {BsBookmark} from 'react-icons/Bs'
+import {RxCounterClockwiseClock} from 'react-icons/Rx'
+import {SlDiamond} from 'react-icons/Sl'
+import {FiAward} from 'react-icons/Fi'
+import {IoIosTv} from 'react-icons/Io'
+import {AiOutlineCreditCard} from 'react-icons/Ai'
+import {BsShare} from 'react-icons/Bs'
+import style from './DropDown.module.scss'
 
 export interface DropDownProps {
     categoryDropDown: string
@@ -327,56 +334,62 @@ const DropDown: FC<DropDownProps> = ({
                             <p>Здесь появляются только важные сообщения</p>
                         </div>
                     )}
+                    {/* Блок User  */}
                     {categoryDropDown === 'header-user' && (
                         <div className={style.dropDown__user}>
                             <div className={style.dropDown__userLeftBlock}>
-                                <Link className={style.dropDown__userleftBlock_link}
+                                <Link className={style.dropDown__userItem}
                                       href={'https://www.ivi.ru/profile/purchases'}>
-                                    <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'multimedia'}/>
-                                    <p>Покупки</p>
+                                    <BiMoviePlay size={20}/>
+                                    <p className={style.dropDown__userText}>Покупки</p>
                                 </Link>
-                                <Link className={style.dropDown__userleftBlock_link}
+                                <Link className={style.dropDown__userItem}
                                       href='https://www.ivi.ru/profile/favorites'>
-                                    <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'favorites'}/>
-                                    <p>Смотреть позже</p>
+                                    <BsBookmark size={20}/>
+                                    <p className={style.dropDown__userText}>Смотреть позже</p>
                                 </Link>
-                                <Link className={style.dropDown__userleftBlock_link}
+                                <Link className={style.dropDown__userItem}
                                       href='https://www.ivi.ru/profile/watched'>
-                                    <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'watched'}/>
-                                    <p>История просмотров</p>
+                                    <RxCounterClockwiseClock size={20}/>
+                                    <p className={style.dropDown__userText}>История просмотров</p>
                                 </Link>
-                                <Link className={style.dropDown__userleftBlock_link}
+                                <Link className={style.dropDown__userItem}
                                       href='https://www.ivi.ru/profile/subscriptions'>
-                                    <Image width={20} height={20} src={'/img/multimedia-icon.svg'}
-                                           alt={'subscriptions'}/>
-                                    <p>Подписки</p>
+                                    <SlDiamond size={20}/>
+                                    <div className={style.dropDown__userBulb}></div>
+                                    <p className={style.dropDown__userText}>Подписки</p>
+                                    <span>Подключить</span>
                                 </Link>
-                                <Link className={style.dropDown__userleftBlock_link} href='https://www.ivi.ru/'>
-                                    <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'ivi'}/>
-                                    <p>Активация сертификата</p>
+                                <Link className={style.dropDown__userItem}
+                                      href='https://www.ivi.ru/'>
+                                    <FiAward size={20}/>
+                                    <p className={style.dropDown__userText}>Активация сертификата</p>
                                 </Link>
-                                <Link className={style.dropDown__userleftBlock_link} href='https://www.ivi.ru/'>
-                                    <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'ivi'}/>
-                                    <p>Вход по коду</p>
+                                <Link className={style.dropDown__userItem}
+                                      href='https://www.ivi.ru/'>
+                                    <IoIosTv size={20}/>
+                                    <p className={style.dropDown__userText}>Вход по коду</p>
                                 </Link>
-                                <Link className={style.dropDown__userleftBlock_link}
+                                <Link className={style.dropDown__userItem}
                                       href='https://www.ivi.ru/profile/cards'>
-                                    <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'cards'}/>
-                                    <p>Способы оплаты</p>
+                                    <AiOutlineCreditCard size={20}/>
+                                    <p className={style.dropDown__userText}>Способы оплаты</p>
                                 </Link>
-                                <Link className={style.dropDown__userleftBlock_link}
+                                <Link className={style.dropDown__userItem}
                                       href='https://www.ivi.ru/profile/referral'>
-                                    <Image width={20} height={20} src={'/img/multimedia-icon.svg'} alt={'referral'}/>
-                                    <p>Пригласить друзей</p>
+                                    <div>
+                                        <BsShare size={20}/>
+                                    </div>
+                                    <p className={style.dropDown__userText}>Пригласить друзей</p>
                                 </Link>
                             </div>
                             <div className={style.dropDown__userRightBlock}>
                                 <button className={style.dropDown__userRightBlock_btn}>Войти или зарегистрироваться
                                 </button>
                                 <div className={style.dropDown__userRightBlock_group}>
-                                    <Link style={{color: 'rgba(255, 255, 255, 0.72)'}}
+                                    <Link className={style.dropDown__userLink}
                                           href={'https://www.ivi.ru/profile/settings'}>Настройки</Link>
-                                    <Link style={{color: 'rgba(255, 255, 255, 0.72)'}}
+                                    <Link className={style.dropDown__userLink}
                                           href={'https://ask.ivi.ru/'}>Помощь</Link>
                                 </div>
                             </div>

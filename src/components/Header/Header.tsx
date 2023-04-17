@@ -15,15 +15,6 @@ const Header = () => {
     const [scrollList, setScrollList] = useState(0)
 
     const handleMouseEnter = (e) => {
-        // if (e.target.id) {
-        //   console.log(handleMouseEnter)
-        //   console.log(e.target.id)
-        //   setCategoryDropDown(e.target.id)
-        //   setScrollList(0)
-        // } else {
-        //   console.log(1)
-        //   setCategoryDropDown((prev) => prev)
-        // }
         setCategoryDropDown(e.target.id)
         setHeaderModule(true)
     }
