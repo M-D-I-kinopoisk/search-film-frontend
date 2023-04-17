@@ -5,18 +5,18 @@
   display: flex;
   height: 72px;
   align-items: center;
-//   padding: 0 12px;
+  //   padding: 0 12px;
   font-size: 15px;
   line-height: 20px;
   font-weight: 500;
   font-style: normal;
   font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
   &__logo {
     margin-right: 20px;
   }
 }
-
 
 
 .wrapper {
@@ -28,7 +28,7 @@
 
 .navbar {
 
-  @media (max-width : 1158px) {
+  @media (max-width: 1158px) {
     display: none;
   }
 }
@@ -71,30 +71,42 @@
 
 
 .header__rightSearch {
-      padding-right: 10px;
-    // padding-left: 20px;
-      display: flex;
-      height: 100%;
-      align-items: center;
-    }
+  padding-right: 10px;
+  // padding-left: 20px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+
+  @media (max-width: 1158px) {
+    display: none;
+  }
+}
 
 
 .header__notifications {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    padding: 0 10px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 10px;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 }
 
 .header__rightUser {
-    padding: 0 10px;
-    display: flex;
-    height: 100%;
-    align-items: center;
+  padding: 0 10px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 }
 
-.header__btтPay {
-  padding-right: 20px;
+.header__btnPay {
+  //padding-right: 20px;
   font-weight: 700;
   color: #fff;
   font-size: 13px;
@@ -105,21 +117,20 @@
   text-align: center;
   text-size-adjust: 100%;
   width: 150.488px;
-  background: rgb(234, 0, 61)
-    linear-gradient(270deg, rgb(234, 0, 61) 0px, rgb(196, 71, 255) 100%) repeat
-    scroll 0px 0px / auto border-box border-box;
+  background: rgb(234, 0, 61) linear-gradient(270deg, rgb(234, 0, 61) 0px, rgb(196, 71, 255) 100%) repeat scroll 0px 0px / auto border-box border-box;
   border: 0.8px solid rgba(0, 0, 0, 0);
   border-radius: 8px;
   line-height: 16px;
   padding: 7px 11px;
 }
 
-.header__btтSearch {
+.header__btnSearch {
   display: flex;
   gap: 7px;
   align-items: center;
   border: none;
   color: rgba(255, 255, 255, 0.48);
+  transition-duration: 0.4s;
 
   &:hover {
     color: #fff;
@@ -127,28 +138,23 @@
   }
 }
 
-.header__btтSearchsvg {
-  &:hover {
-    color: #fff;
-    fill: #fff;
-    transition-duration: 0.4s;
-  }
-}
 
-.header__btтUser {
+.header__btnUser {
   display: flex;
   justify-content: center;
   width: 47.2px;
   height: 47.2px;
   border: 1.6px solid rgba(255, 255, 255, 0.48);
+  color: rgba(255, 255, 255, 0.48);
   border-radius: 8px;
   // padding: 10px;
   transition: border-color 0.4s ease 0.1s, background-color 0.4s ease 0.1s;
+  transition-duration: 0.4s;
+
   &:hover {
     color: #fff;
-    border: 1.6px solid rgb(255, 255, 255);
     border-color: #fff;
     border-width: 2px;
-    box-shadow: 0 4px 16px rgba(255,255,255,.24);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, .24);
   }
 }

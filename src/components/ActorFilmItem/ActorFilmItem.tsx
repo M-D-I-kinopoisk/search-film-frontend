@@ -9,7 +9,7 @@ const ActorFilmItem: React.FC<ActorFilmItemProps> = () => {
         <div className={style.item}>
             <div>
                 <img
-                    src="https://thumbs.dfs.ivi.ru/storage38/contents/0/0/55c8a2551297804e709c65c9b4ecc0.jpg/172x264/?q=85" />
+                    src='https://thumbs.dfs.ivi.ru/storage38/contents/0/0/55c8a2551297804e709c65c9b4ecc0.jpg/172x264/?q=85' />
             </div>
 
             <div className={style.info}>
