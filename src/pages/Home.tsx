@@ -5,71 +5,28 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
-import {Autoplay, Navigation} from 'swiper'
-import Link from 'next/link'
+import {Navigation} from 'swiper'
 import TeaserBtn from '@/components/UI/TeaserBtn'
+import MainSlider from '@/components/MainSlider/MainSlider'
 
 const Home: React.FC = () => {
     return (
         <div className={styles.wrapper}>
-            <Swiper spaceBetween={20}
-                    autoplay={{
-                        delay: 3500,
-                        disableOnInteraction: false,
-                    }}
-                    modules={[Navigation, Autoplay]}
-                    initialSlide={0}
-                    slidesPerView={1.5}
-                    speed={800}
-                    navigation={true}
-                    loop={true}
-                    centeredSlides={true}
-                    className='mySwiper'>
-                <SwiperSlide>
-                    1
-                    <Link href='/Actor' className={styles.slide}></Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    2
-                    <Link href='/Actor' className={styles.slide}></Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    3
-                    <Link href='/Actor' className={styles.slide}></Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    4
-                    <Link href='/Actor' className={styles.slide}></Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    5
-                    <Link href='/Actor' className={styles.slide}></Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    6
-                    <Link href='/Actor' className={styles.slide}></Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    7
-                    <Link href='/Actor' className={styles.slide}></Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                    8
-                    <Link href='/Actor' className={styles.slide}></Link>
-                </SwiperSlide>
-            </Swiper>
+            <MainSlider/>
             <div className={styles.container}>
-                <ul className={styles.teaserList}>
+                <ul className={styles.teaser__list}>
                     <TeaserBtn src='https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/lightning.svg'
                                alt='/' width={24} height={32} text='30 дней подписки за 1 ₽'
-                               className={styles.teaserItem}/>
+                               className={styles.teaser__item}/>
                     <TeaserBtn src='https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/gift.svg'
                                alt='/' width={56} height={32} text='Активировать сертификат'
-                               className={styles.teaserItem}/>
+                               className={styles.teaser__item}/>
                 </ul>
                 {/* сюда приходят все фильмы по категориям на главной, прост перебираем их и делает компоненту ну и вставляет данные
                 (они дожны быть одинаковыми) кроме наполнения фильмов, разумеется*/}
-                <h2 className={styles.filmsTitle}>Рекомендую посмотреть
+            </div>
+            <div className={styles.films__rec}>
+                <h2 className={styles.films__title}>Рекомендую посмотреть
                     <svg width='20px' height='22px' viewBox='-4.5 0 20 20' version='1.1'
                          xmlns='http://www.w3.org/2000/svg'>
                         <g id='Page-1' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
@@ -86,9 +43,36 @@ const Home: React.FC = () => {
                         </g>
                     </svg>
                 </h2>
-                <div>
-
-                </div>
+                <Swiper className='slider__films'
+                        spaceBetween={25}
+                        slidesPerView={7}
+                        slidesPerGroup={6}
+                        speed={700}
+                        modules={[Navigation]}
+                        navigation={true}>
+                    <SwiperSlide className={styles.item}>1</SwiperSlide>
+                    <SwiperSlide className={styles.item}>2</SwiperSlide>
+                    <SwiperSlide className={styles.item}>3</SwiperSlide>
+                    <SwiperSlide className={styles.item}>4</SwiperSlide>
+                    <SwiperSlide className={styles.item}>5</SwiperSlide>
+                    <SwiperSlide className={styles.item}>6</SwiperSlide>
+                    <SwiperSlide className={styles.item}>7</SwiperSlide>
+                    <SwiperSlide className={styles.item}>8</SwiperSlide>
+                    <SwiperSlide className={styles.item}>9</SwiperSlide>
+                    <SwiperSlide className={styles.item}>10</SwiperSlide>
+                    <SwiperSlide className={styles.item}>11</SwiperSlide>
+                    <SwiperSlide className={styles.item}>12</SwiperSlide>
+                    <SwiperSlide className={styles.item}>13</SwiperSlide>
+                    <SwiperSlide className={styles.item}>14</SwiperSlide>
+                    <SwiperSlide className={styles.item}>15</SwiperSlide>
+                    <SwiperSlide className={styles.item}>16</SwiperSlide>
+                    <SwiperSlide className={styles.item}>17</SwiperSlide>
+                    <SwiperSlide className={styles.item}>18</SwiperSlide>
+                    <SwiperSlide className={styles.item}>19</SwiperSlide>
+                    <SwiperSlide className={styles.item}>20</SwiperSlide>
+                    <SwiperSlide className={styles.item}>21</SwiperSlide>
+                    <SwiperSlide className={styles.item}>Показать все</SwiperSlide>
+                </Swiper>
             </div>
         </div>
     )
