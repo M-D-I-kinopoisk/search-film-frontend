@@ -75,7 +75,7 @@
 
 @keyframes sliderCenter-activ {
   from {
-    transform: translateX();
+    transform: translateX(0);
   }
   to {
     transform: translateX(200px);

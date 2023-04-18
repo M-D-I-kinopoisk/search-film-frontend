@@ -2,6 +2,7 @@ import Header from '@/components/Header/Header'
 import Head from 'next/head'
 import React from 'react'
 import Footer from '../Footer/Footer'
+import TabBar from '@/components/UI/TabBar/TabBar'
 
 type MainContainerProps = {
     children: any,
@@ -21,6 +22,7 @@ const MainContainer: React.FC<MainContainerProps> = ({children, title}) => {
                 {children}
             </div>
             <Footer/>
+            <TabBar/>
         </>
     )
 }
