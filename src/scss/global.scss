@@ -62,22 +62,19 @@ body {
   }
 
   .swiper-button-prev {
-    justify-content: right !important;
     padding-right: 2px;
 
-    margin-left: -20px;
+    margin-left: -14px;
   }
 
   .swiper-button-next {
-    justify-content: left !important;
     padding-left: 2px;
 
-    margin-right: -20px;
+    margin-right: -14px;
   }
 }
 
 .swiper-button-disabled {
-  //display: none !important;
   opacity: 1 !important;
 
   &:after {

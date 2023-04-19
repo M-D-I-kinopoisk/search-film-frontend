@@ -1,4 +1,7 @@
 import React from 'react'
+
+import styles from '../../scss/pages/home.module.scss'
+
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Autoplay, Navigation} from 'swiper'
 import Link from 'next/link'
@@ -20,35 +23,35 @@ const MainSlider: React.FC = () => {
                 centeredSlides={true}>
             <SwiperSlide className='main__slide'>
                 1
-                <Link href='/Actor'></Link>
+                <Link className={styles.slide} href='/Actor'>1</Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 2
-                <Link href='/Actor'></Link>
+                <Link className={styles.slide} href='/Actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 3
-                <Link href='/Actor'></Link>
+                <Link className={styles.slide} href='/Actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 4
-                <Link href='/Actor'></Link>
+                <Link className={styles.slide} href='/Actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 5
-                <Link href='/Actor'></Link>
+                <Link className={styles.slide} href='/Actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 6
-                <Link href='/Actor'></Link>
+                <Link className={styles.slide} href='/Actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 7
-                <Link href='/Actor'></Link>
+                <Link className={styles.slide} href='/Actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 8
-                <Link href='/Actor'></Link>
+                <Link className={styles.slide} href='/Actor'></Link>
             </SwiperSlide>
         </Swiper>
     )
