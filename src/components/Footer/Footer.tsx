@@ -141,7 +141,8 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className={style.footer__column}>
-                        <Link className={style.footer__columnRight} href={'https://www.ivi.ru/subscribe?redirect_url=%2Fwatch%2F504525'}>
+                        <Link className={style.footer__columnRight}
+                              href={'https://www.ivi.ru/subscribe?redirect_url=%2Fwatch%2F504525'}>
                             <div className={style.footer__widget}>
                                 <MdVolumeOff size={60} color={'#fff'}/>
                             </div>
