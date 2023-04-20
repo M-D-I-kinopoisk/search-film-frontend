@@ -1,0 +1,262 @@
+.wrapper {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  //  padding: 0 12px;
+}
+
+
+.filter {
+  background-color: #1f1b2e;
+  margin-left: -12px;
+  margin-right: -12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 6px;
+  color: #fff;
+}
+
+
+.filter__content {
+  padding: 16px;
+
+}
+
+.filter__plankList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -6px;
+  margin-right: -6px;
+}
+
+.filter__plankItem {
+  position: relative;
+  width: 20%;
+  margin-bottom: 12px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+.filter__plank {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #312b45;
+  height: 56px;
+  padding: 8px 16px;
+  transition-duration: .4s;
+  cursor: pointer;
+}
+
+.isActive {
+  background-color: #7e798f !important;
+  transition-duration: .4s;
+
+}
+
+.filter__plankTitle {
+  min-width: 30px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+.filter__reset {
+  margin-top: 16px;
+  display: flex;
+}
+
+.filter__resetContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+  font-style: normal;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  margin-top: auto;
+  height: 32px;
+  padding: 8px;
+  transition: color 400ms;
+
+  &:hover {
+    color: #ea003d;
+  }
+}
+
+
+
+.genesUl {
+  margin-top: 16px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255,255,255,.32);
+  display: grid;
+  grid-column-gap: 40px;
+  grid-template-columns: repeat(3,1fr);
+}
+
+
+.genesLi {
+  margin-top: 12px;
+
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  color: rgba(217,215,224,.8);
+  transition: color 400ms;
+
+  cursor: pointer;
+
+
+  &:hover {
+    color: #fff;
+    transition: color 400ms;
+  }
+
+  //&:active {
+  //  color : black;
+  //}
+}
+
+
+
+.filterDropDown {
+  position: absolute;
+  padding-top: 4px;
+  width: 630px;
+  z-index: 1;
+
+}
+
+.filterYears {
+  position: absolute;
+  padding-top: 4px;
+  width: 96%;
+  z-index: 1;
+}
+
+
+
+.filterRating {
+  position: absolute;
+  left: -50%;
+  padding-top: 4px;
+  width: 150%;
+  z-index: 1;
+}
+
+
+.inputRange__block {
+  display: flex;
+}
+
+
+
+.inputRange__input {
+  position: relative;
+  height: 10px;
+  -webkit-appearance: none;
+  margin: 20px 0 10px;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.inputRange__input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 10px #696969;
+  background: #afafaf;
+  border-radius: 5px;
+  border: 2px solid #7e7e7e;
+}
+.inputRange__input::-webkit-slider-thumb {
+  box-shadow: 0px 0px 7px #454545;
+  border: 1px solid #6c6c6c;
+  height: 18px;
+  width: 26px;
+  border-radius: 14px;
+  background: #f2f2f2;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+}
+.inputRange__input:focus::-webkit-slider-runnable-track {
+  background: #afafaf;
+}
+.inputRange__input::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 10px #696969;
+  background: #afafaf;
+  border-radius: 5px;
+  border: 2px solid #7e7e7e;
+}
+.inputRange__input::-moz-range-thumb {
+  box-shadow: 0px 0px 7px #454545;
+  border: 1px solid #6c6c6c;
+  height: 18px;
+  width: 26px;
+  border-radius: 14px;
+  background: #f2f2f2;
+  cursor: pointer;
+}
+
+
+.inputRange__input::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.inputRange__input::-ms-fill-lower {
+  background: #afafaf;
+  border: 2px solid #7e7e7e;
+  border-radius: 14px;
+  box-shadow: 0px 0px 10px #696969;
+}
+.inputRange__input::-ms-fill-upper {
+  background: #afafaf;
+  border: 2px solid #7e7e7e;
+  border-radius: 14px;
+  box-shadow: 0px 0px 10px #696969;
+}
+.inputRange__input::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 7px #454545;
+  border: 1px solid #6c6c6c;
+  height: 18px;
+  width: 26px;
+  border-radius: 14px;
+  background: #f2f2f2;
+  cursor: pointer;
+}
+.inputRange__input:focus::-ms-fill-lower {
+  background: #afafaf;
+}
+.inputRange__input:focus::-ms-fill-upper {
+  background: #afafaf;
+}
+
+
+.inputRange__text {
+  position: absolute;
+}
