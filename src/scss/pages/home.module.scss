@@ -203,12 +203,39 @@
     .link {
       height: 300px;
 
-      &:hover {
+      .image__section {
+        transition: 0.3s;
+      }
 
+      &:hover {
         .image__section {
           transform: scale(1.01) translateY(-2px);
-          transition: 1s;
+          transition: 0.3s;
           background-color: #56006e;
+        }
+      }
+
+      .text__section {
+
+        .title {
+          color: #d9d7e0;
+
+          font-size: 15px;
+          font-weight: 500;
+          line-height: 20px;
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          white-space: nowrap;
+        }
+
+        .extra {
+          color: #a5a1b2;
+
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 16px;
         }
       }
     }
