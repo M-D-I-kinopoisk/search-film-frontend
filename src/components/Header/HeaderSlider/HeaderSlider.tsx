@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import {useState} from 'react'
-import {MdDesktopMac} from 'react-icons/Md'
+import {MdDesktopMac} from 'react-icons/md'
 import style from './headerSlider.module.scss'
 
 const HeaderSlider = () => {

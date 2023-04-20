@@ -3,7 +3,7 @@ import Image from 'next/image'
 import DropDown from './DropDown/DropDown'
 import Link from 'next/link'
 import {BiSearch} from 'react-icons/Bi'
-import {MdOutlineNotifications} from 'react-icons/Md'
+import {MdOutlineNotifications} from 'react-icons/md'
 import {FiUser} from 'react-icons/Fi'
 import style from './header.module.scss'
 

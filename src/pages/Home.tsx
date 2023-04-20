@@ -24,6 +24,7 @@ const Home: React.FC = () => {
             </div>
             <FilmsCategory className={styles.films} title='Рекомендую посмотреть'/>
             <FilmsCategory className={styles.films} title='Добрые мультсериалы'/>
+
         </div>
     )
 }
