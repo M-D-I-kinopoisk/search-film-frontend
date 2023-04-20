@@ -6,6 +6,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Navigation} from 'swiper'
+import Link from 'next/link'
 
 type FilmsCategoryProps = {
     className: string,
@@ -13,6 +14,10 @@ type FilmsCategoryProps = {
 }
 
 const FilmsCategory: React.FC<FilmsCategoryProps> = ({className, title}) => {
+
+    const [visible, setVisible] = React.useState(false)
+
+
     return (
         <div className={className}>
             <h2 className={styles.films__title}>{title}
@@ -39,28 +44,290 @@ const FilmsCategory: React.FC<FilmsCategoryProps> = ({className, title}) => {
                     speed={700}
                     modules={[Navigation]}
                     navigation={true}>
-                <SwiperSlide className={styles.item}>1</SwiperSlide>
-                <SwiperSlide className={styles.item}>2</SwiperSlide>
-                <SwiperSlide className={styles.item}>3</SwiperSlide>
-                <SwiperSlide className={styles.item}>4</SwiperSlide>
-                <SwiperSlide className={styles.item}>5</SwiperSlide>
-                <SwiperSlide className={styles.item}>6</SwiperSlide>
-                <SwiperSlide className={styles.item}>7</SwiperSlide>
-                <SwiperSlide className={styles.item}>8</SwiperSlide>
-                <SwiperSlide className={styles.item}>9</SwiperSlide>
-                <SwiperSlide className={styles.item}>10</SwiperSlide>
-                <SwiperSlide className={styles.item}>11</SwiperSlide>
-                <SwiperSlide className={styles.item}>12</SwiperSlide>
-                <SwiperSlide className={styles.item}>13</SwiperSlide>
-                <SwiperSlide className={styles.item}>14</SwiperSlide>
-                <SwiperSlide className={styles.item}>15</SwiperSlide>
-                <SwiperSlide className={styles.item}>16</SwiperSlide>
-                <SwiperSlide className={styles.item}>17</SwiperSlide>
-                <SwiperSlide className={styles.item}>18</SwiperSlide>
-                <SwiperSlide className={styles.item}>19</SwiperSlide>
-                <SwiperSlide className={styles.item}>20</SwiperSlide>
-                <SwiperSlide className={styles.item}>21</SwiperSlide>
-                <SwiperSlide className={styles.item}>Показать все</SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}
+                          onMouseEnter={() => setVisible(true)}
+                          onMouseLeave={() => setVisible(false)}>
+                        <div className={styles.image__section}>
+                            {visible && <div>
+                                <div className={styles.hoards}>
+                                    <div className={styles.icon}>
+                                        <svg xmlns='http://www.w3.org/2000/svg'
+                                             viewBox='0,0,256,256' width='25px' height='25px' fillRule='nonzero'>
+                                            <g fill='#ffffff' fillRule='nonzero' stroke='none' strokeWidth='1'
+                                               strokeLinecap='butt' strokeLinejoin='miter' strokeMiterlimit='10'
+                                               strokeDasharray='' strokeDashoffset='0' fontFamily='none'
+                                               fontWeight='none' fontSize='none' textAnchor='none'>
+                                                <g transform='scale(2,2)'>
+                                                    <path
+                                                        d='M23.67,114.59c1.74,0.78 3.57,1.17 5.37,1.17c3.1,0 6.14,-1.13 8.59,-3.31l21.71,-19.3c2.65,-2.36 6.65,-2.36 9.3,0l21.71,19.3c3.88,3.45 9.23,4.27 13.96,2.14c4.73,-2.13 7.67,-6.67 7.67,-11.86v-78.73c0,-7.17 -5.83,-13 -13,-13h-69.98c-7.17,0 -13,5.83 -13,13v78.73c0,5.19 2.94,9.74 7.67,11.86zM22,24c0,-3.86 3.14,-7 7,-7h70c3.86,0 7,3.14 7,7v78.73c0,2.84 -1.54,5.22 -4.13,6.39c-2.59,1.16 -5.4,0.73 -7.52,-1.15l-21.71,-19.3c-2.46,-2.19 -5.55,-3.28 -8.64,-3.28c-3.09,0 -6.17,1.09 -8.64,3.28l-21.71,19.3c-2.12,1.88 -4.93,2.32 -7.52,1.15c-2.59,-1.16 -4.13,-3.55 -4.13,-6.39z'></path>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div className={styles.icon}>
+                                        <svg xmlns='http://www.w3.org/2000/svg'
+                                             viewBox='0,0,256,256' width='25px' height='25px' fillRule='nonzero'>
+                                            <g fill='#ffffff' fillRule='nonzero' stroke='none' strokeWidth='1'
+                                               strokeLinecap='butt' strokeLinejoin='miter' strokeMiterlimit='10'
+                                               strokeDasharray='' strokeDashoffset='0' fontFamily='none'
+                                               fontWeight='none' fontSize='none' textAnchor='none'>
+                                                <g transform='scale(2,2)'>
+                                                    <path
+                                                        d='M23.67,114.59c1.74,0.78 3.57,1.17 5.37,1.17c3.1,0 6.14,-1.13 8.59,-3.31l21.71,-19.3c2.65,-2.36 6.65,-2.36 9.3,0l21.71,19.3c3.88,3.45 9.23,4.27 13.96,2.14c4.73,-2.13 7.67,-6.67 7.67,-11.86v-78.73c0,-7.17 -5.83,-13 -13,-13h-69.98c-7.17,0 -13,5.83 -13,13v78.73c0,5.19 2.94,9.74 7.67,11.86zM22,24c0,-3.86 3.14,-7 7,-7h70c3.86,0 7,3.14 7,7v78.73c0,2.84 -1.54,5.22 -4.13,6.39c-2.59,1.16 -5.4,0.73 -7.52,-1.15l-21.71,-19.3c-2.46,-2.19 -5.55,-3.28 -8.64,-3.28c-3.09,0 -6.17,1.09 -8.64,3.28l-21.71,19.3c-2.12,1.88 -4.93,2.32 -7.52,1.15c-2.59,-1.16 -4.13,-3.55 -4.13,-6.39z'></path>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div className={styles.icon}>
+                                        <svg xmlns='http://www.w3.org/2000/svg'
+                                             viewBox='0,0,256,256' width='25px' height='25px' fillRule='nonzero'>
+                                            <g fill='#ffffff' fillRule='nonzero' stroke='none' strokeWidth='1'
+                                               strokeLinecap='butt' strokeLinejoin='miter' strokeMiterlimit='10'
+                                               strokeDasharray='' strokeDashoffset='0' fontFamily='none'
+                                               fontWeight='none' fontSize='none' textAnchor='none'>
+                                                <g transform='scale(2,2)'>
+                                                    <path
+                                                        d='M23.67,114.59c1.74,0.78 3.57,1.17 5.37,1.17c3.1,0 6.14,-1.13 8.59,-3.31l21.71,-19.3c2.65,-2.36 6.65,-2.36 9.3,0l21.71,19.3c3.88,3.45 9.23,4.27 13.96,2.14c4.73,-2.13 7.67,-6.67 7.67,-11.86v-78.73c0,-7.17 -5.83,-13 -13,-13h-69.98c-7.17,0 -13,5.83 -13,13v78.73c0,5.19 2.94,9.74 7.67,11.86zM22,24c0,-3.86 3.14,-7 7,-7h70c3.86,0 7,3.14 7,7v78.73c0,2.84 -1.54,5.22 -4.13,6.39c-2.59,1.16 -5.4,0.73 -7.52,-1.15l-21.71,-19.3c-2.46,-2.19 -5.55,-3.28 -8.64,-3.28c-3.09,0 -6.17,1.09 -8.64,3.28l-21.71,19.3c-2.12,1.88 -4.93,2.32 -7.52,1.15c-2.59,-1.16 -4.13,-3.55 -4.13,-6.39z'></path>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div className={styles.icon}>
+                                        <svg xmlns='http://www.w3.org/2000/svg'
+                                             viewBox='0,0,256,256' width='25px' height='25px' fillRule='nonzero'>
+                                            <g fill='#ffffff' fillRule='nonzero' stroke='none' strokeWidth='1'
+                                               strokeLinecap='butt' strokeLinejoin='miter' strokeMiterlimit='10'
+                                               strokeDasharray='' strokeDashoffset='0' fontFamily='none'
+                                               fontWeight='none' fontSize='none' textAnchor='none'>
+                                                <g transform='scale(2,2)'>
+                                                    <path
+                                                        d='M23.67,114.59c1.74,0.78 3.57,1.17 5.37,1.17c3.1,0 6.14,-1.13 8.59,-3.31l21.71,-19.3c2.65,-2.36 6.65,-2.36 9.3,0l21.71,19.3c3.88,3.45 9.23,4.27 13.96,2.14c4.73,-2.13 7.67,-6.67 7.67,-11.86v-78.73c0,-7.17 -5.83,-13 -13,-13h-69.98c-7.17,0 -13,5.83 -13,13v78.73c0,5.19 2.94,9.74 7.67,11.86zM22,24c0,-3.86 3.14,-7 7,-7h70c3.86,0 7,3.14 7,7v78.73c0,2.84 -1.54,5.22 -4.13,6.39c-2.59,1.16 -5.4,0.73 -7.52,-1.15l-21.71,-19.3c-2.46,-2.19 -5.55,-3.28 -8.64,-3.28c-3.09,0 -6.17,1.09 -8.64,3.28l-21.71,19.3c-2.12,1.88 -4.93,2.32 -7.52,1.15c-2.59,-1.16 -4.13,-3.55 -4.13,-6.39z'></path>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className={styles.content}>
+                                    <div className={styles.estimation}>
+                                        <div className={styles.rating}>
+                                            <div className={styles.valueInteger}>8</div>
+                                            <div className={styles.valueFraction}>,5</div>
+                                        </div>
+                                        <div className={styles.graphs}>
+                                            <div className={styles.progressBar}>
+                                                <div className={styles.backBar}></div>
+                                                <div className={styles.valueBar}></div>
+                                            </div>
+                                            <div className={styles.progressBar}>
+                                                <div className={styles.backBar}></div>
+                                                <div className={styles.valueBar}></div>
+                                            </div>
+                                            <div className={styles.progressBar}>
+                                                <div className={styles.backBar}></div>
+                                                <div className={styles.valueBar}></div>
+                                            </div>
+                                            <div className={styles.progressBar}>
+                                                <div className={styles.backBar}></div>
+                                                <div className={styles.valueBar}></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.graphChart}>
+                                        <div className={styles.name}>сюжет</div>
+                                        <div className={styles.graph}>
+                                            <div className={styles.graphProgress}></div>
+                                        </div>
+                                    </div>
+                                    <div className={styles.info}>
+                                        <div className={styles.text}>2018, Россия, Драмы</div>
+                                        <div className={styles.text}>1 сезон</div>
+                                    </div>
+                                </div>
+                            </div>}
+                        </div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/' className={styles.link}>
+                        <div className={styles.image__section}></div>
+                        <div className={styles.text__section}>
+                            <div className={styles.title}>Лунтик и его друзья</div>
+                            <div className={styles.extra}>Бесплатно</div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide className={styles.film}>
+                    <Link href='/'>
+                        <div className={styles.image__section}>Посмотреть все</div>
+                    </Link>
+                </SwiperSlide>
             </Swiper>
         </div>
     )
