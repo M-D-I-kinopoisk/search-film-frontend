@@ -1,6 +1,8 @@
 import React from 'react'
 
-import styles from '@/scss/pages/home.module.scss'
+// import styles from '@/scss/pages/home.module.scss'
+
+import styles from './filmsCategory.module.scss'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -13,14 +15,13 @@ import {MdOutlineHideSource} from 'react-icons/md'
 import {BsChevronRight} from 'react-icons/bs'
 
 type FilmsCategoryProps = {
-    className: string,
     title: string
 }
-const FilmsCategory: React.FC<FilmsCategoryProps> = ({className, title}) => {
+const FilmsCategory: React.FC<FilmsCategoryProps> = ({title}) => {
     const [visible, setVisible] = React.useState(false)
 
     return (
-        <div className={className}>
+        <div className={styles.films}>
             <h2 className={styles.films__title}>{title}
                 <BsChevronRight size={21}/>
             </h2>

@@ -24,13 +24,43 @@ const Home: React.FC = () => {
                 {/* сюда приходят все фильмы по категориям на главной, прост перебираем их и делает компоненту ну и вставляет данные
                 (они дожны быть одинаковыми) кроме наполнения фильмов, разумеется*/}
             </div>
-            <FilmsCategory className={styles.films} title='Рекомендую посмотреть'/>
+            <FilmsCategory title='Рекомендую посмотреть'/>
 
             <FilmsRating/>
 
             <FilmsClause/>
 
-            <FilmsCategory className={styles.films} title='Добрые мультсериалы'/>
+            <FilmsCategory title='Добрые мультсериалы'/>
+
+            <FilmsCategory title='Поймать преступника'/>
+
+            <FilmsCategory title='Лучшие сериалы в подписке'/>
+
+            <FilmsCategory title='Зарубежные мультфильмы'/>
+
+            <FilmsCategory title='Российские детективные сериалы'/>
+
+            <FilmsCategory title='Зарубежные мелодраматические сериалы'/>
+
+            <FilmsCategory title='Современные мультфильмы'/>
+
+            <FilmsCategory title='Сериалы с высоким рейтингом по подписке'/>
+
+            {/*тут какая то шляпа еще есть*/}
+
+            <FilmsCategory title='Мелодрамы на основе книг'/>
+
+            <FilmsCategory title='Захватывающие боевики'/>
+
+            <FilmsCategory title='Лучшие фильмы в подписке'/>
+
+            <FilmsCategory title='Мультфильмы о храбрости'/>
+
+            <FilmsCategory title='Криминальные триллеры'/>
+
+            <FilmsCategory title='Американские комедии'/>
+
+            <FilmsCategory title='Криминальные детективы'/>
 
         </div>
     )
