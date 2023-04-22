@@ -6,6 +6,7 @@ import TeaserBtn from '@/components/UI/TeaserBtn'
 import MainSlider from '@/components/MainSlider/MainSlider'
 import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
 import FilmsRating from '@/components/FilmsRating/FilmsRating'
+import FilmsClause from '@/components/FilmsClause/FilmsClause'
 
 const Home: React.FC = () => {
     return (
@@ -26,6 +27,8 @@ const Home: React.FC = () => {
             <FilmsCategory className={styles.films} title='Рекомендую посмотреть'/>
 
             <FilmsRating/>
+
+            <FilmsClause/>
 
             <FilmsCategory className={styles.films} title='Добрые мультсериалы'/>
 
