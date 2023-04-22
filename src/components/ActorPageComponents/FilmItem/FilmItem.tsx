@@ -1,19 +1,14 @@
 import React from 'react'
-import style from './ActorFilmItem.module.scss'
-import Image from 'next/image'
+import style from './FilmItem.module.scss'
 
-type ActorFilmItemProps = {
+type FilmItemProps = {
 }
 
-const ActorFilmItem: React.FC<ActorFilmItemProps> = () => {
+const FilmItem: React.FC<FilmItemProps> = () => {
     return (
         <div className={style.item}>
             <div>
-                <Image
-                    alt='фильм'
-                    width={100}
-                    height={100}
-                    src='https://thumbs.dfs.ivi.ru/storage38/contents/0/0/55c8a2551297804e709c65c9b4ecc0.jpg/172x264/?q=85' />
+                <img src='https://thumbs.dfs.ivi.ru/storage38/contents/0/0/55c8a2551297804e709c65c9b4ecc0.jpg/172x264/?q=85' />
             </div>
 
             <div className={style.info}>
@@ -31,4 +26,4 @@ const ActorFilmItem: React.FC<ActorFilmItemProps> = () => {
     )
 }
 
-export default ActorFilmItem
+export default FilmItem

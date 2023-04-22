@@ -2,7 +2,11 @@ import React from 'react'
 
 import style from './GaleryItem.module.scss'
 
-const GaleryItem: React.FC = () => {
+type GaleryItemProps = {
+    num: number
+}
+
+const GaleryItem: React.FC<GaleryItemProps> = ({num}) => {
     return (
         <div >
             <div className={style.galleryItem}>
@@ -28,7 +32,7 @@ const GaleryItem: React.FC = () => {
                 </div>
 
                 <div className={style.galleryItemAge}>
-                    18+
+                    18+ {num}
                 </div>
             </div>
 

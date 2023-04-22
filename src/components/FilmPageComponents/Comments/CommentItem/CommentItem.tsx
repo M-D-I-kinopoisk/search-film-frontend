@@ -10,6 +10,7 @@ const CommentItem: React.FC = () => {
             </div>
             <div className={style.commentsItemDescription}>
                 Не имею привычки пересматривать фильмы,но этот смотрела раз 6. Самый любимый!
+                Не имею привычки пересматривать фильмы,но этот смотрела раз 6. Самый любимый!
             </div>
             <div className={style.commentsItemBottom}>
                 <div className={style.commentsItemDate}>

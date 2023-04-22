@@ -3,41 +3,38 @@
     padding: 0 8px;
     margin: auto;
     margin-top: 16px;
-    color:white;
 }
 
-.backlink {
+.backLink {
+    max-width: 100px;
+    height: 20px;
     cursor: pointer;
-    width: 86px;
     margin: 32px 0 16px 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+
+    img {
+        margin-right: 10px;
+    }
+
+    span {
+        color: white;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    &:hover {
+        img {
+            width: 26px;
+        }
+    }
 }
 
 .content {
     max-width: 600px;
     margin: auto;
-}
-
-.films {
-    margin-top: 40px;
-}
-
-.title {
-    max-width: 375px;
-    max-height: 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 20px;
-
-    span {
-        color: #a5a1b2;
-        font-size: 15px;
-        line-height: 20px;
-        font-weight: 400;
-    }
 }
 
 .more {
@@ -50,5 +47,10 @@
         font-size: inherit;
         line-height: inherit;
         text-decoration: none;
+
+        &:hover {
+            color: #fff;
+        }
     }
+
 }

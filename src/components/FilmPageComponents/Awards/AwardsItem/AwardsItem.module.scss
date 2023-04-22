@@ -2,12 +2,13 @@
     background-color: #1f1b2e;
     border-radius: 12px;
     cursor: pointer;
-    width: 596px;
+    width: 45%;
     height: 128px;
     display: flex;
     justify-content: left;
     align-items: center;
     padding: 0 20px;
+    margin-top: 10px;
 }
 
 .awardsItemImg {
@@ -26,6 +27,10 @@
     font-style: normal;
     height: 22px;
     color: #fff;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .awardsItemInfoDescription {
@@ -36,4 +41,14 @@
     height: 20px;
     margin-top: 2px;
     color: rgba(255, 255, 255, .48);
+    display: -webkit-box;
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media(max-width:600px) {
+    .awardsItem {
+        width: 100%;
+    }
 }

@@ -1,8 +1,8 @@
-
 .galleryItem {
     width: 153px;
     height: 235px;
     position: relative;
+    cursor: pointer;
 
     img {
         border-radius: 8px 8px 8px 8px;
@@ -20,6 +20,7 @@
         .galleryItemDescroption {
             opacity: 1;
         }
+
         .galleryItemMarker {
             img {
                 opacity: 1;
@@ -101,16 +102,21 @@
 }
 
 .galleryItemAge {
+    font-size: 12px;
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 4px;
+    right: 4px;
+    color: rgb(248, 248, 248);
+    background-color: rgb(164, 163, 163, 0.5);
+    border-radius: 5px;
+    padding: 3px;
 }
 
-.galleryItemTitle{
+.galleryItemTitle {
     margin-top: 8px;
 }
 
-.galleryItemName{
+.galleryItemName {
     color: #d9d7e0;
     font-size: 15px;
     line-height: 20px;
@@ -119,7 +125,7 @@
     height: 20px;
 }
 
-.toogleSale{
+.toogleSale {
     color: #a5a1b2;
     font-size: 13px;
     line-height: 16px;

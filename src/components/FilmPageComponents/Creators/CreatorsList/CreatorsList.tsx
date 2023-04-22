@@ -16,10 +16,6 @@ const CreatorsList: React.FC = () => {
                 <CreatorsItem />
                 <CreatorsItem />
                 <CreatorsItem />
-                <CreatorsItem />
-                <CreatorsItem />
-                <CreatorsItem />
-
                 <div className={style.moreCreatorsBtn}>
                     Еще
                 </div>

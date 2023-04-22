@@ -20,6 +20,7 @@ const ActorList: React.FC = () => {
             <ActorItem/>
             <ActorItem/>
             <ActorItem/>
+            <ActorItem/>
         </div>
     )
 }
