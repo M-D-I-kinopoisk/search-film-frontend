@@ -12,7 +12,7 @@ const FilmsClause: React.FC = () => {
                 Онлайн-кинотеатр Иви: фильмы в хорошем качестве всегда приносят настоящее удовольствие
             </div>
             <div className={styles.clause__text}>
-                <div className={styles.clause__innerText}>
+                <div className={visible ? styles.clause__innerText__hide : styles.clause__innerText}>
                     <p>
                         Каждый день миллионы людей ищут фильмы онлайн, и никто не хочет усложнять себе жизнь – и вы
                         наверняка один из них! А раз так, то Иви – это именно тот ресурс, который вам нужен. От лучших

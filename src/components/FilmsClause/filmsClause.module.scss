@@ -14,7 +14,7 @@
   }
 
   &__text {
-    width: 906px;
+    width: 880px;
     color: #a5a1b2;
 
     line-height: 22px;
@@ -47,10 +47,24 @@
     }
 
     p {
-      margin-top: 8px
+      margin-top: 8px;
+
+      &:first-child {
+
+      }
     }
   }
 
+  &__innerText {
+    overflow: hidden;
+    display: -webkit-box;
+
+    text-overflow: ellipsis;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-top: -8px;
+  }
 
   &__toggle {
     display: inline-block;
