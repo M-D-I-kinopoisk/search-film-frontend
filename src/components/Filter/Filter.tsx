@@ -1,7 +1,9 @@
 import {useState} from 'react'
-import {BsChevronCompactDown, BsChevronCompactUp} from 'react-icons/Bs'
-import {VscChromeClose} from 'react-icons/Vsc'
+import {VscChromeClose} from 'react-icons/vsc'
+import {BiSearch} from 'react-icons/bi'
 import styles from './filter.module.scss'
+import {IoPersonCircleOutline} from 'react-icons/io5'
+import {GiFilmProjector} from 'react-icons/gi'
 import FilterCategories from '@/components/Filter/FilterCategories/FilterCategories'
 
 
@@ -9,12 +11,10 @@ const Filter = () => {
 
     const [activePlank, setActivePlank] = useState({
         genres: false, countries: false, years: false, rating: false,
-        grade: false,
+        grade: false, searchDir: false, searchActor: false
     })
 
     const [inputRange, setInputRange] = useState({rating: '1', grade: '500'})
-
-
 
 
 
@@ -103,20 +103,25 @@ const Filter = () => {
         '2010-2020',
     ]
 
+    console.log(`${inputRange.rating}px`)
+
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.filter}>
                 <div className={styles.filter__content}>
                     <div className={styles.filter__plankList}>
-                        <div  className={styles.filter__plankItem}>
-                            <FilterCategories   className={styles.filterDropDown} title={'Жанры'} activePlank={activePlank.genres}
+                        <div className={styles.filter__plankItem}>
+                            <FilterCategories className={styles.filterGenres} title={'Жанры'}
+                                              activePlank={activePlank.genres}
                                               onClick={() => setActivePlank({
                                                   countries: false,
                                                   years: false,
                                                   rating: false,
                                                   grade: false,
                                                   genres: !activePlank.genres,
+                                                  searchDir: false,
+                                                  searchActor: false,
                                               })}>
                                 <ul className={styles.genesUl}>
                                     {listGenres.map((element, inx) => {
@@ -125,14 +130,17 @@ const Filter = () => {
                                 </ul>
                             </FilterCategories>
                         </div>
-                        <div  className={styles.filter__plankItem}>
-                            <FilterCategories  className={styles.filterDropDown} title={'Страны'} activePlank={activePlank.countries}
+                        <div className={styles.filter__plankItem}>
+                            <FilterCategories className={styles.filterCountries} title={'Страны'}
+                                              activePlank={activePlank.countries}
                                               onClick={() => setActivePlank({
                                                   countries: !activePlank.countries,
                                                   years: false,
                                                   rating: false,
                                                   grade: false,
                                                   genres: false,
+                                                  searchDir: false,
+                                                  searchActor: false,
                                               })}>
                                 <ul className={styles.genesUl}>
                                     {listCountries.map((element, inx) => {
@@ -142,13 +150,16 @@ const Filter = () => {
                             </FilterCategories>
                         </div>
                         <div className={styles.filter__plankItem}>
-                            <FilterCategories  className={styles.filterYears}  title={'Годы'} activePlank={activePlank.years}
+                            <FilterCategories className={styles.filterYears} title={'Годы'}
+                                              activePlank={activePlank.years}
                                               onClick={() => setActivePlank({
                                                   countries: false,
                                                   years: !activePlank.years,
                                                   rating: false,
                                                   grade: false,
                                                   genres: false,
+                                                  searchDir: false,
+                                                  searchActor: false,
                                               })}>
                                 <ul>
                                     {listYears.map((element, inx) => {
@@ -157,59 +168,112 @@ const Filter = () => {
                                 </ul>
                             </FilterCategories>
                         </div>
-                        <div  className={styles.filter__plankItem}>
-                            <FilterCategories  className={styles.filterRating} title={'Рейтинг Кинопоиска'} activePlank={activePlank.rating}
+                        <div className={styles.filter__plankItem}>
+                            <FilterCategories className={styles.filterRating} title={'Рейтинг Кинопоиска'}
+                                              activePlank={activePlank.rating}
                                               onClick={() => setActivePlank({
                                                   countries: false,
                                                   years: false,
                                                   rating: !activePlank.rating,
                                                   grade: false,
                                                   genres: false,
+                                                  searchDir: false,
+                                                  searchActor: false,
                                               })}>
-                                <div>
-                                    <input type='range' min='1' max='10' value={inputRange.rating} step={0.1}
+                                <div className={styles.inputRange__block}>
+                                    <input className={styles.inputRange__input} type='range' min='1' max='10' value={inputRange.rating} step={0.1}
                                            onChange={(e) => setInputRange((prev) => ({
                                                ...prev,
                                                rating: e.target.value
                                            }))}/>
-                                    <p>{inputRange.rating}</p>
+                                    <div className={styles.inputRange__text}  >{inputRange.rating}</div>
+                                    <div className={styles.inputRange__numStart}>1</div>
+                                    <div className={styles.inputRange__numEnd}>10</div>
                                 </div>
                             </FilterCategories>
                         </div>
-                        <div  className={styles.filter__plankItem}>
-                            <FilterCategories  className={styles.filterRating} title={'Оценки Кинопоиска'} activePlank={activePlank.grade}
+                        <div className={styles.filter__plankItem}>
+                            <FilterCategories className={styles.filterRating} title={'Оценки Кинопоиска'}
+                                              activePlank={activePlank.grade}
                                               onClick={() => setActivePlank({
                                                   countries: false,
                                                   years: false,
                                                   rating: false,
                                                   grade: !activePlank.grade,
                                                   genres: false,
+                                                  searchDir: false,
+                                                  searchActor: false,
                                               })}>
                                 <div className={styles.inputRange__block}>
-                                    <input className={styles.inputRange__input} type='range' min='500' max='1000000' value={inputRange.grade} step={500}
+                                    <input className={styles.inputRange__input} type='range' min='500' max='1000000'
+                                           value={inputRange.grade} step={500}
                                            onChange={(e) => setInputRange((prev) => ({
                                                ...prev,
                                                grade: e.target.value
                                            }))}/>
-                                    <p className={styles.inputRange__text} >{inputRange.grade}</p>
+                                    <div className={styles.inputRange__text}>{inputRange.grade}</div>
                                 </div>
                             </FilterCategories>
                         </div>
                         <div className={styles.filter__plankItem}>
-                            <div className={styles.filter__plank}>
-                                <div className={styles.filter__plankTitle}>
-                                    <p>Поиск по режиссерам</p>
+                            <FilterCategories className={styles.filterSearch} title={'Поиск по режиссерам'}
+                                              activePlank={activePlank.searchDir}
+                                              onClick={() => setActivePlank({
+                                                  countries: false,
+                                                  years: false,
+                                                  rating: false,
+                                                  grade: false,
+                                                  genres: false,
+                                                  searchDir: !activePlank.searchDir,
+                                                  searchActor: false,
+                                              })}>
+                                <div>
+                                    {/*<p className={styles.inputText__title}>Начните вводить режиссера</p>*/}
+                                    <div className={styles.inputText__body}>
+                                        <input type={'text'} className={styles.inputText__input}/>
+                                        <div className={styles.inputText__icon}>
+                                            <BiSearch size={20}/>
+                                        </div>
+                                        <label className={styles.inputText__placeholder}>
+                                           Режиссеры
+                                        </label>
+                                    </div>
+                                    <div className={styles.inputText__item}>
+                                        <GiFilmProjector color={'rgb(234, 0, 61)'} size={20}/>
+                                        <span>Брэд Питт</span>
+                                    </div>
                                 </div>
-                                <BsChevronCompactDown size={20}/>
-                            </div>
+                            </FilterCategories>
                         </div>
                         <div className={styles.filter__plankItem}>
-                            <div className={styles.filter__plank}>
-                                <div className={styles.filter__plankTitle}>
-                                    <p>Поиск по актерам</p>
+                            <FilterCategories className={styles.filterSearch} title={'Поиск по актерам'}
+                                              activePlank={activePlank.searchActor}
+                                              onClick={() => setActivePlank({
+                                                  countries: false,
+                                                  years: false,
+                                                  rating: false,
+                                                  grade: false,
+                                                  genres: false,
+                                                  searchDir: false,
+                                                  searchActor: !activePlank.searchActor,
+                                              })}>
+                                <div>
+                                    {/*<p className={styles.inputText__title}>Начните вводить актера</p>*/}
+                                    <div className={styles.inputText__body}>
+                                        <input type={'text'} className={styles.inputText__input}/>
+                                        <div className={styles.inputText__icon}>
+                                            <BiSearch size={20}/>
+                                        </div>
+                                        <label className={styles.inputText__placeholder}>
+                                            Актеры
+                                        </label>
+                                    </div>
+                                    <div className={styles.inputText__item}>
+                                        <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
+                                        <span>Брэд Питт</span>
+                                    </div>
                                 </div>
-                                <BsChevronCompactDown size={20}/>
-                            </div>
+                            </FilterCategories>
                         </div>
                     </div>
                     <div className={styles.filter__reset}>

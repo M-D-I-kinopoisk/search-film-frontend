@@ -2,8 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {GoMail} from 'react-icons/Go'
 import {IoCallOutline} from 'react-icons/io5'
-import {MdVolumeOff} from 'react-icons/Md'
-import {MdDesktopMac} from 'react-icons/Md'
+import {MdVolumeOff} from 'react-icons/md'
+import {MdDesktopMac} from 'react-icons/md'
 import style from './footer.module.scss'
 
 const Footer = () => {

@@ -27,35 +27,35 @@ const Home: React.FC = () => {
                     className='mySwiper'>
                 <SwiperSlide>
                     1
-                    <Link href='/Actor' className={styles.slide}></Link>
+                    <Link href='/actor' className={styles.slide}></Link>
                 </SwiperSlide>
                 <SwiperSlide>
                     2
-                    <Link href='/Actor' className={styles.slide}></Link>
+                    <Link href='/actor' className={styles.slide}></Link>
                 </SwiperSlide>
                 <SwiperSlide>
                     3
-                    <Link href='/Actor' className={styles.slide}></Link>
+                    <Link href='/actor' className={styles.slide}></Link>
                 </SwiperSlide>
                 <SwiperSlide>
                     4
-                    <Link href='/Actor' className={styles.slide}></Link>
+                    <Link href='/actor' className={styles.slide}></Link>
                 </SwiperSlide>
                 <SwiperSlide>
                     5
-                    <Link href='/Actor' className={styles.slide}></Link>
+                    <Link href='/actor' className={styles.slide}></Link>
                 </SwiperSlide>
                 <SwiperSlide>
                     6
-                    <Link href='/Actor' className={styles.slide}></Link>
+                    <Link href='/actor' className={styles.slide}></Link>
                 </SwiperSlide>
                 <SwiperSlide>
                     7
-                    <Link href='/Actor' className={styles.slide}></Link>
+                    <Link href='/actor' className={styles.slide}></Link>
                 </SwiperSlide>
                 <SwiperSlide>
                     8
-                    <Link href='/Actor' className={styles.slide}></Link>
+                    <Link href='/actor' className={styles.slide}></Link>
                 </SwiperSlide>
             </Swiper>
             <div className={styles.container}>

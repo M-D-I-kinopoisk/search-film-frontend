@@ -1,5 +1,5 @@
 import MainContainer from '@/components/MainContainer/MainContainer'
-import Home from '@/pages/Home'
+import Home from '@/pages/home'
 
 const Main = () => {
     return (

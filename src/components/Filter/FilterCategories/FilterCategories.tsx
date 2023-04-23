@@ -1,6 +1,6 @@
 import {FC, useEffect, useRef} from 'react'
 import styles from './filterCategories.module.scss'
-import {BsChevronCompactDown, BsChevronCompactUp} from 'react-icons/Bs'
+import {BsChevronCompactDown, BsChevronCompactUp} from 'react-icons/bs'
 
 export interface FilterCategoriesProps {
     className: string
@@ -20,12 +20,11 @@ const FilterCategories: FC<FilterCategoriesProps> = ({
                                                      }) => {
 
     const modalRef = useRef(null)
-
-
     const categoryRef = useRef(null)
 
 
     useEffect(() => {
+
         if (activePlank) {
             const handleClick = (e) => {
 
@@ -34,11 +33,11 @@ const FilterCategories: FC<FilterCategoriesProps> = ({
                     if (categoryRef.current.contains(e.target)) return
 
                     if (!modalRef.current.contains(e.target)) {
+                        console.log('закрыть')
                         onClick()
                     }
                 }
             }
-
             document.addEventListener('click', handleClick)
             return () => {
                 document.removeEventListener('click', handleClick)
@@ -54,8 +53,8 @@ const FilterCategories: FC<FilterCategoriesProps> = ({
                 <div className={styles.categories__plankGroup}>
                     <span>{title}</span>
                 </div>
-                {activePlank ? (<BsChevronCompactUp size={20}/>) :
-                    <BsChevronCompactDown size={20}/>}
+                {activePlank ? (<div style={{pointerEvents: 'none'}}><BsChevronCompactUp size={20}/></div>) :
+                    (<div style={{pointerEvents: 'none'}}><BsChevronCompactDown size={20}/></div>)}
             </div>
             {activePlank
                 && <div ref={modalRef} className={className}>

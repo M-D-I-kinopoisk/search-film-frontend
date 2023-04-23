@@ -2,9 +2,9 @@ import {useState} from 'react'
 import Image from 'next/image'
 import DropDown from './DropDown/DropDown'
 import Link from 'next/link'
-import {BiSearch} from 'react-icons/Bi'
-import {MdOutlineNotifications} from 'react-icons/Md'
-import {FiUser} from 'react-icons/Fi'
+import {BiSearch} from 'react-icons/bi'
+import {MdOutlineNotifications} from 'react-icons/md'
+import {FiUser} from 'react-icons/fi'
 import style from './header.module.scss'
 
 const Header = () => {
@@ -72,7 +72,7 @@ const Header = () => {
                             onMouseEnter={(e) => handleMouseEnter(e)}
                         >
                             <Link
-                                href='/Movies'
+                                href='/movies'
                                 title='Фильмы онлайн'
                                 className={style.navbar__a}
                             >
