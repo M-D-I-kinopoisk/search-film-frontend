@@ -23,35 +23,35 @@ const MainSlider: React.FC = () => {
                 centeredSlides={true}>
             <SwiperSlide className='main__slide'>
                 1
-                <Link className={styles.slide} href='/Actor'>1</Link>
+                <Link className={styles.slide} href='/actor'>1</Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 2
-                <Link className={styles.slide} href='/Actor'></Link>
+                <Link className={styles.slide} href='/actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 3
-                <Link className={styles.slide} href='/Actor'></Link>
+                <Link className={styles.slide} href='/actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 4
-                <Link className={styles.slide} href='/Actor'></Link>
+                <Link className={styles.slide} href='/actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 5
-                <Link className={styles.slide} href='/Actor'></Link>
+                <Link className={styles.slide} href='/actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 6
-                <Link className={styles.slide} href='/Actor'></Link>
+                <Link className={styles.slide} href='/actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 7
-                <Link className={styles.slide} href='/Actor'></Link>
+                <Link className={styles.slide} href='/actor'></Link>
             </SwiperSlide>
             <SwiperSlide className='main__slide'>
                 8
-                <Link className={styles.slide} href='/Actor'></Link>
+                <Link className={styles.slide} href='/actor'></Link>
             </SwiperSlide>
         </Swiper>
     )

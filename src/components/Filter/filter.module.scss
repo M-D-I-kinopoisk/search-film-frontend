@@ -8,10 +8,10 @@
 
 .filter {
   background-color: #1f1b2e;
-  margin-left: -12px;
-  margin-right: -12px;
-  padding-left: 12px;
-  padding-right: 12px;
+  //margin-left: -12px;
+  //margin-right: -12px;
+  //padding-left: 12px;
+  //padding-right: 12px;
   border-radius: 6px;
   color: #fff;
 }
@@ -19,7 +19,6 @@
 
 .filter__content {
   padding: 16px;
-
 }
 
 .filter__plankList {
@@ -35,6 +34,14 @@
   margin-bottom: 12px;
   padding-right: 6px;
   padding-left: 6px;
+
+  @media (max-width: 878px) {
+    width: 50%;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 }
 
 .filter__plank {
@@ -94,14 +101,17 @@
 }
 
 
-
 .genesUl {
   margin-top: 16px;
   padding-top: 4px;
-  border-top: 1px solid rgba(255,255,255,.32);
+  border-top: 1px solid rgba(255, 255, 255, .32);
   display: grid;
   grid-column-gap: 40px;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 745px) {
+    grid-template-columns: repeat(2,1fr);
+  }
 }
 
 
@@ -111,7 +121,7 @@
   font-size: 13px;
   line-height: 16px;
   font-weight: 500;
-  color: rgba(217,215,224,.8);
+  color: rgba(217, 215, 224, .8);
   transition: color 400ms;
 
   cursor: pointer;
@@ -122,50 +132,172 @@
     transition: color 400ms;
   }
 
-  //&:active {
-  //  color : black;
-  //}
 }
 
 
-
-.filterDropDown {
+.filterGenres {
   position: absolute;
   padding-top: 4px;
   width: 630px;
   z-index: 1;
+
+  @media (max-width: 745px) {
+    width: 97.5%;
+  }
+
+
+
+}
+
+.filterCountries {
+  position: absolute;
+  padding-top: 4px;
+  width: 630px;
+  z-index: 1;
+
+  @media (max-width: 878px) {
+    width: 150%;
+    left: -51%;
+  }
+
+
+  @media (max-width: 745px) {
+    width: 97.5%;
+    left: 1%;
+  }
 
 }
 
 .filterYears {
   position: absolute;
   padding-top: 4px;
-  width: 96%;
+  width: 98%;
   z-index: 1;
 }
-
 
 
 .filterRating {
   position: absolute;
-  left: -50%;
+  left: -82%;
   padding-top: 4px;
-  width: 150%;
+  width: 180%;
   z-index: 1;
+
+  @media (max-width: 878px) {
+    width: 98%;
+    left: 1%;
+  }
+}
+
+.filterSearch {
+  position: absolute;
+  padding-top: 4px;
+  width: 480px;
+  z-index: 1;
+
+  @media (max-width: 878px) {
+    width: 100%;
+    left: 0;
+  }
+}
+
+
+.inputText__body {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.inputText__title {
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.inputText__input {
+  display: block;
+  width: 100%;
+  border-width: 0;
+  padding: 18px 40px 2px 12px;
+  cursor: auto;
+  background-color: #d9d7e0;
+  color: #1f1b2e;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.inputText__icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  color: rgba(31, 27, 46, .16);
+}
+
+.inputText__placeholder {
+  left: 12px;
+  right: 40px;
+  height: 20px;
+  top: 10px;
+  color: #a5a1b2;
+  will-change: transform;
+  pointer-events: none;
+  position: absolute;
+  text-rendering: geometricPrecision;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition-duration: .4s;
+}
+
+.inputText__input:focus {
+  border: 8px;
+}
+
+.inputText__input:focus~.inputText__placeholder {
+  top: 0;
+  font-size: 14px;
+}
+
+
+.inputText__item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #a5a1b2;
+
+  &:hover {
+    color: rgb(234, 0, 61);
+    transition: color .4s;
+
+  }
 }
 
 
 .inputRange__block {
+  margin-top: 30px;
+  position: relative;
   display: flex;
+  flex-direction: column;
 }
-
 
 
 .inputRange__input {
   position: relative;
   height: 10px;
   -webkit-appearance: none;
-  margin: 20px 0 10px;
   width: 100%;
 
   &:focus {
@@ -173,90 +305,53 @@
   }
 }
 
+
+.inputRange__text {
+  position: absolute;
+  background-color: #1F1B2E;
+  display: inline-block;
+  text-align: center;
+  top: 37px;
+  left: 42%;
+  min-width: 20px;
+  vertical-align: top;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
+.inputRange__numStart {
+  position: absolute;
+  top: 20px;
+ left: 0;
+}
+
+.inputRange__numEnd {
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+
 .inputRange__input::-webkit-slider-runnable-track {
   width: 100%;
   height: 10px;
   cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 0px 0px 10px #696969;
-  background: #afafaf;
-  border-radius: 5px;
-  border: 2px solid #7e7e7e;
+  background: #100E19;
+  border-radius: 2px;
 }
+
 .inputRange__input::-webkit-slider-thumb {
-  box-shadow: 0px 0px 7px #454545;
   border: 1px solid #6c6c6c;
   height: 18px;
-  width: 26px;
+  width: 15px;
   border-radius: 14px;
-  background: #f2f2f2;
+  background: #fff;
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -6px;
-}
-.inputRange__input:focus::-webkit-slider-runnable-track {
-  background: #afafaf;
-}
-.inputRange__input::-moz-range-track {
-  width: 100%;
-  height: 10px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 0px 0px 10px #696969;
-  background: #afafaf;
-  border-radius: 5px;
-  border: 2px solid #7e7e7e;
-}
-.inputRange__input::-moz-range-thumb {
-  box-shadow: 0px 0px 7px #454545;
-  border: 1px solid #6c6c6c;
-  height: 18px;
-  width: 26px;
-  border-radius: 14px;
-  background: #f2f2f2;
-  cursor: pointer;
+  //box-shadow: -300px 0 0 300px #7D788E;
 }
 
 
-.inputRange__input::-ms-track {
-  width: 100%;
-  height: 10px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-.inputRange__input::-ms-fill-lower {
-  background: #afafaf;
-  border: 2px solid #7e7e7e;
-  border-radius: 14px;
-  box-shadow: 0px 0px 10px #696969;
-}
-.inputRange__input::-ms-fill-upper {
-  background: #afafaf;
-  border: 2px solid #7e7e7e;
-  border-radius: 14px;
-  box-shadow: 0px 0px 10px #696969;
-}
-.inputRange__input::-ms-thumb {
-  margin-top: 1px;
-  box-shadow: 0px 0px 7px #454545;
-  border: 1px solid #6c6c6c;
-  height: 18px;
-  width: 26px;
-  border-radius: 14px;
-  background: #f2f2f2;
-  cursor: pointer;
-}
-.inputRange__input:focus::-ms-fill-lower {
-  background: #afafaf;
-}
-.inputRange__input:focus::-ms-fill-upper {
-  background: #afafaf;
-}
 
 
-.inputRange__text {
-  position: absolute;
-}
