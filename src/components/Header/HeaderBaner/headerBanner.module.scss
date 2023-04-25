@@ -1,11 +1,11 @@
-.headerSlaider {
+.headerBanner {
   display: flex;
   flex-direction: column;
   margin-left: auto;
 //   transition: margin 0.5s;
 }
 
-.headerSlaider__topBlock {
+.headerBanner__topBlock {
     position: relative;
   width: 244px;
   display: flex;
@@ -40,22 +40,22 @@
   }
 }
 
-.headerSlaider__sliders {
+.headerBanner__sliders {
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
-.headerSlaider__sliderTop {
+.headerBanner__sliderTop {
     border-radius: 8px;
   display: flex;
   gap: 7px;
   position: relative;
   top: -45px;
   left: 0;
-  animation: sliderTop-activ infinite 15s linear;
+  animation: sliderTop-active infinite 15s linear;
 }
 
-@keyframes sliderTop-activ {
+@keyframes sliderTop-active {
   from {
     transform: translateX(0);
   }
@@ -64,16 +64,16 @@
   }
 }
 
-.headerSlaider__sliderCenter {
+.headerBanner__sliderCenter {
   display: flex;
   gap: 7px;
   position: relative;
   top: -35px;
   left: -270px;
-  animation: sliderCenter-activ infinite 15s linear;
+  animation: sliderCenter-active infinite 15s linear;
 }
 
-@keyframes sliderCenter-activ {
+@keyframes sliderCenter-active {
   from {
     transform: translateX(0);
   }
@@ -82,16 +82,16 @@
   }
 }
 
-.headerSlaider__sliderDown {
+.headerBanner__sliderDown {
   display: flex;
   gap: 7px;
   position: relative;
   top: -27px;
   left: 0;
-  animation: sliderTop-activ infinite 15s linear;
+  animation: sliderTop-active infinite 15s linear;
 }
 
-@keyframes sliderTop-activ {
+@keyframes sliderTop-active {
   from {
     transform: translateX(0);
   }
@@ -100,18 +100,18 @@
   }
 }
 
-.headerSlaider__sliderImg {
+.headerBanner__sliderImg {
   border-radius: 8px 8px 8px 8px;
 }
 
-.headerSlaider__toggleBlock {
+.headerBanner__toggleBlock {
 
   margin-top: auto;
   transition-duration: 2s;
   position: relative;
 }
 
-.headerSlaider__detalisBlock {
+.headerBanner__detailsBlock {
   position: absolute;
   top: -61px;
   display: flex;
@@ -127,17 +127,17 @@
         width: 244px;
         height: 48px;
         top: -48px;
-        left: 0px;
+        left: 0;
     }
 }
 
 
-.headerSlaider__detalisBlock_activ {
+.headerBanner__detailsBlock_active {
   top: -125px;
   transition: 0.4s;
 }
 
-.headerSlaider__logo {
+.headerBanner__logo {
   background-color: #ea003d;
   width: 48px;
   height: 48px;
@@ -145,7 +145,7 @@
   margin-right: 12px;
 }
 
-.headerSlaider__detalistittle {
+.headerBanner__detailsTitle {
   font-size: 20px;
   line-height: 24px;
   font-weight: 700;
@@ -157,7 +157,7 @@
   color: #fff;
 }
 
-.headerSlaider__detalisExtra {
+.headerBanner__detailsExtra {
   margin-top: 4px;
   font-size: 13px;
   line-height: 16px;
@@ -166,18 +166,18 @@
   color: #d9d7e0;
 }
 
-.headerSlaider__detalisBlock2 {
+.headerBanner__detailsBlock2 {
   opacity: 0;
   transition: 0.7s;
 
 }
 
-.headerSlaider__detalisBlock2_activ {
+.headerBanner__detailsBlock2_active {
   opacity: 1;
   transition: 1.2s;
 }
 
-.headerSlaider__detalisBtn {
+.headerBanner__detailsBtn {
   display: flex;
   justify-content: center;
   height: 32px;
@@ -199,7 +199,7 @@
   }
 }
 
-.headerSlaider__detalisNote {
+.headerBanner__detailsNote {
   font-size: 10px;
   line-height: 12px;
   font-weight: 400;
@@ -208,7 +208,7 @@
   margin-bottom: 15px;
 }
 
-.headerSlider__btnSmartTV {
+.headerBanner__btnSmartTV {
   display: flex;
   height: 40px;
   width: 100%;

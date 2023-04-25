@@ -1,125 +1,135 @@
+import {useRouter} from 'next/router'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import {GoMail} from 'react-icons/Go'
+
+import {GoMail} from 'react-icons/go'
 import {IoCallOutline} from 'react-icons/io5'
 import {MdVolumeOff} from 'react-icons/md'
 import {MdDesktopMac} from 'react-icons/md'
+
+import {en} from '../../../public/locales/en'
+import {ru} from '../../../public/locales/ru'
+
 import style from './footer.module.scss'
 
+
 const Footer = () => {
+
+    const {locale, locales, asPath} = useRouter()
+
+    const t = locale === 'en' ? en : ru
+
     return (
         <div className={style.wrapper}>
             <div className={style.footer}>
                 <div className={style.footer__topBlock}>
                     <div className={style.footer__column}>
-                        <p className={style.footer__title}>О нас</p>
+                        <p className={style.footer__title}>{t.footer.item1.title}</p>
                         <Link
                             className={style.footer__link}
                             href={
                                 'https://corp.ivi.ru/?_gl=1%2Alvn2xf%2A_ga%2AMTMxNTY0MzcwMS4xNjgxMjE0Mzc5%2A_ga_GETQ4387MJ%2AMTY4MTQ4MjkyMy42LjEuMTY4MTUwNzAzNy42MC4wLjA.'
                             }
                         >
-                            О компании
+                            {t.footer.item1.text1}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://corp.ivi.ru/career/#career-vacancy-block'}
                         >
-                            Вакансии
+                            {t.footer.item1.text2}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/pages/beta/'}
                         >
-                            Программа бета-тестирования
+                            {t.footer.item1.text3}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/info/partners'}
                         >
-                            Информация для партнёров
+                            {t.footer.item1.text4}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://corp.ivi.ru/advertisers/'}
                         >
-                            Размещение рекламы
+                            {t.footer.item1.text5}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/info/agreement'}
                         >
-                            Пользовательское соглашение
+                            {t.footer.item1.text6}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/info/confidential'}
                         >
-                            Политика конфиденциальности
+                            {t.footer.item1.text7}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/info/goryachaya-liniya-komplaens'}
                         >
-                            Комплаенс
+                            {t.footer.item1.text8}
                         </Link>
                     </div>
                     <div className={style.footer__column}>
-                        <p className={style.footer__title}>Разделы</p>
+                        <p className={style.footer__title}>{t.footer.item2.title}</p>
                         <Link className={style.footer__link} href={'/'}>
-                            Мой Иви
+                            {t.footer.item2.text1}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/new'}
                         >
-                            Что нового
+                            {t.footer.item2.text2}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/movies'}
                         >
-                            Фильмы
+                            {t.footer.item2.text3}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/series'}
                         >
-                            Сериалы
+                            {t.footer.item2.text4}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/animation'}
                         >
-                            Мультфильмы
+                            {t.footer.item2.text5}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/tvplus'}
                         >
-                            TV+
+                            {t.footer.item2.text6}
                         </Link>
                         <Link
                             className={style.footer__link}
                             href={'https://www.ivi.ru/goodmovies'}
                         >
-                            Что посмотреть
+                            {t.footer.item2.text7}
                         </Link>
                         <Link
                             className={`${style.footer__link} ${style.gradient} `}
                             href={'https://www.ivi.ru/cert'}
                         >
-                            Активация сертификата
+                            {t.footer.item2.text8}
                         </Link>
                     </div>
                     <div className={style.footer__column}>
-                        <p className={style.footer__title}>Служба поддержки</p>
-                        <span>
-              Мы всегда готовы вам помочь.
-              <br/>
-              Наши операторы онлайн 24/7
-            </span>
-                        <button className={style.footer__btnChat}>Написать в чате</button>
+                        <p className={style.footer__title}>{t.footer.item3.title}</p>
+                        <span>{t.footer.item3.text1}</span>
+                        <span>{t.footer.item3.text2}</span>
+                        <button className={style.footer__btnChat}>{t.footer.item3.text3}</button>
                         <div className={style.footer__btnGroup}>
                             <button className={style.footer__btn}>
                                 <GoMail size={16}/>
@@ -137,7 +147,7 @@ const Footer = () => {
                             >
                                 ask.ivi.ru
                             </Link>
-                            <span>Ответы на вопросы</span>
+                            <span>{t.footer.item3.text4}</span>
                         </div>
                     </div>
                     <div className={style.footer__column}>
@@ -146,7 +156,7 @@ const Footer = () => {
                             <div className={style.footer__widget}>
                                 <MdVolumeOff size={60} color={'#fff'}/>
                             </div>
-                            <span>Смотрите фильмы, сериалы и мультфильмы без рекламы</span>
+                            <span>{t.footer.item4.title}</span>
                         </Link>
                     </div>
                 </div>
@@ -160,7 +170,7 @@ const Footer = () => {
                                 <Image src={'https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/appleLogo.svg'}
                                        alt={'apple'} width={20} height={20}/>
                                 <div>
-                                    <p className={style.footer__smartBtn_title}>Загрузить в</p>
+                                    <p className={style.footer__smartBtn_title}>{t.footer.item5.text1}</p>
                                     <p className={style.footer__smartBtn_text}>App Store</p>
                                 </div>
                             </Link>
@@ -171,7 +181,7 @@ const Footer = () => {
                                 <Image src={'https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/googlePlayLogo.svg'}
                                        alt={'apple'} width={20} height={20}/>
                                 <div>
-                                    <p className={style.footer__smartBtn_title}>Доступно в</p>
+                                    <p className={style.footer__smartBtn_title}>{t.footer.item5.text2}</p>
                                     <p className={style.footer__smartBtn_text}>Goggle Play</p>
                                 </div>
                             </Link>
@@ -181,7 +191,7 @@ const Footer = () => {
                             >
                                 <MdDesktopMac size={20}/>
                                 <div>
-                                    <p className={style.footer__smartBtn_title}>Смотрите на</p>
+                                    <p className={style.footer__smartBtn_title}>{t.footer.item5.text3}</p>
                                     <p className={style.footer__smartBtn_text}>Smart TV</p>
                                 </div>
                             </Link>
@@ -193,7 +203,7 @@ const Footer = () => {
                                        alt={'apple'} width={20} height={20}/>
                                 <div>
 
-                                    <p className={style.footer__smartBtn_text}>Все устройства</p>
+                                    <p className={style.footer__smartBtn_text}>{t.footer.item5.text4}</p>
                                 </div>
                             </Link>
                         </div>

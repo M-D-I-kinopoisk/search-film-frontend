@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import {FC} from 'react'
-import HeaderSlider from '@/components/Header/HeaderSlider/HeaderSlider'
+import HeaderBanner from '@/components/Header/HeaderBaner/HeaderBanner'
 import {BiMoviePlay} from 'react-icons/bi'
-import {MdNotificationsActive} from 'react-icons/Md'
+import {MdNotificationsActive} from 'react-icons/md'
 import {BsBookmark} from 'react-icons/bs'
-import {RxCounterClockwiseClock} from 'react-icons/Rx'
-import {SlDiamond} from 'react-icons/Sl'
-import {FiAward} from 'react-icons/Fi'
-import {IoIosTv} from 'react-icons/Io'
-import {AiOutlineCreditCard} from 'react-icons/Ai'
+import {RxCounterClockwiseClock} from 'react-icons/rx'
+import {SlDiamond} from 'react-icons/sl'
+import {FiAward} from 'react-icons/fi'
+import {IoIosTv} from 'react-icons/io'
+import {AiOutlineCreditCard} from 'react-icons/ai'
 import {BsShare} from 'react-icons/bs'
 import style from './DropDown.module.scss'
 
@@ -325,7 +325,7 @@ const DropDown: FC<DropDownProps> = ({
                                         )
                                     })}
                                 </ul>
-                                <HeaderSlider/>
+                                <HeaderBanner/>
                             </div>
                         </div>
                     )}

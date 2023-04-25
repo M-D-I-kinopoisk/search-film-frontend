@@ -5,6 +5,7 @@ import styles from './filter.module.scss'
 import {IoPersonCircleOutline} from 'react-icons/io5'
 import {GiFilmProjector} from 'react-icons/gi'
 import FilterCategories from '@/components/Filter/FilterCategories/FilterCategories'
+import Sort from '@/components/Filter/Sort/Sort'
 
 
 const Filter = () => {
@@ -108,6 +109,7 @@ const Filter = () => {
 
     return (
         <div className={styles.wrapper}>
+            <Sort/>
             <div className={styles.filter}>
                 <div className={styles.filter__content}>
                     <div className={styles.filter__plankList}>
