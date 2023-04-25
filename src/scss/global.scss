@@ -74,6 +74,31 @@ body {
   }
 }
 
+.slider__rating {
+  max-width: 1303px;
+  padding: 0 22px 0 22px !important;
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    height: 500px !important;
+    margin-top: -250px !important;
+
+    background-color: #100e19;
+  }
+
+  .swiper-button-prev {
+    padding-right: 2px;
+
+    margin-left: -14px;
+  }
+
+  .swiper-button-next {
+    padding-left: 2px;
+
+    margin-right: -14px;
+  }
+}
+
 .swiper-button-disabled {
   opacity: 1 !important;
 
