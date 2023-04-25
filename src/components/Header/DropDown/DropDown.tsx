@@ -13,6 +13,7 @@ import {BsShare} from 'react-icons/Bs'
 import style from './DropDown.module.scss'
 
 export interface DropDownProps {
+    headerModule: boolean
     categoryDropDown: string
     handleMouseEnter: (e: any) => void
     handleMouseLeave: (e: any) => void
@@ -21,6 +22,7 @@ export interface DropDownProps {
 }
 
 const DropDown: FC<DropDownProps> = ({
+                                         headerModule,
                                          categoryDropDown,
                                          handleMouseLeave,
                                          scrollList,
@@ -235,10 +237,10 @@ const DropDown: FC<DropDownProps> = ({
     }
 
     console.log(categoryDropDown)
-
+    console.log(categoryDropDown.length)
     return (
         <>
-            <div className={style.dropDown}>
+            <div className={headerModule ? `${style.dropDown}` : `${style.dropDown_disable}`}>
                 <div
                     className={style.dropDown__container}
                     // onMouseEnter={handleMouseEnter}

@@ -15,7 +15,7 @@ const Header = () => {
     const [scrollList, setScrollList] = useState(0)
 
     const handleMouseEnter = (e) => {
-        setCategoryDropDown(e.target.id)
+        setCategoryDropDown((prev) => e.target.id)
         setHeaderModule(true)
     }
 
@@ -28,15 +28,16 @@ const Header = () => {
     return (
         <div className={style.wrapper}>
             <div className={style.header}>
-                {headerModule && (
+
                     <DropDown
+                        headerModule={headerModule}
                         scrollList={scrollList}
                         setScrollList={setScrollList}
                         categoryDropDown={categoryDropDown}
                         handleMouseEnter={(e) => handleMouseEnter(e)}
                         handleMouseLeave={handleMouseLeave}
                     />
-                )}
+
                 <div className={style.header__logo}>
                     <Link href='/' title='Онлайн-кинотеатр Иви' className={''}>
                         <Image
@@ -71,7 +72,7 @@ const Header = () => {
                             onMouseEnter={(e) => handleMouseEnter(e)}
                         >
                             <Link
-                                href='https://www.ivi.ru/movies'
+                                href='/Movies'
                                 title='Фильмы онлайн'
                                 className={style.navbar__a}
                             >
