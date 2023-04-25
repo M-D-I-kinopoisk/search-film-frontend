@@ -7,10 +7,9 @@ import Awards from '@/components/ModalPages/Awards'
 import MyModal from '../../MyModal/MyModal'
 
 type props = {
-    currencyCode: any
 }
 
-const AwardsList: React.FC<props> = ({ currencyCode }) => {
+const AwardsList: React.FC<props> = () => {
     const [active, setActive] = useState('none')
 
     return (

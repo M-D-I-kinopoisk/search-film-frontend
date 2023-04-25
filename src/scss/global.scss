@@ -10,7 +10,6 @@ body {
   font-family: 'iviSans', sans-serif;
 }
 
-<<<<<<< HEAD
 .main__slider {
   height: 500px;
 
@@ -117,15 +116,15 @@ body {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.swiper-button-next:hover::after,
-.swiper-button-prev:hover::after, {
-  color: rgba(255, 255, 255, 1);
-}
+// .swiper-button-next:hover::after,
+// .swiper-button-prev:hover::after, {
+//   color: rgba(255, 255, 255, 1);
+// }
 
-.swiper-button-next:active::after,
-.swiper-button-prev:active::after, {
-  transform: scale(0.9);
-}
+// .swiper-button-next:active::after,
+// .swiper-button-prev:active::after, {
+//   transform: scale(0.9);
+// }
 
 
 a, a:link, a:visited {
@@ -159,12 +158,7 @@ input, textarea, button, select {
   outline:none;
 }
 
-
-
-
-=======
 a{
   text-decoration: none;
   color: white;
 }
->>>>>>> ialimov-branch

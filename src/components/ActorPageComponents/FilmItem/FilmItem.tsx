@@ -8,12 +8,7 @@ const FilmItem: React.FC<FilmItemProps> = () => {
     return (
         <div className={style.item}>
             <div>
-<<<<<<< HEAD:src/components/ActorFilmItem/ActorFilmItem.tsx
-                <img
-                    src='https://thumbs.dfs.ivi.ru/storage38/contents/0/0/55c8a2551297804e709c65c9b4ecc0.jpg/172x264/?q=85' />
-=======
                 <img src='https://thumbs.dfs.ivi.ru/storage38/contents/0/0/55c8a2551297804e709c65c9b4ecc0.jpg/172x264/?q=85' />
->>>>>>> ialimov-branch:src/components/ActorPageComponents/FilmItem/FilmItem.tsx
             </div>
 
             <div className={style.info}>

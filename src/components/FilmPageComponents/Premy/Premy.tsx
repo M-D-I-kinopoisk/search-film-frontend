@@ -4,10 +4,9 @@ import style from './Premy.module.scss'
 import Image from 'next/image'
 
 type props = {
-    currencyCode: any
 }
 
-const Premy: React.FC<props> = ({ currencyCode }) => {
+const Premy: React.FC<props> = () => {
     return (
         <div className={style.premy}>
             <Image
