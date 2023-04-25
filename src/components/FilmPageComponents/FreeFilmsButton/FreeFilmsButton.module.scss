@@ -1,0 +1,28 @@
+.sale {
+    background-color: rgba(255, 255, 255, .08);
+    border-color: rgba(255, 255, 255, .08);
+    border-radius: 8px;
+    height: 40px;
+    width: 200px;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        margin-right: 4px;
+    }
+}
+
+@media(max-width:1160px) {
+    .sale {
+       width: 66%;
+       text-align: center;
+    }
+}
+
+
+@media(max-width:880px) {
+    .sale {
+       width: 100%;
+    }
+}

@@ -1,55 +1,40 @@
 .wrapper {
+  max-width: 1216px;
+  padding: 0 8px;
+  margin: auto;
   margin-top: 16px;
 }
 
-.backlink {
+.backLink {
+  max-width: 100px;
+  height: 20px;
   cursor: pointer;
-  width: 86px;
   margin: 32px 0 16px 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
-  &:last-child {
+  img {
+    margin-right: 10px;
+  }
+
+  span {
+    color: white;
     font-size: 15px;
     line-height: 20px;
     font-weight: 500;
     font-style: normal;
-    height: 20px;
   }
-}
 
-.leftArrow {
-  color: #fff;
-  width: 20px;
-  height: 20px;
-  font-size: 20px;
-  line-height: 20px;
+  &:hover {
+    img {
+      width: 26px;
+    }
+  }
 }
 
 .content {
   max-width: 600px;
   margin: auto;
-}
-
-.films {
-  margin-top: 40px;
-}
-
-.title {
-  max-width: 375px;
-  max-height: 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 20px;
-
-  span {
-    color: #a5a1b2;
-    font-size: 15px;
-    line-height: 20px;
-    font-weight: 400;
-  }
 }
 
 .more {
@@ -62,5 +47,10 @@
     font-size: inherit;
     line-height: inherit;
     text-decoration: none;
+
+    &:hover {
+      color: #fff;
+    }
   }
+
 }

@@ -1,0 +1,49 @@
+.item {
+    img {
+        width: 280px;
+        height: 160px;
+    }
+
+    margin-bottom: 24px;
+}
+
+.fullDuration {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+
+    img {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+    }
+
+    h3 {
+        color: #a5a1b2;
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 400;
+        height: 16px;
+    }
+}
+
+.itemName {
+    color: #d9d7e0;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    font-style: normal;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.shortDuration {
+    margin-top: 4px;
+    cursor: pointer;
+    color: #a5a1b2;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+    height: 16px;
+}
