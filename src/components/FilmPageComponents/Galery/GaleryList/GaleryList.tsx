@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import style from './GaleryList.module.scss'
 import GaleryItem from '../GaleryItem/GaleryItem'
-import { useResize } from '@/hooks/useResize'
 
 const GaleryList: React.FC = () => {
     let [items, setItems] = useState(
@@ -18,8 +17,6 @@ const GaleryList: React.FC = () => {
 
     useEffect(() => {
         sliderWidth = slider.current.offsetWidth
-    console.log(sliderWidth);
-
     }, [])
     
 

@@ -1,0 +1,46 @@
+.addCommentBlock {
+    width: 584px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+
+    input {
+        background-color: #d9d7e0;
+        color: #1f1b2e;
+        padding-left: 12px;
+        height: 40px;
+        width: 422px;
+        padding-top: 18px;
+        padding-bottom: 2px;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    button {
+        background-color: #ea003d;
+        border-color: #ea003d;
+        height: 40px;
+        width: 114px;
+        cursor: pointer;
+        border-width: 1px;
+        border-radius: 8px;
+        padding: 9px 15px;
+        color: #fff;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+
+    }
+}

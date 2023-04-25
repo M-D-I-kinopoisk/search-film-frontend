@@ -30,6 +30,7 @@ const Film: React.FC = () => {
                     <div className={style.title}>
                         <span>Фильмы</span>
                         <span>Драмы</span>
+   
                     </div>
                     <div className={style.arrow}>
                         <img src='/img/left-arrow.png' />

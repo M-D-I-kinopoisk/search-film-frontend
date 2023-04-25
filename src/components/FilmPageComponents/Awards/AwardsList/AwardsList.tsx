@@ -1,18 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import style from './AwardsList.module.scss'
 import AwardsItem from '../AwardsItem/AwardsItem'
+import Comments from '@/components/ModalPages/Comments'
+import Awards from '@/components/ModalPages/Awards'
+import MyModal from '../../MyModal/MyModal'
 
-const AwardsList: React.FC = () => {
+type props = {
+    currencyCode: any
+}
+
+const AwardsList: React.FC<props> = ({ currencyCode }) => {
+    const [active, setActive] = useState('none')
+
     return (
         <div className={style.awards}>
             <div className={style.awardsTitle}>
                 Награды
             </div>
-            <div className={style.awardsItems}>
+            <div className={style.awardsItems}
+
+                onClick={() => setActive('block')}
+
+            >
                 <AwardsItem />
                 <AwardsItem />
             </div>
+            <MyModal
+                active={active}
+                setActive={setActive}
+                url={'awards'}
+            >
+                {<Awards />}
+            </MyModal>
         </div>
     )
 }

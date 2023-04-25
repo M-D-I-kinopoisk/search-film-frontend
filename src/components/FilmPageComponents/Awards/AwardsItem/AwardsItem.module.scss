@@ -28,7 +28,7 @@
     height: 22px;
     color: #fff;
     display: -webkit-box;
-    -webkit-line-clamp: 1; 
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -42,11 +42,36 @@
     margin-top: 2px;
     color: rgba(255, 255, 255, .48);
     display: -webkit-box;
-    -webkit-line-clamp: 1; 
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
+.moldalItem {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.moldalItemImg {
+    height: 116px;
+    width: 116px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, .08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 24px;
+
+    img {
+        width: 84px;
+        height: 84px;
+    }
+}
+.moldalItemInfo{
+    li{
+        list-style: none;
+    }
+}
 @media(max-width:600px) {
     .awardsItem {
         width: 100%;
