@@ -1,0 +1,31 @@
+.interesting {
+  max-width: 1303px;
+  margin: 0 auto 40px;
+
+  .title {
+    display: flex;
+    align-items: center;
+
+    max-width: 1262px;
+    margin: 0 auto 15px;
+
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  &__card {
+    width: 286px;
+    height: 136px;
+
+    border-radius: 10px;
+    background-color: darkorange;
+
+
+    .link {
+      height: 100%;
+      display: block;
+    }
+  }
+}
