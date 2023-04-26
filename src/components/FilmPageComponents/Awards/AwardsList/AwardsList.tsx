@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 
 import style from './AwardsList.module.scss'
 import AwardsItem from '../AwardsItem/AwardsItem'
-import Comments from '@/components/ModalPages/Comments'
-import Awards from '@/components/ModalPages/Awards'
 import MyModal from '../../MyModal/MyModal'
+import Awards from '../../ModalPages/Awards/Awards'
 
 type props = {
 }

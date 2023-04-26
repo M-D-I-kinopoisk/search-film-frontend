@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
 import style from './MyModal.module.scss'
-import FilmInfo from '@/components/FilmPageComponents/FilmInfo/FilmInfo'
-import NavBar from '../NavBar/NavBar'
+import NavBar from '../ModalNavigation/ModalNavigation'
 
 type MyModalProps = {
     active?: any
@@ -43,7 +42,20 @@ const MyModal: React.FC<MyModalProps> = ({ active, setActive, url, children }) =
                         />
                         {activeComponent}
                     </div>
-                    <FilmInfo />
+                    <div className={style.filmInfo}>
+                        <img src='https://thumbs.dfs.ivi.ru/storage2/contents/6/1/0ceca03c51c3d38f34bdf3fd0dd2c8.jpg/128x196/?q=85' />
+                        <div className={style.ball}>
+                            <span>8,9</span>
+                            <img src='/img/progress.png' />
+                        </div>
+                        <div className={style.information}>
+                            <span>2011, Франция, Драмы</span>
+                        </div>
+                        <div className={style.duration}>
+                            <img src='/img/time.png' />
+                            <span>112 минут</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

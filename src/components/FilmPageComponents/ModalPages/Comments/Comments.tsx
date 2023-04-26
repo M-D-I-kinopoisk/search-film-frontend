@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
-import style from '../../scss/pages/comments.module.scss'
-import CommentItem from '../FilmPageComponents/Comments/CommentItem/CommentItem'
-import AddComment from '../FilmPageComponents/AddComment/AddComment'
+import style from './Comments.module.scss'
+import CommentItem from '../../Comments/CommentItem/CommentItem'
 
 type CommentsProps = {
 }
@@ -12,7 +11,11 @@ const Comments: React.FC<CommentsProps> = () => {
 
     return (
         <div>
-            <AddComment />
+            <div className={style.addCommentBlock}>
+                <img src='/img/avatar.png' />
+                <input type='text' placeholder='Написать комментарий' />
+                <button disabled>Отправить</button>
+            </div>
             <div className={style.items}>
                 <CommentItem inModal={true} />
                 <CommentItem inModal={true} />

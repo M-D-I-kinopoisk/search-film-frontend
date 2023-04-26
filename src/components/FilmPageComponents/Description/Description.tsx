@@ -5,6 +5,7 @@ import style from './Description.module.scss'
 const Description: React.FC = () => {
     return (
         <div className={style.description}>
+            <h2>1+1 (Фильм 2011)</h2>
             <div>2011 1 ч. 52 мин. 16+</div>
             <div>Франция Драмы Комедии Биография</div>
             <div className={style.params}>

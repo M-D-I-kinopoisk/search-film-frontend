@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import style from './CommentList.module.scss'
 import CommentItem from '../CommentItem/CommentItem'
-import Comments from '@/components/ModalPages/Comments'
+import Comments from '@/components/FilmPageComponents/ModalPages/Comments/Comments'
 import MyModal from '../../MyModal/MyModal'
 
 const CommentList: React.FC = () => {

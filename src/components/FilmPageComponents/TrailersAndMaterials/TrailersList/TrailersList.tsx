@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import style from './AdditionalsList.module.scss'
-import AdditionalsItem from '../AdditionalsItem/AdditionalsItem'
-import Trailers from '@/components/ModalPages/Trailers'
+import style from './TrailersList.module.scss'
+import TrailersItem from '../TrailersItem/TrailersItem'
+import Trailers from '@/components/FilmPageComponents/ModalPages/Trailers/Trailers'
 import MyModal from '../../MyModal/MyModal'
 
 const AdditionalsList: React.FC = () => {
@@ -16,9 +16,9 @@ const AdditionalsList: React.FC = () => {
             <div className={style.addMaterialsItems}
                 onClick={() => setActive('block')}
             >
-                <AdditionalsItem />
-                <AdditionalsItem />
-                <AdditionalsItem />
+                <TrailersItem />
+                <TrailersItem />
+                <TrailersItem />
             </div>
 
             <MyModal

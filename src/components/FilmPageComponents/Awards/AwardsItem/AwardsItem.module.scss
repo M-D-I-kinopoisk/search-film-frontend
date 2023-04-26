@@ -50,6 +50,7 @@
 .moldalItem {
     display: flex;
     justify-content: flex-start;
+    background-color: red;
 }
 
 .moldalItemImg {
@@ -67,11 +68,13 @@
         height: 84px;
     }
 }
-.moldalItemInfo{
-    li{
+
+.moldalItemInfo {
+    li {
         list-style: none;
     }
 }
+
 @media(max-width:600px) {
     .awardsItem {
         width: 100%;

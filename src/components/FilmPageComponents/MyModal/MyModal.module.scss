@@ -34,7 +34,7 @@
     cursor: pointer;
 }
 
-.left{
+.left {
     width: 584px;
 }
 
@@ -54,6 +54,59 @@
     justify-content: space-between;
 }
 
-.left{
+.left {
     width: 584px;
+}
+
+.filmInfo {
+    width: 130px;
+}
+
+.ball {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 14px;
+    margin-bottom: 8px;
+
+    span {
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 700;
+        font-style: normal;
+        margin-right: 8px;
+    }
+}
+
+.information {
+    padding-right: 30px;
+
+    span {
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 400;
+        font-style: normal;
+        color: #a5a1b2;
+    }
+}
+
+.duration {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 8px;
+
+    img {
+        width: 16px;
+        height: 16px;
+    }
+
+    span {
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 400;
+        font-style: normal;
+        color: #a5a1b2;
+        margin-left: 8px;
+    }
 }

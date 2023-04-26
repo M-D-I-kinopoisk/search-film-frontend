@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 
-import style from './NavBar.module.scss'
-import Link from 'next/link'
-import Creators from '@/components/ModalPages/Creators'
-import Comments from '@/components/ModalPages/Comments'
-import Trailers from '@/components/ModalPages/Trailers'
-import Awards from '@/components/ModalPages/Awards'
+import style from './ModalNavigation.module.scss'
+import Comments from '../ModalPages/Comments/Comments'
+import Creators from '../ModalPages/Creators/Creators'
+import Awards from '../ModalPages/Awards/Awards'
+import Trailers from '../ModalPages/Trailers/Trailers'
 
-type NavBarProps = {
+type ModalNavigationProps = {
     url: any
     setAactiveComponent: any
 }
 
-const NavBar: React.FC<NavBarProps> = ({ url, setAactiveComponent }) => {
+const ModalNavigation: React.FC<ModalNavigationProps> = ({ url, setAactiveComponent }) => {
 
     let links = [
         { title: 'Создатели', value: 'creators', component: <Creators /> },
@@ -45,4 +44,4 @@ const NavBar: React.FC<NavBarProps> = ({ url, setAactiveComponent }) => {
     )
 }
 
-export default NavBar
+export default ModalNavigation

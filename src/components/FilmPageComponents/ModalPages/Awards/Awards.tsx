@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import style from './Awards.module.scss'
-import AwardsItem from '../FilmPageComponents/Awards/AwardsItem/AwardsItem'
+import AwardsItem from '../../Awards/AwardsItem/AwardsItem'
 
 type AwardsProps = {
 }

@@ -7,7 +7,6 @@ type AwardsItemProps = {
 }
 
 const AwardsItem: React.FC<AwardsItemProps> = ({ inModal }) => {
-
     return (
         <>
             {inModal ?

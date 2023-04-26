@@ -1,6 +1,6 @@
 import React from 'react'
 
-import style from './AdditionalsItem.module.scss'
+import style from './TrailersItem.module.scss'
 
 type AdditionalsItemProps = {
     inModal?: any
