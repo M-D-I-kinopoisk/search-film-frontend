@@ -49,18 +49,9 @@ body {
   }
 }
 
-.slider__films {
-  max-width: 1303px;
-  padding: 0 22px 0 22px !important;
-
-  .swiper-button-prev,
-  .swiper-button-next {
-    height: 290px !important;
-    margin-top: -150px !important;
-
-    background-color: #100e19;
-  }
-
+.slider__films,
+.slider__rating,
+.slider__interesting {
   .swiper-button-prev {
     padding-right: 2px;
 
@@ -71,6 +62,19 @@ body {
     padding-left: 2px;
 
     margin-right: -14px;
+  }
+}
+
+.slider__films {
+  max-width: 1303px;
+  padding: 0 22px 0 22px !important;
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    height: 290px !important;
+    margin-top: -155px !important;
+
+    background-color: #100e19;
   }
 }
 
@@ -85,19 +89,21 @@ body {
 
     background-color: #100e19;
   }
+}
 
-  .swiper-button-prev {
-    padding-right: 2px;
+.slider__interesting {
+  max-width: 1303px;
+  padding: 0 22px 0 22px !important;
 
-    margin-left: -14px;
-  }
-
+  .swiper-button-prev,
   .swiper-button-next {
-    padding-left: 2px;
+    height: 300px !important;
+    margin-top: -150px !important;
 
-    margin-right: -14px;
+    background-color: #100e19;
   }
 }
+
 
 .swiper-button-disabled {
   opacity: 1 !important;
@@ -155,7 +161,7 @@ input, textarea, button, select {
   color: inherit;
   background-color: transparent;
   border: 0;
-  outline:none;
+  outline: none;
 }
 
 

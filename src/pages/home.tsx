@@ -7,6 +7,7 @@ import MainSlider from '@/components/MainSlider/MainSlider'
 import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
 import FilmsRating from '@/components/FilmsRating/FilmsRating'
 import FilmsClause from '@/components/FilmsClause/FilmsClause'
+import FilmsInteresting from '@/components/FilmsInteresting/FilmsInteresting'
 
 const Home: React.FC = () => {
     return (
@@ -46,7 +47,7 @@ const Home: React.FC = () => {
 
             <FilmsCategory title='Сериалы с высоким рейтингом по подписке'/>
 
-            {/*тут какая то шляпа еще есть*/}
+            <FilmsInteresting/>
 
             <FilmsCategory title='Мелодрамы на основе книг'/>
 
