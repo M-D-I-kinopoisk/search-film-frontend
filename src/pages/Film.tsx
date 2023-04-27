@@ -2,42 +2,22 @@ import React, { useState } from 'react'
 
 import MainContainer from '@/components/MainContainer/MainContainer'
 import style from '../scss/pages/film.module.scss'
-import Trailer from '@/components/FilmPageComponents/Trailer/Trailer'
-import WatchAllDevices from '@/components/FilmPageComponents/WatchAllDevices/WatchAllDevices'
-import CommentList from '@/components/FilmPageComponents/Comments/CommentList/CommentList'
-import TrailersList from '@/components/FilmPageComponents/TrailersAndMaterials/TrailersList/TrailersList'
-import AwardsList from '@/components/FilmPageComponents/Awards/AwardsList/AwardsList'
-import CreatorsList from '@/components/FilmPageComponents/Creators/CreatorsList/CreatorsList'
-import GaleryList from '@/components/FilmPageComponents/Galery/GaleryList/GaleryList'
-import Description from '@/components/FilmPageComponents/Description/Description'
-import ActorList from '@/components/FilmPageComponents/ActorList/ActorList'
-import Rating from '@/components/FilmPageComponents/Rating/Rating'
-import WatchOptions from '@/components/FilmPageComponents/WatchOptions/WatchOptions'
-import MyButton from '@/components/UI/MyButton/MyButton'
+import Trailer from '@/components/Film/Trailer/Trailer'
+import WatchAllDevices from '@/components/Film/WatchAllDevices/WatchAllDevices'
+import CommentList from '@/components/Film/Comments/CommentList/CommentList'
+import TrailersList from '@/components/Film/TrailersAndMaterials/TrailersList/TrailersList'
+import AwardsList from '@/components/Film/Awards/AwardsList/AwardsList'
+import CreatorsList from '@/components/Film/Creators/CreatorsList/CreatorsList'
+import GaleryList from '@/components/Film/Galery/GaleryList/GaleryList'
+import Description from '@/components/Film/Description/Description'
+import WatchOptions from '@/components/Film/WatchOptions/WatchOptions'
 import Image from 'next/image'
+import { filmDescription } from '@/const/const'
 
 const Film: React.FC = () => {
     const [show, setShow] = useState(false)
 
-    let filmDescription = [
-        ` Прикованный к инвалидному креслу аристократ нанимает
-        себе в помощники человека, который подходит для этой работы
-        меньше всего – только что освободившегося из тюрьмы темнокожего парня.
-        Трогательная и глубокая комедийная драма, получившая премии «Сезар», «Жорж» и
-        «Гойя».`,
-        `Пожилой аристократ Филипп, ставший парализованным в
-        результате несчастного случая, ищет помощника с функциями сиделки.
-        Ему нужен не просто человек, который стал бы его руками и ногами,
-        а кто-то, кому можно доверять. В своём особняке Филипп проводит
-        отбор кандидатов, и в итоге принимает неожиданное решение.
-        К недоумению окружающих, работа достаётся тому, кто, казалось бы,
-        меньше всего для неё подходит – бывшему заключённому, выросшему
-        на окраинах.`,
-        ` Чтобы узнать, что общего может быть у богатого инвалида и его
-        неблагополучного помощника, смотри онлайн на Иви «1+1».`,
-        ` Приглашаем посмотреть фильм «1+1» в нашем онлайн-кинотеатре в
-        хорошем HD качестве. Приятного просмотра!`
-    ]
+    const actors = [1, 2, 3, 4]
 
     const showDetails = () => {
         setShow(!show)
@@ -52,7 +32,12 @@ const Film: React.FC = () => {
                         <span>Драмы</span>
                     </div>
                     <div className={style.arrow}>
-                        <img src='/img/left-arrow.png' />
+                        <Image
+                            alt='Назад'
+                            width={20}
+                            height={24}
+                            src='/img/left-arrow.png'
+                        />
                     </div>
                     <div className={style.choice}>
                         выбор Иви
@@ -69,63 +54,135 @@ const Film: React.FC = () => {
 
                         <div className={style.userButtons}>
                             <div className={style.userButtonsWrapper}>
-                                <div className={style.trailerButton}>
-                                    <MyButton img={'/img/play.png'}>Трейлер</MyButton>
-                                </div>
-                                <div className={style.markerButton}>
-                                    <MyButton img={'/img/marker.png'} />
-                                </div>
-                                <div className={style.shareButton}>
-                                    <MyButton img={'/img/share.png'} />
-                                </div>
+                                <button className={style.trailerButton}>
+                                    <Image
+                                        alt='Трейлер'
+                                        width={16}
+                                        height={16}
+                                        src={'/img/play.png'}
+                                    />
+                                    <h3>Трейлер</h3>
+                                </button>
+
+                                <button className={style.markerButton}>
+                                    <Image
+                                        alt='Маркер'
+                                        width={16}
+                                        height={16}
+                                        src={'/img/marker.png'}
+                                    />
+                                </button>
+                                <button className={style.shareButton}>
+                                    <Image
+                                        alt='Поделиться'
+                                        width={16}
+                                        height={16}
+                                        src={'/img/share.png'}
+                                    />
+                                </button>
                             </div>
-                            <div className={style.freeFilmsButton}>
-                                <MyButton img={'/img/video.png'}>Бесплатные фильмы</MyButton>
-                            </div>
+                            <button className={style.freeFilmsButton}>
+                                <Image
+                                    alt='Бесплатные фильмы'
+                                    width={16}
+                                    height={16}
+                                    src={'/img/video.png'}
+                                />
+                                <h3>Бесплатные фильмы</h3>
+                            </button>
                         </div>
                     </div>
                     <div className={style.informationBlock}>
                         <Description />
                         <div className={style.actorsAndUserButtons}>
-                            <ActorList />
-                            <div className={style.buttonsShow}>
-                                <div className={style.trailerButton}>
-                                    <MyButton img={'/img/play.png'}>
-                                        Трейлер
-                                    </MyButton>
+                            <div className={style.actors}>
+                                <div className={style.actor}>
+                                    <div className={style.itemWrapper}>
+                                        <div>
+                                            <h3> 8,9</h3>
+                                        </div>
+                                    </div>
+                                    <div className={style.rating}>
+                                        Рейтинг Иви
+                                    </div>
                                 </div>
+                                {actors.map((el) =>
+                                    <div className={style.actor}>
+                                        <div className={style.itemWrapper}>
+                                            <div className={style.img}>
+                                                <Image
+                                                    alt='Актер'
+                                                    width={44}
+                                                    height={44}
+                                                    src='https://thumbs.dfs.ivi.ru/storage33/contents/f/f/06672be611ab9b9e54579c4f645460.jpg/44x44/?q=85'
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className={style.name}>
+                                            Франсуа Клюзе
+                                        </div>
+                                    </div>
+                                )}
+
+                            </div>
+                            
+                            <div className={style.buttonsShow}>
+                                <button className={style.trailerButton}>
+                                    <Image
+                                        alt='Трейлер'
+                                        width={16}
+                                        height={16}
+                                        src={'/img/play.png'}
+                                    />
+                                    <h3>Трейлер</h3>
+                                </button>
                                 <div className={style.buttonsWrapper}>
-                                    <div className={style.markerButton}>
-                                        <MyButton img={'/img/marker.png'} />
-                                    </div>
-                                    <div className={style.shareButton}>
-                                        <MyButton img={'/img/share.png'} />
-                                    </div>
+                                    <button className={style.markerButton}>
+                                        <Image
+                                            alt='Маркер'
+                                            width={16}
+                                            height={16}
+                                            src={'/img/marker.png'}
+                                        />
+                                    </button>
+                                    <button className={style.shareButton}>
+                                        <Image
+                                            alt='Поделиться'
+                                            width={16}
+                                            height={16}
+                                            src={'/img/share.png'}
+                                        />
+                                    </button>
                                 </div>
                             </div>
                         </div>
+
                         <div className={style.premy}>
                             <Image
-                                alt='фильм'
+                                alt='Премия'
                                 width={58}
                                 height={58}
                                 src='https://thumbs.dfs.ivi.ru/storage29/contents/9/9/ccf5c60716958180b98b81a6a4b447.png?q=85'
                             />
                             <div className={style.premyInfo}>
-                                <h3 >
-                                    Жорж
-                                </h3>
+                                <h3 >Жорж</h3>
                                 <div className={style.premyDescription}>
-                                    Лучшая зарубежная комедия, Лучшая зарубежная драма, Лучший европейский фильм, Лучший актер
+                                    Лучшая зарубежная комедия, Лучшая зарубежная драма,
+                                    Лучший европейский фильм, Лучший актер
                                 </div>
                             </div>
                         </div>
 
-                        <div className={style.freeFilmsButtonShow}>
-                            <MyButton img={'/img/video.png'}>
-                                Бесплатные фильмы
-                            </MyButton>
-                        </div>
+                        <button className={style.freeFilmsButtonShow}>
+                            <Image
+                                alt='Бесплатные фильмы'
+                                width={16}
+                                height={16}
+                                src={'/img/video.png'}
+                            />
+                            <h3> Бесплатные фильмы</h3>
+                        </button>
+
                         <div className={style.information}>
                             <p>{filmDescription[0]}</p>
                             {show ?
@@ -140,14 +197,35 @@ const Film: React.FC = () => {
                             }
                         </div>
 
-                        <a onClick={() => showDetails()} className={style.detailsButton}>
+                        <a
+                            onClick={() => showDetails()}
+                            className={style.detailsButton}
+                        >
                             {show ? 'Свернуть детали' : 'Детали о фильме'}
                         </a>
-                        <a onClick={() => showDetails()} className={style.showDetailsButton}>
+                        <a
+                            onClick={() => showDetails()}
+                            className={style.showDetailsButton}
+                        >
                             {show ? 'Свернуть' : 'Читать дальше'}
                         </a>
 
-                        <Rating />
+                        <div className={style.rate}>
+                            <div className={style.rateWrapper}>
+                                <div className={style.balls}>
+                                    <h3>8,9</h3>
+                                </div>
+                                <div className={style.ballsDescription}>
+                                    <h3>Рейтинг Иви</h3>
+                                    <p>Интересный сюжет</p>
+                                    <p>143 109 оценок</p>
+                                </div>
+                            </div>
+
+                            <div className={style.rateBtn}>
+                                Оценить
+                            </div>
+                        </div>
 
                         <div className={style.showWatchOptions}>
                             <WatchOptions />
@@ -162,7 +240,7 @@ const Film: React.FC = () => {
                 <CommentList />
                 <WatchAllDevices />
             </div>
-        </MainContainer>
+        </MainContainer >
     )
 }
 

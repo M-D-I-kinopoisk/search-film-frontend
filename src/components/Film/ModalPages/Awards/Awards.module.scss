@@ -1,0 +1,11 @@
+.awards {
+    margin-top: 32px;
+
+    >div {
+        margin-top: 48px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}

@@ -1,9 +1,9 @@
 import React from 'react'
 
 import MainContainer from '@/components/MainContainer/MainContainer'
-import ActorInfo from '@/components/ActorPageComponents/ActorInfo/ActorInfo'
+import ActorInfo from '@/components/Actor/ActorInfo/ActorInfo'
 import style from '../scss/pages/Actor.module.scss'
-import Films from '@/components/ActorPageComponents/Films/Films'
+import Films from '@/components/Actor/Films/Films'
 
 const Actor: React.FC = () => {
     return (
