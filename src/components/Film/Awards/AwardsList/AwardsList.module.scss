@@ -1,0 +1,30 @@
+.awards {
+    margin-top: 20px;
+}
+
+.awardsTitle {
+    width: 105px;
+    padding-bottom: 4px;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, .16);
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
+}
+
+.awardsItems {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media(max-width:600px) {
+    .awardsItems {
+        display: block;
+    }
+
+}

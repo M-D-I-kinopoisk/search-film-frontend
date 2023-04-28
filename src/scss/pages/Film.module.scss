@@ -1,0 +1,612 @@
+.wrapper {
+    max-width: 1249px;
+    padding: 0 12px;
+    margin: auto;
+    margin-top: 16px;
+    color: white;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.genre {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    span {
+        color: rgba(255, 255, 255, .72);
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+        margin-right: 16px;
+    }
+}
+
+.arrow {
+    display: none;
+}
+
+.choice {
+    background-color: #ea003d;
+    height: 28px;
+    padding: 6px 10px;
+    border-radius: 6px 6px 6px 6px;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    font-style: normal;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    margin-top: 0;
+    letter-spacing: 0;
+}
+
+.main {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.videoBlock {
+    width: 720px;
+    margin-right: 24px;
+    position: sticky;
+    top: 0px;
+    position: -webkit-sticky;
+}
+
+.showDetailsButton {
+    display: none;
+}
+
+.rate {
+    background-color: rgba(255, 255, 255, .08);
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.rateWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.balls {
+    width: 64px;
+    height: 64px;
+    background-color: #73a32f;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ballsDescription {
+    margin-left: 16px;
+
+    h2 {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+        color: #fff;
+    }
+
+    p {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 400;
+        font-style: normal;
+        color: rgba(255, 255, 255, .72);
+    }
+}
+
+.rateBtn {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, .32);
+    width: 72px;
+    height: 24px;
+    border-width: 1px;
+    border-radius: 6px;
+    padding: 3px 7px;
+    color: #fff;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+}
+
+
+.showWatchOptions {
+    display: none;
+}
+
+.showInfo {
+    display: none;
+}
+
+.userButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.buttonsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userButtonsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trailerButton {
+    height: 40px;
+    width: 109px;
+    margin-right: 16px;
+    background-color: rgba(255, 255, 255, .08);
+    border-color: rgba(255, 255, 255, .08);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+        color: rgba(255, 255, 255, .72);
+    }
+}
+
+
+.markerButton,
+.shareButton {
+    background-color: rgba(255, 255, 255, .08);
+    border-color: rgba(255, 255, 255, .08);
+    border-radius: 8px;
+    height: 40px;
+    width: 40px;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.premy {
+    background-color: rgba(255, 255, 255, .08);
+    height: 98px;
+    margin-bottom: 24px;
+    margin-top: 24px;
+    border-radius: 12px;
+    width: 100%;
+    padding: 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        margin: 0 18px;
+    }
+}
+
+.premyInfo {
+    h3 {
+        margin-bottom: 4px;
+        font-size: 17px;
+        line-height: 22px;
+        font-weight: 700;
+        font-style: normal;
+        text-align: left;
+    }
+}
+
+.premyDescription {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+    color: rgba(255, 255, 255, .48);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.freeFilmsButtonShow {
+    display: none;
+    width: 66%;
+}
+
+.freeFilmsButton {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.freeFilmsButton,
+.freeFilmsButtonShow {
+    height: 40px;
+    background-color: rgba(255, 255, 255, .08);
+    border-color: rgba(255, 255, 255, .08);
+    border-radius: 8px;
+    padding: 10px 12px;
+
+    img {
+        margin-right: 4px;
+    }
+
+    h3 {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+        color: rgba(255, 255, 255, .72);
+    }
+}
+
+
+.img {
+    background-color: #1f1b2e;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 44px;
+}
+
+.name {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+    height: 32px;
+}
+
+.informationBlock {
+    width: 37.5%;
+}
+
+.actorsAndUserButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actors {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    div {
+        &:nth-child(n+6) {
+            display: none;
+        }
+    }
+}
+
+.rating {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+    height: 32px;
+}
+
+
+.actor {
+    width: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.itemWrapper {
+    background-color: rgba(255, 255, 255, .16);
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        width: 44px;
+        height: 44px;
+        background-color: #73a32f;
+        border-radius: 8px;
+        text-align: center;
+        position: relative;
+
+        h3 {
+            position: absolute;
+            top: 27%;
+            left: 27%;
+        }
+    }
+}
+
+
+
+.information {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    font-style: normal;
+    color: rgba(255, 255, 255, .72);
+    margin-bottom: 8px;
+
+    p {
+        margin-top: 10px;
+    }
+}
+
+.detailsButton,
+.showDetailsButton {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    font-style: normal;
+    color: rgba(255, 255, 255, .48);
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.buttonsShow {
+    display: none;
+}
+
+@media(max-width:1160px) {
+    .freeFilmsButton {
+        width: 66%;
+    }
+
+    .rate {
+        width: 66%;
+    }
+
+    .freeFilmsButtonShow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .buttonsShow {
+        display: block;
+        width: 334px;
+    }
+
+    .showInfo {
+        display: block;
+    }
+
+    .userButtons {
+        display: none;
+    }
+
+    .main {
+        display: block;
+    }
+
+    .informationBlock {
+        width: 100%;
+
+        >div {
+            &:first-child {
+                display: none;
+            }
+        }
+    }
+
+    .videoBlock {
+        width: 100%;
+        margin: auto;
+        position: static;
+    }
+
+    .actors {
+        width: 66%;
+
+        div {
+            &:nth-child(n+7) {
+                display: none;
+            }
+
+            &:nth-child(n+6) {
+                display: flex;
+            }
+        }
+    }
+
+    .userButtons {
+        margin-top: 0;
+        width: 28%;
+    }
+
+    .actorsAndUserButtons {
+        margin-top: 32px;
+    }
+
+    .trailerButton {
+        width: 334px;
+        margin-bottom: 12px;
+    }
+
+    .markerButton,
+    .shareButton {
+        width: 45%;
+        margin-right: 0;
+    }
+
+    .premy {
+        width: 66%;
+    }
+
+    .information {
+        width: 66%;
+        margin-top: 24px;
+    }
+
+    .detailsButton {
+        display: none;
+    }
+
+    .showDetailsButton {
+        display: block;
+    }
+
+    .hideWatchOptions {
+        display: none;
+    }
+
+    .showWatchOptions {
+        display: block;
+    }
+}
+
+@media(max-width:880px) {
+    .showInfo {
+        text-align: center;
+    }
+    .actorsAndUserButtons {
+        flex-direction: column-reverse;
+    }
+    .rate {
+        width: 100%;
+    }
+
+    .freeFilmsButtonShow {
+        width: 100%;
+    }
+
+    .ballsDescription {
+        p {
+            &:nth-child(2) {
+                display: none;
+            }
+        }
+    }
+
+    .balls {
+        width: 48px;
+        height: 48px;
+    }
+
+    .actors {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .userButtons {
+        width: 223px;
+        margin: auto;
+        margin-bottom: 24px;
+        border-radius: 0 0 12px 12px;
+        padding: 4px 10px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .16) 100%);
+    }
+
+    .userButtonsWrapper {
+        display: inline-flex;
+        justify-content: space-between;
+    }
+
+    .actorsAndUserButtons {
+        margin-top: 0;
+    }
+
+    .premy {
+        width: 100%;
+    }
+
+    .trailerButton {
+        width: 116px;
+        margin: 0;
+    }
+
+    .markerButton,
+    .shareButton {
+        width: 44px;
+    }
+
+    .trailerButton,
+    .markerButton,
+    .shareButton {
+        background: transparent;
+        height: 36px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .information {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .buttonsShow {
+        width: 223px;
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: center;
+        border-radius: 0 0 12px 12px;
+        padding: 4px 10px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .16) 100%);
+    }
+}
+
+
+@media(max-width:600px) {
+    .title {
+        display: none;
+    }
+
+    .arrow {
+        display: block;
+    }
+}
+
+
+@media(max-width:500px) {
+    .actors {
+        >div {
+            &:nth-child(n+6) {
+                display: none;
+            }
+        }
+    }
+}
+
+@media(max-width:400px) {
+    .actors {
+        >div {
+            &:nth-child(n+5) {
+                display: none;
+            }
+        }
+    }
+}

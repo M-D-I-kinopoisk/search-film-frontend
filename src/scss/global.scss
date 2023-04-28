@@ -123,39 +123,57 @@ body {
 }
 
 .swiper-button-next:hover::after,
-.swiper-button-prev:hover::after, {
+.swiper-button-prev:hover::after {
   color: rgba(255, 255, 255, 1);
 }
 
 .swiper-button-next:active::after,
-.swiper-button-prev:active::after, {
+.swiper-button-prev:active::after {
   transform: scale(0.9);
 }
 
 
-a, a:link, a:visited {
+a,
+a:link,
+a:visited {
   text-decoration: none;
 }
 
-aside, nav, footer, header, section, main {
+aside,
+nav,
+footer,
+header,
+section,
+main {
   display: block;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   font-size: inherit;
   font-weight: inherit;
 }
 
-ul, ul li {
+ul,
+ul li {
   list-style: none;
 }
 
-img, svg {
+img,
+svg {
   max-width: 100%;
   height: auto;
 }
 
-input, textarea, button, select {
+input,
+textarea,
+button,
+select {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -164,6 +182,7 @@ input, textarea, button, select {
   outline: none;
 }
 
-
-
-
+a {
+  text-decoration: none;
+  color: white;
+}

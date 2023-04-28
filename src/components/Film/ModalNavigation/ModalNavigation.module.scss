@@ -1,0 +1,50 @@
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    z-index: 2;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    li {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+        cursor: pointer;
+        opacity: .72;
+        color: #fff;
+        list-style: none;
+        margin-right: 24px;
+        position: relative;
+    }
+}
+
+.line {
+    position: relative;
+    height: 2px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .4);
+    bottom: 3px;
+    z-index: 1;
+}
+
+.active {
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0px;
+        height: 4px;
+        background-color: #ea003d;
+    }
+}

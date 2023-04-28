@@ -1,0 +1,34 @@
+.creatorsTitle {
+    width: 243px;
+    padding-bottom: 4px;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, .16);
+    cursor: pointer;
+}
+
+.creatorsItems {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.moreCreatorsBtn {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background-color: #1f1b2e;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    font-style: normal;
+    color: #a5a1b2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,7 +1,15 @@
-.img img {
-    border-radius: 16px;
-    max-width: 120px;
-    max-height: 120px;
+.img {
+    img {
+        border-radius: 16px;
+        width: 120px;
+        height: 120px;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 144px;
 }
 
 .name {
@@ -10,6 +18,7 @@
     font-style: normal;
     font-weight: 700;
     margin-top: 16px;
+    color: #fff;
 }
 
 .nation {
@@ -36,9 +45,15 @@
         margin-top: 6px;
         color: #a5a1b2;
         text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+            color: #fff;
+        }
     }
 
     p {
         margin: 16px 0;
+        color: #d9d7e0;
     }
 }
