@@ -1,4 +1,4 @@
-import styles from '@/components/FilterFilms/filterFilms.module.scss'
+import styles from './filterYears.module.scss'
 
 
 const FilterYears = () => {
@@ -23,7 +23,7 @@ const FilterYears = () => {
     return (
         <ul>
             {listYears.map((element, inx) => {
-                return <li key={inx} className={styles.genesLi}>{element}</li>
+                return <li key={inx} className={styles.years__item}>{element}</li>
             })}
         </ul>
     )    

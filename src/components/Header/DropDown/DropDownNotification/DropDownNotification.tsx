@@ -1,13 +1,13 @@
 import {MdNotificationsActive} from 'react-icons/md'
-import style from '@/components/Header/DropDown/DropDown.module.scss'
+import styles from './dropDownNotifications.module.scss'
 
-const Notification = () => {
+const DropDownNotification = () => {
     return (
-        <div className={style.dropDown__notifications}>
+        <div className={styles.dropDownNotifications}>
             <MdNotificationsActive size={56}/>
             <p>Здесь появляются только важные сообщения</p>
         </div>
     )
 }
 
-export default Notification
+export default DropDownNotification

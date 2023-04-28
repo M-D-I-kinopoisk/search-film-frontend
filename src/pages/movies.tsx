@@ -8,7 +8,7 @@ const Movies = () => {
     return (
         <MainContainer title='Фильмы'>
             <div className={styles.container}>
-            <FilterFilms/>
+                <FilterFilms/>
             </div>
         </MainContainer>
     )

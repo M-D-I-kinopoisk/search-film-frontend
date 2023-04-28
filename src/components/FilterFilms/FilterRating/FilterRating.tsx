@@ -1,11 +1,12 @@
-import styles from '@/components/FilterFilms/filterFilms.module.scss'
 import {useState} from 'react'
 
+
+import styles from './filterRating.module.scss'
 
 const FilterRating = () => {
 
     const [inputRange, setInputRange] = useState({rating: '1', grade: '500'})
-    
+
     return (
         <div className={styles.inputRange__block}>
             <input className={styles.inputRange__input} type='range' min='1' max='10'

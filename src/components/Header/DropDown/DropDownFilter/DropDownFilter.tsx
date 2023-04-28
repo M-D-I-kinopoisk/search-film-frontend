@@ -1,6 +1,7 @@
 import {FC} from 'react'
-import style from '@/components/Header/DropDown/DropDown.module.scss'
 import Link from 'next/link'
+
+import style from './dropDownFilter.module.scss'
 
 export interface GenresProps {
     list: any
@@ -28,7 +29,7 @@ const DropDownFilter: FC<GenresProps> = ({list}) => {
                     })}
                 </ul>
             </div>
-            <div className={style.dropDown__countyYarsBlock}>
+            <div className={style.dropDown__countryYearsBlock}>
                 <p style={{color: 'white', marginBottom: '15px'}}>Страны</p>
                 <ul className={style.dropDown__country}>
                     {list.country.map((element, idx) => {

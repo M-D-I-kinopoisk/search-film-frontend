@@ -1,4 +1,4 @@
-import styles from '@/components/FilterFilms/filterFilms.module.scss'
+import styles from './filterGenres.module.scss'
 
 
 const FilterGenres = () => {
@@ -34,9 +34,9 @@ const FilterGenres = () => {
 
 
     return (
-        <ul className={styles.genesUl}>
+        <ul className={styles.genres__list}>
             {listGenres.map((element, inx) => {
-                return <li key={inx} className={styles.genesLi}>{element}</li>
+                return <li key={inx} className={styles.genres__item}>{element}</li>
             })}
         </ul>
     )

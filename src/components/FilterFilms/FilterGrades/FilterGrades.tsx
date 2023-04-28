@@ -1,5 +1,6 @@
 import {useState} from 'react'
-import styles from '@/components/FilterFilms/filterFilms.module.scss'
+
+import styles from './filterGrades.module.scss'
 
 
 const FilterGrades = () => {

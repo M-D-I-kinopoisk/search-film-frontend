@@ -1,4 +1,4 @@
-import styles from '@/components/FilterFilms/filterFilms.module.scss'
+import styles from './filterCountries.module.scss'
 
 
 const FilterCountries = () => {
@@ -41,11 +41,11 @@ const FilterCountries = () => {
         'Южная Корея',
         'Япония',
     ]
-    
+
     return (
-        <ul className={styles.genesUl}>
+        <ul className={styles.country__list}>
             {listCountries.map((element, inx) => {
-                return <li key={inx} className={styles.genesLi}>{element}</li>
+                return <li key={inx} className={styles.country__item}>{element}</li>
             })}
         </ul>
     )

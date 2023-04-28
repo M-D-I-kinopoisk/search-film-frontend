@@ -1,7 +1,7 @@
-import styles from '@/components/FilterFilms/filterFilms.module.scss'
 import {BiSearch} from 'react-icons/bi'
 import {GiFilmProjector} from 'react-icons/gi'
 
+import styles from './filterDir.module.scss'
 
 const FilterDir = () => {
     return (

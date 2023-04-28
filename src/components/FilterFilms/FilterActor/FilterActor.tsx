@@ -1,6 +1,7 @@
-import styles from '@/components/FilterFilms/filterFilms.module.scss'
 import {BiSearch} from 'react-icons/bi'
 import {IoPersonCircleOutline} from 'react-icons/io5'
+
+import styles from './filterActor.module.scss'
 
 
 const FilterActor = () => {

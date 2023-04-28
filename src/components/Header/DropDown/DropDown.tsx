@@ -2,8 +2,8 @@ import Link from 'next/link'
 import {FC} from 'react'
 import HeaderBanner from '@/components/Header/HeaderBaner/HeaderBanner'
 import style from './DropDown.module.scss'
-import Profile from '@/components/Header/DropDown/Profile/Profile'
-import Notification from '@/components/Header/DropDown/Notification/Notification'
+import DropDownProfile from '@/components/Header/DropDown/DropDownProfile/DropDownProfile'
+import DropDownNotification from '@/components/Header/DropDown/DropDownNotification/DropDownNotification'
 import DropDownFilter from '@/components/Header/DropDown/DropDownFilter/DropDownFilter'
 
 
@@ -247,7 +247,6 @@ const DropDown: FC<DropDownProps> = ({
 
                             <DropDownFilter list={list}/>
 
-                            {/* Cписок *новинки и слайдер справа* */}
                             <div className={style.dropDown__rightBlock}>
                                 <ul className={style.dropDown__new}>
                                     {list.new.map((element, idx) => {
@@ -267,17 +266,23 @@ const DropDown: FC<DropDownProps> = ({
                                         )
                                     })}
                                 </ul>
+
                                 <HeaderBanner/>
+
                             </div>
                         </div>
                     )}
 
                     {categoryDropDown === 'header-notifications' && (
-                        <Notification/>
+
+                        <DropDownNotification/>
+
                     )}
 
                     {categoryDropDown === 'header-user' && (
-                        <Profile/>
+
+                        <DropDownProfile/>
+
                     )}
                 </div>
             </div>
