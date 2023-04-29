@@ -7,18 +7,23 @@ const WatchOptions: React.FC = () => {
         <div className={style.watchOptions}>
             <div className={style.language}>
                 <h3>Языки</h3>
-                <div className={style.languageDescription}>
+
+                <div>
                     <span>Русский, Французский</span>
                 </div>
             </div>
+
             <div className={style.sub}>
                 <h3>Субтитры</h3>
-                <div className={style.subDescription}>
+                
+                <div>
                     <span>Русский</span>
                 </div>
             </div>
+
             <div className={style.quality}>
                 <h3>Качество</h3>
+
                 <div className={style.qualityDescription}>
                     <span>4К</span>
                     <span>FullHD</span>

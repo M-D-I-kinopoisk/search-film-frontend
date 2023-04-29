@@ -6,17 +6,15 @@ import Image from 'next/image'
 const WatchAllDevices: React.FC = () => {
     return (
         <div className={style.devices}>
-            <div className={style.devicesInfoWrapper}>
-                <div className={style.devicesInfo}>
-                    <div className={style.devicesInfoTitle}>
-                        Cмотреть «1+1» на всех устройствах
-                    </div>
-                    <div className={style.devicesInfoDescription}>
-                        Приложение доступно для скачивания на iOS, Android, SmartTV и приставках
-                    </div>
-                    <div className={style.connectBtn}>
-                        Подключить устройства
-                    </div>
+            <div>
+                <div className={style.devicesInfoTitle}>
+                    Cмотреть «1+1» на всех устройствах
+                </div>
+                <div className={style.devicesInfoDescription}>
+                    Приложение доступно для скачивания на iOS, Android, SmartTV и приставках
+                </div>
+                <div className={style.connectBtn}>
+                    Подключить устройства
                 </div>
             </div>
             <div className={style.devicesImg}>
