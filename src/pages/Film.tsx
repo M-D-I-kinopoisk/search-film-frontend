@@ -35,7 +35,7 @@ const Film: React.FC = () => {
                         выбор Иви
                     </div>
                 </div>
-                
+
                 <div className={style.mainContent}>
                     <TrailerContent />
                     <InfoContent/>

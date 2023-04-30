@@ -1,0 +1,18 @@
+.years__item {
+  margin-top: 12px;
+
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  color: rgba(217, 215, 224, .8);
+  transition: color 400ms;
+
+  cursor: pointer;
+
+
+  &:hover {
+    color: #fff;
+    transition: color 400ms;
+  }
+
+}

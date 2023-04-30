@@ -18,7 +18,7 @@ export const en = {
             text3: 'Beta Program',
             text4: 'Information for partners',
             text5: 'Ad placement',
-            text6: 'User Agreement',
+            text6: 'DropDownProfile Agreement',
             text7: 'Privacy Policy',
             text8: 'Compliance',
         },
