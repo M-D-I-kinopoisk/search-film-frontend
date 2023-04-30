@@ -92,6 +92,7 @@ const Film: React.FC = () => {
                             </button>
                         </div>
                     </div>
+
                     <div className={style.informationBlock}>
                         <Description />
                         <div className={style.actorsAndUserButtons}>

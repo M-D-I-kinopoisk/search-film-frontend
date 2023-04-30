@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 
 import style from './AwardsList.module.scss'
 import AwardsItem from '../AwardsItem/AwardsItem'
 import MyModal from '../../MyModal/MyModal'
 import Awards from '../../ModalPages/Awards/Awards'
 
-type props = {
-}
+type props = {}
 
 const AwardsList: React.FC<props> = () => {
     const [active, setActive] = useState('none')
@@ -18,18 +17,17 @@ const AwardsList: React.FC<props> = () => {
             </div>
             <div className={style.awardsItems}
 
-                onClick={() => setActive('block')}
+                 onClick={() => setActive('block')}
 
             >
-                <AwardsItem />
-                <AwardsItem />
+                <AwardsItem/>
+                <AwardsItem/>
             </div>
             <MyModal
                 active={active}
                 setActive={setActive}
-                url={'awards'}
-            >
-                {<Awards />}
+                url={'awards'}>
+                <Awards/>
             </MyModal>
         </div>
     )

@@ -17,7 +17,7 @@ const MainContainer: React.FC<MainContainerProps> = ({children, title}) => {
                 <meta key={'film search'}/>
                 <title>{title}</title>
             </Head>
-             <Header/>
+            <Header/>
             <div>
                 {children}
             </div>

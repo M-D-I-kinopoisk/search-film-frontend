@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 
 import style from './CreatorsList.module.scss'
 import CreatorsItem from '../CreatorsItem/CreatorsItem'
@@ -14,14 +14,14 @@ const CreatorsList: React.FC = () => {
                 Актёры и создатели
             </div>
             <div className={style.creatorsItems}
-                onClick={() => setActive('block')}
+                 onClick={() => setActive('block')}
             >
-                <CreatorsItem />
-                <CreatorsItem />
-                <CreatorsItem />
-                <CreatorsItem />
-                <CreatorsItem />
-                <CreatorsItem />
+                <CreatorsItem/>
+                <CreatorsItem/>
+                <CreatorsItem/>
+                <CreatorsItem/>
+                <CreatorsItem/>
+                <CreatorsItem/>
 
                 <div className={style.moreCreatorsBtn}>
                     Еще
@@ -32,9 +32,8 @@ const CreatorsList: React.FC = () => {
             <MyModal
                 active={active}
                 setActive={setActive}
-                url={'creators'}
-            >
-                {<Creators />}
+                url={'creators'}>
+                {<Creators/>}
             </MyModal>
         </div>
     )
