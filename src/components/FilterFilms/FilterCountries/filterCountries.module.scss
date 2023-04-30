@@ -1,0 +1,32 @@
+.country__list {
+  margin-top: 16px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, .32);
+  display: grid;
+  grid-column-gap: 40px;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 745px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+.country__item {
+  margin-top: 12px;
+
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  color: rgba(217, 215, 224, .8);
+  transition: color 400ms;
+
+  cursor: pointer;
+
+
+  &:hover {
+    color: #fff;
+    transition: color 400ms;
+  }
+
+}

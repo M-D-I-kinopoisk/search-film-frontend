@@ -1,7 +1,5 @@
 import React from 'react'
 
-// import styles from '@/scss/pages/home.module.scss'
-
 import styles from './filmsCategory.module.scss'
 
 import 'swiper/css'

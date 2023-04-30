@@ -7,7 +7,7 @@ type CreatorsItemProps = {
     inModal?: any
 }
 
-const CreatorsItem: React.FC<CreatorsItemProps> = ({ inModal }) => {
+const CreatorsItem: React.FC<CreatorsItemProps> = ({inModal}) => {
     return (
         <>
             {inModal ?
