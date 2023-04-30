@@ -1,16 +1,11 @@
 import Link from 'next/link'
 import {FC} from 'react'
 import HeaderBanner from '@/components/Header/HeaderBaner/HeaderBanner'
-import {BiMoviePlay} from 'react-icons/bi'
-import {MdNotificationsActive} from 'react-icons/md'
-import {BsBookmark} from 'react-icons/bs'
-import {RxCounterClockwiseClock} from 'react-icons/rx'
-import {SlDiamond} from 'react-icons/sl'
-import {FiAward} from 'react-icons/fi'
-import {IoIosTv} from 'react-icons/io'
-import {AiOutlineCreditCard} from 'react-icons/ai'
-import {BsShare} from 'react-icons/bs'
 import style from './DropDown.module.scss'
+import DropDownProfile from '@/components/Header/DropDown/DropDownProfile/DropDownProfile'
+import DropDownNotification from '@/components/Header/DropDown/DropDownNotification/DropDownNotification'
+import DropDownFilter from '@/components/Header/DropDown/DropDownFilter/DropDownFilter'
+
 
 export interface DropDownProps {
     headerModule: boolean
@@ -243,69 +238,15 @@ const DropDown: FC<DropDownProps> = ({
             <div className={headerModule ? `${style.dropDown}` : `${style.dropDown_disable}`}>
                 <div
                     className={style.dropDown__container}
-                    // onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                 >
                     {(categoryDropDown == 'header-movies' ||
                         categoryDropDown == 'header-series' ||
                         categoryDropDown == 'header-animation') && (
                         <div className={style.dropDown__block}>
-                            {/* Cписок *Жанры* */}
-                            <div>
-                                <p style={{color: 'white', marginBottom: '15px'}}>Жанры</p>
-                                <ul className={style.dropDown__genres}>
-                                    {list.genres.map((element, idx) => {
-                                        return (
-                                            <div key={idx}>
-                                                <li>
-                                                    <Link
-                                                        className={style.dropDown__a}
-                                                        href={element.href}
-                                                    >
-                                                        {element.name}
-                                                    </Link>
-                                                </li>
-                                            </div>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                            {/* Cписок *Страны и годы* */}
-                            <div className={style.dropDown__countyYarsBlock}>
-                                <p style={{color: 'white', marginBottom: '15px'}}>Страны</p>
-                                <ul className={style.dropDown__country}>
-                                    {list.country.map((element, idx) => {
-                                        return (
-                                            <li key={idx}>
-                                                <Link className={style.dropDown__a} href={element.href}>
-                                                    {element.name}
-                                                </Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                                <p
-                                    style={{
-                                        color: 'white',
-                                        marginTop: '15px',
-                                        marginBottom: '10px',
-                                    }}
-                                >
-                                    Годы
-                                </p>
-                                <ul className={style.dropDown__country}>
-                                    {list.years.map((element, idx) => {
-                                        return (
-                                            <li key={idx}>
-                                                <Link className={style.dropDown__a} href={element.href}>
-                                                    {element.name}
-                                                </Link>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                            {/* Cписок *новинки и слайдер справа* */}
+
+                            <DropDownFilter list={list}/>
+
                             <div className={style.dropDown__rightBlock}>
                                 <ul className={style.dropDown__new}>
                                     {list.new.map((element, idx) => {
@@ -325,77 +266,23 @@ const DropDown: FC<DropDownProps> = ({
                                         )
                                     })}
                                 </ul>
+
                                 <HeaderBanner/>
+
                             </div>
                         </div>
                     )}
-                    {/* Блок Уведомления  */}
+
                     {categoryDropDown === 'header-notifications' && (
-                        <div className={style.dropDown__notifications}>
-                            <MdNotificationsActive size={56}/>
-                            <p>Здесь появляются только важные сообщения</p>
-                        </div>
+
+                        <DropDownNotification/>
+
                     )}
-                    {/* Блок User  */}
+
                     {categoryDropDown === 'header-user' && (
-                        <div className={style.dropDown__user}>
-                            <div className={style.dropDown__userLeftBlock}>
-                                <Link className={style.dropDown__userItem}
-                                      href={'https://www.ivi.ru/profile/purchases'}>
-                                    <BiMoviePlay size={20}/>
-                                    <p className={style.dropDown__userText}>Покупки</p>
-                                </Link>
-                                <Link className={style.dropDown__userItem}
-                                      href='https://www.ivi.ru/profile/favorites'>
-                                    <BsBookmark size={20}/>
-                                    <p className={style.dropDown__userText}>Смотреть позже</p>
-                                </Link>
-                                <Link className={style.dropDown__userItem}
-                                      href='https://www.ivi.ru/profile/watched'>
-                                    <RxCounterClockwiseClock size={20}/>
-                                    <p className={style.dropDown__userText}>История просмотров</p>
-                                </Link>
-                                <Link className={style.dropDown__userItem}
-                                      href='https://www.ivi.ru/profile/subscriptions'>
-                                    <SlDiamond size={20}/>
-                                    <div className={style.dropDown__userBulb}></div>
-                                    <p className={style.dropDown__userText}>Подписки</p>
-                                    <span>Подключить</span>
-                                </Link>
-                                <Link className={style.dropDown__userItem}
-                                      href='https://www.ivi.ru/'>
-                                    <FiAward size={20}/>
-                                    <p className={style.dropDown__userText}>Активация сертификата</p>
-                                </Link>
-                                <Link className={style.dropDown__userItem}
-                                      href='https://www.ivi.ru/'>
-                                    <IoIosTv size={20}/>
-                                    <p className={style.dropDown__userText}>Вход по коду</p>
-                                </Link>
-                                <Link className={style.dropDown__userItem}
-                                      href='https://www.ivi.ru/profile/cards'>
-                                    <AiOutlineCreditCard size={20}/>
-                                    <p className={style.dropDown__userText}>Способы оплаты</p>
-                                </Link>
-                                <Link className={style.dropDown__userItem}
-                                      href='https://www.ivi.ru/profile/referral'>
-                                    <div>
-                                        <BsShare size={20}/>
-                                    </div>
-                                    <p className={style.dropDown__userText}>Пригласить друзей</p>
-                                </Link>
-                            </div>
-                            <div className={style.dropDown__userRightBlock}>
-                                <button className={style.dropDown__userRightBlock_btn}>Войти или зарегистрироваться
-                                </button>
-                                <div className={style.dropDown__userRightBlock_group}>
-                                    <Link className={style.dropDown__userLink}
-                                          href={'https://www.ivi.ru/profile/settings'}>Настройки</Link>
-                                    <Link className={style.dropDown__userLink}
-                                          href={'https://ask.ivi.ru/'}>Помощь</Link>
-                                </div>
-                            </div>
-                        </div>
+
+                        <DropDownProfile/>
+
                     )}
                 </div>
             </div>

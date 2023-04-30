@@ -1,14 +1,16 @@
 import {useState} from 'react'
 
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 
-import { en } from '../../../public/locales/en'
-import { ru } from '../../../public/locales/ru'
+import {en} from '../../../public/locales/en'
+import {ru} from '../../../public/locales/ru'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
 import DropDown from './DropDown/DropDown'
+import NavBar from '@/components/Header/NavBar/NavBar'
+import Locales from '@/components/UI/Locales/Locales'
 
 import {BiSearch} from 'react-icons/bi'
 import {MdOutlineNotifications} from 'react-icons/md'
@@ -25,13 +27,9 @@ const Header = () => {
     const [scrollList, setScrollList] = useState(0)
 
 
-    const { locale, locales, asPath } = useRouter()
+    const {locale} = useRouter()
 
     const t = locale === 'en' ? en : ru
-
-    console.log(locales)
-    console.log(locale)
-    console.log(asPath)
 
 
     const handleMouseEnter = (e) => {
@@ -69,92 +67,13 @@ const Header = () => {
                         />
                     </Link>
                 </div>
-                <nav className={styles.navbar}>
-                    <ul className={styles.navbar__ul}>
-                        <li className={styles.navbar__li}>
-                            <Link href='/' className={styles.navbar__a} title='Мой Иви'>
-                                {t.header.title1}
-                            </Link>
-                        </li>
-                        <li className={styles.navbar__li}>
-                            <Link
-                                href='https://www.ivi.ru/new'
-                                title='Что нового'
-                                className={styles.navbar__a}
-                                onMouseEnter={handleMouseLeave}
-                            >
-                                {t.header.title2}
-                            </Link>
-                        </li>
-                        <li
-                            className={styles.navbar__li}
-                            id='header-movies'
-                            onMouseEnter={(e) => handleMouseEnter(e)}
-                        >
-                            <Link
-                                id='header-movies'
-                                href='/movies'
-                                title='Фильмы онлайн'
-                                className={styles.navbar__a}
-                            >
-                                {t.header.title3}
-                            </Link>
-                        </li>
-                        <li
-                            className={styles.navbar__li}
-                            id='header-series'
-                            onMouseEnter={(e) => handleMouseEnter(e)}
-                        >
-                            <Link
-                                id='header-series'
-                                href='https://www.ivi.ru/series'
-                                className={styles.navbar__a}
-                                title='Сериалы онлайн'
-                            >
-                                {t.header.title4}
-                            </Link>
-                        </li>
-                        <li
-                            className={styles.navbar__li}
-                            id='header-animation'
-                            onMouseEnter={(e) => handleMouseEnter(e)}
-                        >
-                            <Link
-                                id='header-animation'
-                                href='https://www.ivi.ru/animation'
-                                title='Мультфильмы онлайн'
-                                className={styles.navbar__a}
-                            >
-                                {t.header.title5}
-                            </Link>
-                        </li>
-                        <li className={styles.navbar__li}>
-                            <Link
-                                id='header-tv'
-                                href='https://www.ivi.ru/tvplus'
-                                title='TV+'
-                                className={styles.navbar__a}
-                            >
-                                {t.header.title6}
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
+
+                <NavBar handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}/>
+
                 <div className={styles.header__right}>
-                    <div className={styles.locales}>
-                        <Link
-                            href={asPath}
-                            locale='en'
-                            className={locale === 'en' ? `${styles.locales__btnLeft} ${styles.locales__btn_active}` : `${styles.locales__btnLeft}`}
-                        >EN
-                        </Link>
-                        <Link
-                            href={asPath}
-                            locale='ru'
-                            className={locale === 'ru' ? `${styles.locales__btnRight} ${styles.locales__btn_active}` : `${styles.locales__btnRight}`}
-                        >RU
-                        </Link>
-                    </div>
+
+                    <Locales/>
+
                     <div className={styles.header__rightContainer}>
                         <Link
                             className={styles.header__btnPay}
