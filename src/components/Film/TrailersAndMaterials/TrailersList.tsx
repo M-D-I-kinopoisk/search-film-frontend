@@ -1,32 +1,34 @@
 import React, { useState } from 'react'
 
-import style from './Trailers.module.scss'
+import styles from './Trailers.module.scss'
 import TrailersItem from './TrailersItem'
 import MyModal from '../MyModal/MyModal'
 
 const TrailersList: React.FC = () => {
-    const [isVisible, setIsVisible] = useState(false)
+    const [visible, setVisible] = useState(false)
+
+    let items = [1, 2, 3, 4, 5, 6]
+
+    const setModalScroll = () => {
+        setVisible(true)
+        document.body.classList.add('modalScroll')
+    }
 
     return (
-        <div className={style.addMaterials}>
-            <div className={style.addMaterialsTitle}>
-                <a >Трейлеры</a> и доп. материалы
+        <div className={styles.addMaterials}>
+            <div className={styles.addMaterialsTitle}>
+                <a onClick={() => setModalScroll()}>Трейлеры</a> и доп. материалы
             </div>
 
-            <div
-                className={style.addMaterialsItems}
-                onClick={() => setIsVisible(true)}
-            >
-                <TrailersItem />
-                <TrailersItem />
-                <TrailersItem />
+            <div className={styles.addMaterialsItems}>
+                {items.map((elem) =>
+                    <TrailersItem key={elem} />
+                )}
             </div>
 
-            <MyModal
-                isVisible={isVisible}
-                setIsVisible={setIsVisible}
-                componentName={'trailers'}
-            />
+            <MyModal visible={visible}
+                setVisible={setVisible}
+                componentName={'trailers'} />
         </div>
     )
 }

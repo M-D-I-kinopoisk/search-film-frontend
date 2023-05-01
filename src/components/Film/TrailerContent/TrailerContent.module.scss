@@ -185,65 +185,6 @@
     align-items: center;
 }
 
-.trailerButton {
-    height: 40px;
-    width: 109px;
-    margin-right: 16px;
-    background-color: rgba(255, 255, 255, .08);
-    border-color: rgba(255, 255, 255, .08);
-    border-radius: 8px;
-    padding: 10px 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    h3 {
-        font-size: 15px;
-        line-height: 20px;
-        font-weight: 500;
-        font-style: normal;
-        color: rgba(255, 255, 255, .72);
-    }
-}
-
-.markerButton,
-.shareButton {
-    background-color: rgba(255, 255, 255, .08);
-    border-color: rgba(255, 255, 255, .08);
-    border-radius: 8px;
-    height: 40px;
-    width: 40px;
-    padding: 10px 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 16px;
-}
-
-.freeFilmsButton {
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    background-color: rgba(255, 255, 255, .08);
-    border-color: rgba(255, 255, 255, .08);
-    border-radius: 8px;
-    padding: 10px 12px;
-
-    img {
-        margin-right: 4px;
-    }
-
-    h3 {
-        font-size: 15px;
-        line-height: 20px;
-        font-weight: 500;
-        font-style: normal;
-        color: rgba(255, 255, 255, .72);
-    }
-}
-
 @media(max-width:1160px) {
     .trailerContent {
         width: 100%;
@@ -257,23 +198,6 @@
 
     .userButtons {
         display: none;
-        margin-top: 0;
-        width: 28%;
-    }
-
-    .trailerButton {
-        width: 334px;
-        margin-bottom: 12px;
-    }
-
-    .markerButton,
-    .shareButton {
-        width: 45%;
-        margin-right: 0;
-    }
-
-    .freeFilmsButton {
-        width: 66%;
     }
 }
 
@@ -288,39 +212,6 @@
         .params {
             justify-content: center;
         }
-    }
-
-    .userButtons {
-        width: 223px;
-        margin: auto;
-        margin-bottom: 24px;
-        border-radius: 0 0 12px 12px;
-        padding: 4px 10px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .16) 100%);
-    }
-
-    .userButtonsWrapper {
-        display: inline-flex;
-        justify-content: space-between;
-    }
-
-    .trailerButton {
-        width: 116px;
-        margin: 0;
-    }
-
-    .trailerButton,
-    .markerButton,
-    .shareButton {
-        background: transparent;
-        height: 36px;
-        padding-left: 4px;
-        padding-right: 4px;
-    }
-
-    .markerButton,
-    .shareButton {
-        width: 44px;
     }
 }
 

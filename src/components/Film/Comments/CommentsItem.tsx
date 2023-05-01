@@ -1,6 +1,6 @@
 import React from 'react'
 
-import style from './Comments.module.scss'
+import styles from './Comments.module.scss'
 import Image from 'next/image'
 
 type CommentsItemProps = {
@@ -19,71 +19,63 @@ const CommentsItem: React.FC<CommentsItemProps> = ({ inModal }) => {
         <>
             {inModal ?
                 <div>
-                    <div className={style.modalComment}>
-                        <div className={style.modalInfoHeader}>
-                            <div className={style.modalAvatar}>А</div>
-                            <div className={style.modalName}>{comment.name}</div>
-                            <div className={style.modalDate}>{comment.date}</div>
-                            <div className={style.modalLikes}>
-                                <Image
-                                    alt='Like'
+                    <div className={styles.modalComment}>
+                        <div className={styles.modalInfoHeader}>
+                            <div className={styles.modalAvatar}>А</div>
+                            <div className={styles.modalName}>{comment.name}</div>
+                            <div className={styles.modalDate}>{comment.date}</div>
+                            <div className={styles.modalLikes}>
+                                <Image alt='Like'
                                     width={16}
                                     height={16}
-                                    src='/img/like.png'
-                                />
+                                    src='/img/like.png' />
 
                                 <span>128</span>
 
-                                <Image
-                                    alt='Like'
+                                <Image alt='Like'
                                     width={16}
                                     height={16}
-                                    src='/img/like.png'
-                                />
+                                    src='/img/like.png' />
                             </div>
                         </div>
 
-                        <div className={style.modalDescription}>
+                        <div className={styles.modalDescription}>
                             <p>{comment.description}</p>
                         </div>
                     </div>
 
-                    <div className={style.modalAnswerButton}>
+                    <div className={styles.modalAnswerButton}>
                         Ответить
                     </div>
                 </div>
                 :
-                <div className={style.commentsItem}>
-                    <div className={style.commentsItemName}>
+                <div className={styles.commentsItem}>
+                    <div className={styles.commentsItemName}>
                         {comment.name}
                     </div>
 
-                    <div className={style.commentsItemDescription}>
+                    <div className={styles.commentsItemDescription}>
                         {comment.description}
                         {comment.description}
                     </div>
 
-                    <div className={style.commentsItemBottom}>
-                        <div className={style.commentsItemDate}>
+                    <div className={styles.commentsItemBottom}>
+                        <div className={styles.commentsItemDate}>
                             {comment.date}
                         </div>
 
-                        <div className={style.commentsItemLikes}>
-                            <Image
-                                alt='Like'
+                        <div className={styles.commentsItemLikes}>
+                            <Image alt='Like'
                                 width={16}
                                 height={16}
-                                src='/img/like.png'
-                            />
+                                src='/img/like.png' />
 
                             <span>36</span>
 
-                            <Image
-                                alt='Like'
+                            <Image alt='Like'
                                 width={16}
                                 height={16}
-                                src='/img/like.png'
-                            />
+                                src='/img/like.png' />
                         </div>
                     </div>
                 </div>
