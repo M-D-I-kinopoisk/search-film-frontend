@@ -231,15 +231,13 @@ const DropDown: FC<DropDownProps> = ({
         }
     }
 
-    console.log(categoryDropDown)
-    console.log(categoryDropDown.length)
+
     return (
         <>
             <div className={headerModule ? `${style.dropDown}` : `${style.dropDown_disable}`}>
                 <div
                     className={style.dropDown__container}
-                    onMouseLeave={handleMouseLeave}
-                >
+                    onMouseLeave={handleMouseLeave}>
                     {(categoryDropDown == 'header-movies' ||
                         categoryDropDown == 'header-series' ||
                         categoryDropDown == 'header-animation') && (
@@ -258,8 +256,7 @@ const DropDown: FC<DropDownProps> = ({
                                                             ? `${style.dropDown__newlink} ${style.dropDown__newlinkActiv}`
                                                             : style.dropDown__newlink
                                                     }
-                                                    href={element.href}
-                                                >
+                                                    href={element.href}>
                                                     {element.name}
                                                 </Link>
                                             </li>

@@ -79,16 +79,14 @@ const Header = () => {
                             className={styles.header__btnPay}
                             href={
                                 'https://www.ivi.ru/login?action=%2Fuser%2Fsubscription&from=top_menu&redirect_url=%2F&buy=true&type=subscriptionChange&renew_period=2592000&subscription_id=6'
-                            }
-                        >
+                            }>
                             {t.header.title7}
                         </Link>
                     </div>
                     <div className={styles.header__rightSearch}>
                         <Link
                             className={styles.header__btnSearch}
-                            href={'https://www.ivi.ru/?ivi_search'}
-                        >
+                            href={'https://www.ivi.ru/?ivi_search'}>
                             <BiSearch size={20}/>
                             {t.header.title8}
                         </Link>
@@ -96,21 +94,18 @@ const Header = () => {
                     <div
                         id='header-notifications'
                         onMouseEnter={(e) => handleMouseEnter(e)}
-                        className={styles.header__notifications}
-                    >
+                        className={styles.header__notifications}>
                         <Link
                             id='header-notifications'
                             className={styles.header__btnSearch}
-                            href={'https://www.ivi.ru/profile/pull_notifications'}
-                        >
+                            href={'https://www.ivi.ru/profile/pull_notifications'}>
                             <MdOutlineNotifications size={20}/>
                         </Link>
                     </div>
                     <div
                         id='header-user'
                         onMouseEnter={(e) => handleMouseEnter(e)}
-                        className={styles.header__rightUser}
-                    >
+                        className={styles.header__rightUser}>
                         <Link id='header-user' className={styles.header__btnUser} href={''} title='Войти в профиль'>
                             <FiUser size={20}/>
                         </Link>

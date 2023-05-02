@@ -2,7 +2,7 @@ import {useState, useRef, useEffect} from 'react'
 
 import {VscChromeClose} from 'react-icons/vsc'
 import {TbPencil} from 'react-icons/tb'
-import {AiOutlineEyeInvisible} from 'react-icons/ai'
+import {AiOutlineEyeInvisible, AiOutlineEye} from 'react-icons/ai'
 
 import styles from './auth.module.scss'
 
@@ -132,7 +132,9 @@ const Auth = () => {
                                                     </label>
                                                     <div className={styles.password__toggle}
                                                          onClick={() => setPassToggle(!passToggle)}>
-                                                        <AiOutlineEyeInvisible size={20}/>
+                                                        {passToggle
+                                                            ? <AiOutlineEye size={20}/>
+                                                            : <AiOutlineEyeInvisible size={20}/>}
                                                     </div>
                                                 </div>
                                             </div>

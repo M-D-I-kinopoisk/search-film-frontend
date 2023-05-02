@@ -1,4 +1,5 @@
 import {FC} from 'react'
+
 import Link from 'next/link'
 
 import style from './dropDownFilter.module.scss'
@@ -19,8 +20,7 @@ const DropDownFilter: FC<GenresProps> = ({list}) => {
                                 <li>
                                     <Link
                                         className={style.dropDown__a}
-                                        href={element.href}
-                                    >
+                                        href={element.href}>
                                         {element.name}
                                     </Link>
                                 </li>
@@ -47,8 +47,7 @@ const DropDownFilter: FC<GenresProps> = ({list}) => {
                         color: 'white',
                         marginTop: '15px',
                         marginBottom: '10px',
-                    }}
-                >
+                    }}>
                     Годы
                 </p>
                 <ul className={style.dropDown__country}>

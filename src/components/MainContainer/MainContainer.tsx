@@ -23,7 +23,7 @@ const MainContainer: React.FC<MainContainerProps> = ({children, title}) => {
                 {children}
             </div>
             <Footer/>
-            <Auth/>
+            {/*<Auth/>*/}
             <TabBar/>
         </>
     )
