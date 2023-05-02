@@ -34,7 +34,7 @@ const TabBar = () => {
                     <span className={style.tabBar__itemCaption}>{t.tabBar.title1}</span>
                 </div>
             </Link>
-            <Link href={'/'}
+            <Link href={'/movies'}
                   className={route === '/movies' ? `${style.tabBar__group} ${style.tabBar__group_active}` : `${style.tabBar__group}`}>
                 <div
                     className={route === '/movies' ? `${style.tabBar__itemGlowImage} ${style.tabBar__itemGlowImage_active}` : `${style.tabBar__itemGlowImage}`}></div>
