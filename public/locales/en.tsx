@@ -49,5 +49,12 @@ export const en = {
             text3: 'Look at',
             text4: 'All devices',
         }
+    },
+    tabBar : {
+        title1: 'My Ivi',
+        title2: 'Catalog',
+        title3: 'Search',
+        title4: 'TV+',
+        title5: 'More',
     }
 }

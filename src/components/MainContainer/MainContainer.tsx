@@ -10,6 +10,7 @@ type MainContainerProps = {
     title: string
 }
 
+
 const MainContainer: React.FC<MainContainerProps> = ({children, title}) => {
     return (
         <>

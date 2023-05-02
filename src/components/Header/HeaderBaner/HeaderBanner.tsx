@@ -1,105 +1,107 @@
 import Link from 'next/link'
 import Image from 'next/image'
+
 import {useState} from 'react'
+
 import {MdDesktopMac} from 'react-icons/md'
-import style from './headerBanner.module.scss'
+
+import styles from './headerBanner.module.scss'
 
 const HeaderBanner = () => {
+
     const [toggleBlock, setToggleBlock] = useState(false)
 
-    console.log(toggleBlock)
     return (
-        <div className={style.headerBanner}>
+        <div className={styles.headerBanner}>
             <div
-                className={style.headerBanner__topBlock}
+                className={styles.headerBanner__topBlock}
                 onMouseEnter={() => setToggleBlock(true)}
-                onMouseLeave={() => setToggleBlock(false)}
-            >
-                <div className={style.headerBanner__sliders}>
-                    <div className={style.headerBanner__sliderTop}>
+                onMouseLeave={() => setToggleBlock(false)}>
+                <div className={styles.headerBanner__sliders}>
+                    <div className={styles.headerBanner__sliderTop}>
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film1.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film2.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film3.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film1.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                     </div>
-                    <div className={style.headerBanner__sliderCenter}>
+                    <div className={styles.headerBanner__sliderCenter}>
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film1.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film2.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film3.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film1.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                     </div>
-                    <div className={style.headerBanner__sliderDown}>
+                    <div className={styles.headerBanner__sliderDown}>
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film1.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film2.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film3.jpg'}
                             width={128}
                             height={72}
                             alt={'film'}
                         />
                         <Image
-                            className={style.headerBanner__sliderImg}
+                            className={styles.headerBanner__sliderImg}
                             src={'/img/mini-film1.jpg'}
                             width={128}
                             height={72}
@@ -107,15 +109,13 @@ const HeaderBanner = () => {
                         />
                     </div>
                 </div>
-                <div className={style.headerBanner__toggleBlock}>
+                <div className={styles.headerBanner__toggleBlock}>
                     <div
                         className={
                             toggleBlock
-                                ? `${style.headerBanner__detailsBlock} ${style.headerBanner__detailsBlock_active}`
-                                : `${style.headerBanner__detailsBlock}`
-                        }
-                    >
-                        <div className={style.headerBanner__logo}>
+                                ? `${styles.headerBanner__detailsBlock} ${styles.headerBanner__detailsBlock_active}`
+                                : `${styles.headerBanner__detailsBlock}`}>
+                        <div className={styles.headerBanner__logo}>
                             <Image
                                 src={'/img/header-slider-logo.svg'}
                                 width={48}
@@ -124,10 +124,10 @@ const HeaderBanner = () => {
                             />
                         </div>
                         <div>
-                            <div className={style.headerBanner__detailsTitle}>
+                            <div className={styles.headerBanner__detailsTitle}>
                                 Подписка Иви
                             </div>
-                            <div className={style.headerSlaider__detailsExtra}>
+                            <div className={styles.headerSlaider__detailsExtra}>
                                 От 199&nbsp;₽ за месяц
                             </div>
                         </div>
@@ -135,27 +135,23 @@ const HeaderBanner = () => {
                     <div
                         className={
                             toggleBlock
-                                ? `${style.headerBanner__detailsBlock2} ${style.headerBanner__detailsBlock2_active}`
-                                : `${style.headerBanner__detailsBlock2}`
-                        }
-                        style={{position: 'absolute', top: '-65px'}}
-                    >
+                                ? `${styles.headerBanner__detailsBlock2} ${styles.headerBanner__detailsBlock2_active}`
+                                : `${styles.headerBanner__detailsBlock2}`}
+                        style={{position: 'absolute', top: '-65px'}}>
                         <Link
-                            className={style.headerBanner__detailsBtn}
-                            href={'https://www.ivi.ru/profile/subscription'}
-                        >
+                            className={styles.headerBanner__detailsBtn}
+                            href={'https://www.ivi.ru/profile/subscription'}>
                             Подключить
                         </Link>
-                        <div className={style.headerBanner__detailsNote}>
+                        <div className={styles.headerBanner__detailsNote}>
                             Отключить можно в любой момент
                         </div>
                     </div>
                 </div>
             </div>
             <Link
-                className={style.headerBanner__btnSmartTV}
-                href={'https://www.ivi.ru/pages/tvsmart/'}
-            >
+                className={styles.headerBanner__btnSmartTV}
+                href={'https://www.ivi.ru/pages/tvsmart/'}>
                 <MdDesktopMac size={20}/>
                 Смотреть на SmartTV
             </Link>

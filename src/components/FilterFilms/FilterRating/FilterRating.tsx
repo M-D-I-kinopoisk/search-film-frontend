@@ -1,6 +1,5 @@
 import {useState} from 'react'
 
-
 import styles from './filterRating.module.scss'
 
 const FilterRating = () => {
