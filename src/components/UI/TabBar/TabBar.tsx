@@ -16,7 +16,6 @@ import style from './TabBar.module.scss'
 
 const TabBar = () => {
 
-    // const router = useRouter()
 
     const {locale, route} = useRouter()
 
