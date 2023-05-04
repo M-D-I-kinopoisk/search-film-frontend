@@ -23,6 +23,7 @@ const MainContainer: React.FC<MainContainerProps> = ({children, title}) => {
                 {children}
             </div>
             <Footer/>
+            {/*расскоментить, откроется модалка*/}
             {/*<Auth/>*/}
             <TabBar/>
         </>

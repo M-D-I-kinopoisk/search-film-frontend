@@ -5,6 +5,9 @@ import styles from '../scss/pages/home.module.scss'
 import TeaserBtn from '@/components/UI/TeaserBtn'
 import MainSlider from '@/components/MainSlider/MainSlider'
 import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
+import FilmsRating from '@/components/FilmsRating/FilmsRating'
+import FilmsClause from '@/components/FilmsClause/FilmsClause'
+import FilmsInteresting from '@/components/FilmsInteresting/FilmsInteresting'
 
 const Home: React.FC = () => {
     return (
@@ -22,8 +25,44 @@ const Home: React.FC = () => {
                 {/* сюда приходят все фильмы по категориям на главной, прост перебираем их и делает компоненту ну и вставляет данные
                 (они дожны быть одинаковыми) кроме наполнения фильмов, разумеется*/}
             </div>
-            <FilmsCategory className={styles.films} title='Рекомендую посмотреть'/>
-            <FilmsCategory className={styles.films} title='Добрые мультсериалы'/>
+            <FilmsCategory title='Рекомендую посмотреть'/>
+
+            <FilmsRating/>
+
+            <FilmsClause/>
+
+            <FilmsCategory title='Добрые мультсериалы'/>
+
+            <FilmsCategory title='Поймать преступника'/>
+
+            <FilmsCategory title='Лучшие сериалы в подписке'/>
+
+            <FilmsCategory title='Зарубежные мультфильмы'/>
+
+            <FilmsCategory title='Российские детективные сериалы'/>
+
+            <FilmsCategory title='Зарубежные мелодраматические сериалы'/>
+
+            <FilmsCategory title='Современные мультфильмы'/>
+
+            <FilmsCategory title='Сериалы с высоким рейтингом по подписке'/>
+
+            <FilmsInteresting/>
+
+            <FilmsCategory title='Мелодрамы на основе книг'/>
+
+            <FilmsCategory title='Захватывающие боевики'/>
+
+            <FilmsCategory title='Лучшие фильмы в подписке'/>
+
+            <FilmsCategory title='Мультфильмы о храбрости'/>
+
+            <FilmsCategory title='Криминальные триллеры'/>
+
+            <FilmsCategory title='Американские комедии'/>
+
+            <FilmsCategory title='Криминальные детективы'/>
+
         </div>
     )
 }
