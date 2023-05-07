@@ -1,59 +1,66 @@
 import React from 'react'
 
-import style from './Galery.module.scss'
+import styles from './Galery.module.scss'
 import Image from 'next/image'
+import { BsBookmark } from 'react-icons/bs'
 
 type GaleryItemProps = {
-    num: number
 }
 
-const GaleryItem: React.FC<GaleryItemProps> = ({ num }) => {
+const GaleryItem: React.FC<GaleryItemProps> = () => {
     return (
         <div>
-            <div className={style.galleryItem}>
-                <Image
-                    alt='Фильмм'
+            <div className={styles.galleryItem}>
+                <Image alt='Фильмм'
                     width={153}
                     height={235}
-                    src='https://thumbs.dfs.ivi.ru/storage39/contents/0/9/9d7a796cf23365d748577e10ff7079.jpg/234x360/?q=85'
-                />
+                    src='https://thumbs.dfs.ivi.ru/storage39/contents/0/9/9d7a796cf23365d748577e10ff7079.jpg/234x360/?q=85' />
 
-                <div className={style.setIvi}>Сериал Иви</div>
+                <div className={styles.setIvi}>Сериал Иви</div>
 
-                <div className={style.galleryItemMarker}>
-                    <Image
-                        alt='Добавить'
-                        width={20}
-                        height={20}
-                        src='/img/marker.png'
-                    />
+                <div className={styles.galleryItemMarker}>
+                    <BsBookmark size={20} color='rgba(255,255,255,.88)' />
                 </div>
 
-                <div className={style.galleryItemDescroption} >
-                    <div className={style.galleryItemRating}>
-                        <span>8,2</span>
-                        <Image
-                            alt='Прогресс'
-                            width={27}
-                            height={26}
-                            src='/img/progress.png'
-                        />
+                <div className={styles.galleryItemDescroption} >
+                    <div className={styles.galleryItemRating}>
+                        <h3>8,2</h3>
+                        <div className={styles.graphs}>
+                            <div className={styles.progressBar}>
+                                <div className={styles.backBar}></div>
+                                <div className={styles.valueBar}></div>
+                            </div>
+                            <div className={styles.progressBar}>
+                                <div className={styles.backBar}></div>
+                                <div className={styles.valueBar}></div>
+                            </div>
+                            <div className={styles.progressBar}>
+                                <div className={styles.backBar}></div>
+                                <div className={styles.valueBar}></div>
+                            </div>
+                            <div className={styles.progressBar}>
+                                <div className={styles.backBar}></div>
+                                <div className={styles.valueBar}></div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className={style.actory}>актеры</div>
-                    <div className={style.progress}></div>
+                    <div className={styles.actory}>актеры</div>
+                    <div className={styles.graph}>
+                        <div className={styles.graphProgress}></div>
+                    </div>
 
-                    <div className={style.galleryItemInfo}>
+                    <div className={styles.galleryItemInfo}>
                         2021, Россия, Комедийные
                     </div>
                 </div>
 
-                <div className={style.galleryItemAge}>18+ {num}</div>
+                <div className={styles.galleryItemAge}>18+</div>
             </div>
 
-            <div className={style.galleryItemTitle}>
-                <div className={style.galleryItemName}>По Колено</div>
-                <div className={style.toogleSale}>Бесплатно</div>
+            <div className={styles.galleryItemTitle}>
+                <div className={styles.galleryItemName}>По Колено</div>
+                <div className={styles.toogleSale}>Бесплатно</div>
             </div>
         </div>
     )

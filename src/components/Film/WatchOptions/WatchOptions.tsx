@@ -1,30 +1,26 @@
 import React from 'react'
 
-import style from './WatchOptions.module.scss'
+import styles from './WatchOptions.module.scss'
 
 const WatchOptions: React.FC = () => {
     return (
-        <div className={style.watchOptions}>
-            <div className={style.language}>
+        <div className={styles.watchOptions}>
+            <div className={styles.language}>
                 <h3>Языки</h3>
 
-                <div>
-                    <span>Русский, Французский</span>
-                </div>
+                <div><span>Русский, Французский</span></div>
             </div>
 
-            <div className={style.sub}>
+            <div className={styles.sub}>
                 <h3>Субтитры</h3>
-                
-                <div>
-                    <span>Русский</span>
-                </div>
+
+                <div><span>Русский</span></div>
             </div>
 
-            <div className={style.quality}>
+            <div className={styles.quality}>
                 <h3>Качество</h3>
 
-                <div className={style.qualityDescription}>
+                <div className={styles.qualityDescription}>
                     <span>4К</span>
                     <span>FullHD</span>
                     <span>1080</span>
@@ -33,7 +29,7 @@ const WatchOptions: React.FC = () => {
                 </div>
             </div>
 
-            <div className={style.picture}>
+            <div className={styles.picture}>
                 <h3>Изображение и звук.
                     <span>
                         Фактическое качество зависит от устройства и
@@ -41,7 +37,7 @@ const WatchOptions: React.FC = () => {
                     </span>
                 </h3>
 
-                <div className={style.pictureDescription}>
+                <div className={styles.pictureDescription}>
                     <span>4К</span>
                     <span>FullHD</span>
                     <span>1080</span>

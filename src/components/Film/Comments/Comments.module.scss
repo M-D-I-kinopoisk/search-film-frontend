@@ -29,6 +29,7 @@
     padding: 7px 11px;
     color: #fff;
     width: 200px;
+    cursor: pointer;
 }
 
 .commentsItems {
@@ -99,14 +100,18 @@
         font-style: normal;
     }
 
-    :last-child {
-        transform: rotate(180deg);
+    svg {
+        cursor: pointer;
+        &:last-child {
+            transform: rotate(180deg);
+        }
     }
 }
 
 .modalDescription {
     padding-left: 40px;
     padding-right: 70px;
+
     p {
         font-weight: 400;
         font-size: 15px;
@@ -124,7 +129,6 @@
     width: 286px;
     height: 162px;
     border-radius: 8px;
-    cursor: pointer;
     background-color: #1f1b2e;
     padding: 20px 20px 52px;
     margin-top: 10px;
@@ -150,6 +154,7 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .commentsItemBottom {
@@ -181,7 +186,10 @@
         font-style: normal;
     }
 
-    :last-child {
-        transform: rotate(180deg);
+    svg {
+        cursor: pointer;
+        &:last-child {
+            transform: rotate(180deg);
+        }
     }
 }

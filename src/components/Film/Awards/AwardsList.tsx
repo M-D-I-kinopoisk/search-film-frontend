@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import style from './Awards.module.scss'
+import styles from './Awards.module.scss'
 import AwardsItem from './AwardsItem'
 import MyModal from '../MyModal/MyModal'
 
@@ -8,25 +8,32 @@ type AwardsListProps = {
 }
 
 const AwardsList: React.FC<AwardsListProps> = () => {
-    const [isVisible, setIsVisible] = useState(false)
+    const [visible, setVisible] = useState(false)
+
+    const items = [1, 2, 3, 4]
+
+    const setModalScroll = () => {
+        setVisible(true)
+        document.body.classList.add('modalScroll')
+    }
 
     return (
-        <div className={style.awards}>
-            <div className={style.awardsTitle}>Награды</div>
-
-            <div
-                className={style.awardsItems}
-                onClick={() => setIsVisible(true)}
-            >
-                <AwardsItem />
-                <AwardsItem />
+        <div className={styles.awards}>
+            <div onClick={() => setModalScroll()}
+                className={styles.awardsTitle}>
+                Награды
             </div>
 
-            <MyModal
-                isVisible={isVisible}
-                setIsVisible={setIsVisible}
-                componentName={'awards'}
-            />
+            <div className={styles.awardsItems}
+                onClick={() => setModalScroll()}>
+                {items.map((elem) =>
+                    <AwardsItem key={elem} />
+                )}
+            </div>
+
+            <MyModal visible={visible}
+                setVisible={setVisible}
+                componentName={'awards'} />
         </div>
     )
 }

@@ -5,6 +5,7 @@
 .mainInfo {
     text-align: center;
     margin-bottom: 24px;
+    color: rgba(255, 255, 255, .8);
 
     >div {
         margin-bottom: 4px;
@@ -26,6 +27,7 @@
         width: 441px;
         margin-top: 10px;
         margin-bottom: 20px;
+        color: #fff;
     }
 }
 
@@ -38,9 +40,7 @@
         margin-left: 4px;
     }
 
-    img {
-        width: 15px;
-        height: 15px;
+    svg {
         margin-left: 4px;
     }
 
@@ -54,9 +54,10 @@
     background-color: #ffffff29;
     padding: 2px 6px;
     border-radius: 4px 4px 4px 4px;
+    color: #fff;
 }
 
-.actorsAndUserButtons {
+.otherInfo {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -138,45 +139,10 @@
     display: none;
 }
 
-.trailerButton {
-    height: 40px;
-    width: 109px;
-    margin-right: 16px;
-    background-color: rgba(255, 255, 255, .08);
-    border-color: rgba(255, 255, 255, .08);
-    border-radius: 8px;
-    padding: 10px 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    h3 {
-        font-size: 15px;
-        line-height: 20px;
-        font-weight: 500;
-        font-style: normal;
-        color: rgba(255, 255, 255, .72);
-    }
-}
-
 .buttonsWrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.markerButton,
-.shareButton {
-    background-color: rgba(255, 255, 255, .08);
-    border-color: rgba(255, 255, 255, .08);
-    border-radius: 8px;
-    height: 40px;
-    width: 40px;
-    padding: 10px 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 16px;
 }
 
 .premy {
@@ -219,26 +185,8 @@
     overflow: hidden;
 }
 
-.freeFilmsButton {
+.freeFilmsWrapper {
     display: none;
-    width: 66%;
-    height: 40px;
-    background-color: rgba(255, 255, 255, .08);
-    border-color: rgba(255, 255, 255, .08);
-    border-radius: 8px;
-    padding: 10px 12px;
-
-    img {
-        margin-right: 4px;
-    }
-
-    h3 {
-        font-size: 15px;
-        line-height: 20px;
-        font-weight: 500;
-        font-style: normal;
-        color: rgba(255, 255, 255, .72);
-    }
 }
 
 .filmDescription {
@@ -340,12 +288,12 @@
     .infoContent {
         width: 100%;
     }
-    
-    .mainInfo{
+
+    .mainInfo {
         display: none;
     }
-   
-    .actorsAndUserButtons {
+
+    .otherInfo {
         margin-top: 32px;
     }
 
@@ -368,26 +316,14 @@
         width: 334px;
     }
 
-    .trailerButton {
-        width: 334px;
-        margin-bottom: 12px;
-    }
-
-    .markerButton,
-    .shareButton {
-        width: 45%;
-        margin-right: 0;
-    }
-
     .premy {
         width: 66%;
     }
 
-    .freeFilmsButton {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .freeFilmsWrapper {
+        display: block;
     }
+
 
     .filmDescription {
         width: 66%;
@@ -416,7 +352,7 @@
 }
 
 @media(max-width:880px) {
-    .actorsAndUserButtons {
+    .otherInfo {
         flex-direction: column-reverse;
         margin-top: 0;
     }
@@ -436,30 +372,7 @@
         background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .16) 100%);
     }
 
-    .trailerButton {
-        width: 116px;
-        margin: 0;
-    }
-
-    .trailerButton,
-    .markerButton,
-    .shareButton {
-        background: transparent;
-        height: 36px;
-        padding-left: 4px;
-        padding-right: 4px;
-    }
-
-    .markerButton,
-    .shareButton {
-        width: 44px;
-    }
-
     .premy {
-        width: 100%;
-    }
-
-    .freeFilmsButton {
         width: 100%;
     }
 
