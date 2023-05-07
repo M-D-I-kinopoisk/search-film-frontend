@@ -1,53 +1,49 @@
 import React from 'react'
 
-import style from './WatchAllDevices.module.scss'
+import styles from './WatchAllDevices.module.scss'
 import Image from 'next/image'
 
 const WatchAllDevices: React.FC = () => {
     return (
-        <div className={style.devices}>
-            <div className={style.devicesInfoWrapper}>
-                <div className={style.devicesInfo}>
-                    <div className={style.devicesInfoTitle}>
-                        Cмотреть «1+1» на всех устройствах
-                    </div>
-                    <div className={style.devicesInfoDescription}>
-                        Приложение доступно для скачивания на iOS, Android, SmartTV и приставках
-                    </div>
-                    <div className={style.connectBtn}>
-                        Подключить устройства
-                    </div>
+        <div className={styles.devices}>
+            <div>
+                <div className={styles.devicesInfoTitle}>
+                    Cмотреть «1+1» на всех устройствах
+                </div>
+
+                <div className={styles.devicesInfoDescription}>
+                    Приложение доступно для скачивания на iOS, Android, SmartTV и приставках
+                </div>
+
+                <div className={styles.connectBtn}>
+                    Подключить устройства
                 </div>
             </div>
-            <div className={style.devicesImg}>
-                <Image
-                    className={style.frameImg}
+
+            <div className={styles.devicesImages}>
+                <Image className={styles.frameImg}
                     alt='frame'
                     width={536}
                     height={272}
-                    src='https://www.ivi.ru/images/_ds/watchAllDevices/tv-without-poster.png'
-                />
-                <Image
-                    className={style.ipadImg}
-                    alt='frame'
+                    src='https://www.ivi.ru/images/_ds/watchAllDevices/tv-without-poster.png' />
+             
+                <Image className={styles.ipadFrameImg}
+                    alt='ipadFrame'
                     width={200}
                     height={136}
-                    src='https://www.ivi.ru/images/_ds/watchAllDevices/ipad-without-poster.png'
-                />
-                <Image
-                    className={style.mainImgIpad}
+                    src='https://www.ivi.ru/images/_ds/watchAllDevices/ipad-without-poster.png' />
+
+                <Image className={styles.mainIpadImg}
                     alt='frame'
                     width={188}
                     height={102}
-                    src='https://thumbs.dfs.ivi.ru/storage8/contents/0/e/8091320a67fabb8119ac00fdc386c5.jpg/400x226/'
-                />
-                <Image
-                    className={style.mainImgTv}
+                    src='https://thumbs.dfs.ivi.ru/storage8/contents/0/e/8091320a67fabb8119ac00fdc386c5.jpg/400x226/' />
+
+                <Image className={styles.mainTvImg}
                     alt='frame'
                     width={337}
                     height={192}
-                    src='https://thumbs.dfs.ivi.ru/storage8/contents/0/e/8091320a67fabb8119ac00fdc386c5.jpg/400x226/'
-                />
+                    src='https://thumbs.dfs.ivi.ru/storage8/contents/0/e/8091320a67fabb8119ac00fdc386c5.jpg/400x226/' />
             </div>
         </div>
     )

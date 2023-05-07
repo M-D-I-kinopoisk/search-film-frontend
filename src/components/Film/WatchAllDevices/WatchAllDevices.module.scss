@@ -41,8 +41,7 @@
     font-style: normal;
 }
 
-
-.devicesImg {
+.devicesImages {
     position: relative;
     width: 536px;
     height: 272px;
@@ -54,21 +53,21 @@
     z-index: 1;
 }
 
-.ipadImg {
+.ipadFrameImg {
     position: absolute;
     z-index: 3;
     left: 375px;
     top: 136px;
 }
 
-.mainImgIpad {
+.mainIpadImg {
     position: absolute;
     z-index: 4;
     left: 382px;
     top: 165px;
 }
 
-.mainImgTv {
+.mainTvImg {
     position: absolute;
     z-index: 0;
     left: 100px;
@@ -90,21 +89,21 @@
         margin-left: -139px;
     }
 
-    .ipadImg {
+    .ipadFrameImg {
         width: 100px;
         height: 67px;
         left: 52%;
         top: 26%;
     }
 
-    .mainImgIpad {
+    .mainIpadImg {
         width: 94px;
         height: 51px;
         left: 52.5%;
         top: 35%;
     }
 
-    .mainImgTv {
+    .mainTvImg {
         width: 168px;
         height: 96px;
         left: 50%;

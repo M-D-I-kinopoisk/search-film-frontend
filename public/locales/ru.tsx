@@ -49,6 +49,13 @@ export const ru = {
             text3: 'Смотрите на',
             text4: 'Все устройства',
         }
+    },
+    tabBar : {
+        title1: 'Мой Иви',
+        title2: 'Каталог',
+        title3: 'Поиск',
+        title4: 'TV+',
+        title5: 'Еще',
     }
 }
 

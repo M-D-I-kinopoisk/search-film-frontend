@@ -22,17 +22,16 @@
     }
 }
 
+.language,
+.sub,
+.picture {
+    margin-top: 16px;
+}
+
 .quality {
     display: none;
 }
 
-.picture {
-    span {
-        color: rgba(255, 255, 255, .4);
-    }
-
-    margin-bottom: 12px;
-}
 
 .qualityDescription,
 .pictureDescription {
@@ -57,10 +56,12 @@
     }
 }
 
-.language,
-.sub,
 .picture {
-    margin-top: 16px;
+    span {
+        color: rgba(255, 255, 255, .4);
+    }
+
+    margin-bottom: 12px;
 }
 
 @media(max-width:1160px) {
