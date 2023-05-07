@@ -6,6 +6,13 @@ import Image from 'next/image'
 import { filmDescription } from '@/const/const'
 import MyButton from '@/components/UI/MyButton/MyButton'
 
+import { FiVolume1 } from 'react-icons/fi'
+import { BsKeyboard } from 'react-icons/bs'
+import { BsPlay } from 'react-icons/bs'
+import { BsBookmark } from 'react-icons/bs'
+import { FiShare } from 'react-icons/fi'
+import { MdOndemandVideo } from 'react-icons/md'
+
 const InfoContent: React.FC = () => {
     const [show, setShow] = useState(false)
 
@@ -20,19 +27,9 @@ const InfoContent: React.FC = () => {
 
                 <div className={styles.params}>
                     <div className={styles.hd}>FullHD</div>
-
-                    <Image alt='volume'
-                        width={15}
-                        height={15}
-                        src='/img/volume.png' />
-
+                    <FiVolume1 size={25} color='rgba(255,255,255,.8)' />
                     <div>Рус</div>
-
-                    <Image alt='keyboard'
-                        width={15}
-                        height={15}
-                        src='/img/keyboard.png' />
-
+                    <BsKeyboard size={25} color='rgba(255,255,255,.8)' />
                     <div>Рус</div>
                 </div>
             </div>
@@ -70,14 +67,15 @@ const InfoContent: React.FC = () => {
 
                 <div className={styles.userButtons}>
                     <MyButton text={'Трейлер'}
-                        imageSrc={'/img/play.png'}
+                        icon={<BsPlay size={16} color='rgba(255,255,255,.72)' />}
                         nameClass='trailerButton' />
 
                     <div className={styles.buttonsWrapper}>
-                        <MyButton imageSrc={'/img/marker.png'}
+                        <MyButton
+                            icon={<BsBookmark size={16} color='rgba(255,255,255,.72)' />}
                             nameClass='markerButton' />
 
-                        <MyButton imageSrc={'/img/share.png'}
+                        <MyButton icon={<FiShare size={16} color='rgba(255,255,255,.72)' />}
                             nameClass='shareButton' />
                     </div>
                 </div>
@@ -101,7 +99,7 @@ const InfoContent: React.FC = () => {
 
             <div className={styles.freeFilmsWrapper}>
                 <MyButton text={'Бесплатные фильмы'}
-                    imageSrc={'/img/video.png'}
+                    icon={<MdOndemandVideo size={16} color='rgba(255,255,255,.72)' />}
                     nameClass='freeFilmsButton' />
             </div>
 

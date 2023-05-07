@@ -7,7 +7,7 @@ import MyModal from '../MyModal/MyModal'
 const TrailersList: React.FC = () => {
     const [visible, setVisible] = useState(false)
 
-    let items = [1, 2, 3, 4, 5, 6]
+    let items = [1, 2, 3, 4]
 
     const setModalScroll = () => {
         setVisible(true)

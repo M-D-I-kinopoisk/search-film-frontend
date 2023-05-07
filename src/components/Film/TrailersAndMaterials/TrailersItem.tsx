@@ -3,6 +3,8 @@ import React from 'react'
 import styles from './Trailers.module.scss'
 import Image from 'next/image'
 
+import { RxLapTimer } from 'react-icons/rx'
+
 type TrailersItemProps = {
     inModal?: any
 }
@@ -24,10 +26,7 @@ const TrailersItem: React.FC<TrailersItemProps> = ({ inModal }) => {
                     </div>
 
                     <div className={styles.modalFullDuration}>
-                        <Image alt='Трейлер'
-                            width={16}
-                            height={16}
-                            src='/img/time.png' />
+                        <RxLapTimer size={16} color={'#ea003d'} />
                         <h3>0:02:11</h3>
                     </div>
                 </div>
@@ -43,7 +42,7 @@ const TrailersItem: React.FC<TrailersItemProps> = ({ inModal }) => {
                     <div className={styles.itemName}>
                         Трейлер (дублированный)
                     </div>
-                    
+
                     <div className={styles.shortDuration}>
                         3 мин.
                     </div>

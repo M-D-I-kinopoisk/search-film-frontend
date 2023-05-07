@@ -5,6 +5,7 @@
 .mainInfo {
     text-align: center;
     margin-bottom: 24px;
+    color: rgba(255, 255, 255, .8);
 
     >div {
         margin-bottom: 4px;
@@ -26,6 +27,7 @@
         width: 441px;
         margin-top: 10px;
         margin-bottom: 20px;
+        color: #fff;
     }
 }
 
@@ -38,9 +40,7 @@
         margin-left: 4px;
     }
 
-    img {
-        width: 15px;
-        height: 15px;
+    svg {
         margin-left: 4px;
     }
 
@@ -54,6 +54,7 @@
     background-color: #ffffff29;
     padding: 2px 6px;
     border-radius: 4px 4px 4px 4px;
+    color: #fff;
 }
 
 .otherInfo {
@@ -184,10 +185,9 @@
     overflow: hidden;
 }
 
-.freeFilmsWrapper{
+.freeFilmsWrapper {
     display: none;
 }
-
 
 .filmDescription {
     font-weight: 400;
@@ -288,11 +288,11 @@
     .infoContent {
         width: 100%;
     }
-    
-    .mainInfo{
+
+    .mainInfo {
         display: none;
     }
-   
+
     .otherInfo {
         margin-top: 32px;
     }
@@ -320,10 +320,10 @@
         width: 66%;
     }
 
-    .freeFilmsWrapper{
+    .freeFilmsWrapper {
         display: block;
     }
-    
+
 
     .filmDescription {
         width: 66%;

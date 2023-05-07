@@ -20,6 +20,7 @@
     flex-wrap: wrap;
     width: 100%;
     padding-left: 10px;
+    position: relative;
 
     >div {
         padding-right: 24px;
@@ -85,9 +86,7 @@
         }
 
         .galleryItemMarker {
-            img {
-                opacity: 1;
-            }
+            opacity: 1;
         }
     }
 }
@@ -104,11 +103,10 @@
 }
 
 .galleryItemMarker {
-    img {
-        opacity: 0;
-        top: 10px;
-        right: 10px;
-    }
+    position: absolute;
+    opacity: 0;
+    top: 10px;
+    right: 10px;
 }
 
 .galleryItemDescroption {
@@ -121,18 +119,54 @@
 .galleryItemRating {
     top: 100px;
     left: 10px;
+    display: flex;
+    align-items: center;
 
-    span {
+    h3 {
         color: #fff;
         font-size: 24px;
         line-height: 28px;
         font-weight: 700;
         font-style: normal;
+        margin-right: 10px;
     }
+}
 
-    img {
-        margin-left: 10px;
+.graphs {
+    .progressBar {
+        background-color: rgba(165, 161, 178, .32);
+        width: 20px;
+        height: 2px;
+        margin-top: 2px;
+
+        border-radius: 2px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .valueBar {
+            background-color: #ea003d;
+            height: 2px;
+            width: 50%;
+        }
     }
+}
+
+.graph {
+    width: 104px;
+    height: 4px;
+    border-radius: 4px;
+
+    background-color: hsla(254, 9%, 52%, .32);
+}
+
+.graphProgress {
+    border-radius: 4px;
+
+    background-color: #ea003d;
+    height: 4px;
+    width: 54%;
 }
 
 .actory {

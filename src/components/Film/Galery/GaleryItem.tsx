@@ -2,6 +2,7 @@ import React from 'react'
 
 import styles from './Galery.module.scss'
 import Image from 'next/image'
+import { BsBookmark } from 'react-icons/bs'
 
 type GaleryItemProps = {
 }
@@ -18,23 +19,36 @@ const GaleryItem: React.FC<GaleryItemProps> = () => {
                 <div className={styles.setIvi}>Сериал Иви</div>
 
                 <div className={styles.galleryItemMarker}>
-                    <Image alt='Добавить'
-                        width={20}
-                        height={20}
-                        src='/img/marker.png' />
+                    <BsBookmark size={20} color='rgba(255,255,255,.88)' />
                 </div>
 
                 <div className={styles.galleryItemDescroption} >
                     <div className={styles.galleryItemRating}>
-                        <span>8,2</span>
-                        <Image alt='Прогресс'
-                            width={27}
-                            height={26}
-                            src='/img/progress.png' />
+                        <h3>8,2</h3>
+                        <div className={styles.graphs}>
+                            <div className={styles.progressBar}>
+                                <div className={styles.backBar}></div>
+                                <div className={styles.valueBar}></div>
+                            </div>
+                            <div className={styles.progressBar}>
+                                <div className={styles.backBar}></div>
+                                <div className={styles.valueBar}></div>
+                            </div>
+                            <div className={styles.progressBar}>
+                                <div className={styles.backBar}></div>
+                                <div className={styles.valueBar}></div>
+                            </div>
+                            <div className={styles.progressBar}>
+                                <div className={styles.backBar}></div>
+                                <div className={styles.valueBar}></div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className={styles.actory}>актеры</div>
-                    <div className={styles.progress}></div>
+                    <div className={styles.graph}>
+                        <div className={styles.graphProgress}></div>
+                    </div>
 
                     <div className={styles.galleryItemInfo}>
                         2021, Россия, Комедийные

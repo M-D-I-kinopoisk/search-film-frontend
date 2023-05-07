@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import styles from './MyModal.module.scss'
 import Image from 'next/image'
@@ -6,6 +6,11 @@ import CommentsItem from '../Comments/CommentsItem'
 import AwardsItem from '../Awards/AwardsItem'
 import CreatorsItem from '../Creators/CreatorsItem'
 import TrailersItem from '../TrailersAndMaterials/TrailersItem'
+
+import { BsChevronRight } from 'react-icons/bs'
+import { RiUserLine } from 'react-icons/ri'
+import { RxLapTimer } from 'react-icons/rx'
+import { AiOutlineLike } from "react-icons/ai"
 
 type MyModalProps = {
     visible?: boolean
@@ -45,12 +50,8 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
                         <div className={styles.modalContainer}>
                             <div onClick={() => closeModal()}
                                 className={styles.backLink}>
-                                <Image alt='Назад'
-                                    width={22}
-                                    height={22}
-                                    src='/img/left-arrow.png' />
-
-                                <span>К фильму</span>
+                                <BsChevronRight size={22} />
+                                <span>К фильму </span>
                             </div>
 
                             <div className={styles.modalWrapper}>
@@ -84,7 +85,8 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
 
                                                     <div className={styles.directorsItems}>
                                                         {elem.items.map((el) =>
-                                                            <CreatorsItem key={el} inModal={true} />
+                                                            <CreatorsItem key={el}
+                                                                inModal={true} />
                                                         )}
                                                     </div>
                                                 </div>
@@ -95,24 +97,27 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
                                     {active === 'comments' &&
                                         <div>
                                             <div className={styles.addCommentBlock}>
-                                                <Image alt='avatar'
-                                                    width={20}
-                                                    height={20}
-                                                    src='/img/avatar.png' />
+                                                <RiUserLine size={24} />
 
                                                 <input type='text'
                                                     placeholder='Написать комментарий' />
 
                                                 <div className={styles.buttons}>
-                                                    <button className={styles.cancelButton}>Отменить</button>
+                                                    <button
+                                                        className={styles.cancelButton}>
+                                                        Отменить
+                                                    </button>
                                                     <button disabled>Отправить</button>
                                                 </div>
                                             </div>
 
                                             <div>
                                                 {testItems.map((el) =>
-                                                    <CommentsItem key={el} inModal={true} />
+                                                    <CommentsItem key={el}
+                                                        inModal={true} />
                                                 )}
+                                                    <AiOutlineLike size={20} fill='#fff'/>
+
                                             </div>
 
                                             <div className={styles.showMoreButton}>
@@ -124,7 +129,8 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
                                     {active === 'trailers' &&
                                         <div className={styles.trailers}>
                                             {testItems.map((el) =>
-                                                <TrailersItem key={el} inModal={true} />
+                                                <TrailersItem key={el}
+                                                    inModal={true} />
                                             )}
                                         </div>
                                     }
@@ -132,7 +138,8 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
                                     {active === 'awards' &&
                                         <div className={styles.awards}>
                                             {testItems.map((el) =>
-                                                <AwardsItem key={el} inModal={true} />
+                                                <AwardsItem key={el}
+                                                    inModal={true} />
                                             )}
                                         </div>
                                     }
@@ -146,10 +153,24 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
 
                                     <div className={styles.ball}>
                                         <span>8,9</span>
-                                        <Image alt='Прогресс'
-                                            width={20}
-                                            height={14}
-                                            src='/img/progress.png' />
+                                        <div className={styles.graphs}>
+                                            <div className={styles.progressBar}>
+                                                <div className={styles.backBar}></div>
+                                                <div className={styles.valueBar}></div>
+                                            </div>
+                                            <div className={styles.progressBar}>
+                                                <div className={styles.backBar}></div>
+                                                <div className={styles.valueBar}></div>
+                                            </div>
+                                            <div className={styles.progressBar}>
+                                                <div className={styles.backBar}></div>
+                                                <div className={styles.valueBar}></div>
+                                            </div>
+                                            <div className={styles.progressBar}>
+                                                <div className={styles.backBar}></div>
+                                                <div className={styles.valueBar}></div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div className={styles.information}>
@@ -157,18 +178,13 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
                                     </div>
 
                                     <div className={styles.duration}>
-                                        <Image alt='Назад'
-                                            width={16}
-                                            height={16}
-                                            src='/img/time.png' />
+                                        <RxLapTimer size={16} />
                                         <span>112 минут</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             }
         </>

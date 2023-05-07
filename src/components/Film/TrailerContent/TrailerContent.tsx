@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import styles from './TrailerContent.module.scss'
-import Image from 'next/image'
 import MyButton from '@/components/UI/MyButton/MyButton'
+
+import { FiVolume1 } from 'react-icons/fi'
+import { BsKeyboard } from 'react-icons/bs'
+import { BsPlay } from 'react-icons/bs'
+import { BsBookmark } from 'react-icons/bs'
+import { FiShare } from 'react-icons/fi'
+import { MdOndemandVideo } from 'react-icons/md'
+import { IoMdExpand } from 'react-icons/io'
 
 const TrailerContent: React.FC = () => {
     const userButtonsInfo = [
-        { text: 'Трейлер', imageSrc: '/img/play.png', nameClass: 'trailerButton' },
-        { imageSrc: '/img/marker.png', nameClass: 'markerButton' },
-        { imageSrc: '/img/share.png', nameClass: 'shareButton' },
+        { text: 'Трейлер', icon: <BsPlay size={26} color='rgba(255,255,255,.72)' />, nameClass: 'trailerButton' },
+        { icon: <BsBookmark size={16} color='rgba(255,255,255,.72)' />, nameClass: 'markerButton' },
+        { icon: <FiShare size={16} color='rgba(255,255,255,.72)' />, nameClass: 'shareButton' },
     ]
 
     return (
@@ -20,19 +27,9 @@ const TrailerContent: React.FC = () => {
 
                 <div className={styles.params}>
                     <div className={styles.hd}>FullHD</div>
-
-                    <Image alt='volume'
-                        width={15}
-                        height={15}
-                        src='/img/volume.png' />
-
+                    <FiVolume1 size={25} color='rgba(255,255,255,.8)' />
                     <div>Рус</div>
-
-                    <Image alt='volume'
-                        width={15}
-                        height={15}
-                        src='/img/keyboard.png' />
-
+                    <BsKeyboard size={25} color='rgba(255,255,255,.8)' />
                     <div>Рус</div>
                 </div>
             </div>
@@ -46,10 +43,7 @@ const TrailerContent: React.FC = () => {
                 </div>
 
                 <div className={styles.expand}>
-                    <Image alt='Развернуть'
-                        width={16}
-                        height={16}
-                        src='/img/full.png' />
+                    <IoMdExpand size={16} color='rgba(255,255,255,.88)' />
                     <span>Развернуть трейлер</span>
                 </div>
 
@@ -71,16 +65,16 @@ const TrailerContent: React.FC = () => {
             <div className={styles.userButtons}>
                 <div className={styles.userButtonsWrapper}>
                     {userButtonsInfo.map((elem) =>
-                        <MyButton text={elem.text ? elem.text : null}
-                            imageSrc={elem.imageSrc}
+                        <MyButton key={elem.nameClass}
+                            text={elem.text ? elem.text : null}
+                            icon={elem.icon}
                             nameClass={elem.nameClass} />
                     )}
                 </div>
 
                 <MyButton text={'Бесплатные фильмы'}
-                    imageSrc={'/img/video.png'}
+                    icon={<MdOndemandVideo size={16} color='rgba(255,255,255,.72)' />}
                     nameClass='freeFilmsButton' />
-
             </div>
         </div>
     )

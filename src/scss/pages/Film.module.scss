@@ -26,6 +26,10 @@
 
 .arrow {
     display: none;
+
+    svg {
+        transform: rotate(180deg);
+    }
 }
 
 .choice {

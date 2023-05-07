@@ -5,25 +5,18 @@ import styles from './MyButton.module.scss'
 
 type MyButtonProps = {
     text?: any
-    imageSrc?: any
+    icon?: any
     nameClass?: any
 }
 
-const MyButton: React.FC<MyButtonProps> = ({ text, imageSrc, nameClass }) => {
+const MyButton: React.FC<MyButtonProps> = ({ text, icon, nameClass }) => {
     return (
         <button className={styles[nameClass]}>
             {text ?
-                <>
-                    <Image alt={text}
-                        width={16}
-                        height={16}
-                        src={imageSrc} />
+                <>{icon}
                     <h3>{text}</h3>
                 </> :
-                <Image alt={text}
-                    width={16}
-                    height={16}
-                    src={imageSrc} />
+                <>{icon}</>
             }
         </button>
     )

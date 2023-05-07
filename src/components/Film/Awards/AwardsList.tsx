@@ -10,16 +10,19 @@ type AwardsListProps = {
 const AwardsList: React.FC<AwardsListProps> = () => {
     const [visible, setVisible] = useState(false)
 
-    let items = [1, 2, 3, 4, 5, 6]
+    const items = [1, 2, 3, 4]
 
     const setModalScroll = () => {
         setVisible(true)
         document.body.classList.add('modalScroll')
     }
-    
+
     return (
         <div className={styles.awards}>
-            <div className={styles.awardsTitle}>Награды</div>
+            <div onClick={() => setModalScroll()}
+                className={styles.awardsTitle}>
+                Награды
+            </div>
 
             <div className={styles.awardsItems}
                 onClick={() => setModalScroll()}>
