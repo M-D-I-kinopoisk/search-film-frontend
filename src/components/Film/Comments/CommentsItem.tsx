@@ -1,17 +1,21 @@
 import React from 'react'
 
-import style from './Comments.module.scss'
-import Image from 'next/image'
+import styles from './Comments.module.scss'
+
+import { AiOutlineLike } from "react-icons/ai"
+import { constants } from 'fs'
 
 type CommentsItemProps = {
     inModal?: any
+    openModal?: any
 }
 
-const CommentsItem: React.FC<CommentsItemProps> = ({ inModal }) => {
-    let comment = {
+const CommentsItem: React.FC<CommentsItemProps> = ({ inModal, openModal }) => {
+    const comment = {
         name: 'Анастасия',
         description: `Не имею привычки пересматривать фильмы, 
         но этот смотрела раз 6. Самый любимый!`,
+
         date: '1 февраля 2019'
     }
 
@@ -19,71 +23,48 @@ const CommentsItem: React.FC<CommentsItemProps> = ({ inModal }) => {
         <>
             {inModal ?
                 <div>
-                    <div className={style.modalComment}>
-                        <div className={style.modalInfoHeader}>
-                            <div className={style.modalAvatar}>А</div>
-                            <div className={style.modalName}>{comment.name}</div>
-                            <div className={style.modalDate}>{comment.date}</div>
-                            <div className={style.modalLikes}>
-                                <Image
-                                    alt='Like'
-                                    width={16}
-                                    height={16}
-                                    src='/img/like.png'
-                                />
-
+                    <div className={styles.modalComment}>
+                        <div className={styles.modalInfoHeader}>
+                            <div className={styles.modalAvatar}>А</div>
+                            <div className={styles.modalName}>{comment.name}</div>
+                            <div className={styles.modalDate}>{comment.date}</div>
+                            <div className={styles.modalLikes}>
+                                <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'} />
                                 <span>128</span>
-
-                                <Image
-                                    alt='Like'
-                                    width={16}
-                                    height={16}
-                                    src='/img/like.png'
-                                />
+                                <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'} />
                             </div>
                         </div>
-
-                        <div className={style.modalDescription}>
+                        <div className={styles.modalDescription}>
                             <p>{comment.description}</p>
                         </div>
                     </div>
 
-                    <div className={style.modalAnswerButton}>
+                    <div className={styles.modalAnswerButton}>
                         Ответить
                     </div>
                 </div>
                 :
-                <div className={style.commentsItem}>
-                    <div className={style.commentsItemName}>
+                <div className={styles.commentsItem}>
+                    <div className={styles.commentsItemName}>
                         {comment.name}
                     </div>
 
-                    <div className={style.commentsItemDescription}>
+                    <div onClick={openModal}
+                        className={styles.commentsItemDescription}>
                         {comment.description}
                         {comment.description}
                     </div>
 
-                    <div className={style.commentsItemBottom}>
-                        <div className={style.commentsItemDate}>
+                    <div className={styles.commentsItemBottom}>
+                        <div className={styles.commentsItemDate}>
                             {comment.date}
                         </div>
 
-                        <div className={style.commentsItemLikes}>
-                            <Image
-                                alt='Like'
-                                width={16}
-                                height={16}
-                                src='/img/like.png'
-                            />
-
-                            <span>36</span>
-
-                            <Image
-                                alt='Like'
-                                width={16}
-                                height={16}
-                                src='/img/like.png'
-                            />
+                        <div className={styles.commentsItemLikes}>
+                            <AiOutlineLike onClick={() => console.log('like')}
+                                size={16} fill={'rgba(126,121,143,.72)'} />
+                            <span>129</span>
+                            <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'} />
                         </div>
                     </div>
                 </div>
