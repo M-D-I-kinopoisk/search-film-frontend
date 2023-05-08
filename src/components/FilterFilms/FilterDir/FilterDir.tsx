@@ -4,7 +4,7 @@ import {BiSearch} from 'react-icons/bi'
 import {GiFilmProjector} from 'react-icons/gi'
 
 import styles from './filterDir.module.scss'
-import {Input} from '@/components/UI/Input/Input'
+import Input from '@/components/UI/Input/Input'
 
 
 const FilterDir = () => {

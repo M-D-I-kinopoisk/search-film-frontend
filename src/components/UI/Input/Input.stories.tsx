@@ -1,10 +1,33 @@
-import {Input} from './Input'
+import Input from './Input'
 
-import './input.module.scss'
+import {Meta, StoryObj} from '@storybook/react'
 
-export default {
+const meta: Meta<typeof Input> = {
     title: 'UI/Input',
     component: Input,
+    tags: ['autodocs'],
+    parameters : {
+        backgrounds: {
+            default: 'ivi',
+            values: [
+                {
+                    name: 'ivi',
+                    value: '#100e19',
+                },
+                {
+                    name: 'light',
+                    value: 'white',
+                },
+            ],
+        },
+    },
+    decorators: [
+        (Story) => (
+            <div style={{ margin: '3em' }}>
+                <Story />
+            </div>
+        ),
+    ],
     argTypes: {
         type: {
             type: 'string',
@@ -14,6 +37,8 @@ export default {
         }
     }
 }
+
+export default meta
 
 const Template = (args) => <Input {...args} />
 export const Search = Template.bind({})

@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-import {Input} from '@/components/UI/Input/Input'
+import Input from '@/components/UI/Input/Input'
 
 import {IoPersonCircleOutline} from 'react-icons/io5'
 

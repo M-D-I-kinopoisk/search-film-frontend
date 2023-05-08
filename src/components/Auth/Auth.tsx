@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 
-import {Input} from '@/components/UI/Input/Input'
+import Input from '@/components/UI/Input/Input'
 
 import {VscChromeClose} from 'react-icons/vsc'
 import {TbPencil} from 'react-icons/tb'

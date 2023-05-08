@@ -253,8 +253,8 @@ const DropDown: FC<DropDownProps> = ({
                                                 <Link
                                                     className={
                                                         idx == scrollList
-                                                            ? `${style.dropDown__newlink} ${style.dropDown__newlinkActiv}`
-                                                            : style.dropDown__newlink
+                                                            ? `${style.dropDown__newLink} ${style.dropDown__newLinkActive}`
+                                                            : style.dropDown__newLink
                                                     }
                                                     href={element.href}>
                                                     {element.name}

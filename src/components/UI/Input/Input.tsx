@@ -1,4 +1,4 @@
-import {FC, ReactNode, useEffect, useRef, useState} from 'react'
+import {FC,useEffect, useRef, useState} from 'react'
 
 import {BiSearch} from 'react-icons/bi'
 import {AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai'
@@ -10,17 +10,15 @@ export interface InputProps {
     label: string,
     onChange?: (e) => void,
     type: string,
-    children?: ReactNode,
     value?: any,
     search?: boolean,
     login?: boolean,
     password?: boolean
 }
 
-export const Input: FC<InputProps> = ({
+const Input: FC<InputProps> = ({
                                           label,
                                           onChange, type,
-                                          children,
                                           value,
                                           login,
                                           password,
@@ -67,3 +65,5 @@ export const Input: FC<InputProps> = ({
                 </div>}
         </div>)
 }
+
+export default Input

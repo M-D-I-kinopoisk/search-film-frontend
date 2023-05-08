@@ -138,7 +138,7 @@ const Footer = () => {
                             <div className={styles.footer__widget}>
                                 <MdVolumeOff size={60} color={'#fff'}/>
                             </div>
-                            <span>{t.footer.item4.title}</span>
+                            <span className={styles.footer__widgetText}>{t.footer.item4.title}</span>
                         </Link>
                     </div>
                 </div>

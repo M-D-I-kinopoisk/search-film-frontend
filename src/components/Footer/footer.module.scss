@@ -47,6 +47,7 @@
   font-size: 15px;
   line-height: 20px;
   margin-bottom: 8px;
+  text-decoration: none;
 
   &:hover {
     color: white;
@@ -80,6 +81,7 @@
   color: #fff;
   margin-top: 20px;
   margin-bottom: 12px;
+  border: 0;
 
   &:hover {
     transition-duration: .4s;
@@ -103,6 +105,7 @@
   background-color: #1f1b2e;
   transition-duration: .4s;
   color: #fff;
+  border: 0;
 
   &:hover {
     transition-duration: .4s;
@@ -118,6 +121,7 @@
 
 .footer__linkAsk {
   color: #fff;
+  text-decoration: none;
   transition-duration: .4s;
 
   &:hover {
@@ -138,6 +142,7 @@
   font-weight: 400;
   font-size: 15px;
   line-height: 20px;
+  text-decoration: none;
 }
 
 .footer__widget {
@@ -145,11 +150,12 @@
   width: 104px;
   height: 104px;
   justify-content: center;
+  align-items: center;
   border-radius: 20px;
   background-color: #834CC2;
   box-shadow: 0 0 95px 5px #A869F0;
-
 }
+
 
 
 .footer__downBlock {
@@ -185,6 +191,7 @@
   color: #ffffff;
   padding: 0 12px;
   align-items: center;
+  text-decoration: none;
 
   &:hover {
     transition-duration: .4s;
@@ -198,12 +205,16 @@
   line-height: 12px;
   font-weight: 500;
   color: rgba(255, 255, 255, .72);
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .footer__smartBtn_text {
   font-weight: 500;
   font-size: 15px;
   line-height: 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .footer_downBlock_right {
