@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@mui/base": "^5.0.0-alpha.126",
@@ -40,5 +42,15 @@
   "bugs": {
     "url": "https://github.com/M-D-I-kinopoisk/search-film-frontend/issues"
   },
-  "homepage": "https://github.com/M-D-I-kinopoisk/search-film-frontend#readme"
+  "homepage": "https://github.com/M-D-I-kinopoisk/search-film-frontend#readme",
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.9",
+    "@storybook/addon-interactions": "^7.0.9",
+    "@storybook/addon-links": "^7.0.9",
+    "@storybook/blocks": "^7.0.9",
+    "@storybook/nextjs": "^7.0.9",
+    "@storybook/react": "^7.0.9",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "storybook": "^7.0.9"
+  }
 }

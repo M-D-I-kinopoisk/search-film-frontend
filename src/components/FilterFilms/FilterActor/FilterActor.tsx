@@ -1,22 +1,26 @@
-import {BiSearch} from 'react-icons/bi'
+import {useState} from 'react'
+
+import {Input} from '@/components/UI/Input/Input'
+
 import {IoPersonCircleOutline} from 'react-icons/io5'
 
 import styles from './filterActor.module.scss'
 
 
 const FilterActor = () => {
+
+    const [inputActor, setInputActor] = useState('')
+    
+
     return (
         <div>
-            <div className={styles.inputText__body}>
-                <input type={'text'} className={styles.inputText__input}/>
-                <div className={styles.inputText__icon}>
-                    <BiSearch size={20}/>
-                </div>
-                <label className={styles.inputText__placeholder}>
-                    Актеры
-                </label>
-            </div>
-            <div className={styles.inputText__item}>
+            <Input label={'Актеры'}
+                   type={'text'}
+                   value={inputActor}
+                   search={true}
+                   onChange={(e) => setInputActor(e.target.value)}
+            />
+            <div className={styles.filterActor}>
                 <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
                 <span>Брэд Питт</span>
             </div>
