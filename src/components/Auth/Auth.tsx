@@ -1,3 +1,5 @@
+'use client'
+
 import {useState, useEffect} from 'react'
 
 import Input from '@/components/UI/Input/Input'
@@ -55,7 +57,7 @@ const Auth = () => {
                         </div>
                         <div className={styles.auth__headerProgress}>
                             <div className={styles.auth__headerProgress_line}
-                                 style={animate ? {width: '33%'} : null}></div>
+                                 style={animate ? {width: '33%'} : undefined}></div>
                         </div>
                         <div className={styles.container}>
                             <form className={styles.form}>
@@ -90,7 +92,7 @@ const Auth = () => {
                                     </>)}
 
                                 {toggleBlock &&
-                                    (<div className={!animate ? `${styles.formTwo__animate}` : null}>
+                                    (<div className={!animate ? `${styles.formTwo__animate}` : undefined}>
                                         <div
                                             className={!animate ? `${styles.form__blockLogin} ${styles.blockLogin__animate}` : `${styles.form__blockLogin}`}>
                                             <button

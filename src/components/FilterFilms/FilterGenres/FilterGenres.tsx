@@ -1,7 +1,23 @@
+
+
 import styles from './filterGenres.module.scss'
 
 
-const FilterGenres = () => {
+async function getGenres() {
+    const response = await fetch(
+        'https://jsonplaceholder.typicode.com/users',
+        // {next: {revalidate: 100}}
+    )
+    const data = await response.json()
+    return data
+}
+
+
+
+export default  function FilterGenres()   {
+
+    // const genres = await getGenres()
+
 
     const listGenres = [
         'Артхаус',
@@ -32,7 +48,6 @@ const FilterGenres = () => {
         'Фантастика',
         'Фэнтези',]
 
-
     return (
         <ul className={styles.genres__list}>
             {listGenres.map((element, inx) => {
@@ -42,4 +57,6 @@ const FilterGenres = () => {
     )
 }
 
-export default FilterGenres
+
+
+

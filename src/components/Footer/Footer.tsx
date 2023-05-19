@@ -16,9 +16,9 @@ import styles from './footer.module.scss'
 
 const Footer = () => {
 
-    const {locale} = useRouter()
+    // const {locale} = useRouter()
 
-    const t = locale === 'en' ? en : ru
+    const t =  ru
 
     return (
         <div className={styles.wrapper}>

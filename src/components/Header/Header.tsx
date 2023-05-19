@@ -1,3 +1,5 @@
+'use client'
+
 import {useState} from 'react'
 
 import {useRouter} from 'next/router'
@@ -27,9 +29,9 @@ const Header = () => {
     const [scrollList, setScrollList] = useState(0)
 
 
-    const {locale} = useRouter()
+    // const {locale} = useRouter()
 
-    const t = locale === 'en' ? en : ru
+    const t =  ru
 
 
     const handleMouseEnter = (e) => {
@@ -72,7 +74,7 @@ const Header = () => {
 
                 <div className={styles.header__right}>
 
-                    <Locales/>
+                    {/*<Locales/>*/}
 
                     <div className={styles.header__rightContainer}>
                         <Link

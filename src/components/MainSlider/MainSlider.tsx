@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from '../../scss/pages/home.module.scss'
+import styles from '@/app/home.module.scss'
 
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Autoplay, Navigation} from 'swiper'

@@ -3,9 +3,10 @@ import Home from '@/pages/home'
 
 const Main = () => {
     return (
-        <MainContainer title='Главная'>
-            <Home/>
-        </MainContainer>
+        <></>
+        // <MainContainer title='Главная'>
+        //     <Home/>
+        // </MainContainer>
     )
 }
 

@@ -1,3 +1,5 @@
+'use client'
+
 import {useState} from 'react'
 
 import {VscChromeClose} from 'react-icons/vsc'
@@ -43,6 +45,7 @@ const FilterFilms = () => {
                                                        searchDir: false,
                                                        searchActor: false,
                                                    })}>
+
 
                                 <FilterGenres/>
 

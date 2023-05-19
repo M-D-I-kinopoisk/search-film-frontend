@@ -27,7 +27,7 @@ const Input: FC<InputProps> = ({
 
     const [passToggle, setPassToggle] = useState(false)
 
-    const inputElement = useRef(null)
+    const inputElement = useRef<HTMLInputElement>(null)
     useEffect(() => {
         console.log(inputElement.current)
         if (inputElement.current) {
@@ -42,14 +42,14 @@ const Input: FC<InputProps> = ({
                     <RiUser6Line size={20}/>
                 </div>}
             <input
-                style={login ? {paddingLeft: '33px'} : null}
+                style={login ? {paddingLeft: '33px'} : undefined}
                 ref={inputElement}
                 value={value}
                 onChange={onChange}
                 type={passToggle ? 'text' : type}
                 className={styles.input}/>
             <label
-                style={login ? {paddingLeft: '20px'} : null}
+                style={login ? {paddingLeft: '20px'} : undefined}
                 className={value?.length > 0 ? `${styles.label} ${styles.inputNotEmpty}` : styles.label}>
                 {label}
             </label>
