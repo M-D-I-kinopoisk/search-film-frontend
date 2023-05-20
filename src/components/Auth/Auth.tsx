@@ -1,8 +1,11 @@
-import {useState, useRef, useEffect} from 'react'
+'use client'
+
+import {useState, useEffect} from 'react'
+
+import Input from '@/components/UI/Input/Input'
 
 import {VscChromeClose} from 'react-icons/vsc'
 import {TbPencil} from 'react-icons/tb'
-import {AiOutlineEyeInvisible, AiOutlineEye} from 'react-icons/ai'
 
 import styles from './auth.module.scss'
 
@@ -23,17 +26,7 @@ const Auth = () => {
 
     const [toggleBlock, setToggleBlock] = useState(false)
 
-    const [passToggle, setPassToggle] = useState(false)
-
     const [animate, setAnimate] = useState(false)
-
-
-    const inputElement = useRef(null)
-    useEffect(() => {
-        if (inputElement.current) {
-            inputElement.current.focus()
-        }
-    }, [toggleBlock, passToggle])
 
 
     const buttonClickNext = () => {
@@ -64,7 +57,7 @@ const Auth = () => {
                         </div>
                         <div className={styles.auth__headerProgress}>
                             <div className={styles.auth__headerProgress_line}
-                                 style={animate ? {width: '33%'} : null}></div>
+                                 style={animate ? {width: '33%'} : undefined}></div>
                         </div>
                         <div className={styles.container}>
                             <form className={styles.form}>
@@ -80,15 +73,12 @@ const Auth = () => {
                                     <>
                                         <div
                                             className={animate ? `${styles.form__LoginContainer} ${styles.btn__animate}` : `${styles.form__LoginContainer}`}>
-                                            <div className={styles.inputText__body}>
-                                                <input ref={inputElement} value={inputLogin}
-                                                       onChange={(e) => setInputLogin(e.target.value)}
-                                                       type={'text'}
-                                                       className={styles.inputText__input}/>
-                                                <label className={styles.inputText__placeholder}>
-                                                    Через email или телефон
-                                                </label>
-                                            </div>
+                                            <Input label={'Через email или телефон'}
+                                                   onChange={(e) => setInputLogin(e.target.value)}
+                                                   type={'text'}
+                                                   value={inputLogin}
+                                                   login={true}
+                                            />
                                         </div>
                                         <div
                                             className={animate ? `${styles.form__btnContainer} ${styles.btn__animate}` : `${styles.form__btnContainer}`}>
@@ -102,7 +92,7 @@ const Auth = () => {
                                     </>)}
 
                                 {toggleBlock &&
-                                    (<div className={!animate ? `${styles.formTwo__animate}` : null}>
+                                    (<div className={!animate ? `${styles.formTwo__animate}` : undefined}>
                                         <div
                                             className={!animate ? `${styles.form__blockLogin} ${styles.blockLogin__animate}` : `${styles.form__blockLogin}`}>
                                             <button
@@ -122,21 +112,12 @@ const Auth = () => {
                                         </span>
                                             </div>
                                             <div className={styles.form__LoginContainer}>
-                                                <div className={styles.inputText__body}>
-                                                    <input ref={inputElement}
-                                                           type={!passToggle ? 'password' : 'text'}
-                                                           onChange={(e) => setInputPass(e.target.value)}
-                                                           className={styles.inputText__input}/>
-                                                    <label className={styles.inputText__placeholder}>
-                                                        Введите пароль
-                                                    </label>
-                                                    <div className={styles.password__toggle}
-                                                         onClick={() => setPassToggle(!passToggle)}>
-                                                        {passToggle
-                                                            ? <AiOutlineEye size={20}/>
-                                                            : <AiOutlineEyeInvisible size={20}/>}
-                                                    </div>
-                                                </div>
+                                                <Input label={'Введите пароль'}
+                                                       onChange={(e) => setInputPass(e.target.value)}
+                                                       type={'password'}
+                                                       password={true}
+                                                       value={inputPass}
+                                                />
                                             </div>
                                             <div className={styles.form__btnContainer}>
                                                 <button

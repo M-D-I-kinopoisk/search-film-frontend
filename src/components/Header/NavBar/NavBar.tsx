@@ -14,9 +14,9 @@ export interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
 
-    const {locale, locales, asPath} = useRouter()
+    // const {locale, locales, asPath} = useRouter()
 
-    const t = locale === 'en' ? en : ru
+    const t =  ru
 
     return (
         <nav className={styles.navbar}>

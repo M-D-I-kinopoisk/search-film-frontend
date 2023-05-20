@@ -1,7 +1,7 @@
 import React from 'react'
 
-import MainContainer from '@/components/MainContainer/MainContainer'
-import styles from '../scss/pages/film.module.scss'
+
+import styles from './film.module.scss'
 import WatchAllDevices from '@/components/Film/WatchAllDevices/WatchAllDevices'
 import InfoContent from '@/components/Film/InfoContent/InfoContent'
 import AwardsList from '@/components/Film/Awards/AwardsList'
@@ -16,7 +16,6 @@ import { BsChevronRight } from 'react-icons/bs'
 
 const Film: React.FC = () => {
     return (
-        <MainContainer title='Страница фильма'>
             <div className={styles.wrapper}>
                 <div className={styles.genre}>
                     <div className={styles.title}>
@@ -38,14 +37,13 @@ const Film: React.FC = () => {
                     <InfoContent />
                 </div>
                 <FilmsCategory title='С фильмом «1+1» смотрят' />
-                {/* <GaleryList /> */}
+                 <GaleryList />
                 <CreatorsList />
                 <AwardsList />
                 <TrailersList />
                 <CommentList />
                 <WatchAllDevices />
             </div>
-        </MainContainer>
     )
 }
 

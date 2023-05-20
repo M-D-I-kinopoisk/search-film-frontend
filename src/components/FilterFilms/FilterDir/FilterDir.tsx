@@ -1,21 +1,25 @@
+import {useState} from 'react'
+
 import {BiSearch} from 'react-icons/bi'
 import {GiFilmProjector} from 'react-icons/gi'
 
 import styles from './filterDir.module.scss'
+import Input from '@/components/UI/Input/Input'
+
 
 const FilterDir = () => {
+
+    const [inputDir, setInputDir] = useState('')
+    
     return (
         <div>
-            <div className={styles.inputText__body}>
-                <input type={'text'} className={styles.inputText__input}/>
-                <div className={styles.inputText__icon}>
-                    <BiSearch size={20}/>
-                </div>
-                <label className={styles.inputText__placeholder}>
-                    Режиссеры
-                </label>
-            </div>
-            <div className={styles.inputText__item}>
+            <Input label={'Режиссеры'}
+                   type={'text'}
+                   value={inputDir}
+                   search={true}
+                   onChange={(e) => setInputDir(e.target.value)}
+            />
+            <div className={styles.filterDir}>
                 <GiFilmProjector color={'rgb(234, 0, 61)'} size={20}/>
                 <span>Брэд Питт</span>
             </div>

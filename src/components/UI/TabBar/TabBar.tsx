@@ -17,9 +17,11 @@ import style from './TabBar.module.scss'
 const TabBar = () => {
 
 
-    const {locale, route} = useRouter()
+    // const {locale, route} = useRouter()
 
-    const t = locale === 'en' ? en : ru
+    const t = ru
+
+    // const t = locale === 'en' ? en : ru
 
 
     return (

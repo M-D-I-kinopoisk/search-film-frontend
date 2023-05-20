@@ -14,18 +14,18 @@ type MainContainerProps = {
 const MainContainer: React.FC<MainContainerProps> = ({children, title}) => {
     return (
         <>
-            <Head>
-                <meta key={'film search'}/>
-                <title>{title}</title>
-            </Head>
-            <Header/>
-            <div>
-                {children}
-            </div>
-            <Footer/>
+            {/*<Head>*/}
+            {/*    <meta key={'film search'}/>*/}
+            {/*    <title>{title}</title>*/}
+            {/*</Head>*/}
+            {/*/!*<Header/>*!/*/}
+            {/*<div>*/}
+            {/*    {children}*/}
+            {/*</div>*/}
+            {/*<Footer/>*/}
             {/*расскоментить, откроется модалка*/}
             {/*<Auth/>*/}
-            <TabBar/>
+            {/*<TabBar/>*/}
         </>
     )
 }

@@ -1,18 +1,16 @@
-import React from 'react'
+import {FC} from 'react'
 
-import MainContainer from '@/components/MainContainer/MainContainer'
-import styles from '../scss/pages/Actor.module.scss'
+import styles from './actor.module.scss'
 import Image from 'next/image'
 
-const Actor: React.FC = () => {
+const Actor: FC = () => {
     return (
-        <MainContainer title='Актер'>
             <div className={styles.wrapper}>
                 <div className={styles.backLink}>
                     <Image alt='Назад'
-                        width={20}
-                        height={24}
-                        src='/img/left-arrow.png' />
+                           width={20}
+                           height={24}
+                           src='/img/left-arrow.png' />
                     <span >Назад</span>
                 </div>
 
@@ -20,9 +18,9 @@ const Actor: React.FC = () => {
                     <div>
                         <div className={styles.img}>
                             <Image alt='Актер'
-                                width={120}
-                                height={120}
-                                src='https://thumbs.dfs.ivi.ru/storage33/contents/f/f/06672be611ab9b9e54579c4f645460.jpg/120x144/?q=85' />
+                                   width={120}
+                                   height={120}
+                                   src='https://thumbs.dfs.ivi.ru/storage33/contents/f/f/06672be611ab9b9e54579c4f645460.jpg/120x144/?q=85' />
                         </div>
 
                         <h2 className={styles.name}>Франсуа Клюзе</h2>
@@ -49,9 +47,9 @@ const Actor: React.FC = () => {
                             <div className={styles.item}>
                                 <div className={styles.filmImg}>
                                     <Image alt='Фильм'
-                                        width={80}
-                                        height={122}
-                                        src='https://thumbs.dfs.ivi.ru/storage38/contents/0/0/55c8a2551297804e709c65c9b4ecc0.jpg/172x264/?q=85' />
+                                           width={80}
+                                           height={122}
+                                           src='https://thumbs.dfs.ivi.ru/storage38/contents/0/0/55c8a2551297804e709c65c9b4ecc0.jpg/172x264/?q=85' />
                                 </div>
 
                                 <div className={styles.filmInfo}>
@@ -74,7 +72,6 @@ const Actor: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </MainContainer>
     )
 }
 

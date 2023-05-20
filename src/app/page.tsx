@@ -1,6 +1,10 @@
-import React from 'react'
+'use client'
 
-import styles from '../scss/pages/home.module.scss'
+import React from 'react'
+import {Metadata} from 'next'
+
+
+import styles from './home.module.scss'
 
 import TeaserBtn from '@/components/UI/TeaserBtn'
 import MainSlider from '@/components/MainSlider/MainSlider'
@@ -8,6 +12,8 @@ import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
 import FilmsRating from '@/components/FilmsRating/FilmsRating'
 import FilmsClause from '@/components/FilmsClause/FilmsClause'
 import FilmsInteresting from '@/components/FilmsInteresting/FilmsInteresting'
+
+
 
 const Home: React.FC = () => {
     return (
