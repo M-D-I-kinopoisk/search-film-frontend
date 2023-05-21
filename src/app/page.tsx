@@ -13,11 +13,26 @@ import FilmsRating from '@/components/FilmsRating/FilmsRating'
 import FilmsClause from '@/components/FilmsClause/FilmsClause'
 import FilmsInteresting from '@/components/FilmsInteresting/FilmsInteresting'
 
-
+import {useSelector, useDispatch} from 'react-redux'
+import {increment, decrement, incrementByAmount} from '@/Features/counter/counterSlice'
+import {RootState} from '@/GlobalRedux/store'
 
 const Home: React.FC = () => {
+
+    const count = useSelector((state: RootState) => state.counter.value)
+    const dispatch = useDispatch()
+
     return (
         <div className={styles.wrapper}>
+
+            {/*Редакс счетчик*/}
+            <div className={styles.btn__group}>
+                <button className={styles.btn} onClick={() => dispatch(increment())}>Increment</button>
+                <span className={styles.count}>{count}</span>
+                <button  className={styles.btn}onClick={() => dispatch(decrement())}>Decrement</button>
+                <button  className={styles.btn}onClick={() => dispatch(incrementByAmount(2))}>IncrementByAmount</button>
+            </div>
+
             <MainSlider/>
             <div className={styles.container}>
                 <ul className={styles.teaser__list}>

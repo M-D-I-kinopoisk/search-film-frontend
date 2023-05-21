@@ -5,6 +5,8 @@ import Header from '@/components/Header/Header'
 import TabBar from '@/components/UI/TabBar/TabBar'
 import Auth from '@/components/Auth/Auth'
 import {Metadata} from 'next'
+import {Providers} from '@/GlobalRedux/provider'
+
 
 export const metadata: Metadata = {
     title: 'Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем качестве',
@@ -19,15 +21,17 @@ export default function RootLayout({
     return (
         <html lang='en'>
         <body>
-        <Header/>
-        {/*работает просто раскоментить*/}
-        {/*<Auth/>*/}
-        <main>
-            {children}
-        </main>
-        {/*пока не работает, проблема с маршрутами в компоненте*/}
-        {/*<TabBar/>*/}
-        <Footer/>
+        <Providers>
+            <Header/>
+            {/*работает просто раскоментить*/}
+            {/*<Auth/>*/}
+            <main>
+                {children}
+            </main>
+            {/*пока не работает, проблема с маршрутами в компоненте*/}
+            {/*<TabBar/>*/}
+            <Footer/>
+        </Providers>
         </body>
         </html>
     )
