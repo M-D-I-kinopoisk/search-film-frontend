@@ -6,36 +6,49 @@ import {IoPersonCircleOutline} from 'react-icons/io5'
 
 import styles from './filterActor.module.scss'
 
+import {useDispatch, useSelector} from 'react-redux'
+import {RootState} from '@/GlobalRedux/store'
+
 
 const FilterActor = () => {
 
+
     const [inputActor, setInputActor] = useState('')
 
-    const [listActor,  setListActor] = useState<[] | any>([])
+    const [listActor, setListActor] = useState<[] | any>([])
+
+    const [newListActor, setNewListActor] = useState<[] | any>([])
 
     useEffect(() => {
-        const fetchDataMan = async () => {
+        const fetchData = async () => {
             const resMan = await fetch('http://localhost:12120/api/film-members/profession/1')
-            const actorMan = await resMan.json()
-            setListActor((prev) => [...prev, ...actorMan])
-        }
-        fetchDataMan()
-
-        const fetchDataWoman = async () => {
             const resWoman = await fetch('http://localhost:12120/api/film-members/profession/2')
+            const actorMan = await resMan.json()
             const actorWoman = await resWoman.json()
-            setListActor((prev) => [...prev, ...actorWoman])
+            setListActor([...actorMan, ...actorWoman])
         }
-        fetchDataWoman()
+        fetchData()
+
     }, [])
 
 
-    console.log(listActor)
 
-    function searchActor () {
 
+    function searchActor(e) {
+        setInputActor(e.target.value)
+        if (e.target.value.length === 0) {
+            setNewListActor([])
+        } else {
+            const actors = listActor.filter((actor) =>
+                actor.nameRU?.toLowerCase().includes(e.target.value.toLowerCase()) ||
+                actor.nameEN?.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+            setNewListActor(actors)
+        }
     }
-    
+
+    console.log(newListActor)
+
 
     return (
         <div>
@@ -43,11 +56,18 @@ const FilterActor = () => {
                    type={'text'}
                    value={inputActor}
                    search={true}
-                   onChange={(e) => setInputActor(e.target.value)}
+                   onChange={(e) => searchActor(e)}
             />
-            <div className={styles.filterActor}>
-                <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
-                <span>Брэд Питт</span>
+            <div className={styles.filterActor__list}>
+                {newListActor.map((item, inx) => {
+                        if (inx <= 9)
+                            return (<div key={inx} className={styles.filterActor}>
+                                <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
+                                <span>{item.nameRU}</span>
+                            </div>)
+                    }
+                )
+                }
             </div>
         </div>
     )
