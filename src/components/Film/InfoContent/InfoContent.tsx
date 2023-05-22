@@ -1,21 +1,25 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 
 import styles from './InfoContent.module.scss'
 import WatchOptions from '@/components/Film/WatchOptions/WatchOptions'
 import Image from 'next/image'
-import { filmDescription } from '@/const/const'
+import {filmDescription} from '@/const/const'
 import MyButton from '@/components/UI/MyButton/MyButton'
 
-import { FiVolume1 } from 'react-icons/fi'
-import { BsKeyboard } from 'react-icons/bs'
-import { BsPlay } from 'react-icons/bs'
-import { BsBookmark } from 'react-icons/bs'
-import { FiShare } from 'react-icons/fi'
-import { MdOndemandVideo } from 'react-icons/md'
+import {FiVolume1} from 'react-icons/fi'
+import {BsKeyboard} from 'react-icons/bs'
+import {BsPlay} from 'react-icons/bs'
+import {BsBookmark} from 'react-icons/bs'
+import {FiShare} from 'react-icons/fi'
+import {MdOndemandVideo} from 'react-icons/md'
 
-const InfoContent: React.FC = () => {
+type ActorProps = {
+    year: string
+}
+
+const InfoContent: React.FC<ActorProps> = (film) => {
     const [show, setShow] = useState(false)
 
     const actors = [1, 2, 3, 4]
@@ -24,14 +28,14 @@ const InfoContent: React.FC = () => {
         <div className={styles.infoContent}>
             <div className={styles.mainInfo}>
                 <h2>1+1 (Фильм 2011)</h2>
-                <div>2011 1 ч. 52 мин. 16+</div>
+                <div>{film.year} 1 ч. 52 мин. 16+</div>
                 <div>Франция Драмы Комедии Биография</div>
 
                 <div className={styles.params}>
                     <div className={styles.hd}>FullHD</div>
-                    <FiVolume1 size={25} color='rgba(255,255,255,.8)' />
+                    <FiVolume1 size={25} color='rgba(255,255,255,.8)'/>
                     <div>Рус</div>
-                    <BsKeyboard size={25} color='rgba(255,255,255,.8)' />
+                    <BsKeyboard size={25} color='rgba(255,255,255,.8)'/>
                     <div>Рус</div>
                 </div>
             </div>
@@ -50,13 +54,13 @@ const InfoContent: React.FC = () => {
 
                     {actors.map((el) =>
                         <div key={el}
-                            className={styles.actor}>
+                             className={styles.actor}>
                             <div className={styles.actorWrapper}>
                                 <div className={styles.actorImage}>
                                     <Image alt='Актер'
-                                        width={44}
-                                        height={44}
-                                        src='https://thumbs.dfs.ivi.ru/storage33/contents/f/f/06672be611ab9b9e54579c4f645460.jpg/44x44/?q=85' />
+                                           width={44}
+                                           height={44}
+                                           src='https://thumbs.dfs.ivi.ru/storage33/contents/f/f/06672be611ab9b9e54579c4f645460.jpg/44x44/?q=85'/>
                                 </div>
                             </div>
 
@@ -69,28 +73,28 @@ const InfoContent: React.FC = () => {
 
                 <div className={styles.userButtons}>
                     <MyButton text={'Трейлер'}
-                        icon={<BsPlay size={16} color='rgba(255,255,255,.72)' />}
-                        nameClass='trailerButton' />
+                              icon={<BsPlay size={16} color='rgba(255,255,255,.72)'/>}
+                              nameClass='trailerButton'/>
 
                     <div className={styles.buttonsWrapper}>
                         <MyButton
-                            icon={<BsBookmark size={16} color='rgba(255,255,255,.72)' />}
-                            nameClass='markerButton' />
+                            icon={<BsBookmark size={16} color='rgba(255,255,255,.72)'/>}
+                            nameClass='markerButton'/>
 
-                        <MyButton icon={<FiShare size={16} color='rgba(255,255,255,.72)' />}
-                            nameClass='shareButton' />
+                        <MyButton icon={<FiShare size={16} color='rgba(255,255,255,.72)'/>}
+                                  nameClass='shareButton'/>
                     </div>
                 </div>
             </div>
 
             <div className={styles.premy}>
                 <Image alt='Премия'
-                    width={58}
-                    height={58}
-                    src='https://thumbs.dfs.ivi.ru/storage29/contents/9/9/ccf5c60716958180b98b81a6a4b447.png?q=85' />
+                       width={58}
+                       height={58}
+                       src='https://thumbs.dfs.ivi.ru/storage29/contents/9/9/ccf5c60716958180b98b81a6a4b447.png?q=85'/>
 
                 <div className={styles.premyInfo}>
-                    <h3 >Жорж</h3>
+                    <h3>Жорж</h3>
 
                     <div className={styles.premyDescription}>
                         Лучшая зарубежная комедия, Лучшая зарубежная драма,
@@ -101,8 +105,8 @@ const InfoContent: React.FC = () => {
 
             <div className={styles.freeFilmsWrapper}>
                 <MyButton text={'Бесплатные фильмы'}
-                    icon={<MdOndemandVideo size={16} color='rgba(255,255,255,.72)' />}
-                    nameClass='freeFilmsButton' />
+                          icon={<MdOndemandVideo size={16} color='rgba(255,255,255,.72)'/>}
+                          nameClass='freeFilmsButton'/>
             </div>
 
             <div className={styles.filmDescription}>
@@ -112,18 +116,18 @@ const InfoContent: React.FC = () => {
                     {filmDescription.map((el) =>
                         <p>{el}</p>)}
                     <div className={styles.hideWatchOptions}>
-                        <WatchOptions />
+                        <WatchOptions/>
                     </div>
                 </div>}
             </div>
 
             <a onClick={() => setShow(!show)}
-                className={styles.detailsButton}>
+               className={styles.detailsButton}>
                 {show ? 'Свернуть детали' : 'Детали о фильме'}
             </a>
 
             <a onClick={() => setShow(!show)}
-                className={styles.showDetailsButton}>
+               className={styles.showDetailsButton}>
                 {show ? 'Свернуть' : 'Читать дальше'}
             </a>
 
@@ -144,7 +148,7 @@ const InfoContent: React.FC = () => {
             </div>
 
             <div className={styles.showWatchOptions}>
-                <WatchOptions />
+                <WatchOptions/>
             </div>
         </div>
     )

@@ -3,7 +3,16 @@
   margin: 0 auto 40px;
 
   .film {
-    width: 153px;
+    img {
+      transition: 0.3s;
+    }
+
+    &:hover {
+      img {
+        opacity: 0.2;
+        transition: 0.3s;
+      }
+    }
   }
 
   &__title {
@@ -25,16 +34,25 @@
 
   .image__section {
     position: relative;
+    overflow: hidden;
 
     width: 153px;
     height: 235px;
 
     margin: 3px;
     border-radius: 8px;
-    background-color: #3a3352;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+    }
+
 
     .content {
       position: absolute;
+      z-index: 2;
       bottom: 15px;
       left: 15px;
 
@@ -151,7 +169,7 @@
       .image__section {
         transform: scale(1.01) translateY(-2px);
         transition: 0.3s;
-        background-color: #56006e;
+        background-color: black;
       }
     }
 

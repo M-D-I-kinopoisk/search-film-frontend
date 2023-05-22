@@ -2,8 +2,6 @@
 
 import React from 'react'
 import {Metadata} from 'next'
-
-
 import styles from './home.module.scss'
 
 import TeaserBtn from '@/components/UI/TeaserBtn'
@@ -14,8 +12,47 @@ import FilmsClause from '@/components/FilmsClause/FilmsClause'
 import FilmsInteresting from '@/components/FilmsInteresting/FilmsInteresting'
 
 
+const Home = () => {
 
-const Home: React.FC = () => {
+    const [fighters, setFighters] = React.useState([])
+    const [adventures, setAdventures] = React.useState([])
+
+    React.useEffect(() => {
+        async function getFilms() {
+            const resFighters = await fetch('http://localhost:12120/api/films/filter', {
+                method: 'POST',
+                body: JSON.stringify({
+                    'arrIdGenres': [
+                        2
+                    ],
+                    'part': 1
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const dataFighters = await resFighters.json()
+            setFighters(dataFighters)
+
+            const resAdventures = await fetch('http://localhost:12120/api/films/filter', {
+                method: 'POST',
+                body: JSON.stringify({
+                    'arrIdGenres': [
+                        15
+                    ],
+                    'part': 1
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const dataAdventures = await resAdventures.json()
+            setAdventures(dataAdventures)
+        }
+
+        getFilms()
+    }, [])
+
     return (
         <div className={styles.wrapper}>
             <MainSlider/>
@@ -28,46 +65,17 @@ const Home: React.FC = () => {
                                alt='/' width={56} height={32} text='Активировать сертификат'
                                className={styles.teaser__item}/>
                 </ul>
-                {/* сюда приходят все фильмы по категориям на главной, прост перебираем их и делает компоненту ну и вставляет данные
-                (они дожны быть одинаковыми) кроме наполнения фильмов, разумеется*/}
             </div>
-            <FilmsCategory title='Рекомендую посмотреть'/>
 
             <FilmsRating/>
 
             <FilmsClause/>
 
-            <FilmsCategory title='Добрые мультсериалы'/>
+            <FilmsCategory list={fighters} title='Боевики'/>
 
-            <FilmsCategory title='Поймать преступника'/>
-
-            <FilmsCategory title='Лучшие сериалы в подписке'/>
-
-            <FilmsCategory title='Зарубежные мультфильмы'/>
-
-            <FilmsCategory title='Российские детективные сериалы'/>
-
-            <FilmsCategory title='Зарубежные мелодраматические сериалы'/>
-
-            <FilmsCategory title='Современные мультфильмы'/>
-
-            <FilmsCategory title='Сериалы с высоким рейтингом по подписке'/>
+            <FilmsCategory list={adventures} title='Приключения'/>
 
             <FilmsInteresting/>
-
-            <FilmsCategory title='Мелодрамы на основе книг'/>
-
-            <FilmsCategory title='Захватывающие боевики'/>
-
-            <FilmsCategory title='Лучшие фильмы в подписке'/>
-
-            <FilmsCategory title='Мультфильмы о храбрости'/>
-
-            <FilmsCategory title='Криминальные триллеры'/>
-
-            <FilmsCategory title='Американские комедии'/>
-
-            <FilmsCategory title='Криминальные детективы'/>
 
         </div>
     )
