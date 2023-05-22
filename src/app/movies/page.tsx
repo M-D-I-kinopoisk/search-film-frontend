@@ -19,7 +19,7 @@ async function getCardFilms() {
 }
 
 
-const Movie = async () => {
+const Movies = async () => {
 
     const posts = await getCardFilms()
 
@@ -34,4 +34,4 @@ const Movie = async () => {
     )
 }
 
-export default Movie
+export default Movies

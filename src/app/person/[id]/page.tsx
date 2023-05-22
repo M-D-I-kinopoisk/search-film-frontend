@@ -1,11 +1,18 @@
-import {FC} from 'react'
 
 import styles from './actor.module.scss'
 import Image from 'next/image'
 
+
 type Props = {
     params: {
         id: string
+    }
+}
+
+export async function generateMetadata({params: {id}}: Props) {
+    const product = await fetch(`http://localhost:12120/api/members/${id}`).then((res) => res.json())
+    return {
+        title: `${product.nameRU} (${product.nameEN}): фильмография, фото, биография. Актёр.`
     }
 }
 
@@ -35,8 +42,8 @@ const Actor = async ({params: {id}}: Props) => {
     function endingFilm(num) {
         if (num === 0) return 'фильмов'
         if (num === 1) return 'фильм'
-        if (num > 1 && num < 5 ) return 'фильма'
-        if (num > 4 && num < 21 ) return 'фильмов'
+        if (num > 1 && num < 5) return 'фильма'
+        if (num > 4 && num < 21) return 'фильмов'
     }
 
 
@@ -102,9 +109,10 @@ const Actor = async ({params: {id}}: Props) => {
                     </div>
                 </div>
 
-                <div className={styles.more}>
-                    <a>Ещё 10 фильмов</a>
-                </div>
+                {actorFilms.length > 7 &&
+                    <div className={styles.more}>
+                        <a>Ещё 10 фильмов</a>
+                    </div>}
             </div>
         </div>
     )
