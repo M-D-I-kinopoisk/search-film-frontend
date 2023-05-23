@@ -35,6 +35,8 @@ async function getActorFilms(id) {
 
 const Actor = async ({params: {id}}: Props) => {
 
+    console.log(id)
+
     const actor = await getActor(id)
 
     const actorFilms = await getActorFilms(id)

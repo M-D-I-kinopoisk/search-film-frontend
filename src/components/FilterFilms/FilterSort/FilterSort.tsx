@@ -5,8 +5,10 @@ import {useEffect, useRef, useState} from 'react'
 import {BsChevronCompactDown, BsChevronCompactUp} from 'react-icons/bs'
 import {MdOutlineSort} from 'react-icons/md'
 
-import styles from './filterSort.module.scss'
+import {useDispatch, useSelector} from 'react-redux'
+import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
 
+import styles from './filterSort.module.scss'
 
 
 const FilterSort = () => {
@@ -15,8 +17,13 @@ const FilterSort = () => {
 
     const modalRef = useRef(null)
 
+    const {filterObj} = useSelector(selectFilms)
+    const dispatch = useDispatch()
+
+    const [sortText, setSortText] = useState('по дате выхода')
+
     useEffect(() => {
-        
+
         if (sortToggle) {
             const handleClick = (e) => {
                 if (!modalRef.current.contains(e.target)) {
@@ -32,25 +39,59 @@ const FilterSort = () => {
 
     }, [sortToggle])
 
+    function sort(str) {
+        if (str === 'countRating') {
+            setSortText('по Кол-ву оценок Кинопоиска')
+        }
+        if (str === 'rating') {
+            setSortText('по Рейтингу Кинопоиска')
+        }
+        if (str === 'year') {
+            setSortText('по Дате выхода')
+        }
+        if (str === 'alphabetRU') {
+            setSortText('по Алфавиту')
+        }
+        dispatch(getFilterObj(
+            {...filterObj,
+                'typeSorting': str
+            }
+        ))
+        SetSortToggle(false)
+    }
+
+
     return (
         <div className={styles.sort}>
             <div className={styles.sort__block} ref={modalRef}>
                 <div className={styles.sort__group} onClick={() => SetSortToggle(!sortToggle)}>
                     <MdOutlineSort style={{transform: ' scale(-1, 1)'}} size={20}/>
-                    <p className={styles.sort__title}>По кол-ву оценок Кинопоиска</p>
+                    <p className={styles.sort__title}>{sortText}</p>
                     {sortToggle ? (<div style={{pointerEvents: 'none'}}><BsChevronCompactUp size={20}/></div>) :
                         (<div style={{pointerEvents: 'none'}}><BsChevronCompactDown size={20}/></div>)}
                 </div>
                 {sortToggle && <div className={styles.sort__dropDown}>
                     <p className={styles.sort__dropDown_title}>Сортировать</p>
                     <div className={styles.sort__dropDown_item}>
-                        <p className={styles.sort__dropDown_text}>Кол-ву оценок Кинопоиска</p></div>
+                        <button onClick={() => sort('countRating')}>
+                            <p className={styles.sort__dropDown_text}>Кол-ву оценок Кинопоиска</p>
+                        </button>
+                    </div>
                     <div className={styles.sort__dropDown_item}>
-                        <p className={styles.sort__dropDown_text}>Ретингу Кинопоиска</p></div>
+                        <button onClick={() => sort('rating')}>
+                            <p className={styles.sort__dropDown_text}>Рейтингу Кинопоиска</p>
+                        </button>
+                    </div>
                     <div className={styles.sort__dropDown_item}>
-                        <p className={styles.sort__dropDown_text}>Дате выход</p></div>
+                        <button onClick={() => sort('year')}>
+                        <p className={styles.sort__dropDown_text}>Дате выход</p>
+                        </button>
+                        </div>
                     <div className={styles.sort__dropDown_item}>
-                        <p className={styles.sort__dropDown_text}>Алфавиту</p></div>
+                        <button onClick={() => sort('alphabetRU')}>
+                        <p className={styles.sort__dropDown_text}>Алфавиту</p>
+                        </button>
+                    </div>
                 </div>}
             </div>
 

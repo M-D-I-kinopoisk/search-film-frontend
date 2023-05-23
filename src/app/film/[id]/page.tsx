@@ -14,6 +14,8 @@ import React from 'react'
 import {useSelector} from 'react-redux'
 import {selectFilms} from '@/redux/FilmsSlice'
 
+
+
 export default function Film() {
     const [film, setFilm] = React.useState({})
     const {filmId} = useSelector(selectFilms)

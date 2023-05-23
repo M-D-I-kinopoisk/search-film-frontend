@@ -6,8 +6,7 @@ import {IoPersonCircleOutline} from 'react-icons/io5'
 
 import styles from './filterActor.module.scss'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {RootState} from '@/GlobalRedux/store'
+
 
 
 const FilterActor = () => {
