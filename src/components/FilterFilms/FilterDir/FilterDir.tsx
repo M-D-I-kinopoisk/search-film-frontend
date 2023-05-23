@@ -2,8 +2,12 @@ import {useEffect, useState} from 'react'
 
 import {GiFilmProjector} from 'react-icons/gi'
 
-import styles from './filterDir.module.scss'
 import Input from '@/components/UI/Input/Input'
+
+import {useDispatch, useSelector} from 'react-redux'
+import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
+
+import styles from './filterDir.module.scss'
 
 
 const FilterDir = () => {
@@ -13,6 +17,9 @@ const FilterDir = () => {
     const [listDir, setListDir] = useState<[] | any>([])
 
     const [newListDir, setNewListDir] = useState<[] | any>([])
+
+    const {filterObj} = useSelector(selectFilms)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,6 +44,20 @@ const FilterDir = () => {
         }
     }
 
+    function filterDir (id)  {
+        dispatch(getFilterObj(
+            {
+                ...filterObj,
+                'arrMembersFilterDto': [
+                    {
+                        'idMember': id,
+                        'idProfession': 9
+                    }
+                ],
+            }
+        ))
+    }
+
     return (
         <div>
             <Input label={'Режиссеры'}
@@ -49,8 +70,10 @@ const FilterDir = () => {
                 {newListDir.map((item, inx) => {
                         if (inx <= 9)
                             return (<div key={inx} className={styles.filterDir}>
+                                <button onClick={() => filterDir(item.id)}>
                                 <GiFilmProjector color={'rgb(234, 0, 61)'} size={20}/>
                                 <span>{item.nameRU}</span>
+                                </button>
                             </div>)
                     }
                 )

@@ -32,7 +32,7 @@ export default function FilmsList() {
         getFilms()
     }, [filterObj])
 
-    console.log(filmsList)
+    // console.log(filmsList)
 
     return (
         <>
@@ -40,8 +40,8 @@ export default function FilmsList() {
             {filmsList.length > 0 &&
                 <button className={styles.movies__btn} onClick={() => dispatch(getFilterObj(
                 {
-                    'part': 1,
-                    'typeSorting': 'rating'
+                    ...filterObj,
+                    'part': 2,
                 }
             ))}>Показать еще
             </button>}

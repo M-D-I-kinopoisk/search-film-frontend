@@ -14,7 +14,6 @@
 }
 
 .sort__title {
-
   font-size: 15px;
   line-height: 20px;
   font-weight: 500;
@@ -39,6 +38,15 @@
   box-shadow: 0 20px 40px rgba(7, 5, 14, .4);
 }
 
+.sort__dropDown_active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #ea003d;
+}
+
 .sort__dropDown_title {
   margin-left: 4px;
   margin-top: 4px;
@@ -55,7 +63,7 @@
   background-color: transparent;
   opacity: 1;
   display: block;
-  padding: 12px 16px 20px;
+  padding: 12px 16px 12px;
   font-size: 0;
   white-space: nowrap;
   cursor: pointer;

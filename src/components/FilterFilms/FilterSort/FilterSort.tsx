@@ -15,18 +15,18 @@ const FilterSort = () => {
 
     const [sortToggle, SetSortToggle] = useState(false)
 
-    const modalRef = useRef(null)
+    const modalRef = useRef<HTMLDivElement>(null)
 
     const {filterObj} = useSelector(selectFilms)
     const dispatch = useDispatch()
 
-    const [sortText, setSortText] = useState('по дате выхода')
+    const [sortText, setSortText] = useState('По дате выхода')
 
     useEffect(() => {
 
         if (sortToggle) {
             const handleClick = (e) => {
-                if (!modalRef.current.contains(e.target)) {
+                if (!modalRef.current?.contains(e.target)) {
                     SetSortToggle(false)
                 } else return
             }
@@ -41,19 +41,20 @@ const FilterSort = () => {
 
     function sort(str) {
         if (str === 'countRating') {
-            setSortText('по Кол-ву оценок Кинопоиска')
+            setSortText('По кол-ву оценок Кинопоиска')
         }
         if (str === 'rating') {
-            setSortText('по Рейтингу Кинопоиска')
+            setSortText('По рейтингу Кинопоиска')
         }
         if (str === 'year') {
-            setSortText('по Дате выхода')
+            setSortText('По дате выхода')
         }
         if (str === 'alphabetRU') {
-            setSortText('по Алфавиту')
+            setSortText('По алфавиту')
         }
         dispatch(getFilterObj(
-            {...filterObj,
+            {
+                ...filterObj,
                 'typeSorting': str
             }
         ))
@@ -73,23 +74,31 @@ const FilterSort = () => {
                 {sortToggle && <div className={styles.sort__dropDown}>
                     <p className={styles.sort__dropDown_title}>Сортировать</p>
                     <div className={styles.sort__dropDown_item}>
+                        {filterObj.typeSorting === 'countRating' &&
+                            <div className={styles.sort__dropDown_active}></div>}
                         <button onClick={() => sort('countRating')}>
                             <p className={styles.sort__dropDown_text}>Кол-ву оценок Кинопоиска</p>
                         </button>
                     </div>
                     <div className={styles.sort__dropDown_item}>
+                        {filterObj.typeSorting === 'rating' &&
+                            <div className={styles.sort__dropDown_active}></div>}
                         <button onClick={() => sort('rating')}>
                             <p className={styles.sort__dropDown_text}>Рейтингу Кинопоиска</p>
                         </button>
                     </div>
                     <div className={styles.sort__dropDown_item}>
+                        {filterObj.typeSorting === 'year' &&
+                            <div className={styles.sort__dropDown_active}></div>}
                         <button onClick={() => sort('year')}>
-                        <p className={styles.sort__dropDown_text}>Дате выход</p>
+                            <p className={styles.sort__dropDown_text}>Дате выход</p>
                         </button>
-                        </div>
+                    </div>
                     <div className={styles.sort__dropDown_item}>
+                        {filterObj.typeSorting === 'alphabetRU' &&
+                            <div className={styles.sort__dropDown_active}></div>}
                         <button onClick={() => sort('alphabetRU')}>
-                        <p className={styles.sort__dropDown_text}>Алфавиту</p>
+                            <p className={styles.sort__dropDown_text}>Алфавиту</p>
                         </button>
                     </div>
                 </div>}

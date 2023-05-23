@@ -14,7 +14,7 @@
 
 .genres__item {
   margin-top: 12px;
-
+  position: relative;
   font-size: 13px;
   line-height: 16px;
   font-weight: 500;
@@ -29,4 +29,15 @@
     transition: color 400ms;
   }
 
+}
+
+.genres__checkbox {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.genres__item:hover~.genres__checkbox {
+  color: red;
+  opacity: 1;
 }

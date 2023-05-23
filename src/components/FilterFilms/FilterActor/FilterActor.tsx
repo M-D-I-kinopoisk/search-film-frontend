@@ -5,6 +5,8 @@ import Input from '@/components/UI/Input/Input'
 import {IoPersonCircleOutline} from 'react-icons/io5'
 
 import styles from './filterActor.module.scss'
+import {useDispatch, useSelector} from 'react-redux'
+import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
 
 
 
@@ -17,6 +19,9 @@ const FilterActor = () => {
     const [listActor, setListActor] = useState<[] | any>([])
 
     const [newListActor, setNewListActor] = useState<[] | any>([])
+
+    const {filterObj} = useSelector(selectFilms)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,6 +53,21 @@ const FilterActor = () => {
 
     console.log(newListActor)
 
+    function filterActor (id)  {
+        console.log(id)
+        dispatch(getFilterObj(
+            {
+                ...filterObj,
+                'arrMembersFilterDto': [
+                    {
+                        'idMember': id,
+                        'idProfession': 1
+                    },
+                ],
+            }
+        ))
+    }
+
 
     return (
         <div>
@@ -61,8 +81,10 @@ const FilterActor = () => {
                 {newListActor.map((item, inx) => {
                         if (inx <= 9)
                             return (<div key={inx} className={styles.filterActor}>
+                                <button onClick={() => filterActor(item.id)}>
                                 <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
                                 <span>{item.nameRU}</span>
+                                </button>
                             </div>)
                     }
                 )

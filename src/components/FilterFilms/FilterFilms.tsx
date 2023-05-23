@@ -2,6 +2,9 @@
 
 import {useState} from 'react'
 
+import {useDispatch} from 'react-redux'
+import {getFilterObj} from '@/redux/FilterSlice'
+
 import {VscChromeClose} from 'react-icons/vsc'
 
 import FilterFilmsCategories from '@/components/FilterFilms/FilterFilmsCategories/FilterFilmsCategories'
@@ -17,12 +20,28 @@ import FilterGrades from '@/components/FilterFilms/FilterGrades/FilterGrades'
 import styles from './filterFilms.module.scss'
 
 
+
+
 const FilterFilms = () => {
+
 
     const [activePlank, setActivePlank] = useState({
         genres: false, countries: false, years: false, rating: false,
         grade: false, searchDir: false, searchActor: false
     })
+
+    const dispatch = useDispatch()
+    
+    const resetFilter = () => {
+        dispatch(getFilterObj(
+            {
+                'ratingStart': 1,
+                'countRatingStart': 1000,
+                'part': 1,
+                'typeSorting': 'year'
+            }
+        ))
+    }
 
 
     return (
@@ -155,10 +174,10 @@ const FilterFilms = () => {
                         </div>
                     </div>
                     <div className={styles.filter__reset}>
-                        <div className={styles.filter__resetContent}>
+                        <button className={styles.filter__resetContent} onClick={() => resetFilter()}>
                             <VscChromeClose size={20}/>
                             Сбросить фильтры
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>

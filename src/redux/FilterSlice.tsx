@@ -6,6 +6,22 @@ interface FilmsSliceState {
 
 const initialState: FilmsSliceState = {
     filterObj: {
+        'arrIdGenres': [
+            1,
+            2
+        ],
+        // 'arrIdCountries': [
+        //     1,
+        //     2
+        // ],
+        'ratingStart': 1,
+        'countRatingStart': 1000,
+        // 'arrMembersFilterDto': [
+        //     {
+        //         'idMember': 1,
+        //         'idProfession': 1
+        //     }
+        // ],
         'part': 1,
         'typeSorting': 'year'
     }
@@ -17,7 +33,7 @@ const FilterSlice = createSlice({
     initialState: initialState,
     reducers: {
         getFilterObj(state, action) {
-            console.log(action.payload)
+            // console.log(action.payload)
             state.filterObj = action.payload
         }
     }

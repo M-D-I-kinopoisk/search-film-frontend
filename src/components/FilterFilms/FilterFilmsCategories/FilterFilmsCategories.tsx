@@ -23,8 +23,8 @@ const FilterFilmsCategories: FC<FilterCategoriesProps> = ({
                                                               activePlank
                                                           }) => {
 
-    const modalRef = useRef(null)
-    const categoryRef = useRef(null)
+    const modalRef = useRef<HTMLDivElement>(null)
+    const categoryRef = useRef<HTMLDivElement>(null)
 
 
     useEffect(() => {
@@ -33,8 +33,8 @@ const FilterFilmsCategories: FC<FilterCategoriesProps> = ({
             const handleClick = (e) => {
 
                 if (modalRef.current) {
-                    console.log(22)
-                    if (categoryRef.current.contains(e.target)) return
+                    // console.log(22)
+                    if (categoryRef.current?.contains(e.target)) return
 
                     if (!modalRef.current.contains(e.target)) {
                         console.log('закрыть')
