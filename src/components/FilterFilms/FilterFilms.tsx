@@ -2,8 +2,9 @@
 
 import {useState} from 'react'
 
-import {useDispatch} from 'react-redux'
-import {getFilterObj} from '@/redux/FilterSlice'
+import {useDispatch, useSelector} from 'react-redux'
+import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
+import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 
 import {VscChromeClose} from 'react-icons/vsc'
 
@@ -20,8 +21,6 @@ import FilterGrades from '@/components/FilterFilms/FilterGrades/FilterGrades'
 import styles from './filterFilms.module.scss'
 
 
-
-
 const FilterFilms = () => {
 
 
@@ -30,9 +29,14 @@ const FilterFilms = () => {
         grade: false, searchDir: false, searchActor: false
     })
 
+    const {filterObj} = useSelector(selectFilms)
+    const {filterTextObj} = useSelector(selectFilterText)
     const dispatch = useDispatch()
-    
+
     const resetFilter = () => {
+        dispatch(getFilterTextObj(
+            {}
+        ))
         dispatch(getFilterObj(
             {
                 'ratingStart': 1,
@@ -53,7 +57,9 @@ const FilterFilms = () => {
                 <div className={styles.filter__content}>
                     <div className={styles.filter__plankList}>
                         <div className={styles.filter__plankItem}>
-                            <FilterFilmsCategories className={styles.filterGenres} title={'Жанры'}
+                            <FilterFilmsCategories className={styles.filterGenres}
+                                                   title={'Жанры'}
+                                                   filterText={filterTextObj.arrGenres}
                                                    activePlank={activePlank.genres}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -71,7 +77,9 @@ const FilterFilms = () => {
                             </FilterFilmsCategories>
                         </div>
                         <div className={styles.filter__plankItem}>
-                            <FilterFilmsCategories className={styles.filterCountries} title={'Страны'}
+                            <FilterFilmsCategories className={styles.filterCountries}
+                                                   title={'Страны'}
+                                                   filterText={filterTextObj.arrCountries}
                                                    activePlank={activePlank.countries}
                                                    onClick={() => setActivePlank({
                                                        countries: !activePlank.countries,

@@ -10,6 +10,7 @@ export interface FilterCategoriesProps {
     className: string
     children
     title: string
+    filterText?: string[]
     onClick: () => void
     activePlank: boolean
 }
@@ -19,6 +20,7 @@ const FilterFilmsCategories: FC<FilterCategoriesProps> = ({
                                                               className,
                                                               children,
                                                               title,
+                                                              filterText,
                                                               onClick,
                                                               activePlank
                                                           }) => {
@@ -56,6 +58,11 @@ const FilterFilmsCategories: FC<FilterCategoriesProps> = ({
                  className={activePlank ? `${styles.categories__plank} ${styles.isActive}` : `${styles.categories__plank}`}>
                 <div className={styles.categories__plankGroup}>
                     <span>{title}</span>
+                    <br/>
+                    {filterText?.map((text, inx) =>
+                        <span
+                            className={styles.categories__text}
+                            key={inx}>{text}, </span>)}
                 </div>
                 {activePlank ? (<div style={{pointerEvents: 'none'}}><BsChevronCompactUp size={20}/></div>) :
                     (<div style={{pointerEvents: 'none'}}><BsChevronCompactDown size={20}/></div>)}

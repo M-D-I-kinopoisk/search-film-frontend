@@ -14,13 +14,12 @@
 
 .country__item {
   margin-top: 12px;
-
+  position: relative;
   font-size: 13px;
   line-height: 16px;
   font-weight: 500;
   color: rgba(217, 215, 224, .8);
   transition: color 400ms;
-
   cursor: pointer;
 
 
@@ -29,4 +28,23 @@
     transition: color 400ms;
   }
 
+}
+
+.genres__checkbox {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: -2px;
+}
+
+.genres__checkbox_active {
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  top: -2px;
+  color: white;
+}
+
+.genres__item:hover~.genres__checkbox {
+  opacity: 1;
 }

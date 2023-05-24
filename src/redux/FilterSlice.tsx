@@ -6,10 +6,10 @@ interface FilmsSliceState {
 
 const initialState: FilmsSliceState = {
     filterObj: {
-        'arrIdGenres': [
-            1,
-            2
-        ],
+        // 'arrIdGenres': [
+        //     1,
+        //     2
+        // ],
         // 'arrIdCountries': [
         //     1,
         //     2
