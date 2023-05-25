@@ -5,7 +5,6 @@ import React from 'react'
 import styles from './filmsClause.module.scss'
 
 const FilmsClause: React.FC = () => {
-
     const [visible, setVisible] = React.useState(false)
 
     return (

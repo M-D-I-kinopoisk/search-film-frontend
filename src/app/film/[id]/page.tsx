@@ -1,34 +1,63 @@
-'use client'
-
 import styles from './film.module.scss'
 import {BsChevronRight} from 'react-icons/bs'
 import TrailerContent from '@/components/Film/TrailerContent/TrailerContent'
 import InfoContent from '@/components/Film/InfoContent/InfoContent'
-import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
 import CreatorsList from '@/components/Film/Creators/CreatorsList'
 import AwardsList from '@/components/Film/Awards/AwardsList'
 import TrailersList from '@/components/Film/TrailersAndMaterials/TrailersList'
 import CommentList from '@/components/Film/Comments/CommentsList'
 import WatchAllDevices from '@/components/Film/WatchAllDevices/WatchAllDevices'
-import React from 'react'
-import {useSelector} from 'react-redux'
-import {selectFilms} from '@/redux/FilmsSlice'
+import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
 
-export default function Film() {
-    const [film, setFilm] = React.useState({})
-    const {filmId} = useSelector(selectFilms)
-    // через редакс нужно будет бахнуть это
-    React.useEffect(() => {
-        async function getFilmId(id) {
-            const response = await fetch(`http://localhost:12120/api/films/${id}`)
-            const dataFilm = await response.json()
-            setFilm(dataFilm)
+type FilmProps = {
+    params: {
+        id: string
+    }
+}
+
+async function getFilmById(id) {
+    const response = await fetch(`http://localhost:12120/api/films/${id}`)
+
+    return response.json()
+}
+
+async function getFilmInfoById(id) {
+    const response = await fetch(`http://localhost:12120/api/film-info/film/${id}`)
+
+    return response.json()
+}
+
+async function getActorFilmById(id) {
+    const response = await fetch(`http://localhost:12120/api/film-members/${id}`)
+
+    return response.json()
+}
+
+async function getGenresFilm(genres) {
+    console.log(genres)
+    const genresId = genres.map((genre) => {
+        return genre.id
+    })
+
+    const response = await fetch('http://localhost:12120/api/films/filter', {
+        method: 'POST',
+        body: JSON.stringify({
+            'arrIdGenres': genresId,
+            'part': 1
+        }),
+        headers: {
+            'Content-Type': 'application/json'
         }
+    })
 
-        getFilmId(filmId)
-    }, [])
+    return response.json()
+}
 
-    console.log(film)
+export default async function Film({params: {id}}: FilmProps) {
+    const film = await getFilmById(id)
+    const actors = await getActorFilmById(id)
+    const filmInfo = await getFilmInfoById(id)
+    const genres = await getGenresFilm(film.genres)
 
     return <div className={styles.wrapper}>
         <div className={styles.genre}>
@@ -47,11 +76,11 @@ export default function Film() {
         </div>
 
         <div className={styles.mainContent}>
-            <TrailerContent/>
-            <InfoContent film={film}/>
-            {/* не обращай внимания если чо, это чисто параша для теста была */}
+            <TrailerContent film={film} filmInfo={filmInfo}/>
+            <InfoContent film={film} filmInfo={filmInfo}/>
         </div>
-        {/*<FilmsCategory title='С фильмом «1+1» смотрят'/>*/}
+
+        <FilmsCategory title={`С фильмом ${film.nameRU} смотрят`} list={genres}/>
         <CreatorsList/>
         <AwardsList/>
         <TrailersList/>

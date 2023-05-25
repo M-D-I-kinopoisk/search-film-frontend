@@ -5,46 +5,43 @@ import React, {useState} from 'react'
 import styles from './InfoContent.module.scss'
 import WatchOptions from '@/components/Film/WatchOptions/WatchOptions'
 import Image from 'next/image'
-import {filmDescription} from '@/const/const'
 import MyButton from '@/components/UI/MyButton/MyButton'
 
-import {FiVolume1} from 'react-icons/fi'
-import {BsKeyboard} from 'react-icons/bs'
 import {BsPlay} from 'react-icons/bs'
 import {BsBookmark} from 'react-icons/bs'
 import {FiShare} from 'react-icons/fi'
 import {MdOndemandVideo} from 'react-icons/md'
+import MainInfo from '@/components/Film/MainInfo/MainInfo'
+import {funcDeclination} from '@/utils/funcDeclination'
 
-type ActorProps = {
-    year: string
+export type infoProps = {
+    film: {
+        year: number,
+        rating: number,
+        ageRating: string,
+        duration: number,
+        nameRU: string,
+        nameEN: string,
+        genres: object[],
+        countRating: number
+    }, filmInfo: {
+        trailerLink: string,
+        text: string
+    }
 }
 
-const InfoContent: React.FC<ActorProps> = (film) => {
-    const [show, setShow] = useState(false)
-
+const InfoContent = ({film, filmInfo}: infoProps) => {
+    const [visible, setVisible] = useState(false)
     const actors = [1, 2, 3, 4]
 
     return (
         <div className={styles.infoContent}>
-            <div className={styles.mainInfo}>
-                <h2>1+1 (Фильм 2011)</h2>
-                <div>{film.year} 1 ч. 52 мин. 16+</div>
-                <div>Франция Драмы Комедии Биография</div>
-
-                <div className={styles.params}>
-                    <div className={styles.hd}>FullHD</div>
-                    <FiVolume1 size={25} color='rgba(255,255,255,.8)'/>
-                    <div>Рус</div>
-                    <BsKeyboard size={25} color='rgba(255,255,255,.8)'/>
-                    <div>Рус</div>
-                </div>
-            </div>
-
+            <MainInfo film={film} filmInfo={filmInfo}/>
             <div className={styles.otherInfo}>
                 <div className={styles.actors}>
                     <div className={styles.actor}>
                         <div className={styles.actorWrapper}>
-                            <div><h3> 8,9</h3></div>
+                            <div><h3>{film.rating}</h3></div>
                         </div>
 
                         <div className={styles.rating}>
@@ -110,35 +107,32 @@ const InfoContent: React.FC<ActorProps> = (film) => {
             </div>
 
             <div className={styles.filmDescription}>
-                <p>{filmDescription[0]}</p>
-
-                {show && <div>
-                    {filmDescription.map((el) =>
-                        <p>{el}</p>)}
+                <p>{filmInfo.text}...</p>
+                {visible && <div>
                     <div className={styles.hideWatchOptions}>
                         <WatchOptions/>
                     </div>
                 </div>}
             </div>
 
-            <a onClick={() => setShow(!show)}
-               className={styles.detailsButton}>
-                {show ? 'Свернуть детали' : 'Детали о фильме'}
-            </a>
+            <span onClick={() => setVisible(!visible)}
+                  className={styles.detailsButton}>
+                {visible ? 'Свернуть детали' : 'Детали о фильме'}
+            </span>
 
-            <a onClick={() => setShow(!show)}
-               className={styles.showDetailsButton}>
-                {show ? 'Свернуть' : 'Читать дальше'}
-            </a>
+            <span onClick={() => setVisible(!visible)}
+                  className={styles.showDetailsButton}>
+                {visible ? 'Свернуть' : 'Читать дальше'}
+            </span>
 
             <div className={styles.filmRating}>
                 <div className={styles.filmRatingWrapper}>
-                    <h3>8,9</h3>
+                    <h3>{film.rating}</h3>
 
                     <div className={styles.filmRatingDescription}>
                         <h3>Рейтинг Иви</h3>
                         <p>Интересный сюжет</p>
-                        <p>143 109 оценок</p>
+                        <p>{funcDeclination(film.countRating, ['оценка', 'оценки', 'оценок'])}</p>
                     </div>
                 </div>
 

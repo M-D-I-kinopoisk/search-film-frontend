@@ -1,20 +1,21 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
 interface FilmsSliceState {
-    filmId: null
+    filmId: null,
+    FilmById: null
 }
 
 const initialState: FilmsSliceState = {
-    filmId: null
+    filmId: null,
+    FilmById: null
 }
 
 
 const FilmsSlice = createSlice({
-    name: 'slice',
+    name: 'films',
     initialState: initialState,
     reducers: {
         getFilmId(state, action) {
-            console.log(action.payload)
             state.filmId = action.payload
         }
     }
