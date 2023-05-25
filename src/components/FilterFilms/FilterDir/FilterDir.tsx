@@ -6,6 +6,7 @@ import Input from '@/components/UI/Input/Input'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
+import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 
 import styles from './filterDir.module.scss'
 
@@ -19,6 +20,7 @@ const FilterDir = () => {
     const [newListDir, setNewListDir] = useState<[] | any>([])
 
     const {filterObj} = useSelector(selectFilms)
+    const {filterTextObj} = useSelector(selectFilterText)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -44,19 +46,64 @@ const FilterDir = () => {
         }
     }
 
-    function filterDir (id)  {
-        dispatch(getFilterObj(
-            {
-                ...filterObj,
-                'arrMembersFilterDto': [
+    const filterDir = (id, nameDir) => {
+
+
+        if ('arrMembersFilterDto' in filterObj) {
+
+            if (filterObj.arrMembersFilterDto.filter(item => item.idMember === id).length === 0) {
+
+                if ('arrDirMembers' in filterTextObj) {
+                    dispatch(getFilterTextObj(
+                        {
+                            ...filterTextObj,
+                            'arrDirMembers': [...filterTextObj.arrDirMembers, nameDir],
+                        }
+                    ))
+                } else {
+                    dispatch(getFilterTextObj(
+                        {
+                            ...filterTextObj,
+                            'arrDirMembers': [nameDir],
+                        }
+                    ))
+                }
+                dispatch(getFilterObj(
                     {
-                        'idMember': id,
-                        'idProfession': 9
+                        ...filterObj,
+                        'arrMembersFilterDto': [
+                            ...filterObj.arrMembersFilterDto,
+                            {
+                                'idMember': id,
+                                'idProfession': 1
+                            },
+                        ],
                     }
-                ],
+                ))
             }
-        ))
+            return
+        } else {
+            dispatch(getFilterTextObj(
+                {
+                    ...filterTextObj,
+                    'arrDirMembers': [nameDir],
+                }
+            ))
+            dispatch(getFilterObj(
+                {
+                    ...filterObj,
+                    'arrMembersFilterDto': [
+                        {
+                            'idMember': id,
+                            'idProfession': 1
+                        },
+                    ],
+                }
+            ))
+        }
     }
+
+    console.log(filterObj)
 
     return (
         <div>
@@ -70,9 +117,9 @@ const FilterDir = () => {
                 {newListDir.map((item, inx) => {
                         if (inx <= 9)
                             return (<div key={inx} className={styles.filterDir}>
-                                <button onClick={() => filterDir(item.id)}>
-                                <GiFilmProjector color={'rgb(234, 0, 61)'} size={20}/>
-                                <span>{item.nameRU}</span>
+                                <button onClick={() => filterDir(item.id, item.nameRU)}>
+                                    <GiFilmProjector color={'rgb(234, 0, 61)'} size={20}/>
+                                    <span>{item.nameRU}</span>
                                 </button>
                             </div>)
                     }

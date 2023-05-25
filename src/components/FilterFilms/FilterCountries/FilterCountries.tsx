@@ -36,7 +36,7 @@ const FilterCountries = () => {
                     ))
                     const {arrIdCountries, ...restId} = filterObj
                     dispatch(getFilterObj(
-                        {...restId}
+                        {...restId, 'part': 1,}
                     ))
 
                 } else {
@@ -52,6 +52,7 @@ const FilterCountries = () => {
                         {
                             ...filterObj,
                             'arrIdCountries': filterListIdCountries,
+                            'part': 1,
                         }
                     ))
                 }
@@ -68,6 +69,7 @@ const FilterCountries = () => {
                     {
                         ...filterObj,
                         'arrIdCountries': [...filterObj.arrIdCountries, id],
+                        'part': 1,
                     }
                 ))
             }
@@ -83,15 +85,12 @@ const FilterCountries = () => {
                 {
                     ...filterObj,
                     'arrIdCountries': [id],
+                    'part': 1,
                 }
             ))
         }
     }
 
-    console.log(filterTextObj)
-
-
-    console.log(filterObj.arrIdCountries)
 
 
     return (

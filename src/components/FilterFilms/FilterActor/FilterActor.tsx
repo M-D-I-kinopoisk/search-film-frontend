@@ -7,8 +7,7 @@ import {IoPersonCircleOutline} from 'react-icons/io5'
 import styles from './filterActor.module.scss'
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-
-
+import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 
 
 const FilterActor = () => {
@@ -21,24 +20,24 @@ const FilterActor = () => {
     const [newListActor, setNewListActor] = useState<[] | any>([])
 
     const {filterObj} = useSelector(selectFilms)
+    const {filterTextObj} = useSelector(selectFilterText)
     const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchData = async () => {
             const resMan = await fetch('http://localhost:12120/api/film-members/profession/1')
-            const resWoman = await fetch('http://localhost:12120/api/film-members/profession/2')
+            // const resWoman = await fetch('http://localhost:12120/api/film-members/profession/2')
             const actorMan = await resMan.json()
-            const actorWoman = await resWoman.json()
-            setListActor([...actorMan, ...actorWoman])
+            // const actorWoman = await resWoman.json()
+            setListActor(actorMan)
         }
         fetchData()
 
     }, [])
 
 
-
-
     function searchActor(e) {
+
         setInputActor(e.target.value)
         if (e.target.value.length === 0) {
             setNewListActor([])
@@ -53,21 +52,73 @@ const FilterActor = () => {
 
     console.log(newListActor)
 
-    function filterActor (id)  {
+    function filterActor(id, nameActor) {
         console.log(id)
-        dispatch(getFilterObj(
-            {
-                ...filterObj,
-                'arrMembersFilterDto': [
+
+        if ('arrMembersFilterDto' in filterObj) {
+
+            if (filterObj.arrMembersFilterDto.filter(item => item.idMember === id).length === 0) {
+
+                if ('arrActorMembers' in filterTextObj) {
+                    dispatch(getFilterTextObj(
+                        {
+                            ...filterTextObj,
+                            'arrActorMembers': [...filterTextObj.arrActorMembers, nameActor],
+                        }
+                    ))
+                } else {
+                    dispatch(getFilterTextObj(
+                        {
+                            ...filterTextObj,
+                            'arrActorMembers': [nameActor],
+                        }
+                    ))
+                }
+
+                dispatch(getFilterTextObj(
                     {
-                        'idMember': id,
-                        'idProfession': 1
-                    },
-                ],
+                        ...filterTextObj,
+                        'arrActorMembers': [...filterTextObj.arrActorMembers, nameActor],
+                    }
+                ))
+                dispatch(getFilterObj(
+                    {
+                        ...filterObj,
+                        'arrMembersFilterDto': [
+                            ...filterObj.arrMembersFilterDto,
+                            {
+                                'idMember': id,
+                                'idProfession': 1
+                            },
+                        ],
+                    }
+                ))
             }
-        ))
+            return
+
+        } else {
+
+            dispatch(getFilterTextObj(
+                {
+                    ...filterTextObj,
+                    'arrActorMembers': [nameActor],
+                }
+            ))
+            dispatch(getFilterObj(
+                {
+                    ...filterObj,
+                    'arrMembersFilterDto': [
+                        {
+                            'idMember': id,
+                            'idProfession': 1
+                        },
+                    ],
+                }
+            ))
+        }
     }
 
+    console.log(filterObj)
 
     return (
         <div>
@@ -81,9 +132,9 @@ const FilterActor = () => {
                 {newListActor.map((item, inx) => {
                         if (inx <= 9)
                             return (<div key={inx} className={styles.filterActor}>
-                                <button onClick={() => filterActor(item.id)}>
-                                <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
-                                <span>{item.nameRU}</span>
+                                <button onClick={() => filterActor(item.id, item.nameRU)}>
+                                    <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
+                                    <span>{item.nameRU}</span>
                                 </button>
                             </div>)
                     }

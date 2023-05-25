@@ -9,7 +9,7 @@ import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
 export default function FilmsList() {
 
 
-    const [filmsList, setFilmsList] = useState([])
+    const [filmsList, setFilmsList] = useState<object[]>([])
 
     const {filterObj} = useSelector(selectFilms)
     const dispatch = useDispatch()
@@ -17,34 +17,45 @@ export default function FilmsList() {
 
     useEffect(() => {
         console.log('useEffect работает')
+
         async function getFilms() {
-            const resFighters = await fetch('http://localhost:12120/api/films/filter', {
+            const res = await fetch('http://localhost:12120/api/films/filter', {
                 method: 'POST',
                 body: JSON.stringify(filterObj),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
-            const dataFighters = await resFighters.json()
-            setFilmsList(dataFighters)
+            const films = await res.json()
+            if (filterObj.part > 1) {
+                setFilmsList(prev => [...prev, ...films])
+            } else {
+                setFilmsList(films)
+            }
         }
 
         getFilms()
     }, [filterObj])
 
-    // console.log(filmsList)
+
+    const nextListFilms = (part) => {
+        dispatch(getFilterObj(
+            {
+                ...filterObj,
+                'part': part + 1,
+            }
+        ))
+    }
+
 
     return (
         <>
-            {filmsList && filmsList.map((item: any) => <p style={{color: 'white'}} key={item.id}>{item.nameRU}</p>)}
+            {filmsList && filmsList.map((item: any, inx) => <p style={{color: 'white'}} key={inx}>{item.nameRU}</p>)}
             {filmsList.length > 0 &&
-                <button className={styles.movies__btn} onClick={() => dispatch(getFilterObj(
-                {
-                    ...filterObj,
-                    'part': 2,
-                }
-            ))}>Показать еще
-            </button>}
+                filmsList.length % 20 === 0 &&
+                <button className={styles.movies__btn} onClick={() => nextListFilms(filterObj.part)}>
+                    Показать еще
+                </button>}
         </>
     )
 }

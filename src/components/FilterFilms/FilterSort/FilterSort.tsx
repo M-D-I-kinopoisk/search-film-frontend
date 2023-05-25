@@ -20,7 +20,15 @@ const FilterSort = () => {
     const {filterObj} = useSelector(selectFilms)
     const dispatch = useDispatch()
 
-    const [sortText, setSortText] = useState('По дате выхода')
+
+    let text = ''
+    if (filterObj.typeSorting === 'year') {
+        text = 'По дате выхода'
+    }
+
+
+
+    const [sortText, setSortText] = useState(text)
 
     useEffect(() => {
 
@@ -61,13 +69,18 @@ const FilterSort = () => {
         SetSortToggle(false)
     }
 
+    function SortingText() {
+        return ''
+    }
+
 
     return (
         <div className={styles.sort}>
             <div className={styles.sort__block} ref={modalRef}>
                 <div className={styles.sort__group} onClick={() => SetSortToggle(!sortToggle)}>
                     <MdOutlineSort style={{transform: ' scale(-1, 1)'}} size={20}/>
-                    <p className={styles.sort__title}>{sortText}</p>
+                    <p className={styles.sort__title}>
+                        {sortText}</p>
                     {sortToggle ? (<div style={{pointerEvents: 'none'}}><BsChevronCompactUp size={20}/></div>) :
                         (<div style={{pointerEvents: 'none'}}><BsChevronCompactDown size={20}/></div>)}
                 </div>

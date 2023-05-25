@@ -31,8 +31,8 @@ export default function FilterGenres() {
     }, [])
 
 
-
     function filterGenres(id, nameGenres) {
+        nameGenres = firstLetterToUpperCase(nameGenres)
         if ('arrIdGenres' in filterObj) {
 
             if (filterObj.arrIdGenres && filterObj.arrIdGenres.includes(id)) {
@@ -44,7 +44,10 @@ export default function FilterGenres() {
                     ))
                     const {arrIdGenres, ...restId} = filterObj
                     dispatch(getFilterObj(
-                        {...restId}
+                        {
+                            ...restId,
+                            'part': 1,
+                        }
                     ))
 
                 } else {
@@ -60,6 +63,7 @@ export default function FilterGenres() {
                         {
                             ...filterObj,
                             'arrIdGenres': filterListIdGenres,
+                            'part': 1,
                         }
                     ))
                 }
@@ -76,6 +80,7 @@ export default function FilterGenres() {
                     {
                         ...filterObj,
                         'arrIdGenres': [...filterObj.arrIdGenres, id],
+                        'part': 1,
                     }
                 ))
             }
@@ -91,18 +96,17 @@ export default function FilterGenres() {
                 {
                     ...filterObj,
                     'arrIdGenres': [id],
+                    'part': 1,
                 }
             ))
         }
     }
 
-    console.log(filterTextObj)
 
-    function firstLetterToUpperCase(string){
+    function firstLetterToUpperCase(string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
     }
 
-    console.log(filterObj.arrIdGenres)
 
     return (
         <ul className={styles.genres__list}>
@@ -111,7 +115,8 @@ export default function FilterGenres() {
                     <button onClick={() => filterGenres(element.id, element.nameRU)}>
                         {firstLetterToUpperCase(element.nameRU)}
                     </button>
-                    <div className={filterObj.arrIdGenres?.includes(element.id) ? styles.genres__checkbox_active  : styles.genres__checkbox }>
+                    <div
+                        className={filterObj.arrIdGenres?.includes(element.id) ? styles.genres__checkbox_active : styles.genres__checkbox}>
                         <BsCheckLg size={20}/>
                     </div>
                 </li>

@@ -17,6 +17,7 @@ import FilterRating from '@/components/FilterFilms/FilterRating/FilterRating'
 import FilterActor from '@/components/FilterFilms/FilterActor/FilterActor'
 import FilterDir from '@/components/FilterFilms/FilterDir/FilterDir'
 import FilterGrades from '@/components/FilterFilms/FilterGrades/FilterGrades'
+import FilterParameters from '@/components/FilterFilms/FilterParameters/FilterParameters'
 
 import styles from './filterFilms.module.scss'
 
@@ -50,6 +51,24 @@ const FilterFilms = () => {
 
     return (
         <div className={styles.wrapper}>
+            {filterTextObj.arrGenres?.length === 1 &&
+                !filterTextObj.hasOwnProperty('arrCountries') &&
+                filterTextObj.arrGenres?.map((item, inx) =>
+                <h1 key={inx} className={styles.title}>Фильмы: {item}</h1>)}
+            {filterTextObj.arrCountries?.length === 1 &&
+                !filterTextObj.hasOwnProperty('arrGenres') &&
+                filterTextObj.arrCountries?.map((item, inx) =>
+                <h1 key={inx} className={styles.title}>Фильмы: {item}</h1>)}
+            {(filterTextObj.hasOwnProperty('arrGenres') &&
+                filterTextObj.hasOwnProperty('arrCountries')) ||
+            (!filterTextObj.hasOwnProperty('arrGenres') &&
+                !filterTextObj.hasOwnProperty('arrCountries')) ||
+                (filterTextObj.arrGenres?.length > 1 ||
+                    filterTextObj.arrCountries?.length > 1) ?
+                <h1 className={styles.title}>Фильмы</h1> :
+                null}
+
+            <FilterParameters/>
 
             <FilterSort/>
 
@@ -113,7 +132,9 @@ const FilterFilms = () => {
                             </FilterFilmsCategories>
                         </div>
                         <div className={styles.filter__plankItem}>
-                            <FilterFilmsCategories className={styles.filterRating} title={'Рейтинг Кинопоиска'}
+                            <FilterFilmsCategories className={styles.filterRating}
+                                                   title={'Рейтинг Кинопоиска'}
+                                                   filterText={filterTextObj.ratingStart}
                                                    activePlank={activePlank.rating}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -130,7 +151,9 @@ const FilterFilms = () => {
                             </FilterFilmsCategories>
                         </div>
                         <div className={styles.filter__plankItem}>
-                            <FilterFilmsCategories className={styles.filterRating} title={'Оценки Кинопоиска'}
+                            <FilterFilmsCategories className={styles.filterRating}
+                                                   title={'Оценки Кинопоиска'}
+                                                   filterText={filterTextObj.countRatingStart}
                                                    activePlank={activePlank.grade}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -147,7 +170,9 @@ const FilterFilms = () => {
                             </FilterFilmsCategories>
                         </div>
                         <div className={styles.filter__plankItem}>
-                            <FilterFilmsCategories className={styles.filterSearch} title={'Поиск по режиссерам'}
+                            <FilterFilmsCategories className={styles.filterSearch}
+                                                   title={'Поиск по режиссерам'}
+                                                   filterText={filterTextObj.arrDirMembers}
                                                    activePlank={activePlank.searchDir}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -164,7 +189,9 @@ const FilterFilms = () => {
                             </FilterFilmsCategories>
                         </div>
                         <div className={styles.filter__plankItem}>
-                            <FilterFilmsCategories className={styles.filterSearch} title={'Поиск по актерам'}
+                            <FilterFilmsCategories className={styles.filterSearch}
+                                                   title={'Поиск по актерам'}
+                                                   filterText={filterTextObj.arrActorMembers}
                                                    activePlank={activePlank.searchActor}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -182,8 +209,14 @@ const FilterFilms = () => {
                         </div>
                     </div>
                     <div className={styles.filter__reset}>
-                        <button className={styles.filter__resetContent} onClick={() => resetFilter()}>
-                            <VscChromeClose size={20}/>
+                        <button
+                            className={Object.keys(filterTextObj).length !== 0 ?
+                                styles.filter__resetContent :
+                                `${styles.filter__resetContent} ${styles.resetNotActive}`
+
+                            }
+                            onClick={() => resetFilter()}>
+                            <VscChromeClose size={22}/>
                             Сбросить фильтры
                         </button>
                     </div>
