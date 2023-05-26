@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from '@/app/home.module.scss'
 import Image from 'next/image'
 
@@ -11,7 +10,7 @@ type TeaserBtnProps = {
     className: string
 }
 
-const TeaserBtn: React.FC<TeaserBtnProps> = (props) => {
+const TeaserBtn = (props: TeaserBtnProps) => {
     return (
         <li className={props.className}>
             <div className={styles.content}>
