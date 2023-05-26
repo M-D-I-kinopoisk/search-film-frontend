@@ -35,7 +35,6 @@ const FilterFilmsCategories: FC<FilterCategoriesProps> = ({
             const handleClick = (e) => {
 
                 if (modalRef.current) {
-                    // console.log(22)
                     if (categoryRef.current?.contains(e.target)) return
 
                     if (!modalRef.current.contains(e.target)) {
@@ -60,9 +59,9 @@ const FilterFilmsCategories: FC<FilterCategoriesProps> = ({
                     <span>{title}</span>
                     <br/>
                     {filterText?.map((text, inx) =>
-                        <span
-                            className={styles.categories__text}
-                            key={inx}>{text}, </span>)}
+                        inx === 0 ?
+                            <span key={inx} className={styles.categories__text}>{text}</span> :
+                            <span className={styles.categories__text} key={inx}>, {text}</span>)}
                 </div>
                 {activePlank ? (<div style={{pointerEvents: 'none'}}><BsChevronCompactUp size={20}/></div>) :
                     (<div style={{pointerEvents: 'none'}}><BsChevronCompactDown size={20}/></div>)}

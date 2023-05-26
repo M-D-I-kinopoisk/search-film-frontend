@@ -92,7 +92,6 @@ const FilterCountries = () => {
     }
 
 
-
     return (
         <ul className={styles.country__list}>
             {listCountries.map((element, inx) => {
@@ -100,19 +99,15 @@ const FilterCountries = () => {
                     <button onClick={() => filterCountries(element.id, element.nameRU)}>
                         {element.nameRU}
                     </button>
-                    <div
-                        className={filterObj.arrIdCountries?.includes(element.id) ? styles.genres__checkbox_active : styles.genres__checkbox}>
-                        <BsCheckLg size={20}/>
-                    </div>
+                    {filterObj.arrIdCountries?.includes(element.id) ?
+                        <div className={styles.country__checkbox_active}>
+                            <BsCheckLg size={20}/>
+                        </div> :
+                        <div className={styles.country__checkbox}>
+                            <BsCheckLg size={20}/>
+                        </div>}
                 </li>
-                // <li key={inx} className={styles.genres__item}>
-                //     <button onClick={() => filterGenres(element.id, element.nameRU)}>
-                //         {firstLetterToUpperCase(element.nameRU)}
-                //     </button>
-                //     <div className={filterObj.arrIdGenres?.includes(element.id) ? styles.genres__checkbox_active  : styles.genres__checkbox }>
-                //         <BsCheckLg size={20}/>
-                //     </div>
-                // </li>
+
             })}
         </ul>
     )

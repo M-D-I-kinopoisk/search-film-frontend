@@ -30,11 +30,11 @@ const FilterFilms = () => {
         grade: false, searchDir: false, searchActor: false
     })
 
-    const {filterObj} = useSelector(selectFilms)
     const {filterTextObj} = useSelector(selectFilterText)
     const dispatch = useDispatch()
 
     const resetFilter = () => {
+
         dispatch(getFilterTextObj(
             {}
         ))
@@ -42,6 +42,8 @@ const FilterFilms = () => {
             {
                 'ratingStart': 1,
                 'countRatingStart': 1000,
+                'yearStart': 0,
+                'yearEnd': 0,
                 'part': 1,
                 'typeSorting': 'year'
             }
@@ -51,22 +53,28 @@ const FilterFilms = () => {
 
     return (
         <div className={styles.wrapper}>
-            {filterTextObj.arrGenres?.length === 1 &&
-                !filterTextObj.hasOwnProperty('arrCountries') &&
-                filterTextObj.arrGenres?.map((item, inx) =>
-                <h1 key={inx} className={styles.title}>Фильмы: {item}</h1>)}
-            {filterTextObj.arrCountries?.length === 1 &&
-                !filterTextObj.hasOwnProperty('arrGenres') &&
-                filterTextObj.arrCountries?.map((item, inx) =>
-                <h1 key={inx} className={styles.title}>Фильмы: {item}</h1>)}
-            {(filterTextObj.hasOwnProperty('arrGenres') &&
-                filterTextObj.hasOwnProperty('arrCountries')) ||
-            (!filterTextObj.hasOwnProperty('arrGenres') &&
-                !filterTextObj.hasOwnProperty('arrCountries')) ||
-                (filterTextObj.arrGenres?.length > 1 ||
-                    filterTextObj.arrCountries?.length > 1) ?
-                <h1 className={styles.title}>Фильмы</h1> :
-                null}
+            <div className={styles.title}>
+                {filterTextObj.arrYears?.length === 1 &&
+                    !filterTextObj.hasOwnProperty('arrCountries') &&
+                    !filterTextObj.hasOwnProperty('arrGenres') &&
+                    filterTextObj.arrYears?.map((item, inx) =>
+                        <h1 key={inx}>Фильмы: {item}</h1>)}
+                {filterTextObj.arrGenres?.length === 1 &&
+                    !filterTextObj.hasOwnProperty('arrYears') &&
+                    !filterTextObj.hasOwnProperty('arrCountries') &&
+                    filterTextObj.arrGenres?.map((item, inx) =>
+                        <h1 key={inx}>Фильмы: {item}</h1>)}
+                {filterTextObj.arrCountries?.length === 1 &&
+                    !filterTextObj.hasOwnProperty('arrYears') &&
+                    !filterTextObj.hasOwnProperty('arrGenres') &&
+                    filterTextObj.arrCountries?.map((item, inx) =>
+                        <h1 key={inx}>Фильмы: {item}</h1>)}
+                {Object.keys(filterTextObj).length === 0 ||
+                    Object.keys(filterTextObj).length > 1 ||
+                filterTextObj.arrGenres?.length > 1 ||
+                    filterTextObj.arrCountries?.length > 1 ?
+                    <h1>Фильмы</h1> : null}
+            </div>
 
             <FilterParameters/>
 
@@ -115,7 +123,9 @@ const FilterFilms = () => {
                             </FilterFilmsCategories>
                         </div>
                         <div className={styles.filter__plankItem}>
-                            <FilterFilmsCategories className={styles.filterYears} title={'Годы'}
+                            <FilterFilmsCategories className={styles.filterYears}
+                                                   title={'Годы'}
+                                                   filterText={filterTextObj.arrYears}
                                                    activePlank={activePlank.years}
                                                    onClick={() => setActivePlank({
                                                        countries: false,

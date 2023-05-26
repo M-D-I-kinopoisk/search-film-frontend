@@ -1,27 +1,30 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 interface FilmsSliceState {
-    filterObj: object
+    filterObj: {
+        arrIdGenres?: number[] | undefined
+        arrIdCountries?: number[] | undefined
+        arrMembersFilterDto?: [
+            {
+                idMember: number,
+                idProfession: number
+            }
+        ] | undefined
+        ratingStart: number
+        countRatingStart: number,
+        'yearStart': number,
+        'yearEnd': number,
+        'part': number,
+        'typeSorting': string
+    }
 }
 
 const initialState: FilmsSliceState = {
     filterObj: {
-        // 'arrIdGenres': [
-        //     1,
-        //     2
-        // ],
-        // 'arrIdCountries': [
-        //     1,
-        //     2
-        // ],
         'ratingStart': 1,
         'countRatingStart': 1000,
-        // 'arrMembersFilterDto': [
-        //     {
-        //         'idMember': 1,
-        //         'idProfession': 1
-        //     }
-        // ],
+        'yearStart': 0,
+        'yearEnd': 0,
         'part': 1,
         'typeSorting': 'year'
     }
@@ -33,7 +36,6 @@ const FilterSlice = createSlice({
     initialState: initialState,
     reducers: {
         getFilterObj(state, action) {
-            // console.log(action.payload)
             state.filterObj = action.payload
         }
     }

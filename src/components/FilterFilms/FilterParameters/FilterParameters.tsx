@@ -25,7 +25,7 @@ export default function FilterParameters () {
                     <span key={inx}>{item}</span>) :
                 <span>Все годы</span>}
             {filterTextObj.ratingStart?.map((item, inx) =>
-                <span key={inx}> ,Рейтинг больше {item}, </span>)}
+                <span key={inx}>, Рейтинг больше {item}</span>)}
             {filterTextObj.countRatingStart?.map((item, inx) =>
                 <span key={inx}>, Оценок больше {item}</span>)}
             {filterTextObj.arrDirMembers?.map((item, inx) =>

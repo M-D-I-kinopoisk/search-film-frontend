@@ -6,7 +6,6 @@
 
 .sort__group {
   display: inline-flex;
-  //max-width: 250px;
   align-items: center;
   gap: 8px;
   cursor: pointer;
@@ -17,9 +16,7 @@
   font-size: 15px;
   line-height: 20px;
   font-weight: 500;
-  //overflow: hidden;
   white-space: nowrap;
-  //text-overflow: ellipsis;
   height: 20px;
 }
 
@@ -86,4 +83,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.sort__text_active {
+  color: white;
 }

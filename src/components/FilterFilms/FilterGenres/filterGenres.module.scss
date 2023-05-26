@@ -22,12 +22,16 @@
   transition: color 400ms;
   cursor: pointer;
 
-
   &:hover {
     color: #fff;
     transition: color 400ms;
   }
 
+  &:hover .genres__checkbox {
+    opacity: 1;
+    color: rgba(217, 215, 224, .8);
+    transition: opacity 400ms;
+  }
 }
 
 .genres__checkbox {
@@ -45,6 +49,4 @@
   color: white;
 }
 
-.genres__item:hover~.genres__checkbox {
-  opacity: 1;
-}
+

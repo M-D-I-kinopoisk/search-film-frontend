@@ -11,6 +11,7 @@ import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 
 
+
 export default function FilterGenres() {
 
 
@@ -115,10 +116,13 @@ export default function FilterGenres() {
                     <button onClick={() => filterGenres(element.id, element.nameRU)}>
                         {firstLetterToUpperCase(element.nameRU)}
                     </button>
-                    <div
-                        className={filterObj.arrIdGenres?.includes(element.id) ? styles.genres__checkbox_active : styles.genres__checkbox}>
-                        <BsCheckLg size={20}/>
-                    </div>
+                    {filterObj.arrIdGenres?.includes(element.id) ?
+                        <div className={styles.genres__checkbox_active}>
+                            <BsCheckLg size={20}/>
+                        </div> :
+                        <div className={styles.genres__checkbox}>
+                            <BsCheckLg size={20}/>
+                        </div>}
                 </li>
             })}
         </ul>

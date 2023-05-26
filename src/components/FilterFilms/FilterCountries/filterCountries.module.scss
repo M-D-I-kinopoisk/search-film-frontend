@@ -27,17 +27,22 @@
     color: #fff;
     transition: color 400ms;
   }
+  &:hover .country__checkbox {
+    opacity: 1;
+    color: rgba(217, 215, 224, .8);
+    transition: opacity 400ms;
+  }
 
 }
 
-.genres__checkbox {
+.country__checkbox {
   position: absolute;
   opacity: 0;
   right: 0;
   top: -2px;
 }
 
-.genres__checkbox_active {
+.country__checkbox_active {
   opacity: 1;
   position: absolute;
   right: 0;
@@ -45,6 +50,3 @@
   color: white;
 }
 
-.genres__item:hover~.genres__checkbox {
-  opacity: 1;
-}

@@ -10,7 +10,6 @@ module.exports = {
         locales: ['en', 'ru'],
         defaultLocale: 'ru',
     },
-    react: { useSuspense: false },
     images: {
         domains: ['thumbs.dfs.ivi.ru', 'www.ivi.ru'],
     },
