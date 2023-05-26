@@ -10,8 +10,7 @@ module.exports = {
         locales: ['en', 'ru'],
         defaultLocale: 'ru',
     },
-    react: { useSuspense: false },
     images: {
-        domains: ['thumbs.dfs.ivi.ru', 'www.ivi.ru'],
-    },
+        domains: ['thumbs.dfs.ivi.ru', 'www.ivi.ru', 'localhost', 'images-ext-2.discordapp.net'],
+    }
 }

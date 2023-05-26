@@ -109,7 +109,7 @@ const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, list}) => {
                                     </div>
                                 </div>}
                                 {(film.image !== null) &&
-                                    <Image src={`data:image/jpeg;base64,${film.image.base64}`} width={154} height={100}
+                                    <Image src={`http://localhost:12120/api/films/images/${film.imageName}`} width={154} height={100}
                                            alt='image none'/>}
                             </div>
                             <div className={styles.text__section}>
