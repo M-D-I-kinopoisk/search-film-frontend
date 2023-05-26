@@ -14,13 +14,12 @@
 
 .country__item {
   margin-top: 12px;
-
+  position: relative;
   font-size: 13px;
   line-height: 16px;
   font-weight: 500;
   color: rgba(217, 215, 224, .8);
   transition: color 400ms;
-
   cursor: pointer;
 
 
@@ -28,5 +27,26 @@
     color: #fff;
     transition: color 400ms;
   }
+  &:hover .country__checkbox {
+    opacity: 1;
+    color: rgba(217, 215, 224, .8);
+    transition: opacity 400ms;
+  }
 
 }
+
+.country__checkbox {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: -2px;
+}
+
+.country__checkbox_active {
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  top: -2px;
+  color: white;
+}
+

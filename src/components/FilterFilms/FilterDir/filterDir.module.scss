@@ -1,6 +1,15 @@
-.filterDir {
+.filterDir__list {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.filterDir {
+  cursor: pointer;
+  display: flex;
+  min-width: 40%;
+  gap: 5px;
   align-items: center;
   font-size: 15px;
   line-height: 20px;

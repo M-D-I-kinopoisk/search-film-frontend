@@ -29,7 +29,6 @@ const Input: FC<InputProps> = ({
 
     const inputElement = useRef<HTMLInputElement>(null)
     useEffect(() => {
-        console.log(inputElement.current)
         if (inputElement.current) {
             inputElement.current.focus()
         }

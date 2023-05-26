@@ -111,3 +111,25 @@
     }
   }
 }
+
+
+.btn__group {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+}
+
+.btn {
+  font-size: 14px;
+  background-color: aqua;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
+  color: black;
+}
+
+.count {
+  color: white;
+
+}
