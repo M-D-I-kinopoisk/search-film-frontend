@@ -5,14 +5,12 @@ import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 
 import styles from './filterRating.module.scss'
-import {useParams, usePathname, useRouter, useSearchParams} from 'next/navigation'
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 
 
 const FilterRating = () => {
 
-    const params = useParams()
     const pathname = usePathname()
-
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -52,13 +50,13 @@ const FilterRating = () => {
                 const newStr = searchParams.toString().replace(valueStr, `ivi_rating_10_gte=${numberRating}`)
                  url = pathname + '?' + searchParams.toString()
 
-                router.push(`${pathname}${newStr}`)
+                router.push(`${pathname}/?${newStr}`)
             } else {
                 url = pathname + '?' + searchParams.toString()
                 router.push(`${url}&ivi_rating_10_gte=${inputRange}`)
             }
         } else {
-            router.push(`/movies?ivi_rating_10_gte=${inputRange}`)
+            router.push(`${pathname}?ivi_rating_10_gte=${inputRange}`)
         }
     }
 

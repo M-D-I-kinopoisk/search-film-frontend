@@ -25,7 +25,7 @@ import Link from 'next/link'
 
 
 const FilterFilms = () => {
-    
+
     const router = useRouter()
 
 
@@ -52,7 +52,6 @@ const FilterFilms = () => {
                 'typeSorting': 'year'
             }
         ))
-        // history.pushState('object or string', 'Title', '/movies')
         router.push('/movies' )
 
     }
@@ -78,6 +77,8 @@ const FilterFilms = () => {
                         <h1 key={inx}>Фильмы: {item}</h1>)}
                 {Object.keys(filterTextObj).length === 0 ||
                     Object.keys(filterTextObj).length > 1 ||
+                    filterTextObj.hasOwnProperty('ratingStart') ||
+                filterTextObj.hasOwnProperty('countRatingStart') ||
                 filterTextObj.arrGenres?.length > 1 ||
                     filterTextObj.arrCountries?.length > 1 ?
                     <h1>Фильмы</h1> : null}

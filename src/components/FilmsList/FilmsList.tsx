@@ -13,6 +13,18 @@ import {useParams,  useSearchParams} from 'next/navigation'
 export default function FilmsList({genres, params, searchParams}) {
 
     // const searchParams = useSearchParams()
+    console.log(params)
+     if (Object.keys(params).length !== 0) {
+         const str = params.movies[0].split('%2B')
+         console.log(str)
+         console.log(genres)
+
+     }
+
+    // const arr = params.movies.filter((item) => {
+    // const str = item.split('%2B')
+
+    // })
 
     // const params = useParams()
 
@@ -64,7 +76,7 @@ export default function FilmsList({genres, params, searchParams}) {
 
         fetchData()
 
-
+        console.log(params)
         console.log(searchParams)
 
 
@@ -89,10 +101,9 @@ export default function FilmsList({genres, params, searchParams}) {
         // }
 
 
-    }, [])
+    }, [params, searchParams])
 
 
-    console.log(params)
     const router = useRouter()
     const nextListFilms = (part) => {
         dispatch(getFilterObj(

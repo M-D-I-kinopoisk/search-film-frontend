@@ -10,7 +10,7 @@ import styles from './filterGenres.module.scss'
 import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 import Link from 'next/link'
-import { useRouter, useSearchParams, useParams  } from 'next/navigation'
+import {useRouter, useSearchParams, useParams, usePathname} from 'next/navigation'
 
 
 
@@ -19,6 +19,7 @@ export default function FilterGenres() {
 
     const router = useRouter()
     const params = useParams()
+    const pathname = usePathname()
 
     const searchParams = useSearchParams()
 
@@ -61,7 +62,10 @@ export default function FilterGenres() {
                             'part': 1,
                         }
                     ))
-                    router.push('/movies',)
+                    // const valueStr = 'ivi_rating_10_gte=' + searchParams.get('ivi_rating_10_gte')
+                    const newStr = pathname.toString().replace(nameGenresEN, '')
+                    // url = pathname + '?' + searchParams.toString()
+                    router.push(`${newStr}?${searchParams.toString()}`,)
                     // history.pushState('/movies', 'Title', '/movies')
                 } else {
                     const filterListNameGenres = filterTextObj.arrGenres.filter((str) => str !== nameGenres)
@@ -82,9 +86,13 @@ export default function FilterGenres() {
                             'part': 1,
                         }
                     ))
-                    console.log(filterListNameGenresEN.join('+'))
-                    router.push(`/movies/${filterListNameGenresEN.join('+')}`,)
-                    // history.pushState(`/movies/filter/${filterListNameGenresEN.join('+')}`, 'Title', `/movies/filter/${filterListNameGenresEN.join('+')}`)
+                    console.log(123)
+                    const str = (filterListNameGenresEN.join('+'))
+                    const newStr = pathname.toString().replace(str, '')
+                    console.log(newStr)
+                    const newStr2 = newStr.toString().replace(newStr, '')
+                    router.push(`/movies/${filterListNameGenresEN.join('+')}${newStr2}?${searchParams.toString()}`,)
+
                 }
 
             } else {
@@ -103,8 +111,13 @@ export default function FilterGenres() {
                         'part': 1,
                     }
                 ))
-                router.push(`/movies/${[...filterTextObj.arrGenresEN, nameGenresEN].join('+')}`,)
-                // history.pushState(`/movies/filter/${[...filterTextObj.arrGenresEN, nameGenresEN].join('+')}`, 'Title', `/movies/filter/${[...filterTextObj.arrGenresEN, nameGenresEN].join('+')}`)
+
+                const str = ([...filterTextObj.arrGenresEN, nameGenresEN].join('+'))
+                const newStr = pathname.toString().replace(str, '')
+                console.log(newStr)
+                const newStr2 = newStr.toString().replace(newStr, '')
+                router.push(`/movies/${str}${newStr2}?${searchParams.toString()}`,)
+
             }
         } else {
 
@@ -122,11 +135,9 @@ export default function FilterGenres() {
                     'part': 1,
                 }
             ))
-            // history.pushState(`/movies/filter/${nameGenresEN}`, 'Title', `/movies/filter/${nameGenresEN}`)
-
-            router.push(`/movies/${nameGenresEN}`,)
-            // history.pushState(`/movies/filter/${nameGenresEN}`)
-            // router.push(`/movies/filter/${nameGenresEN}`)
+            console.log(5)
+            const newStr2 = pathname.toString().replace('movies', '')
+            router.push(`/movies/${nameGenresEN}${newStr2}?${searchParams.toString()}`,)
 
         }
     }
