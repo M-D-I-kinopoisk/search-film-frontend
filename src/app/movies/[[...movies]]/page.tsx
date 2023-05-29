@@ -47,7 +47,7 @@ const Movies = async ({ params, searchParams }) => {
         <div style={{scrollBehavior : 'unset'}} className={styles.container}>
             <div className={styles.wrapper}>
                 <FilterFilms/>
-                <FilmsList genres={genres} params={params} searchParams={searchParams} />
+                <FilmsList genres={genres} params={params} countries={countries} searchParams={searchParams} />
             </div>
         </div>
     )

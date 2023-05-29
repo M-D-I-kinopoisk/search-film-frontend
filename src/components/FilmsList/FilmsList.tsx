@@ -7,26 +7,14 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
 import {useRouter} from 'next/navigation'
 import Link from 'next/link'
-import {useParams,  useSearchParams} from 'next/navigation'
+import {useParams, useSearchParams} from 'next/navigation'
 
 
-export default function FilmsList({genres, params, searchParams}) {
+export default function FilmsList({genres, countries, params, searchParams}) {
 
     // const searchParams = useSearchParams()
     console.log(params)
-     if (Object.keys(params).length !== 0) {
-         const str = params.movies[0].split('%2B')
-         console.log(str)
-         console.log(genres)
 
-     }
-
-    // const arr = params.movies.filter((item) => {
-    // const str = item.split('%2B')
-
-    // })
-
-    // const params = useParams()
 
 
     const [filmsList, setFilmsList] = useState<object[]>([])
@@ -42,43 +30,48 @@ export default function FilmsList({genres, params, searchParams}) {
         // console.log(params)
 
         const fetchData = async () => {
+            let genresObj = {}
+            let countriesObj = {}
+            if (Object.keys(params).length !== 0) {
+                params.movies.forEach(i => {
+                    const strArr = i.replace('%20', ' ').split('%2B')
+                    const arrGenres = genres.filter(i => strArr.includes(i.nameEN))
+                    const arrCountries = countries.filter(i => strArr.includes(i.nameEN))
+                    // console.log(arrGenres.length > 0)
+                    // console.log(arrCountries.length > 0)
 
-            fetch('http://localhost:12120/api/films/filter', {
-                method: 'POST',
-                body: JSON.stringify({
-                    ...filterObj,
-                    // arrIdGenres: [newArrParams[0].id]
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(response => response.json())
-                // 4. Setting *dogImage* to the image url that we received from the response above
-                .then(data => setFilmsList(data))
+                    if (arrGenres.length > 0) {
+                        genresObj = {arrIdGenres: arrGenres}
+                    }
+                    if (arrCountries.length > 0) {
+                        countriesObj = {arrIdCountries: arrCountries}
+                    }
+                })
+
+                fetch('http://localhost:12120/api/films/filter', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        ...filterObj,
+                        genresObj,
+                        countriesObj
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => response.json())
+                    // 4. Setting *dogImage* to the image url that we received from the response above
+                    .then(data => setFilmsList(data))
+
+            }
 
 
-
-
-
-
-            // if (Object.keys(params).length !== 0) {
-            //     const arrParams = params.movies.split('/')
-            //     console.log(arrParams[0])
-            //     const newArrParams = genres.filter(el => el.nameEN === arrParams[0])
-            //     console.log(newArrParams)
-            //     console.log()
-            //
-            //
-            //
-            // }
         }
 
         fetchData()
 
         console.log(params)
         console.log(searchParams)
-
 
 
         // try {
