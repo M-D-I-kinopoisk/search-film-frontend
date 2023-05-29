@@ -10,13 +10,16 @@ import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms} from '@/redux/FilmsSlice'
 import {Actor} from '@/components/Film/InfoContent/InfoContent'
 import {setOpenModal} from '@/redux/FilmsSlice'
+import {useRouter} from 'next/navigation'
 
 
 interface Creators {
     actors: Actor[]
+    id : string
 }
 
-const CreatorsList = ({actors}: Creators) => {
+const CreatorsList = ({actors, id}: Creators) => {
+    const router = useRouter()
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
 
@@ -33,6 +36,7 @@ const CreatorsList = ({actors}: Creators) => {
             modalState: true,
             value: 'creators'
         }))
+        router.push(`film/${id}/creators`)
     }
 
     return (

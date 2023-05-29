@@ -19,15 +19,18 @@ import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 import {funcDeclination} from '@/utils/funcDeclination'
 import {Actor, FilmInfo} from '@/components/Film/InfoContent/InfoContent'
+import {useRouter} from 'next/navigation'
 
 type MyModalProps = {
     actors: Actor[],
     filmInfo: FilmInfo
+    id : string
 }
 
-const MyModal = ({ actors, filmInfo}: MyModalProps) => {
+const MyModal = ({ actors, filmInfo, id}: MyModalProps) => {
     const {film, comments, modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
+    const router = useRouter()
 
     const uniqueProfessions = [...new Set(actors?.map(item => item.profession.nameRU))]
 
@@ -39,6 +42,11 @@ const MyModal = ({ actors, filmInfo}: MyModalProps) => {
     ]
 
     const testItems = [1, 2, 3, 4, 5]
+    
+    const closeModal = () => {
+        dispatch(setOpenModal({modalState: false}))
+        router.push(`/film/${id}`)
+    }
 
     return (
         <>
@@ -46,7 +54,7 @@ const MyModal = ({ actors, filmInfo}: MyModalProps) => {
                 <div className={styles.modal}>
                     <div className={styles.modalOverlay}>
                         <div className={styles.modalContainer}>
-                            <div onClick={() => dispatch(setOpenModal({modalState: false}))}
+                            <div onClick={() => closeModal()}
                                  className={styles.backLink}>
                                 <BsChevronRight size={22}/>
                                 <span>К фильму </span>

@@ -86,10 +86,11 @@ async function getGenresFilm(genres) {
 }
 
 export default async function Film({params: {id}}: FilmProps) {
-    const film = await getFilmById(id)
-    const actors = await getActorFilmById(id)
-    const filmInfo = await getFilmInfoById(id)
-    const filmComments = await getCommentsFilmById(id)
+
+    const film = await getFilmById(id[0])
+    const actors = await getActorFilmById(id[0])
+    const filmInfo = await getFilmInfoById(id[0])
+    const filmComments = await getCommentsFilmById(id[0])
     const genres = await getGenresFilm(film.genres)
 
     return <div className={styles.wrapper}>
@@ -114,11 +115,11 @@ export default async function Film({params: {id}}: FilmProps) {
         </div>
 
         <FilmsCategory title={`С фильмом <<${film.nameRU}>> смотрят`} list={genres}/>
-        <CreatorsList actors={actors}/>
+        <CreatorsList actors={actors} id={id[0]}/>
         <AwardsList/>
         <TrailersList filmInfo={filmInfo}/>
-        <CommentList/>
+        <CommentList id={id[0]}/>
         <WatchAllDevices/>
-        <MyModal actors={actors} filmInfo={filmInfo}/>
+        <MyModal actors={actors} filmInfo={filmInfo} id={id[0]}/>
     </div>
 }

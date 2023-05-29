@@ -5,11 +5,16 @@ import React, {useState} from 'react'
 import styles from './Comments.module.scss'
 import CommentsItem from './CommentsItem'
 import MyModal from '../MyModal/MyModal'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
+import {useRouter} from 'next/navigation'
 
-const CommentList = () => {
+const CommentList = ({id}) => {
     const {comments} = useSelector(selectFilms)
+    const router = useRouter()
+    const {modalOpen} = useSelector(selectFilms)
+    const dispatch = useDispatch()
+
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     React.useEffect(() => {
@@ -25,6 +30,7 @@ const CommentList = () => {
             modalState: true,
             value: 'comments'
         }))
+        router.push(`film/${id}/comments`)
     }
 
     return (
@@ -47,9 +53,9 @@ const CommentList = () => {
                 ))}
             </div>
 
-            <MyModal isModalOpen={isModalOpen}
-                     setIsModalOpen={setIsModalOpen}
-                     componentName={'comments'}/>
+            {/*<MyModal isModalOpen={isModalOpen}*/}
+            {/*         setIsModalOpen={setIsModalOpen}*/}
+            {/*         componentName={'comments'}/>*/}
         </div>
     )
 }
