@@ -1,46 +1,42 @@
-import React from 'react'
+'use client'
 
 import styles from './Trailers.module.scss'
-import Image from 'next/image'
 
-import { RxLapTimer } from 'react-icons/rx'
+import {RxLapTimer} from 'react-icons/rx'
+import {useSelector} from 'react-redux'
+import {selectFilms} from '@/redux/FilmsSlice'
 
 type TrailersItemProps = {
     inModal?: any
 }
 
-const TrailersItem: React.FC<TrailersItemProps> = ({ inModal }) => {
+const TrailersItem = ({inModal}: TrailersItemProps) => {
+    const {filmInfo} = useSelector(selectFilms)
+
     return (
         <>
             {inModal ?
                 <div className={styles.modalItem}>
-                    <div className={styles.modalItemImg}>
-                        <Image alt='Трейлер'
-                            width={500}
-                            height={500}
-                            src='https://thumbs.dfs.ivi.ru/storage8/contents/4/4/fdca1878aeef2765f45e66bd7e7bb7.jpg/784x440/?q=85' />
+                    <div className={styles.trailerContainer}>
+                        <iframe width='330' height='166' frameBorder={0} src={filmInfo.trailerLink}></iframe>
                     </div>
-
                     <div className={styles.modalItemName}>
-                        Трейлер (дублированный)
+                        Трейлер
                     </div>
 
                     <div className={styles.modalFullDuration}>
-                        <RxLapTimer size={16} color={'#ea003d'} />
+                        <RxLapTimer size={16} color={'#ea003d'}/>
                         <h3>0:02:11</h3>
                     </div>
                 </div>
                 :
                 <div className={styles.item}>
-                    <div className={styles.itemImg}>
-                        <Image alt='Трейлер'
-                            width={280}
-                            height={160}
-                            src='https://thumbs.dfs.ivi.ru/storage8/contents/4/4/fdca1878aeef2765f45e66bd7e7bb7.jpg/784x440/?q=85' />
+                    <div className={styles.trailerContainer}>
+                        <iframe width='330' height='166' frameBorder={0} src={filmInfo.trailerLink}></iframe>
                     </div>
 
                     <div className={styles.itemName}>
-                        Трейлер (дублированный)
+                        Трейлер
                     </div>
 
                     <div className={styles.shortDuration}>

@@ -2,14 +2,26 @@ import styles from '@/components/Film/InfoContent/InfoContent.module.scss'
 import {FiVolume1} from 'react-icons/fi'
 import {BsKeyboard} from 'react-icons/bs'
 import React from 'react'
-import {infoProps} from '@/components/Film/InfoContent/InfoContent'
+import {funcDeclination} from '@/utils/funcDeclination'
 
-const MainInfo = ({film}: infoProps) => {
+type FilmProps = {
+   film: {
+       year: number,
+       rating: number,
+       ageRating: string,
+       duration: number,
+       nameRU: string,
+       nameEN: string,
+       genres: object[],
+       countRating: number
+   }
+}
+
+const MainInfo = ({film}: FilmProps) => {
     return (
         <div className={styles.mainInfo}>
             <h2>{film.nameRU} (Фильм {film.year})</h2>
-            <div>{film.year} {film.duration} {film.ageRating}</div>
-
+            <div>{film.year} {funcDeclination(film.duration, ['минута', 'минуты', 'минут'])} {film.ageRating}</div>
             {film.genres.map((genre: any) => (
                 <div key={genre.id}>{genre.nameRU}</div>
             ))}

@@ -1,56 +1,61 @@
-import React, { useState } from 'react'
+'use client'
+
+import React, {useState} from 'react'
 
 import styles from './MyModal.module.scss'
+
 import Image from 'next/image'
+
 import CommentsItem from '../Comments/CommentsItem'
 import AwardsItem from '../Awards/AwardsItem'
 import CreatorsItem from '../Creators/CreatorsItem'
 import TrailersItem from '../TrailersAndMaterials/TrailersItem'
 
-import { BsChevronRight } from 'react-icons/bs'
-import { RiUserLine } from 'react-icons/ri'
-import { RxLapTimer } from 'react-icons/rx'
-import { AiOutlineLike } from "react-icons/ai"
+import {BsChevronRight} from 'react-icons/bs'
+import {RiUserLine} from 'react-icons/ri'
+import {RxLapTimer} from 'react-icons/rx'
+import {AiOutlineLike} from 'react-icons/ai'
+import {useSelector} from 'react-redux'
+import {selectFilms} from '@/redux/FilmsSlice'
+import {funcDeclination} from '@/utils/funcDeclination'
+import {Actor} from '@/components/Film/InfoContent/InfoContent'
 
 type MyModalProps = {
-    visible?: boolean
-    setVisible?: any
-    componentName?: any
+    isModalOpen?: boolean,
+    setIsModalOpen?: any,
+    componentName?: any,
+    actors: Actor[]
 }
 
-const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName }) => {
-    const [active, setAactive] = useState(componentName)
+const MyModal = ({isModalOpen, setIsModalOpen, componentName, actors}: MyModalProps) => {
+    const [active, setActive] = useState(componentName)
+    const {film, comments} = useSelector(selectFilms)
+
+    const uniqueProfessions = [...new Set(actors?.map(item => item.profession.nameRU))]
 
     const links = [
-        { title: 'Создатели', value: 'creators' },
-        { title: 'Комментарии', value: 'comments' },
-        { title: 'Трейлеры', value: 'trailers' },
-        { title: 'Награды', value: 'awards' }
-    ]
-
-    const creatorsTestItems = [
-        { title: 'Режжисеры', items: [1, 2, 3, 4, 5] },
-        { title: 'Актеры', items: [1, 2, 3, 4, 5] },
-        { title: 'Продьюсеры', items: [1, 2, 3, 4, 5] }
+        {title: 'Создатели', value: 'creators'},
+        {title: 'Комментарии', value: 'comments'},
+        {title: 'Трейлеры', value: 'trailers'},
+        {title: 'Награды', value: 'awards'}
     ]
 
     const testItems = [1, 2, 3, 4, 5]
 
     const closeModal = () => {
-        setVisible(false)
-        setAactive(componentName)
-        document.body.classList.remove('modalScroll')
+        setIsModalOpen(false)
+        setActive(componentName)
     }
 
     return (
         <>
-            {visible &&
+            {isModalOpen &&
                 <div className={styles.modal}>
                     <div className={styles.modalOverlay}>
                         <div className={styles.modalContainer}>
                             <div onClick={() => closeModal()}
-                                className={styles.backLink}>
-                                <BsChevronRight size={22} />
+                                 className={styles.backLink}>
+                                <BsChevronRight size={22}/>
                                 <span>К фильму </span>
                             </div>
 
@@ -66,7 +71,7 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
                                                 <li key={link.value}
                                                     className={active === link.value
                                                         ? styles.active : ''}
-                                                    onClick={() => setAactive(link.value)}>
+                                                    onClick={() => setActive(link.value)}>
                                                     {link.title}
                                                 </li>
                                             )}
@@ -74,33 +79,33 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
 
                                         <div className={styles.line}></div>
                                     </div>
-
                                     {active === 'creators' &&
                                         <div className={styles.creators}>
-                                            {creatorsTestItems.map((elem) =>
-                                                <div key={elem.title}>
+                                            {uniqueProfessions.map((item: any) => (
+
+                                                <div key={item}>
                                                     <div className={styles.positions}>
-                                                        {elem.title}
+                                                        {item}
                                                     </div>
 
                                                     <div className={styles.directorsItems}>
-                                                        {elem.items.map((el) =>
-                                                            <CreatorsItem key={el}
-                                                                inModal={true} />
-                                                        )}
+                                                        {actors.map((actor: any) =>
+                                                            (actor.profession.nameRU === item ?
+                                                                <CreatorsItem key={actor.id} actor={actor}/>
+                                                                : ''))}
                                                     </div>
                                                 </div>
-                                            )}
-                                        </div>
-                                    }
+
+                                            ))}
+                                        </div>}
 
                                     {active === 'comments' &&
                                         <div>
                                             <div className={styles.addCommentBlock}>
-                                                <RiUserLine size={24} />
+                                                <RiUserLine size={24}/>
 
                                                 <input type='text'
-                                                    placeholder='Написать комментарий' />
+                                                       placeholder='Написать комментарий'/>
 
                                                 <div className={styles.buttons}>
                                                     <button
@@ -112,11 +117,10 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
                                             </div>
 
                                             <div>
-                                                {testItems.map((el) =>
-                                                    <CommentsItem key={el}
-                                                        inModal={true} />
+                                                {comments.map((comment) =>
+                                                    <CommentsItem key={comment.id} inModal={true} comment={comment}/>
                                                 )}
-                                                    <AiOutlineLike size={20} fill='#fff'/>
+                                                <AiOutlineLike size={20} fill='#fff'/>
 
                                             </div>
 
@@ -128,10 +132,7 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
 
                                     {active === 'trailers' &&
                                         <div className={styles.trailers}>
-                                            {testItems.map((el) =>
-                                                <TrailersItem key={el}
-                                                    inModal={true} />
-                                            )}
+                                            <TrailersItem inModal={true}/>
                                         </div>
                                     }
 
@@ -139,20 +140,28 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
                                         <div className={styles.awards}>
                                             {testItems.map((el) =>
                                                 <AwardsItem key={el}
-                                                    inModal={true} />
+                                                            inModal={true}/>
                                             )}
                                         </div>
                                     }
                                 </div>
 
                                 <div className={styles.filmInfo}>
-                                    <Image alt='Фильм'
-                                        width={128}
-                                        height={195}
-                                        src='https://thumbs.dfs.ivi.ru/storage2/contents/6/1/0ceca03c51c3d38f34bdf3fd0dd2c8.jpg/128x196/?q=85' />
+                                    {film.imageName === null ?
+                                        <Image
+                                            src={'/img/static-filmImage.jpg'}
+                                            width={128}
+                                            height={195}
+                                            alt='Film'/>
+                                        :
+                                        <Image
+                                            alt='Фильм'
+                                            width={128}
+                                            height={195}
+                                            src={`http://localhost:12120/api/films/images/${film.imageName}`}/>}
 
                                     <div className={styles.ball}>
-                                        <span>8,9</span>
+                                        <span>{film.rating.toFixed(1)}</span>
                                         <div className={styles.graphs}>
                                             <div className={styles.progressBar}>
                                                 <div className={styles.backBar}></div>
@@ -174,12 +183,15 @@ const MyModal: React.FC<MyModalProps> = ({ visible, setVisible, componentName })
                                     </div>
 
                                     <div className={styles.information}>
-                                        <span>2011, Франция, Драмы</span>
+                                        <span>{film.year}, {film.country.nameRU}, {film.genres.slice(0, 1).map((genre) => (
+                                            <div className={styles.text}
+                                                 key={genre.id}>{genre.nameRU}</div>
+                                        ))}</span>
                                     </div>
 
                                     <div className={styles.duration}>
-                                        <RxLapTimer size={16} />
-                                        <span>112 минут</span>
+                                        <RxLapTimer size={16}/>
+                                        <span>{funcDeclination(film.duration, ['минута', 'минуты', 'минут'])}</span>
                                     </div>
                                 </div>
                             </div>

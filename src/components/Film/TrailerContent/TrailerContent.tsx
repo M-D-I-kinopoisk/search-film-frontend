@@ -7,9 +7,14 @@ import {FiShare} from 'react-icons/fi'
 import {MdOndemandVideo} from 'react-icons/md'
 import {IoMdExpand} from 'react-icons/io'
 import MainInfo from '@/components/Film/MainInfo/MainInfo'
-import {infoProps} from '@/components/Film/InfoContent/InfoContent'
 
-const TrailerContent = ({filmInfo, film}: infoProps) => {
+export type FilmInfoProps = {
+    filmInfo: {
+        trailerLink: string
+    }
+}
+
+const TrailerContent = ({filmInfo}: FilmInfoProps) => {
     const userButtonsInfo = [
         {text: 'Трейлер', icon: <BsPlay size={26} color='rgba(255,255,255,.72)'/>, nameClass: 'trailerButton'},
         {icon: <BsBookmark size={16} color='rgba(255,255,255,.72)'/>, nameClass: 'markerButton'},
@@ -18,32 +23,11 @@ const TrailerContent = ({filmInfo, film}: infoProps) => {
 
     return (
         <div className={styles.trailerContent}>
-            {/*<MainInfo film={film} filmInfo={filmInfo}/>*/}
+            {/*<MainInfo/>*/}
             <div className={styles.video}>
-                <div className={styles.videoImg}>
-                    <video loop muted autoPlay>
-                        <source src='' type='video/mp4'/>
-                    </video>
+                <div className={styles.trailerWrapper}>
+                    <iframe src={filmInfo.trailerLink} className={styles.trailer} frameBorder={0}></iframe>
                 </div>
-
-                <div className={styles.expand}>
-                    <IoMdExpand size={16} color='rgba(255,255,255,.88)'/>
-                    <span>Развернуть трейлер</span>
-                </div>
-
-                <div className={styles.subscription}>
-                    <div className={styles.subscriptionBtn}>
-                        <div>Смотреть</div>
-                        <div>по подписке Иви</div>
-                    </div>
-
-                    <div className={styles.saleSub}>
-                        Первые 30 дней подписки за 1 ₽
-                    </div>
-                </div>
-
-                <div className={styles.age1}>16+</div>
-                <div className={styles.age2}>16+</div>
             </div>
             <div className={styles.userButtons}>
                 <div className={styles.userButtonsWrapper}>

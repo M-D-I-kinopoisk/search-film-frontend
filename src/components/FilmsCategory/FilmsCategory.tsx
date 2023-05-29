@@ -4,6 +4,8 @@ import React from 'react'
 
 import styles from './filmsCategory.module.scss'
 
+import Image from 'next/image'
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import {Swiper, SwiperSlide} from 'swiper/react'
@@ -13,7 +15,7 @@ import Link from 'next/link'
 import {RiMagicLine, RiBookmarkLine, RiStarLine} from 'react-icons/ri'
 import {MdOutlineHideSource} from 'react-icons/md'
 import {BsChevronRight} from 'react-icons/bs'
-import Image from 'next/image'
+
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
 import {funcDeclination} from '@/utils/funcDeclination'
@@ -43,7 +45,7 @@ const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, list}) => {
                     speed={700}
                     modules={[Navigation]}
                     navigation={true}>
-                {list.map((film: any) => (
+                {list.slice(0, 20).map((film: any) => (
                     <SwiperSlide key={film.id} className={styles.film}
                                  onClick={() => onMouseHandler(film.id)}
                                  onMouseEnter={() => onMouseHandler(film.id)}
@@ -108,8 +110,15 @@ const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, list}) => {
                                         </div>
                                     </div>
                                 </div>}
-                                {(film.image !== null) &&
-                                    <Image src={`http://localhost:12120/api/films/images/${film.imageName}`} width={154} height={100}
+                                {film.imageName === null ?
+                                    <Image
+                                        src={'/img/static-filmImage.jpg'}
+                                        width={154}
+                                        height={100}
+                                        alt='Film'/>
+                                    :
+                                    <Image src={`http://localhost:12120/api/films/images/${film.imageName}`} width={154}
+                                           height={100}
                                            alt='image none'/>}
                             </div>
                             <div className={styles.text__section}>

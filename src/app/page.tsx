@@ -13,7 +13,7 @@ async function getFightersFilms() {
             'arrIdGenres': [
                 2
             ],
-            'part': 1
+            'part': 3
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ async function getAdventuresFilms() {
             'arrIdGenres': [
                 15
             ],
-            'part': 1
+            'part': 4
         }),
         headers: {
             'Content-Type': 'application/json'

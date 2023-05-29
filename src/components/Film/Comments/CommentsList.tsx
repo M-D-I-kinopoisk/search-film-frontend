@@ -1,46 +1,48 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 
 import styles from './Comments.module.scss'
 import CommentsItem from './CommentsItem'
 import MyModal from '../MyModal/MyModal'
+import {useSelector} from 'react-redux'
+import {selectFilms} from '@/redux/FilmsSlice'
 
-const CommentList: React.FC = () => {
-    const [visible, setVisible] = useState(false)
+const CommentList = () => {
+    const {comments} = useSelector(selectFilms)
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
-    let items = [1, 2, 3, 4]
+    React.useEffect(() => {
+        if (isModalOpen) {
+            document.body.classList.add('modalScroll')
+        }
 
-    const setModalScroll = () => {
-        setVisible(true)
-        document.body.classList.add('modalScroll')
-    }
+        return () => document.body.classList.remove('modalScroll')
+    }, [isModalOpen])
 
     return (
         <div className={styles.comments}>
             <div className={styles.commentsTop}>
-                <div onClick={() => setModalScroll()}
-                    className={styles.commentsTitle}>
+                <div onClick={() => setIsModalOpen(true)}
+                     className={styles.commentsTitle}>
                     Комментарии
                 </div>
 
-                <div onClick={() => setModalScroll()}
-                    className={styles.addCommentButton}>
+                <div onClick={() => setIsModalOpen(true)}
+                     className={styles.addCommentButton}>
                     Оставить комментарий
                 </div>
             </div>
 
             <div className={styles.commentsItems}>
-                {items.map((elem) =>
-                    <CommentsItem key={elem}
-                        openModal={setModalScroll}
-                    />
-                )}
+                {comments.map((comment) => (
+                    <CommentsItem key={comment.id} comment={comment} openModal={setIsModalOpen}/>
+                ))}
             </div>
 
-            <MyModal visible={visible}
-                setVisible={setVisible}
-                componentName={'comments'} />
+            <MyModal isModalOpen={isModalOpen}
+                     setIsModalOpen={setIsModalOpen}
+                     componentName={'comments'}/>
         </div>
     )
 }
