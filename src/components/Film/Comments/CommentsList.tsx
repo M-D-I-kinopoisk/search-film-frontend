@@ -6,7 +6,7 @@ import styles from './Comments.module.scss'
 import CommentsItem from './CommentsItem'
 import MyModal from '../MyModal/MyModal'
 import {useSelector} from 'react-redux'
-import {selectFilms} from '@/redux/FilmsSlice'
+import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 
 const CommentList = () => {
     const {comments} = useSelector(selectFilms)
@@ -20,15 +20,22 @@ const CommentList = () => {
         return () => document.body.classList.remove('modalScroll')
     }, [isModalOpen])
 
+    const modalOpenHandler = () => {
+        dispatch(setOpenModal({
+            modalState: true,
+            value: 'comments'
+        }))
+    }
+
     return (
         <div className={styles.comments}>
             <div className={styles.commentsTop}>
-                <div onClick={() => setIsModalOpen(true)}
+                <div onClick={() => modalOpenHandler()}
                      className={styles.commentsTitle}>
                     Комментарии
                 </div>
 
-                <div onClick={() => setIsModalOpen(true)}
+                <div onClick={() => modalOpenHandler()}
                      className={styles.addCommentButton}>
                     Оставить комментарий
                 </div>

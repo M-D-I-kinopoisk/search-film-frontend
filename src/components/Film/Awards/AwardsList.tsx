@@ -34,10 +34,6 @@ const AwardsList: React.FC<AwardsListProps> = () => {
                     <AwardsItem key={elem}/>
                 )}
             </div>
-
-            <MyModal isModalOpen={isModalOpen}
-                     setIsModalOpen={setIsModalOpen}
-                     componentName={'awards'}/>
         </div>
     )
 }

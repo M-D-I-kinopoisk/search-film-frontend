@@ -6,7 +6,11 @@ interface FilmsSliceState {
     actors: object[],
     filmId: null,
     FilmById: null,
-    comments: object[]
+    comments: object[],
+    modalOpen: {
+        modalState: boolean,
+        value: string
+    }
 }
 
 const initialState: FilmsSliceState = {
@@ -15,9 +19,12 @@ const initialState: FilmsSliceState = {
     actors: [],
     filmId: null,
     FilmById: null,
-    comments: []
+    comments: [],
+    modalOpen: {
+        modalState: false,
+        value: 'creators'
+    }
 }
-
 
 const FilmsSlice = createSlice({
     name: 'films',
@@ -32,16 +39,16 @@ const FilmsSlice = createSlice({
         getFilmsInfo(state, action) {
             state.filmInfo = action.payload
         },
-        getActors(state, action) {
-            state.actors = action.payload
-        },
         getComments(state, action) {
             state.actors = action.payload
+        },
+        setOpenModal(state, action) {
+            state.modalOpen = action.payload
         }
     }
 })
 
-export const {getFilmId, getFilms, getFilmsInfo, getActors, getComments} = FilmsSlice.actions
+export const {getFilmId, getFilms, getFilmsInfo, getComments, setOpenModal} = FilmsSlice.actions
 
 export const selectFilms = (state) => state.films
 export default FilmsSlice.reducer

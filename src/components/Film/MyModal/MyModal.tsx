@@ -15,21 +15,19 @@ import {BsChevronRight} from 'react-icons/bs'
 import {RiUserLine} from 'react-icons/ri'
 import {RxLapTimer} from 'react-icons/rx'
 import {AiOutlineLike} from 'react-icons/ai'
-import {useSelector} from 'react-redux'
-import {selectFilms} from '@/redux/FilmsSlice'
+import {useDispatch, useSelector} from 'react-redux'
+import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 import {funcDeclination} from '@/utils/funcDeclination'
-import {Actor} from '@/components/Film/InfoContent/InfoContent'
+import {Actor, FilmInfo} from '@/components/Film/InfoContent/InfoContent'
 
 type MyModalProps = {
-    isModalOpen?: boolean,
-    setIsModalOpen?: any,
-    componentName?: any,
-    actors: Actor[]
+    actors: Actor[],
+    filmInfo: FilmInfo
 }
 
-const MyModal = ({isModalOpen, setIsModalOpen, componentName, actors}: MyModalProps) => {
-    const [active, setActive] = useState(componentName)
-    const {film, comments} = useSelector(selectFilms)
+const MyModal = ({ actors, filmInfo}: MyModalProps) => {
+    const {film, comments, modalOpen} = useSelector(selectFilms)
+    const dispatch = useDispatch()
 
     const uniqueProfessions = [...new Set(actors?.map(item => item.profession.nameRU))]
 
@@ -42,18 +40,13 @@ const MyModal = ({isModalOpen, setIsModalOpen, componentName, actors}: MyModalPr
 
     const testItems = [1, 2, 3, 4, 5]
 
-    const closeModal = () => {
-        setIsModalOpen(false)
-        setActive(componentName)
-    }
-
     return (
         <>
-            {isModalOpen &&
+            {modalOpen.modalState &&
                 <div className={styles.modal}>
                     <div className={styles.modalOverlay}>
                         <div className={styles.modalContainer}>
-                            <div onClick={() => closeModal()}
+                            <div onClick={() => dispatch(setOpenModal({modalState: false}))}
                                  className={styles.backLink}>
                                 <BsChevronRight size={22}/>
                                 <span>К фильму </span>
@@ -68,10 +61,12 @@ const MyModal = ({isModalOpen, setIsModalOpen, componentName, actors}: MyModalPr
                                     <div>
                                         <ul className={styles.navbar}>
                                             {links.map((link) =>
-                                                <li key={link.value}
-                                                    className={active === link.value
-                                                        ? styles.active : ''}
-                                                    onClick={() => setActive(link.value)}>
+                                                <li key={link.value} className={modalOpen.value === link.value
+                                                    ? styles.active : ''}
+                                                    onClick={() => dispatch(setOpenModal({
+                                                        modalState: true,
+                                                        value: link.value
+                                                    }))}>
                                                     {link.title}
                                                 </li>
                                             )}
@@ -79,7 +74,7 @@ const MyModal = ({isModalOpen, setIsModalOpen, componentName, actors}: MyModalPr
 
                                         <div className={styles.line}></div>
                                     </div>
-                                    {active === 'creators' &&
+                                    {modalOpen.value === 'creators' &&
                                         <div className={styles.creators}>
                                             {uniqueProfessions.map((item: any) => (
 
@@ -99,7 +94,7 @@ const MyModal = ({isModalOpen, setIsModalOpen, componentName, actors}: MyModalPr
                                             ))}
                                         </div>}
 
-                                    {active === 'comments' &&
+                                    {modalOpen.value === 'comments' &&
                                         <div>
                                             <div className={styles.addCommentBlock}>
                                                 <RiUserLine size={24}/>
@@ -130,13 +125,13 @@ const MyModal = ({isModalOpen, setIsModalOpen, componentName, actors}: MyModalPr
                                         </div>
                                     }
 
-                                    {active === 'trailers' &&
+                                    {modalOpen.value === 'trailers' &&
                                         <div className={styles.trailers}>
-                                            <TrailersItem inModal={true}/>
+                                            <TrailersItem filmInfo={filmInfo} inModal={true}/>
                                         </div>
                                     }
 
-                                    {active === 'awards' &&
+                                    {modalOpen.value === 'awards' &&
                                         <div className={styles.awards}>
                                             {testItems.map((el) =>
                                                 <AwardsItem key={el}

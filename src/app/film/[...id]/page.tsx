@@ -9,7 +9,6 @@ import CommentList from '@/components/Film/Comments/CommentsList'
 import WatchAllDevices from '@/components/Film/WatchAllDevices/WatchAllDevices'
 import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
 import MyModal from '@/components/Film/MyModal/MyModal'
-import ModalFilm from '@/components/Film/ModalFilm/ModalFilm'
 
 type FilmProps = {
     params: {
@@ -64,7 +63,7 @@ async function getCommentsFilmById(id) {
 }
 
 async function getGenresFilm(genres) {
-    const genresId = genres.map((genre) => {
+    const genresId = genres?.map((genre) => {
         return genre.id
     })
 
@@ -116,12 +115,10 @@ export default async function Film({params: {id}}: FilmProps) {
 
         <FilmsCategory title={`С фильмом <<${film.nameRU}>> смотрят`} list={genres}/>
         <CreatorsList actors={actors}/>
-        {/*<AwardsList/>*/}
-        <MyModal actors={actors}/>
-        <TrailersList/>
-        {/*<CommentList/>*/}
-        {/*<WatchAllDevices/>*/}
-        {/*<MyModal actors={actors}/>*/}
-        <ModalFilm/>
+        <AwardsList/>
+        <TrailersList filmInfo={filmInfo}/>
+        <CommentList/>
+        <WatchAllDevices/>
+        <MyModal actors={actors} filmInfo={filmInfo}/>
     </div>
 }

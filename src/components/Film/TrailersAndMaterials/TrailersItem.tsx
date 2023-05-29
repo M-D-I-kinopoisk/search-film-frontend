@@ -5,20 +5,21 @@ import styles from './Trailers.module.scss'
 import {RxLapTimer} from 'react-icons/rx'
 import {useSelector} from 'react-redux'
 import {selectFilms} from '@/redux/FilmsSlice'
+import {FilmInfo} from '@/components/Film/InfoContent/InfoContent'
 
 type TrailersItemProps = {
-    inModal?: any
+    inModal?: any,
+    filmInfo: FilmInfo
 }
 
-const TrailersItem = ({inModal}: TrailersItemProps) => {
-    const {filmInfo} = useSelector(selectFilms)
+const TrailersItem = ({inModal, filmInfo}: TrailersItemProps) => {
 
     return (
         <>
             {inModal ?
                 <div className={styles.modalItem}>
                     <div className={styles.trailerContainer}>
-                        <iframe width='330' height='166' frameBorder={0} src={filmInfo.trailerLink}></iframe>
+                        <iframe width='330' height='166' frameBorder={0} src={filmInfo?.trailerLink}></iframe>
                     </div>
                     <div className={styles.modalItemName}>
                         Трейлер
@@ -32,7 +33,7 @@ const TrailersItem = ({inModal}: TrailersItemProps) => {
                 :
                 <div className={styles.item}>
                     <div className={styles.trailerContainer}>
-                        <iframe width='330' height='166' frameBorder={0} src={filmInfo.trailerLink}></iframe>
+                        <iframe width='330' height='166' frameBorder={0} src={filmInfo?.trailerLink}></iframe>
                     </div>
 
                     <div className={styles.itemName}>

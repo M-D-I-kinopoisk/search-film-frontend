@@ -18,7 +18,7 @@ import WatchOptions from '@/components/Film/WatchOptions/WatchOptions'
 import {funcDeclination} from '@/utils/funcDeclination'
 
 import {useDispatch, useSelector} from 'react-redux'
-import {getActors, getComments, getFilms, getFilmsInfo, selectFilms} from '@/redux/FilmsSlice'
+import {getComments, getFilms, getFilmsInfo, selectFilms} from '@/redux/FilmsSlice'
 
 export type Film = {
     year: number,
@@ -32,7 +32,7 @@ export type Film = {
     imageName: string,
 }
 
-type FilmInfo = {
+export type FilmInfo = {
     trailerLink: string,
     text: string
 }
@@ -73,7 +73,6 @@ const InfoContent = ({film, filmInfo, actors, filmComments}: infoContentProps) =
 
     React.useEffect(() => {
         dispatch(getFilms(film))
-        dispatch(getActors(actors))
         dispatch(getFilmsInfo(filmInfo))
         dispatch(getComments(filmComments))
     }, [])
