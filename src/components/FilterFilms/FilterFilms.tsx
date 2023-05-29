@@ -1,6 +1,7 @@
 'use client'
 
 import {useState} from 'react'
+import {useRouter} from 'next/navigation'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
@@ -20,9 +21,12 @@ import FilterGrades from '@/components/FilterFilms/FilterGrades/FilterGrades'
 import FilterParameters from '@/components/FilterFilms/FilterParameters/FilterParameters'
 
 import styles from './filterFilms.module.scss'
+import Link from 'next/link'
 
 
 const FilterFilms = () => {
+    
+    const router = useRouter()
 
 
     const [activePlank, setActivePlank] = useState({
@@ -48,6 +52,9 @@ const FilterFilms = () => {
                 'typeSorting': 'year'
             }
         ))
+        // history.pushState('object or string', 'Title', '/movies')
+        router.push('/movies' )
+
     }
 
 
@@ -229,6 +236,19 @@ const FilterFilms = () => {
                             <VscChromeClose size={22}/>
                             Сбросить фильтры
                         </button>
+                        {/*<button type='button' onClick={() => router.push('/movies/arr',)}>*/}
+                        {/*    Dashboard*/}
+                        {/*</button>*/}
+                        {/*<button type='button' onClick={() => history.replaceState(null, '', '/movies/view')}>*/}
+                        {/*    Dashboard2*/}
+                        {/*</button>*/}
+                        {/*<button type='button' onClick={() => history.replaceState(null, '', '/movies/view/321321')}>*/}
+                        {/*    Dashboard3*/}
+                        {/*</button>*/}
+
+                        {/*<Link href='/movies/reset' scroll={false}>*/}
+                        {/*    Disables scrolling to the top*/}
+                        {/*</Link>*/}
                     </div>
                 </div>
             </div>

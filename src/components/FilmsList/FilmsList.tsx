@@ -1,12 +1,20 @@
 'use client'
 
-import styles from '@/app/movies/movies.module.scss'
+import styles from './filmList.module.scss'
 import {useEffect, useState} from 'react'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
+import {useRouter} from 'next/navigation'
+import Link from 'next/link'
+import {useParams,  useSearchParams} from 'next/navigation'
 
-export default function FilmsList() {
+
+export default function FilmsList({genres, params, searchParams}) {
+
+    // const searchParams = useSearchParams()
+
+    // const params = useParams()
 
 
     const [filmsList, setFilmsList] = useState<object[]>([])
@@ -15,35 +23,77 @@ export default function FilmsList() {
     const dispatch = useDispatch()
 
 
+    // const [listGenres, setListGenres] = useState<[] | any>([])
+
     useEffect(() => {
         console.log('useEffect работает')
+        // console.log(params)
 
+        const fetchData = async () => {
 
-        async function getFilms() {
-            try {
-                const res = await fetch('http://localhost:12120/api/films/filter', {
-                    method: 'POST',
-                    body: JSON.stringify(filterObj),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                const films = await res.json()
-                if (filterObj.part > 1) {
-                    setFilmsList(prev => [...prev, ...films])
-                } else {
-                    setFilmsList(films)
+            fetch('http://localhost:12120/api/films/filter', {
+                method: 'POST',
+                body: JSON.stringify({
+                    ...filterObj,
+                    // arrIdGenres: [newArrParams[0].id]
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            } catch (error) {
-                console.log(error.message)
-            }
+            })
+                .then(response => response.json())
+                // 4. Setting *dogImage* to the image url that we received from the response above
+                .then(data => setFilmsList(data))
 
+
+
+
+
+
+            // if (Object.keys(params).length !== 0) {
+            //     const arrParams = params.movies.split('/')
+            //     console.log(arrParams[0])
+            //     const newArrParams = genres.filter(el => el.nameEN === arrParams[0])
+            //     console.log(newArrParams)
+            //     console.log()
+            //
+            //
+            //
+            // }
         }
 
-        getFilms()
-    }, [filterObj])
+        fetchData()
 
 
+        console.log(searchParams)
+
+
+
+        // try {
+        //     const res = await fetch('http://localhost:12120/api/films/filter', {
+        //         method: 'POST',
+        //         body: JSON.stringify({...filterObj,
+        //         }),
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         }
+        //     })
+        //     const films = await res.json()
+        //     if (filterObj.part > 1) {
+        //         setFilmsList(prev => [...prev, ...films])
+        //     } else {
+        //         setFilmsList(films)
+        //     }
+        // } catch (error) {
+        //     console.log(error.message)
+        // }
+
+
+    }, [])
+
+
+    console.log(params)
+    const router = useRouter()
     const nextListFilms = (part) => {
         dispatch(getFilterObj(
             {

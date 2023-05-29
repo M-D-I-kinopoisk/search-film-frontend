@@ -1,14 +1,12 @@
-import {FC} from 'react'
+'use client'
+
 
 import Link from 'next/link'
 
 import style from './dropDownFilter.module.scss'
 
-export interface GenresProps {
-    list: any
-}
 
-const DropDownFilter: FC<GenresProps> = ({list}) => {
+const DropDownFilter = ({list}) => {
     return (
         <>
             <div>
@@ -19,9 +17,10 @@ const DropDownFilter: FC<GenresProps> = ({list}) => {
                             <div key={idx}>
                                 <li>
                                     <Link
+                                        prefetch={false}
                                         className={style.dropDown__a}
-                                        href={element.href}>
-                                        {element.name}
+                                        href={`/movies/${element.nameEN}`}>
+                                        {element.nameRU}
                                     </Link>
                                 </li>
                             </div>
@@ -35,7 +34,9 @@ const DropDownFilter: FC<GenresProps> = ({list}) => {
                     {list.country.map((element, idx) => {
                         return (
                             <li key={idx}>
-                                <Link className={style.dropDown__a} href={element.href}>
+                                <Link className={style.dropDown__a}
+                                      prefetch={false}
+                                      href={element.href}>
                                     {element.name}
                                 </Link>
                             </li>
@@ -54,7 +55,9 @@ const DropDownFilter: FC<GenresProps> = ({list}) => {
                     {list.years.map((element, idx) => {
                         return (
                             <li key={idx}>
-                                <Link className={style.dropDown__a} href={element.href}>
+                                <Link className={style.dropDown__a}
+                                      prefetch={false}
+                                      href={element.href}>
                                     {element.name}
                                 </Link>
                             </li>

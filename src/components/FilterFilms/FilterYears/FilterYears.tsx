@@ -1,3 +1,5 @@
+'use client'
+
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
@@ -5,10 +7,20 @@ import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 import {RxRadiobutton,} from 'react-icons/rx'
 import {MdOutlineRadioButtonUnchecked} from 'react-icons/md'
 
+import {useRouter, useSearchParams, useParams, usePathname} from 'next/navigation'
+
 import styles from './filterYears.module.scss'
 
 
 const FilterYears = () => {
+
+    const params = useParams()
+    const pathname = usePathname()
+
+    const router = useRouter()
+
+    const searchParams = useSearchParams()
+
 
     const {filterObj} = useSelector(selectFilms)
     const {filterTextObj} = useSelector(selectFilterText)
@@ -42,8 +54,8 @@ const FilterYears = () => {
         },
         {
             'nameYears': '2019 год',
-            'yearStart': 2021,
-            'yearEnd': 2021,
+            'yearStart': 2019,
+            'yearEnd': 2019,
         },
         {
             'nameYears': '2018 год',
@@ -119,7 +131,7 @@ const FilterYears = () => {
 
                 const {arrYears, ...restName} = filterTextObj
                 dispatch(getFilterTextObj(restName))
-
+                router.push('movies/1231')
             } else {
 
                 dispatch(getFilterTextObj(
@@ -138,6 +150,25 @@ const FilterYears = () => {
                     'part': 1,
                 }
             ))
+            console.log(searchParams.has('232'))
+            console.log(searchParams.keys())
+            console.log(searchParams.toString())
+            let url = '/movies'
+            console.log(url)
+            console.log(start)
+            // router.push(`${url}${start.toString()}`)
+            if (searchParams.toString()) {
+                if (searchParams.has('year')) {
+                    url = pathname + '?' + searchParams.toString()
+                    router.push(`${url}`)
+                } else {
+                    url = pathname + '?' + searchParams.toString()
+                    router.push(`${url}&years=${start}`)
+                }
+            } else {
+                router.push(`/movies?year=${start}`)
+            }
+            // router.push(`/movies?${start}`)
         }
     }
 

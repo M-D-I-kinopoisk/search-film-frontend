@@ -18,8 +18,8 @@ const FilterCountries = () => {
     useEffect(() => {
         const fetchData = async () => {
             const res = await fetch('http://localhost:12120/api/countries')
-            const genres = await res.json()
-            setListCountries(genres)
+            const countries = await res.json()
+            setListCountries(countries)
         }
         fetchData()
     }, [])

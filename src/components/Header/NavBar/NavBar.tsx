@@ -16,19 +16,22 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
 
     // const {locale, locales, asPath} = useRouter()
 
-    const t =  ru
+    const t = ru
 
     return (
         <nav className={styles.navbar}>
             <ul className={styles.navbar__ul}>
                 <li className={styles.navbar__li}>
-                    <Link href='/' className={styles.navbar__a} title='Мой Иви'>
+                    <Link href='/' className={styles.navbar__a}
+                          prefetch={false}
+                          title='Мой Иви'>
                         {t.header.title1}
                     </Link>
                 </li>
                 <li className={styles.navbar__li}>
                     <Link
                         href='https://www.ivi.ru/new'
+                        prefetch={false}
                         title='Что нового'
                         className={styles.navbar__a}
                         onMouseEnter={handleMouseLeave}
@@ -43,7 +46,7 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
                 >
                     <Link
                         id='header-movies'
-                        href='/movies'
+                        href={'/movies'}
                         title='Фильмы онлайн'
                         className={styles.navbar__a}
                     >
@@ -58,6 +61,7 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
                     <Link
                         id='header-series'
                         href='https://www.ivi.ru/series'
+                        prefetch={false}
                         className={styles.navbar__a}
                         title='Сериалы онлайн'
                     >
@@ -72,6 +76,7 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
                     <Link
                         id='header-animation'
                         href='https://www.ivi.ru/animation'
+                        prefetch={false}
                         title='Мультфильмы онлайн'
                         className={styles.navbar__a}
                     >
@@ -82,6 +87,7 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
                     <Link
                         id='header-tv'
                         href='https://www.ivi.ru/tvplus'
+                        prefetch={false}
                         title='TV+'
                         className={styles.navbar__a}
                     >
