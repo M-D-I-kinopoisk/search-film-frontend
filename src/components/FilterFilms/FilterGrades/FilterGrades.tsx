@@ -35,13 +35,13 @@ const FilterGrades = () => {
                 'countRatingStart': [numberRating],
             }
         ))
-        dispatch(getFilterObj(
-            {
-                ...filterObj,
-                'countRatingStart': numberRating,
-                'part': 1,
-            }
-        ))
+        // dispatch(getFilterObj(
+        //     {
+        //         ...filterObj,
+        //         'countRatingStart': numberRating,
+        //         'part': 1,
+        //     }
+        // ))
         let url = '/movies'
         if (searchParams.toString()) {
             if (searchParams.has('ivi_grades')) {

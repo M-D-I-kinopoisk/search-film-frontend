@@ -5,15 +5,16 @@ import {useEffect, useState} from 'react'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-import {useRouter} from 'next/navigation'
-import Link from 'next/link'
-import {useParams, useSearchParams} from 'next/navigation'
+import {useParams, usePathname, useRouter, useSearchParams} from 'next/navigation'
 
 
-export default function FilmsList({genres, countries, params, searchParams}) {
 
-    // const searchParams = useSearchParams()
-    console.log(params)
+export default function FilmsList({genres, countries, }) {
+
+    const searchParams = useSearchParams()
+    const params = useParams()
+    const pathname = usePathname()
+
 
 
 
@@ -23,55 +24,102 @@ export default function FilmsList({genres, countries, params, searchParams}) {
     const dispatch = useDispatch()
 
 
-    // const [listGenres, setListGenres] = useState<[] | any>([])
 
     useEffect(() => {
         console.log('useEffect работает')
-        // console.log(params)
+        console.log(params)
+        //
+        // console.log(pathname)
+        console.log(searchParams.get('year'))
 
-        const fetchData = async () => {
-            let genresObj = {}
-            let countriesObj = {}
-            if (Object.keys(params).length !== 0) {
-                params.movies.forEach(i => {
-                    const strArr = i.replace('%20', ' ').split('%2B')
-                    const arrGenres = genres.filter(i => strArr.includes(i.nameEN))
-                    const arrCountries = countries.filter(i => strArr.includes(i.nameEN))
-                    // console.log(arrGenres.length > 0)
-                    // console.log(arrCountries.length > 0)
+        const filter = {
+            'ratingStart': 1,
+            'countRatingStart': 1000,
+            'yearStart': 0,
+            'yearEnd': 0,
+            'part': 1,
+            'typeSorting': 'year'
+        }
+        let newFilter = {...filter}
+        if (Object.keys(params).length !== 0) {
 
-                    if (arrGenres.length > 0) {
-                        genresObj = {arrIdGenres: arrGenres}
-                    }
-                    if (arrCountries.length > 0) {
-                        countriesObj = {arrIdCountries: arrCountries}
-                    }
-                })
-
-                fetch('http://localhost:12120/api/films/filter', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        ...filterObj,
-                        genresObj,
-                        countriesObj
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                    .then(response => response.json())
-                    // 4. Setting *dogImage* to the image url that we received from the response above
-                    .then(data => setFilmsList(data))
-
-            }
-
+                 console.log(params.movies.split('/'))
+            const arrParams = params.movies.split('/')
+            arrParams.forEach(i => {
+                const strArr = i.replaceAll('%2B', ',').replaceAll('%20', ' ').split(',')
+                console.log(strArr)
+                const arrGenres = genres.filter(i => strArr.includes(i.nameEN))
+                const arrCountries = countries.filter(i => strArr.includes(i.nameEN))
+                if (arrGenres.length > 0) {
+                   const genresArrId = arrGenres.map(i => i.id)
+                    // @ts-ignore
+                    newFilter = {...filter, 'arrIdGenres' : genresArrId}
+                }
+                if (arrCountries.length > 0) {
+                    const countriesArrId = arrCountries.map(i => i.id)
+                    // @ts-ignore
+                    newFilter = {...filter, 'arrIdCountries' : countriesArrId}
+                }
+            })
 
         }
 
+        // if (Object.keys(searchParams).length !== 0) {
+            console.log()
+            if (searchParams.get('ivi_rating_10_gte')) {
+                const ratingStart  =  Number(searchParams.get('ivi_rating_10_gte'))
+                newFilter = {...filter, 'ratingStart' : ratingStart}
+            }
+            if (searchParams.get('year')) {
+                console.log('есть year')
+                const yearStart =  Number(searchParams.get('year')?.split('_')[0])
+                const  yearEnd =  Number(searchParams.get('year')?.split('_')[1])
+                newFilter = {...filter, 'yearStart' : yearStart, 'yearEnd' : yearEnd}
+            }
+        // }
+        dispatch(getFilterObj(
+            {
+                ...newFilter,
+            }
+        ))
+
+
+        const fetchData = async () => {
+
+// console.log({
+//     ...newFilter
+// })
+
+
+            fetch('http://localhost:12120/api/films/filter', {
+                method: 'POST',
+                body: JSON.stringify({...newFilter}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                // 4. Setting *dogImage* to the image url that we received from the response above
+                .then(data => setFilmsList(data))
+
+
+            // dispatch(getFilterObj(
+            //     {
+            //         ...filterObj,
+            //         arrIdGenres,
+            //         arrIdCountries,
+            //         ratingStart,
+            //         yearStart,
+            //         yearEnd,
+            //         'part': 1,
+            //     }
+            // ))
+        }
+        // console.log(newFilter)
         fetchData()
 
-        console.log(params)
-        console.log(searchParams)
+        // console.log(params)
+        // console.log(searchParams)
 
 
         // try {
@@ -94,7 +142,7 @@ export default function FilmsList({genres, countries, params, searchParams}) {
         // }
 
 
-    }, [params, searchParams])
+    }, [pathname, searchParams])
 
 
     const router = useRouter()

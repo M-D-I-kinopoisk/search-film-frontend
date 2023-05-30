@@ -130,8 +130,20 @@ const FilterYears = () => {
             if (nameYears === 'Все годы') {
 
                 const {arrYears, ...restName} = filterTextObj
+                const valueStr = 'year=' + searchParams.get('year')
+                const newStr = searchParams.toString().replace(valueStr, '')
                 dispatch(getFilterTextObj(restName))
-                router.push('movies/1231')
+                // dispatch(getFilterObj(
+                //     {
+                //         ...filterObj,
+                //         'yearStart': 0,
+                //         'yearEnd': 0,
+                //         'part': 1,
+                //     }
+                // ))
+                // console.log(123)
+                router.push(`${pathname}?${newStr}`)
+
             } else {
 
                 dispatch(getFilterTextObj(
@@ -140,39 +152,41 @@ const FilterYears = () => {
                         'arrYears': [nameYears],
                     }
                 ))
+
+                // dispatch(getFilterObj(
+                //     {
+                //         ...filterObj,
+                //         'yearStart': start,
+                //         'yearEnd': end,
+                //         'part': 1,
+                //     }
+                // ))
+
+                // console.log(searchParams)
+                let url = '/movies'
+                if (searchParams.toString()) {
+
+                    if (searchParams.has('year')) {
+
+                        const valueStr = 'year=' + searchParams.get('year')
+                        const newStr = searchParams.toString().replace(valueStr, `year=${start}_${end}`)
+                        url = pathname + '?' + searchParams.toString()
+
+                        router.push(`${pathname}?${newStr}`)
+                    } else {
+                        url = pathname + '?' + searchParams.toString()
+                        router.push(`${url}&year=${start} ${end}`)
+                    }
+                } else {
+                    router.push(`${pathname}?year=${start}_${end}`)
+                }
             }
 
-            dispatch(getFilterObj(
-                {
-                    ...filterObj,
-                    'yearStart': start,
-                    'yearEnd': end,
-                    'part': 1,
-                }
-            ))
-            console.log(searchParams.has('232'))
-            console.log(searchParams.keys())
-            console.log(searchParams.toString())
-            let url = '/movies'
-            console.log(url)
-            console.log(start)
-            // router.push(`${url}${start.toString()}`)
-            if (searchParams.toString()) {
-                if (searchParams.has('year')) {
-                    url = pathname + '?' + searchParams.toString()
-                    router.push(`${url}`)
-                } else {
-                    url = pathname + '?' + searchParams.toString()
-                    router.push(`${url}&years=${start}`)
-                }
-            } else {
-                router.push(`/movies?year=${start}`)
-            }
-            // router.push(`/movies?${start}`)
+
         }
     }
 
-    console.log(filterTextObj)
+    // console.log(filterTextObj)
 
     return (
         <ul>

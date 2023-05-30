@@ -34,7 +34,7 @@ async function getCounties() {
     return response.json()
 }
 
-const Movies = async ({ params, searchParams }) => {
+const Movies = async ({ params,  }) => {
 
     const genres = await getGenres()
 
@@ -46,8 +46,8 @@ const Movies = async ({ params, searchParams }) => {
     return (
         <div style={{scrollBehavior : 'unset'}} className={styles.container}>
             <div className={styles.wrapper}>
-                <FilterFilms/>
-                <FilmsList genres={genres} params={params} countries={countries} searchParams={searchParams} />
+                <FilterFilms genres={genres} countries={countries}/>
+                <FilmsList genres={genres} countries={countries}  />
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ interface FilterTextSliceState {
     filterTextObj: {
         arrActorMembers? : string[]
         arrCountries? : string[]
+        arrCountriesEN? : string[]
         arrDirMembers?: string[]
         arrGenres? : string[]
         arrGenresEN? : string[]

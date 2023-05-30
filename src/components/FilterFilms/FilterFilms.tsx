@@ -24,7 +24,7 @@ import styles from './filterFilms.module.scss'
 import Link from 'next/link'
 
 
-const FilterFilms = () => {
+const FilterFilms = ({genres, countries}) => {
 
     const router = useRouter()
 
@@ -107,7 +107,7 @@ const FilterFilms = () => {
                                                    })}>
 
 
-                                <FilterGenres/>
+                                <FilterGenres genres={genres}/>
 
                             </FilterFilmsCategories>
                         </div>
@@ -126,7 +126,7 @@ const FilterFilms = () => {
                                                        searchActor: false,
                                                    })}>
 
-                                <FilterCountries/>
+                                <FilterCountries countries={countries}/>
 
                             </FilterFilmsCategories>
                         </div>
