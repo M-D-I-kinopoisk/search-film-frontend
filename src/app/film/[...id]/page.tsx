@@ -1,9 +1,9 @@
 import styles from './film.module.scss'
+
 import {BsChevronRight} from 'react-icons/bs'
 import TrailerContent from '@/components/Film/TrailerContent/TrailerContent'
 import InfoContent from '@/components/Film/InfoContent/InfoContent'
 import CreatorsList from '@/components/Film/Creators/CreatorsList'
-import AwardsList from '@/components/Film/Awards/AwardsList'
 import TrailersList from '@/components/Film/TrailersAndMaterials/TrailersList'
 import CommentList from '@/components/Film/Comments/CommentsList'
 import WatchAllDevices from '@/components/Film/WatchAllDevices/WatchAllDevices'
@@ -24,7 +24,7 @@ async function getFilmById(id) {
 
         return response.json()
     } catch (error) {
-        console.log(error, 'произошла ошибка')
+        console.log('Произошла ошибка: ', error)
     }
 }
 
@@ -36,7 +36,7 @@ async function getFilmInfoById(id) {
 
         return response.json()
     } catch (error) {
-        console.log(error, 'произошла ошибка')
+        console.log('Произошла ошибка: ', error)
     }
 }
 
@@ -48,7 +48,7 @@ async function getActorFilmById(id) {
 
         return response.json()
     } catch (error) {
-        console.log(error, 'произошла ошибка')
+        console.log('Произошла ошибка: ', error)
     }
 }
 
@@ -58,7 +58,7 @@ async function getCommentsFilmById(id) {
 
         return response.json()
     } catch (error) {
-        console.log(error, 'произошла ошибка')
+        console.log('Произошла ошибка: ', error)
     }
 }
 
@@ -81,12 +81,11 @@ async function getGenresFilm(genres) {
 
         return response.json()
     } catch (error) {
-        console.log(error, 'произошла ошибка')
+        console.log('Произошла ошибка: ', error)
     }
 }
 
 export default async function Film({params: {id}}: FilmProps) {
-
     const film = await getFilmById(id[0])
     const actors = await getActorFilmById(id[0])
     const filmInfo = await getFilmInfoById(id[0])
@@ -111,15 +110,14 @@ export default async function Film({params: {id}}: FilmProps) {
 
         <div className={styles.mainContent}>
             <TrailerContent filmInfo={filmInfo}/>
-            <InfoContent film={film} filmInfo={filmInfo} actors={actors} filmComments={filmComments}/>
+            <InfoContent film={film} filmInfo={filmInfo} actors={actors}/>
         </div>
 
-        <FilmsCategory title={`С фильмом <<${film.nameRU}>> смотрят`} list={genres}/>
+        <FilmsCategory title={`С фильмом «${film.nameRU}» смотрят`} list={genres}/>
         <CreatorsList actors={actors} id={id[0]}/>
-        <AwardsList/>
-        <TrailersList filmInfo={filmInfo}/>
-        <CommentList id={id[0]}/>
-        <WatchAllDevices/>
-        <MyModal actors={actors} filmInfo={filmInfo} id={id[0]}/>
+        <TrailersList id={id[0]} filmInfo={filmInfo}/>
+        <CommentList id={id[0]} filmComments={filmComments}/>
+        <WatchAllDevices film={film}/>
+        <MyModal filmComments={filmComments} film={film} actors={actors} filmInfo={filmInfo} id={id[0]}/>
     </div>
 }

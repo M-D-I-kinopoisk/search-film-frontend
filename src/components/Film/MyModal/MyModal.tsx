@@ -1,13 +1,11 @@
 'use client'
 
-import React, {useState} from 'react'
-
 import styles from './MyModal.module.scss'
 
 import Image from 'next/image'
 
 import CommentsItem from '../Comments/CommentsItem'
-import AwardsItem from '../Awards/AwardsItem'
+
 import CreatorsItem from '../Creators/CreatorsItem'
 import TrailersItem from '../TrailersAndMaterials/TrailersItem'
 
@@ -18,17 +16,20 @@ import {AiOutlineLike} from 'react-icons/ai'
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 import {funcDeclination} from '@/utils/funcDeclination'
-import {Actor, FilmInfo} from '@/components/Film/InfoContent/InfoContent'
+import {Actor, Film, FilmInfo} from '@/components/Film/InfoContent/InfoContent'
 import {useRouter} from 'next/navigation'
+import {Comment} from '@/components/Film/Comments/CommentsList'
 
 type MyModalProps = {
     actors: Actor[],
-    filmInfo: FilmInfo
-    id : string
+    filmInfo: FilmInfo,
+    filmComments: Comment[],
+    film: Film,
+    id: string
 }
 
-const MyModal = ({ actors, filmInfo, id}: MyModalProps) => {
-    const {film, comments, modalOpen} = useSelector(selectFilms)
+const MyModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
+    const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
     const router = useRouter()
 
@@ -40,12 +41,18 @@ const MyModal = ({ actors, filmInfo, id}: MyModalProps) => {
         {title: 'Трейлеры', value: 'trailers'},
         {title: 'Награды', value: 'awards'}
     ]
-
-    const testItems = [1, 2, 3, 4, 5]
-    
-    const closeModal = () => {
+    const closeModalHandler = () => {
         dispatch(setOpenModal({modalState: false}))
         router.push(`/film/${id}`)
+    }
+
+    const activeLinkHandler = (link) => {
+        dispatch(setOpenModal({
+            modalState: true,
+            value: link.value
+        }))
+
+        router.push(`/film/${id}/${link.value}`)
     }
 
     return (
@@ -54,7 +61,7 @@ const MyModal = ({ actors, filmInfo, id}: MyModalProps) => {
                 <div className={styles.modal}>
                     <div className={styles.modalOverlay}>
                         <div className={styles.modalContainer}>
-                            <div onClick={() => closeModal()}
+                            <div onClick={() => closeModalHandler()}
                                  className={styles.backLink}>
                                 <BsChevronRight size={22}/>
                                 <span>К фильму </span>
@@ -63,7 +70,7 @@ const MyModal = ({ actors, filmInfo, id}: MyModalProps) => {
                             <div className={styles.modalWrapper}>
                                 <div className={styles.modalInfo}>
                                     <div className={styles.title}>
-                                        <span> 1+1 (Фильм 2011)</span>
+                                        <span> {film.nameRU} (Фильм {film.year})</span>
                                     </div>
 
                                     <div>
@@ -71,10 +78,7 @@ const MyModal = ({ actors, filmInfo, id}: MyModalProps) => {
                                             {links.map((link) =>
                                                 <li key={link.value} className={modalOpen.value === link.value
                                                     ? styles.active : ''}
-                                                    onClick={() => dispatch(setOpenModal({
-                                                        modalState: true,
-                                                        value: link.value
-                                                    }))}>
+                                                    onClick={() => activeLinkHandler(link)}>
                                                     {link.title}
                                                 </li>
                                             )}
@@ -94,8 +98,7 @@ const MyModal = ({ actors, filmInfo, id}: MyModalProps) => {
                                                     <div className={styles.directorsItems}>
                                                         {actors.map((actor: any) =>
                                                             (actor.profession.nameRU === item ?
-                                                                <CreatorsItem key={actor.id} actor={actor}/>
-                                                                : ''))}
+                                                                <CreatorsItem key={actor.id} actor={actor}/> : ''))}
                                                     </div>
                                                 </div>
 
@@ -120,7 +123,7 @@ const MyModal = ({ actors, filmInfo, id}: MyModalProps) => {
                                             </div>
 
                                             <div>
-                                                {comments.map((comment) =>
+                                                {filmComments.map((comment) =>
                                                     <CommentsItem key={comment.id} inModal={true} comment={comment}/>
                                                 )}
                                                 <AiOutlineLike size={20} fill='#fff'/>
@@ -136,15 +139,6 @@ const MyModal = ({ actors, filmInfo, id}: MyModalProps) => {
                                     {modalOpen.value === 'trailers' &&
                                         <div className={styles.trailers}>
                                             <TrailersItem filmInfo={filmInfo} inModal={true}/>
-                                        </div>
-                                    }
-
-                                    {modalOpen.value === 'awards' &&
-                                        <div className={styles.awards}>
-                                            {testItems.map((el) =>
-                                                <AwardsItem key={el}
-                                                            inModal={true}/>
-                                            )}
                                         </div>
                                     }
                                 </div>

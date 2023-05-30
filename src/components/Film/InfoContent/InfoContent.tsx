@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState} from 'react'
+import {useState} from 'react'
 
 import styles from './InfoContent.module.scss'
 
@@ -17,19 +17,23 @@ import WatchOptions from '@/components/Film/WatchOptions/WatchOptions'
 
 import {funcDeclination} from '@/utils/funcDeclination'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {getComments, getFilms, getFilmsInfo, selectFilms} from '@/redux/FilmsSlice'
-
 export type Film = {
+    id: string,
     year: number,
     rating: number,
     ageRating: string,
     duration: number,
     nameRU: string,
     nameEN: string,
-    genres: object[],
     countRating: number,
     imageName: string,
+    country: {
+        nameRU: string
+    },
+    genres: {
+        id: string,
+        nameRU: string
+    }[]
 }
 
 export type FilmInfo = {
@@ -50,32 +54,14 @@ export type Actor = {
     id: string
 }
 
-export type Comment = {
-    id: number,
-    profile: {
-        profileName: string
-    },
-    createdAt: string,
-    text: string
-}
-
-
 export interface infoContentProps {
     filmInfo: FilmInfo,
     film: Film,
-    actors: Actor[],
-    filmComments: Comment
+    actors: Actor[]
 }
 
-const InfoContent = ({film, filmInfo, actors, filmComments}: infoContentProps) => {
+const InfoContent = ({film, filmInfo, actors}: infoContentProps) => {
     const [visible, setVisible] = useState(false)
-    const dispatch = useDispatch()
-
-    React.useEffect(() => {
-        dispatch(getFilms(film))
-        dispatch(getFilmsInfo(filmInfo))
-        dispatch(getComments(filmComments))
-    }, [])
 
     return (
         <div className={styles.infoContent}>
@@ -127,22 +113,6 @@ const InfoContent = ({film, filmInfo, actors, filmComments}: infoContentProps) =
 
                         <MyButton icon={<FiShare size={16} color='rgba(255,255,255,.72)'/>}
                                   nameClass='shareButton'/>
-                    </div>
-                </div>
-            </div>
-
-            <div className={styles.premy}>
-                <Image alt='Премия'
-                       width={58}
-                       height={58}
-                       src='https://thumbs.dfs.ivi.ru/storage29/contents/9/9/ccf5c60716958180b98b81a6a4b447.png?q=85'/>
-
-                <div className={styles.premyInfo}>
-                    <h3>Жорж</h3>
-
-                    <div className={styles.premyDescription}>
-                        Лучшая зарубежная комедия, Лучшая зарубежная драма,
-                        Лучший европейский фильм, Лучший актер
                     </div>
                 </div>
             </div>

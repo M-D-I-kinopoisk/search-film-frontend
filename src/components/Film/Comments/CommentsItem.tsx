@@ -1,16 +1,16 @@
 import styles from './Comments.module.scss'
 
 import {AiOutlineLike} from 'react-icons/ai'
-import {constants} from 'fs'
-import {Comment} from '@/components/Film/InfoContent/InfoContent'
+import {Comment} from '@/components/Film/Comments/CommentsList'
+
 
 interface CommentsItemProps {
     inModal?: any,
-    openModal?: any,
     comment: Comment
 }
 
-const CommentsItem = ({inModal, openModal, comment}: CommentsItemProps) => {
+const CommentsItem = ({inModal, comment}: CommentsItemProps) => {
+    const date = new Date(comment.createdAt).toLocaleDateString()
 
     return (
         <>
@@ -42,14 +42,13 @@ const CommentsItem = ({inModal, openModal, comment}: CommentsItemProps) => {
                         {comment.profile.profileName}
                     </div>
 
-                    <div onClick={openModal}
-                         className={styles.commentsItemDescription}>
+                    <div className={styles.commentsItemDescription}>
                         {comment.text}
                     </div>
 
                     <div className={styles.commentsItemBottom}>
                         <div className={styles.commentsItemDate}>
-                            {}
+                            {date}
                         </div>
 
                         <div className={styles.commentsItemLikes}>
