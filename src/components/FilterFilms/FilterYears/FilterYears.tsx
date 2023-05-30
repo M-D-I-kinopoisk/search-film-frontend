@@ -14,7 +14,6 @@ import styles from './filterYears.module.scss'
 
 const FilterYears = () => {
 
-    const params = useParams()
     const pathname = usePathname()
 
     const router = useRouter()
@@ -132,7 +131,7 @@ const FilterYears = () => {
                 const {arrYears, ...restName} = filterTextObj
                 const valueStr = 'year=' + searchParams.get('year')
                 const newStr = searchParams.toString().replace(valueStr, '')
-                dispatch(getFilterTextObj(restName))
+                // dispatch(getFilterTextObj(restName))
                 // dispatch(getFilterObj(
                 //     {
                 //         ...filterObj,
@@ -146,12 +145,12 @@ const FilterYears = () => {
 
             } else {
 
-                dispatch(getFilterTextObj(
-                    {
-                        ...filterTextObj,
-                        'arrYears': [nameYears],
-                    }
-                ))
+                // dispatch(getFilterTextObj(
+                //     {
+                //         ...filterTextObj,
+                //         'arrYears': [nameYears],
+                //     }
+                // ))
 
                 // dispatch(getFilterObj(
                 //     {

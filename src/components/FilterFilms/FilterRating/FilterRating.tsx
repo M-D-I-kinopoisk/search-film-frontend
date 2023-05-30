@@ -29,12 +29,12 @@ const FilterRating = () => {
     const onMouseUpRating = (e, inputRange) => {
         const numberRating = Number(e.target.value)
         // console.log(e.target.value)
-        dispatch(getFilterTextObj(
-            {
-                ...filterTextObj,
-                'ratingStart': [numberRating],
-            }
-        ))
+        // dispatch(getFilterTextObj(
+        //     {
+        //         ...filterTextObj,
+        //         'ratingStart': [numberRating],
+        //     }
+        // ))
         // dispatch(getFilterObj(
         //     {
         //         ...filterObj,

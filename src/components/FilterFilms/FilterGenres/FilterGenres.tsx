@@ -52,9 +52,9 @@ export default function FilterGenres({genres}) {
                 if (filterObj.arrIdGenres.length === 1) {
 
                     const {arrGenres, arrGenresEN, ...restName} = filterTextObj
-                    dispatch(getFilterTextObj(
-                        {...restName}
-                    ))
+                    // dispatch(getFilterTextObj(
+                    //     {...restName}
+                    // ))
                     const {arrIdGenres, ...restId} = filterObj
                     // dispatch(getFilterObj(
                     //     {
@@ -72,14 +72,14 @@ export default function FilterGenres({genres}) {
                 } else {
                     const filterListNameGenres = filterTextObj.arrGenres.filter((str) => str !== nameGenres)
                     const filterListNameGenresEN = filterTextObj.arrGenresEN.filter((str) => str !== nameGenresEN)
-                    dispatch(getFilterTextObj(
-                        {
-                            ...filterTextObj,
-                            'arrGenres': filterListNameGenres,
-                            'arrGenresEN' : filterListNameGenresEN
-                        }
-                    ))
-                    console.log(1)
+                    // dispatch(getFilterTextObj(
+                    //     {
+                    //         ...filterTextObj,
+                    //         'arrGenres': filterListNameGenres,
+                    //         'arrGenresEN' : filterListNameGenresEN
+                    //     }
+                    // ))
+                    // console.log(1)
                     const filterListIdGenres = filterObj.arrIdGenres.filter((number) => number !== id)
                     // dispatch(getFilterObj(
                     //     {
@@ -88,7 +88,7 @@ export default function FilterGenres({genres}) {
                     //         'part': 1,
                     //     }
                     // ))
-                    console.log(123)
+                    // console.log(123)
                     const str = (filterListNameGenresEN.join('+'))
                     const strCountries = filterTextObj.hasOwnProperty('arrCountriesEN') ?
                         filterTextObj.arrCountriesEN.join('+').toLowerCase() :
@@ -99,13 +99,13 @@ export default function FilterGenres({genres}) {
 
             } else {
 
-                dispatch(getFilterTextObj(
-                    {
-                        ...filterTextObj,
-                        'arrGenres': [...filterTextObj.arrGenres, nameGenres],
-                        'arrGenresEN' : [...filterTextObj.arrGenresEN, nameGenresEN]
-                    }
-                ))
+                // dispatch(getFilterTextObj(
+                //     {
+                //         ...filterTextObj,
+                //         'arrGenres': [...filterTextObj.arrGenres, nameGenres],
+                //         'arrGenresEN' : [...filterTextObj.arrGenresEN, nameGenresEN]
+                //     }
+                // ))
                 // dispatch(getFilterObj(
                 //     {
                 //         ...filterObj,
@@ -123,13 +123,13 @@ export default function FilterGenres({genres}) {
             }
         } else {
 
-            dispatch(getFilterTextObj(
-                {
-                    ...filterTextObj,
-                    'arrGenres': [nameGenres],
-                    'arrGenresEN' : [nameGenresEN]
-                }
-            ))
+            // dispatch(getFilterTextObj(
+            //     {
+            //         ...filterTextObj,
+            //         'arrGenres': [nameGenres],
+            //         'arrGenresEN' : [nameGenresEN]
+            //     }
+            // ))
             // dispatch(getFilterObj(
             //     {
             //         ...filterObj,
@@ -137,7 +137,7 @@ export default function FilterGenres({genres}) {
             //         'part': 1,
             //     }
             // ))
-            console.log(5)
+            // console.log(5)
             // const newStr2 = pathname.toString().replace('movies', '')
             const strCountries = filterTextObj.hasOwnProperty('arrCountriesEN') ?
                 filterTextObj.arrCountriesEN.join('+').toLowerCase() :

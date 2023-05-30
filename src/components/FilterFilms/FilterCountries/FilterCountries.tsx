@@ -38,9 +38,9 @@ const FilterCountries = ({countries}) => {
 
                 if (filterObj.arrIdCountries.length === 1) {
                     const {arrCountries, arrCountriesEN,  ...restName} = filterTextObj
-                    dispatch(getFilterTextObj(
-                        {...restName}
-                    ))
+                    // dispatch(getFilterTextObj(
+                    //     {...restName}
+                    // ))
                     const {arrIdCountries, ...restId} = filterObj
                     // dispatch(getFilterObj(
                     //     {...restId, 'part': 1,}
@@ -55,13 +55,13 @@ const FilterCountries = ({countries}) => {
                 } else {
                     const filterListNameCountries = filterTextObj.arrCountries.filter((str) => str !== nameCountries)
                     const filterListNameCountriesEN = filterTextObj.arrCountriesEN.filter((str) => str !== nameCountriesEN)
-                    dispatch(getFilterTextObj(
-                        {
-                            ...filterTextObj,
-                            'arrCountries': filterListNameCountries,
-                            'arrCountriesEN' : filterListNameCountriesEN
-                        }
-                    ))
+                    // dispatch(getFilterTextObj(
+                    //     {
+                    //         ...filterTextObj,
+                    //         'arrCountries': filterListNameCountries,
+                    //         'arrCountriesEN' : filterListNameCountriesEN
+                    //     }
+                    // ))
                     const filterListIdCountries = filterObj.arrIdCountries.filter((number) => number !== id)
                     // dispatch(getFilterObj(
                     //     {
@@ -80,13 +80,13 @@ const FilterCountries = ({countries}) => {
 
             } else {
 
-                dispatch(getFilterTextObj(
-                    {
-                        ...filterTextObj,
-                        'arrCountries': [...filterTextObj.arrCountries, nameCountries],
-                        'arrCountriesEN' : [...filterTextObj.arrCountriesEN, nameCountriesEN]
-                    }
-                ))
+                // dispatch(getFilterTextObj(
+                //     {
+                //         ...filterTextObj,
+                //         'arrCountries': [...filterTextObj.arrCountries, nameCountries],
+                //         'arrCountriesEN' : [...filterTextObj.arrCountriesEN, nameCountriesEN]
+                //     }
+                // ))
                 // dispatch(getFilterObj(
                 //     {
                 //         ...filterObj,
@@ -103,13 +103,13 @@ const FilterCountries = ({countries}) => {
             }
         } else {
 
-            dispatch(getFilterTextObj(
-                {
-                    ...filterTextObj,
-                    'arrCountries': [nameCountries],
-                    'arrCountriesEN' : [nameCountriesEN]
-                }
-            ))
+            // dispatch(getFilterTextObj(
+            //     {
+            //         ...filterTextObj,
+            //         'arrCountries': [nameCountries],
+            //         'arrCountriesEN' : [nameCountriesEN]
+            //     }
+            // ))
             // dispatch(getFilterObj(
             //     {
             //         ...filterObj,
