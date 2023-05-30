@@ -39,7 +39,7 @@ const FilmCart = ({film, filmId, visible}: FilmCart) => {
                     <div className={styles.content}>
                         <div className={styles.estimation}>
                             <div className={styles.rating}>
-                                <div className={styles.valueInteger}> {film.rating}</div>
+                                <div className={styles.valueInteger}> {film.rating.toFixed(1)}</div>
                             </div>
                             <div className={styles.graphs}>
                                 <div className={styles.progressBar}>
