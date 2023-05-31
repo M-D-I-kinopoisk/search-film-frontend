@@ -3,69 +3,116 @@
 import React, {useState} from 'react'
 
 import styles from './InfoContent.module.scss'
-import WatchOptions from '@/components/Film/WatchOptions/WatchOptions'
+
 import Image from 'next/image'
-import MyButton from '@/components/UI/MyButton/MyButton'
 
 import {BsPlay} from 'react-icons/bs'
 import {BsBookmark} from 'react-icons/bs'
 import {FiShare} from 'react-icons/fi'
 import {MdOndemandVideo} from 'react-icons/md'
+
 import MainInfo from '@/components/Film/MainInfo/MainInfo'
+import MyButton from '@/components/UI/MyButton/MyButton'
+import WatchOptions from '@/components/Film/WatchOptions/WatchOptions'
+
 import {funcDeclination} from '@/utils/funcDeclination'
 
-export type infoProps = {
-    film: {
-        year: number,
-        rating: number,
-        ageRating: string,
-        duration: number,
-        nameRU: string,
-        nameEN: string,
-        genres: object[],
-        countRating: number
-    }, filmInfo: {
-        trailerLink: string,
-        text: string
-    }
+import {useDispatch, useSelector} from 'react-redux'
+import {getComments, getFilms, getFilmsInfo, selectFilms} from '@/redux/FilmsSlice'
+
+export type Film = {
+    year: number,
+    rating: number,
+    ageRating: string,
+    duration: number,
+    nameRU: string,
+    nameEN: string,
+    genres: object[],
+    countRating: number,
+    imageName: string,
 }
 
-const InfoContent = ({film, filmInfo}: infoProps) => {
+export type FilmInfo = {
+    trailerLink: string,
+    text: string
+}
+
+export type Actor = {
+    member: {
+        id: string,
+        nameEN: string,
+        nameRU: string,
+        imageName: string
+    },
+    profession: {
+        nameRU: string
+    },
+    id: string
+}
+
+export type Comment = {
+    id: number,
+    profile: {
+        profileName: string
+    },
+    createdAt: string,
+    text: string
+}
+
+
+export interface infoContentProps {
+    filmInfo: FilmInfo,
+    film: Film,
+    actors: Actor[],
+    filmComments: Comment
+}
+
+const InfoContent = ({film, filmInfo, actors, filmComments}: infoContentProps) => {
     const [visible, setVisible] = useState(false)
-    const actors = [1, 2, 3, 4]
+    const dispatch = useDispatch()
+
+    React.useEffect(() => {
+        dispatch(getFilms(film))
+        dispatch(getFilmsInfo(filmInfo))
+        dispatch(getComments(filmComments))
+    }, [])
 
     return (
         <div className={styles.infoContent}>
-            <MainInfo film={film} filmInfo={filmInfo}/>
+            <MainInfo film={film}/>
             <div className={styles.otherInfo}>
                 <div className={styles.actors}>
                     <div className={styles.actor}>
                         <div className={styles.actorWrapper}>
-                            <div><h3>{film.rating}</h3></div>
+                            <div><h3>{film.rating.toFixed(1)}</h3></div>
                         </div>
-
                         <div className={styles.rating}>
                             Рейтинг Иви
                         </div>
                     </div>
-
-                    {actors.map((el) =>
-                        <div key={el}
-                             className={styles.actor}>
+                    {actors.slice(0, 4).map((actor) => (
+                        <div key={actor.id} className={styles.actor}>
                             <div className={styles.actorWrapper}>
-                                <div className={styles.actorImage}>
-                                    <Image alt='Актер'
-                                           width={44}
-                                           height={44}
-                                           src='https://thumbs.dfs.ivi.ru/storage33/contents/f/f/06672be611ab9b9e54579c4f645460.jpg/44x44/?q=85'/>
+                                <div>
+                                    {actor.member.imageName === null ?
+                                        <Image className={styles.img}
+                                               alt='Создатель'
+                                               width={44}
+                                               height={44}
+                                               src={`http://localhost:12120/api/films/images/${film.imageName}`}/>
+                                        :
+                                        <Image className={styles.img}
+                                               alt='Создатель'
+                                               width={44}
+                                               height={44}
+                                               src={actor.member.imageName}/>}
                                 </div>
                             </div>
-
                             <div className={styles.actorName}>
-                                Франсуа Клюзе
+                                {actor.member.nameRU}
                             </div>
                         </div>
-                    )}
+                    ))}
                 </div>
 
                 <div className={styles.userButtons}>
@@ -107,27 +154,27 @@ const InfoContent = ({film, filmInfo}: infoProps) => {
             </div>
 
             <div className={styles.filmDescription}>
-                <p>{filmInfo.text}...</p>
+                <p>{filmInfo.text}</p>
                 {visible && <div>
                     <div className={styles.hideWatchOptions}>
-                        <WatchOptions/>
+                        <WatchOptions film={film}/>
                     </div>
                 </div>}
             </div>
 
             <span onClick={() => setVisible(!visible)}
                   className={styles.detailsButton}>
-                {visible ? 'Свернуть детали' : 'Детали о фильме'}
-            </span>
+                    {visible ? 'Свернуть детали' : 'Детали о фильме'}
+                        </span>
 
             <span onClick={() => setVisible(!visible)}
                   className={styles.showDetailsButton}>
-                {visible ? 'Свернуть' : 'Читать дальше'}
-            </span>
+                    {visible ? 'Свернуть' : 'Читать дальше'}
+                        </span>
 
             <div className={styles.filmRating}>
                 <div className={styles.filmRatingWrapper}>
-                    <h3>{film.rating}</h3>
+                    <h3>{film.rating.toFixed(1)}</h3>
 
                     <div className={styles.filmRatingDescription}>
                         <h3>Рейтинг Иви</h3>
@@ -142,7 +189,7 @@ const InfoContent = ({film, filmInfo}: infoProps) => {
             </div>
 
             <div className={styles.showWatchOptions}>
-                <WatchOptions/>
+                <WatchOptions film={film}/>
             </div>
         </div>
     )

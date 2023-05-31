@@ -1,30 +1,34 @@
-import React from 'react'
+'use client'
 
 import styles from './Creators.module.scss'
 import Image from 'next/image'
+import {Actor} from '@/components/Film/InfoContent/InfoContent'
 
 type CreatorsItemProps = {
-    inModal?: any
+    inModal?: any,
+    actor: Actor
 }
 
-const CreatorsItem: React.FC<CreatorsItemProps> = ({ inModal }) => {
+const CreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
+
     return (
         <>
             {inModal ?
                 <div className={styles.modalCreatorsItem}>
                     <div className={styles.modalCreatorsItemImg}>
-                        <Image alt='Создатель'
-                            width={128}
-                            height={128}
-                            src='https://thumbs.dfs.ivi.ru/storage37/contents/4/b/57c06f0d0149b0a4965acf8f339437.jpg/88x88/?q=85' />
+                        {actor.member.imageName === null ?
+                            <Image alt='Создатель'
+                                   width={88}
+                                   height={88}
+                                   src='https://static.thenounproject.com/png/5034901-200.png'/> :
+                            <Image alt='Создатель'
+                                   width={88}
+                                   height={88}
+                                   src={actor.member.imageName}/>}
                     </div>
 
                     <div className={styles.modalCreatorsItemName}>
-                        Оливье
-                    </div>
-
-                    <div className={styles.modalCreatorsItemName}>
-                        Накаш
+                        {actor.member.nameRU}
                     </div>
 
                     <div className={styles.modalFilmsCount}>
@@ -33,21 +37,23 @@ const CreatorsItem: React.FC<CreatorsItemProps> = ({ inModal }) => {
                 </div>
                 :
                 <div className={styles.creatorsItem}>
-                    <Image alt='Создатель'
-                        width={88}
-                        height={88}
-                        src='https://thumbs.dfs.ivi.ru/storage37/contents/4/b/57c06f0d0149b0a4965acf8f339437.jpg/88x88/?q=85'/>
-                    
+                    {actor.member.imageName === null ?
+                        <Image alt='Создатель'
+                               width={88}
+                               height={88}
+                               src='https://static.thenounproject.com/png/5034901-200.png'/> :
+                        <Image alt='Создатель'
+                               width={88}
+                               height={88}
+                               src={actor.member.imageName}/>}
                     <div className={styles.creatorsItemName}>
-                        Оливье
-                    </div>
-
-                    <div className={styles.creatorsItemName}>
-                        Накаш
+                        {actor.member.nameRU.split(' ')[0]}
+                        <br/>
+                        {actor.member.nameRU.split(' ')[1]}
                     </div>
 
                     <div className={styles.creatorsItemJob}>
-                        режиссёр
+                        {actor.profession.nameRU}
                     </div>
                 </div>
             }

@@ -38,7 +38,6 @@ const MainSlider: React.FC = () => {
         }
     ]
 
-
     return (
         <Swiper className='main__slider'
                 spaceBetween={20}

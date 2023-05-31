@@ -1,14 +1,13 @@
-import React from 'react'
-
 import styles from './WatchOptions.module.scss'
 
-const WatchOptions: React.FC = () => {
+const WatchOptions = ({film}) => {
+
     return (
         <div className={styles.watchOptions}>
             <div className={styles.language}>
                 <h3>Языки</h3>
 
-                <div><span>Русский, Французский</span></div>
+                <div><span>Русский, Английский</span></div>
             </div>
 
             <div className={styles.sub}>
@@ -25,7 +24,7 @@ const WatchOptions: React.FC = () => {
                     <span>FullHD</span>
                     <span>1080</span>
                     <span>720</span>
-                    <span>5.1</span>
+                    <span>{film.rating.toFixed(1)}</span>
                 </div>
             </div>
 
@@ -42,7 +41,7 @@ const WatchOptions: React.FC = () => {
                     <span>FullHD</span>
                     <span>1080</span>
                     <span>720</span>
-                    <span>5.1</span>
+                    <span>{film.rating.toFixed(1)}</span>
                 </div>
             </div>
         </div>

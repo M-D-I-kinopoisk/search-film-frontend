@@ -1,23 +1,16 @@
-import React from 'react'
-
 import styles from './Comments.module.scss'
 
-import { AiOutlineLike } from "react-icons/ai"
-import { constants } from 'fs'
+import {AiOutlineLike} from 'react-icons/ai'
+import {constants} from 'fs'
+import {Comment} from '@/components/Film/InfoContent/InfoContent'
 
-type CommentsItemProps = {
-    inModal?: any
-    openModal?: any
+interface CommentsItemProps {
+    inModal?: any,
+    openModal?: any,
+    comment: Comment
 }
 
-const CommentsItem: React.FC<CommentsItemProps> = ({ inModal, openModal }) => {
-    const comment = {
-        name: 'Анастасия',
-        description: `Не имею привычки пересматривать фильмы, 
-        но этот смотрела раз 6. Самый любимый!`,
-
-        date: '1 февраля 2019'
-    }
+const CommentsItem = ({inModal, openModal, comment}: CommentsItemProps) => {
 
     return (
         <>
@@ -26,16 +19,16 @@ const CommentsItem: React.FC<CommentsItemProps> = ({ inModal, openModal }) => {
                     <div className={styles.modalComment}>
                         <div className={styles.modalInfoHeader}>
                             <div className={styles.modalAvatar}>А</div>
-                            <div className={styles.modalName}>{comment.name}</div>
-                            <div className={styles.modalDate}>{comment.date}</div>
+                            <div className={styles.modalName}>{comment.profile.profileName}</div>
+                            <div className={styles.modalDate}>{}</div>
                             <div className={styles.modalLikes}>
-                                <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'} />
+                                <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'}/>
                                 <span>128</span>
-                                <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'} />
+                                <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'}/>
                             </div>
                         </div>
                         <div className={styles.modalDescription}>
-                            <p>{comment.description}</p>
+                            <p>{comment.text}</p>
                         </div>
                     </div>
 
@@ -46,25 +39,23 @@ const CommentsItem: React.FC<CommentsItemProps> = ({ inModal, openModal }) => {
                 :
                 <div className={styles.commentsItem}>
                     <div className={styles.commentsItemName}>
-                        {comment.name}
+                        {comment.profile.profileName}
                     </div>
 
                     <div onClick={openModal}
-                        className={styles.commentsItemDescription}>
-                        {comment.description}
-                        {comment.description}
+                         className={styles.commentsItemDescription}>
+                        {comment.text}
                     </div>
 
                     <div className={styles.commentsItemBottom}>
                         <div className={styles.commentsItemDate}>
-                            {comment.date}
+                            {}
                         </div>
 
                         <div className={styles.commentsItemLikes}>
-                            <AiOutlineLike onClick={() => console.log('like')}
-                                size={16} fill={'rgba(126,121,143,.72)'} />
+                            <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'}/>
                             <span>129</span>
-                            <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'} />
+                            <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'}/>
                         </div>
                     </div>
                 </div>

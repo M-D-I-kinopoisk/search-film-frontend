@@ -1,46 +1,61 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 
 import styles from './Comments.module.scss'
 import CommentsItem from './CommentsItem'
 import MyModal from '../MyModal/MyModal'
+import {useDispatch, useSelector} from 'react-redux'
+import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
+import {useRouter} from 'next/navigation'
 
-const CommentList: React.FC = () => {
-    const [visible, setVisible] = useState(false)
+const CommentList = ({id}) => {
+    const {comments} = useSelector(selectFilms)
+    const router = useRouter()
+    const {modalOpen} = useSelector(selectFilms)
+    const dispatch = useDispatch()
 
-    let items = [1, 2, 3, 4]
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const setModalScroll = () => {
-        setVisible(true)
-        document.body.classList.add('modalScroll')
+    React.useEffect(() => {
+        if (isModalOpen) {
+            document.body.classList.add('modalScroll')
+        }
+
+        return () => document.body.classList.remove('modalScroll')
+    }, [isModalOpen])
+
+    const modalOpenHandler = () => {
+        dispatch(setOpenModal({
+            modalState: true,
+            value: 'comments'
+        }))
+        router.push(`film/${id}/comments`)
     }
 
     return (
         <div className={styles.comments}>
             <div className={styles.commentsTop}>
-                <div onClick={() => setModalScroll()}
-                    className={styles.commentsTitle}>
+                <div onClick={() => modalOpenHandler()}
+                     className={styles.commentsTitle}>
                     Комментарии
                 </div>
 
-                <div onClick={() => setModalScroll()}
-                    className={styles.addCommentButton}>
+                <div onClick={() => modalOpenHandler()}
+                     className={styles.addCommentButton}>
                     Оставить комментарий
                 </div>
             </div>
 
             <div className={styles.commentsItems}>
-                {items.map((elem) =>
-                    <CommentsItem key={elem}
-                        openModal={setModalScroll}
-                    />
-                )}
+                {comments.map((comment) => (
+                    <CommentsItem key={comment.id} comment={comment} openModal={setIsModalOpen}/>
+                ))}
             </div>
 
-            <MyModal visible={visible}
-                setVisible={setVisible}
-                componentName={'comments'} />
+            {/*<MyModal isModalOpen={isModalOpen}*/}
+            {/*         setIsModalOpen={setIsModalOpen}*/}
+            {/*         componentName={'comments'}/>*/}
         </div>
     )
 }

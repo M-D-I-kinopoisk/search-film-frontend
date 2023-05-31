@@ -1,19 +1,42 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 
 import styles from './Creators.module.scss'
-import MyModal from '../MyModal/MyModal'
+
 import CreatorsItem from './CreatorsItem'
 
-const CreatorsList: React.FC = () => {
-    const [visible, setVisible] = useState(false)
+import {useDispatch, useSelector} from 'react-redux'
+import {selectFilms} from '@/redux/FilmsSlice'
+import {Actor} from '@/components/Film/InfoContent/InfoContent'
+import {setOpenModal} from '@/redux/FilmsSlice'
+import {useRouter} from 'next/navigation'
 
-    let items = [1, 2, 3, 4, 5, 6]
 
-    const setModalScroll = () => {
-        setVisible(true)
-        document.body.classList.add('modalScroll')
+interface Creators {
+    actors: Actor[]
+    id : string
+}
+
+const CreatorsList = ({actors, id}: Creators) => {
+    const router = useRouter()
+    const {modalOpen} = useSelector(selectFilms)
+    const dispatch = useDispatch()
+
+    React.useEffect(() => {
+        if (modalOpen.modalState) {
+            document.body.classList.add('modalScroll')
+        }
+
+        return () => document.body.classList.remove('modalScroll')
+    }, [modalOpen.modalState])
+
+    const modalOpenHandler = () => {
+        dispatch(setOpenModal({
+            modalState: true,
+            value: 'creators'
+        }))
+        router.push(`film/${id}/creators`)
     }
 
     return (
@@ -21,21 +44,15 @@ const CreatorsList: React.FC = () => {
             <div className={styles.creatorsTitle}>
                 Актёры и создатели
             </div>
-
             <div className={styles.creatorsItems}>
-                {items.map((elem) =>
-                    <CreatorsItem key={elem} />
-                )}
-
-                <div onClick={() => setModalScroll()}
-                    className={styles.moreCreatorsBtn}>
+                {actors.slice(0, 10).map((actor) => (
+                    <CreatorsItem actor={actor} key={actor.id}/>
+                ))}
+                <div onClick={() => modalOpenHandler()}
+                     className={styles.moreCreatorsBtn}>
                     Еще
                 </div>
             </div>
-
-            <MyModal visible={visible}
-                setVisible={setVisible}
-                componentName={'creators'} />
         </div>
     )
 }
