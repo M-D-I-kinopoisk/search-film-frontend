@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 import {GiFilmProjector} from 'react-icons/gi'
 
@@ -56,66 +56,11 @@ const FilterDir = ({listDir}) => {
                 router.push(`${url}&dir=${nameDirEN}`)
             }
         } else {
-            console.log(3)
             router.push(`${pathname}?dir=${nameDirEN}`)
         }
 
-
-        // if ('arrMembersFilterDto' in filterObj) {
-        //
-        //     if (filterObj.arrMembersFilterDto.filter(item => item.idMember === id).length === 0) {
-        //
-        //         if ('arrDirMembers' in filterTextObj) {
-        //             // dispatch(getFilterTextObj(
-        //             //     {
-        //             //         ...filterTextObj,
-        //             //         'arrDirMembers': [...filterTextObj.arrDirMembers, nameDir],
-        //             //     }
-        //             // ))
-        //         } else {
-        //             // dispatch(getFilterTextObj(
-        //             //     {
-        //             //         ...filterTextObj,
-        //             //         'arrDirMembers': [nameDir],
-        //             //     }
-        //             // ))
-        //         }
-        //         // dispatch(getFilterObj(
-        //         //     {
-        //         //         ...filterObj,
-        //         //         'arrMembersFilterDto': [
-        //         //             ...filterObj.arrMembersFilterDto,
-        //         //             {
-        //         //                 'idMember': id,
-        //         //                 'idProfession': 1
-        //         //             },
-        //         //         ],
-        //         //     }
-        //         // ))
-        //     }
-        //     return
-        // } else {
-        //     dispatch(getFilterTextObj(
-        //         {
-        //             ...filterTextObj,
-        //             'arrDirMembers': [nameDir],
-        //         }
-        //     ))
-        //     dispatch(getFilterObj(
-        //         {
-        //             ...filterObj,
-        //             'arrMembersFilterDto': [
-        //                 {
-        //                     'idMember': id,
-        //                     'idProfession': 1
-        //                 },
-        //             ],
-        //         }
-        //     ))
-        // }
     }
 
-    // console.log(filterObj)
 
     return (
         <div>

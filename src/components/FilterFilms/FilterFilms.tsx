@@ -21,7 +21,6 @@ import FilterGrades from '@/components/FilterFilms/FilterGrades/FilterGrades'
 import FilterParameters from '@/components/FilterFilms/FilterParameters/FilterParameters'
 
 import styles from './filterFilms.module.scss'
-import Link from 'next/link'
 
 
 const FilterFilms = ({genres, countries, listDir, listActor}) => {
@@ -38,50 +37,36 @@ const FilterFilms = ({genres, countries, listDir, listActor}) => {
     const dispatch = useDispatch()
 
     const resetFilter = () => {
-
-        dispatch(getFilterTextObj(
-            {}
-        ))
-        dispatch(getFilterObj(
-            {
-                'ratingStart': 1,
-                'countRatingStart': 1000,
-                'yearStart': 0,
-                'yearEnd': 0,
-                'part': 1,
-                'typeSorting': 'year'
-            }
-        ))
         router.push('/movies' )
-
     }
 
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.title}>
-                {filterTextObj.arrYears?.length === 1 &&
-                    !filterTextObj.hasOwnProperty('arrCountries') &&
-                    !filterTextObj.hasOwnProperty('arrGenres') &&
-                    filterTextObj.arrYears?.map((item, inx) =>
-                        <h1 key={inx}>Фильмы: {item}</h1>)}
-                {filterTextObj.arrGenres?.length === 1 &&
-                    !filterTextObj.hasOwnProperty('arrYears') &&
-                    !filterTextObj.hasOwnProperty('arrCountries') &&
-                    filterTextObj.arrGenres?.map((item, inx) =>
-                        <h1 key={inx}>Фильмы: {item}</h1>)}
-                {filterTextObj.arrCountries?.length === 1 &&
-                    !filterTextObj.hasOwnProperty('arrYears') &&
-                    !filterTextObj.hasOwnProperty('arrGenres') &&
-                    filterTextObj.arrCountries?.map((item, inx) =>
-                        <h1 key={inx}>Фильмы: {item}</h1>)}
-                {Object.keys(filterTextObj).length === 0 ||
-                    Object.keys(filterTextObj).length > 1 ||
-                    filterTextObj.hasOwnProperty('ratingStart') ||
-                filterTextObj.hasOwnProperty('countRatingStart') ||
-                filterTextObj.arrGenres?.length > 1 ||
-                    filterTextObj.arrCountries?.length > 1 ?
-                    <h1>Фильмы</h1> : null}
+                {/*{filterTextObj.arrYears?.length === 1 &&*/}
+                {/*    !filterTextObj.hasOwnProperty('arrCountries') &&*/}
+                {/*    !filterTextObj.hasOwnProperty('arrGenres') &&*/}
+                {/*    filterTextObj.arrYears?.map((item, inx) =>*/}
+                {/*        <h1 key={inx}>Фильмы: {item}</h1>)}*/}
+                {/*{filterTextObj.arrGenres?.length === 1 &&*/}
+                {/*    !filterTextObj.hasOwnProperty('arrYears') &&*/}
+                {/*    !filterTextObj.hasOwnProperty('arrCountries') &&*/}
+                {/*    filterTextObj.arrGenres?.map((item, inx) =>*/}
+                {/*        <h1 key={inx}>Фильмы: {item}</h1>)}*/}
+                {/*{filterTextObj.arrCountries?.length === 1 &&*/}
+                {/*    !filterTextObj.hasOwnProperty('arrYears') &&*/}
+                {/*    !filterTextObj.hasOwnProperty('arrGenres') &&*/}
+                {/*    filterTextObj.arrCountries?.map((item, inx) =>*/}
+                {/*        <h1 key={inx}>Фильмы: {item}</h1>)}*/}
+                {/*{Object.keys(filterTextObj).length === 0 ||*/}
+                {/*    Object.keys(filterTextObj).length > 1 ||*/}
+                {/*    filterTextObj.hasOwnProperty('ratingStart') ||*/}
+                {/*filterTextObj.hasOwnProperty('countRatingStart') ||*/}
+                {/*filterTextObj.arrGenres?.length > 1 ||*/}
+                {/*    filterTextObj.arrCountries?.length > 1 ?*/}
+                {/*    <h1>Фильмы</h1> : null}*/}
+                <h1>Фильмы</h1>
             </div>
 
             <FilterParameters/>
@@ -237,19 +222,6 @@ const FilterFilms = ({genres, countries, listDir, listActor}) => {
                             <VscChromeClose size={22}/>
                             Сбросить фильтры
                         </button>
-                        {/*<button type='button' onClick={() => router.push('/movies/arr',)}>*/}
-                        {/*    Dashboard*/}
-                        {/*</button>*/}
-                        {/*<button type='button' onClick={() => history.replaceState(null, '', '/movies/view')}>*/}
-                        {/*    Dashboard2*/}
-                        {/*</button>*/}
-                        {/*<button type='button' onClick={() => history.replaceState(null, '', '/movies/view/321321')}>*/}
-                        {/*    Dashboard3*/}
-                        {/*</button>*/}
-
-                        {/*<Link href='/movies/reset' scroll={false}>*/}
-                        {/*    Disables scrolling to the top*/}
-                        {/*</Link>*/}
                     </div>
                 </div>
             </div>

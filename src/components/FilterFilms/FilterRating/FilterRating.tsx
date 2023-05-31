@@ -28,37 +28,21 @@ const FilterRating = () => {
 
     const onMouseUpRating = (e, inputRange) => {
         const numberRating = Number(e.target.value)
-        // console.log(e.target.value)
-        // dispatch(getFilterTextObj(
-        //     {
-        //         ...filterTextObj,
-        //         'ratingStart': [numberRating],
-        //     }
-        // ))
-        // dispatch(getFilterObj(
-        //     {
-        //         ...filterObj,
-        //         'ratingStart': numberRating,
-        //         'part': 1,
-        //     }
-        // ))
-        // router.push(`${pathname}?ivi_rating_10_gte=${inputRange}`)
         let url = '/movies'
         if (searchParams.toString()) {
 
             if (searchParams.has('ivi_rating_10_gte')) {
 
                 const valueStr = 'ivi_rating_10_gte=' + searchParams.get('ivi_rating_10_gte')
-                const newStr = searchParams.toString().replace(valueStr, `ivi_rating_10_gte=${inputRange}`)
-                url = pathname + '?' + searchParams.toString()
+                const newStr = searchParams.toString().replace(valueStr, `ivi_rating_10_gte=${numberRating}`)
 
                 router.push(`${pathname}?${newStr}`)
             } else {
                 url = pathname + '?' + searchParams.toString()
-                router.push(`${url}&ivi_rating_10_gte=${inputRange}`)
+                router.push(`${url}&ivi_rating_10_gte=${numberRating}`)
             }
         } else {
-            router.push(`${pathname}?ivi_rating_10_gte=${inputRange}`)
+            router.push(`${pathname}?ivi_rating_10_gte=${numberRating}`)
         }
     }
 

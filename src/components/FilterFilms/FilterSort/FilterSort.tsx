@@ -46,12 +46,7 @@ const FilterSort = () => {
     }, [sortToggle])
 
     function sort(str) {
-        // dispatch(getFilterObj(
-        //     {
-        //         ...filterObj,
-        //         'typeSorting': str
-        //     }
-        // ))
+
 
         let url = '/movies'
         if (searchParams.toString()) {
@@ -60,7 +55,6 @@ const FilterSort = () => {
 
                 const valueStr = 'sort=' + searchParams.get('sort')
                 const newStr = searchParams.toString().replace(valueStr, `sort=${str}`)
-                url = pathname + '?' + searchParams.toString()
 
                 router.push(`${pathname}?${newStr}`)
             } else {

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 import Input from '@/components/UI/Input/Input'
 
@@ -64,67 +64,6 @@ const FilterActor = ({listActor}) => {
             router.push(`${pathname}?actor=${nameActorEN}`)
         }
 
-        // if ('arrMembersFilterDto' in filterObj) {
-        //
-        //     if (filterObj.arrMembersFilterDto.filter(item => item.idMember === id).length === 0) {
-        //
-        //         if ('arrActorMembers' in filterTextObj) {
-        //             dispatch(getFilterTextObj(
-        //                 {
-        //                     ...filterTextObj,
-        //                     'arrActorMembers': [...filterTextObj.arrActorMembers, nameActor],
-        //                 }
-        //             ))
-        //         } else {
-        //             dispatch(getFilterTextObj(
-        //                 {
-        //                     ...filterTextObj,
-        //                     'arrActorMembers': [nameActor],
-        //                 }
-        //             ))
-        //         }
-        //
-        //         dispatch(getFilterTextObj(
-        //             {
-        //                 ...filterTextObj,
-        //                 'arrActorMembers': [...filterTextObj.arrActorMembers, nameActor],
-        //             }
-        //         ))
-        //         dispatch(getFilterObj(
-        //             {
-        //                 ...filterObj,
-        //                 'arrMembersFilterDto': [
-        //                     ...filterObj.arrMembersFilterDto,
-        //                     {
-        //                         'idMember': id,
-        //                         'idProfession': 1
-        //                     },
-        //                 ],
-        //             }
-        //         ))
-        //     }
-        //     return
-        //
-        // } else {
-        //
-        //     dispatch(getFilterTextObj(
-        //         {
-        //             ...filterTextObj,
-        //             'arrActorMembers': [nameActor],
-        //         }
-        //     ))
-        //     dispatch(getFilterObj(
-        //         {
-        //             ...filterObj,
-        //             'arrMembersFilterDto': [
-        //                 {
-        //                     'idMember': id,
-        //                     'idProfession': 1
-        //                 },
-        //             ],
-        //         }
-        //     ))
-        // }
     }
 
 

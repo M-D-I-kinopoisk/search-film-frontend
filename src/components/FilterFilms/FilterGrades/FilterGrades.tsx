@@ -28,20 +28,7 @@ const FilterGrades = () => {
 
     const onMouseUpRating = (e) => {
         const numberRating = Number(e.target.value)
-        // console.log(e.target.value)
-        // dispatch(getFilterTextObj(
-        //     {
-        //         ...filterTextObj,
-        //         'countRatingStart': [numberRating],
-        //     }
-        // ))
-        // dispatch(getFilterObj(
-        //     {
-        //         ...filterObj,
-        //         'countRatingStart': numberRating,
-        //         'part': 1,
-        //     }
-        // ))
+
         let url = '/movies'
         if (searchParams.toString()) {
 

@@ -148,40 +148,12 @@ const FilterYears = () => {
         if (filterObj.yearStart !== start || filterObj.yearEnd !== end) {
             if (nameYears === 'Все годы') {
 
-                const {arrYears, ...restName} = filterTextObj
                 const valueStr = 'year=' + searchParams.get('year')?.replaceAll('+','_')
                 const newStr = searchParams.toString().replace(valueStr, '')
-                // dispatch(getFilterTextObj(restName))
-                // dispatch(getFilterObj(
-                //     {
-                //         ...filterObj,
-                //         'yearStart': 0,
-                //         'yearEnd': 0,
-                //         'part': 1,
-                //     }
-                // ))
-                // console.log(123)
                 router.push(`${pathname}?${newStr}`)
 
             } else {
 
-                // dispatch(getFilterTextObj(
-                //     {
-                //         ...filterTextObj,
-                //         'arrYears': [nameYears],
-                //     }
-                // ))
-
-                // dispatch(getFilterObj(
-                //     {
-                //         ...filterObj,
-                //         'yearStart': start,
-                //         'yearEnd': end,
-                //         'part': 1,
-                //     }
-                // ))
-
-                // console.log(searchParams)
                 let url = '/movies'
                 if (searchParams.toString()) {
 
@@ -189,7 +161,6 @@ const FilterYears = () => {
 
                         const valueStr = 'year=' + searchParams.get('year')?.replaceAll('+','_')
                         const newStr = searchParams.toString().replace(valueStr, `year=${start}_${end}`)
-                        url = pathname + '?' + searchParams.toString()
 
                         router.push(`${pathname}?${newStr}`)
                     } else {
@@ -205,7 +176,6 @@ const FilterYears = () => {
         }
     }
 
-    // console.log(filterTextObj)
 
     return (
         <ul>

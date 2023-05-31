@@ -20,9 +20,10 @@ import {funcDeclination} from '@/utils/funcDeclination'
 
 type FilmsCategoryProps = {
     title: string,
+    titleEN : string
     list: string[]
 }
-const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, list}) => {
+const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, titleEN, list}) => {
     const [visible, setVisible] = React.useState(false)
     const {filmId} = useSelector(selectFilms)
     const dispatch = useDispatch()
@@ -33,9 +34,11 @@ const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, list}) => {
 
     return (
         <div className={styles.films}>
-            <h2 className={styles.films__title}>{title}
-                <BsChevronRight size={21}/>
-            </h2>
+            <Link href={`/movies/${titleEN}`}>
+                <h2 className={styles.films__title}>{title}
+                    <BsChevronRight size={21}/>
+                </h2>
+            </Link>
             <Swiper className='slider__films'
                     spaceBetween={25}
                     slidesPerView={7}

@@ -13,7 +13,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
     const searchParams = useSearchParams()
     const params = useParams()
-    const pathname = usePathname()
+    // const pathname = usePathname()
 
 
     const [filmsList, setFilmsList] = useState<object[]>([])
@@ -23,8 +23,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
     const dispatch = useDispatch()
 
 
-    // @ts-ignore
-    // @ts-ignore
+
     useEffect(() => {
             console.log('useEffect работает')
             console.log(params)
@@ -188,12 +187,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         }
                     })
                         .then(response => response.json())
-                        .then(data => {
-                            if (true) {
-
-                            }
-                            setFilmsList(data)
-                        })
+                        .then(data => setFilmsList(data))
                 } catch (error) {
                     console.log(error.message)
                 }

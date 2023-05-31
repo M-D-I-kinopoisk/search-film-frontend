@@ -14,7 +14,7 @@ export default function FilterParameters () {
         <div className={styles.parameters}>
             {filterTextObj.arrGenres ?
                 filterTextObj.arrGenres.map((item, inx) =>
-                    <span key={inx}>{item}, </span>) :
+                    <span key={inx}>{item.charAt(0).toUpperCase() + item.slice(1)}, </span>) :
                 <span>Все жанры, </span>}
             {filterTextObj.arrCountries ?
                 filterTextObj.arrCountries.map((item, inx) =>
