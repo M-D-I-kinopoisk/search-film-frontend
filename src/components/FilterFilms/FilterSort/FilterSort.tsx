@@ -5,20 +5,27 @@ import {useEffect, useRef, useState} from 'react'
 import {BsChevronCompactDown, BsChevronCompactUp} from 'react-icons/bs'
 import {MdOutlineSort} from 'react-icons/md'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
+import { useSelector} from 'react-redux'
+import { selectFilter} from '@/redux/FilterSlice'
 
 import styles from './filterSort.module.scss'
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 
 
 const FilterSort = () => {
+
+    const pathname = usePathname()
+
+    const router = useRouter()
+
+    const searchParams = useSearchParams()
 
     const [sortToggle, SetSortToggle] = useState(false)
 
     const modalRef = useRef<HTMLDivElement>(null)
 
-    const {filterObj} = useSelector(selectFilms)
-    const dispatch = useDispatch()
+    const {filterObj} = useSelector(selectFilter)
+
 
 
     useEffect(() => {
@@ -39,12 +46,24 @@ const FilterSort = () => {
     }, [sortToggle])
 
     function sort(str) {
-        dispatch(getFilterObj(
-            {
-                ...filterObj,
-                'typeSorting': str
+
+
+        let url = '/movies'
+        if (searchParams.toString()) {
+
+            if (searchParams.has('sort')) {
+
+                const valueStr = 'sort=' + searchParams.get('sort')
+                const newStr = searchParams.toString().replace(valueStr, `sort=${str}`)
+
+                router.push(`${pathname}?${newStr}`)
+            } else {
+                url = pathname + '?' + searchParams.toString()
+                router.push(`${url}&sort=${str}`)
             }
-        ))
+        } else {
+            router.push(`${pathname}?sort=${str}`)
+        }
     }
 
 

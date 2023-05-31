@@ -4,107 +4,228 @@ import styles from './filmList.module.scss'
 import {useEffect, useState} from 'react'
 
 import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-import {useRouter} from 'next/navigation'
-import Link from 'next/link'
+import {getFilterObj, selectFilter} from '@/redux/FilterSlice'
 import {useParams, useSearchParams} from 'next/navigation'
+import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 
 
-export default function FilmsList({genres, countries, params, searchParams}) {
 
-    // const searchParams = useSearchParams()
-    console.log(params)
+export default function FilmsList({genres, countries, listDir, listActor, searchPar}) {
 
+    const searchParams = useSearchParams()
+    const params = useParams()
 
 
     const [filmsList, setFilmsList] = useState<object[]>([])
 
-    const {filterObj} = useSelector(selectFilms)
+    const {filterObj} = useSelector(selectFilter)
+    const {filterTextObj} = useSelector(selectFilterText)
     const dispatch = useDispatch()
 
 
-    // const [listGenres, setListGenres] = useState<[] | any>([])
 
     useEffect(() => {
-        console.log('useEffect работает')
-        // console.log(params)
+            console.log('useEffect работает')
+            console.log(params)
 
-        const fetchData = async () => {
-            let genresObj = {}
-            let countriesObj = {}
+            const filter = {
+                'ratingStart': 1,
+                'countRatingStart': 1000,
+                'yearStart': 0,
+                'yearEnd': 0,
+                'part': 1,
+                'typeSorting': 'year'
+            }
+            const filterText = {}
+            let newFilterText = {...filterText}
+            let newFilter = {...filter}
             if (Object.keys(params).length !== 0) {
-                params.movies.forEach(i => {
-                    const strArr = i.replace('%20', ' ').split('%2B')
-                    const arrGenres = genres.filter(i => strArr.includes(i.nameEN))
-                    const arrCountries = countries.filter(i => strArr.includes(i.nameEN))
-                    // console.log(arrGenres.length > 0)
-                    // console.log(arrCountries.length > 0)
 
-                    if (arrGenres.length > 0) {
-                        genresObj = {arrIdGenres: arrGenres}
-                    }
+                const arrParams = params.movies.split('/')
+                arrParams.forEach(i => {
+                    const strArr = i.replaceAll('%2B', ',').replaceAll('%20', ' ').split(',')
+                    const arrGenres = genres.filter(i => strArr.includes(i.nameEN.toLowerCase()))
+                    const arrCountries = countries.filter(i => strArr.includes(i.nameEN.toLowerCase()))
+
+
                     if (arrCountries.length > 0) {
-                        countriesObj = {arrIdCountries: arrCountries}
+                        const countriesArrId = arrCountries.map(i => i.id)
+                        const arrCountriesEN = arrCountries.map(i => i.nameEN)
+                        const arrCountriesRU = arrCountries.map(i => i.nameRU)
+                        newFilterText = {...newFilterText, 'arrCountries': arrCountriesRU, 'arrCountriesEN': arrCountriesEN}
+                        // @ts-ignore
+                        newFilter = {...newFilter, 'arrIdCountries': countriesArrId}
+                    }
+                    if (arrGenres.length > 0) {
+                        const genresArrId = arrGenres.map(i => i.id)
+                        const arrGenresEN = arrGenres.map(i => i.nameEN)
+                        const arrGenresRU = arrGenres.map(i => i.nameRU)
+                        newFilterText = {...newFilterText, 'arrGenres': arrGenresRU, 'arrGenresEN': arrGenresEN}
+                        // @ts-ignore
+                        newFilter = {...newFilter, 'arrIdGenres': genresArrId}
+                        console.log(arrGenres)
                     }
                 })
-
-                fetch('http://localhost:12120/api/films/filter', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        ...filterObj,
-                        genresObj,
-                        countriesObj
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                    .then(response => response.json())
-                    // 4. Setting *dogImage* to the image url that we received from the response above
-                    .then(data => setFilmsList(data))
 
             }
 
+
+            if (searchParams.get('ivi_rating_10_gte')) {
+
+                const ratingStart = Number(searchParams.get('ivi_rating_10_gte'))
+                newFilter = {...newFilter, 'ratingStart': ratingStart}
+            }
+            if (searchParams.get('year')) {
+
+                const yearStart = Number(searchParams.get('year')?.split('_')[0])
+                const yearEnd = Number(searchParams.get('year')?.split('_')[1])
+                const nameYears = searchParams.get('year')?.replaceAll('_', '-')
+                newFilterText = {...newFilterText, 'arrYears': [nameYears]}
+                newFilter = {...newFilter, 'yearStart': yearStart, 'yearEnd': yearEnd}
+            }
+            if (searchParams.get('sort')) {
+
+                const typeSorting = searchParams.get('sort')
+                // @ts-ignore
+                newFilter = {...newFilter, 'typeSorting': typeSorting}
+            }
+            if (searchParams.get('ivi_rating_10_gte')) {
+
+                const ratingStart = Number(searchParams.get('ivi_rating_10_gte'))
+
+                newFilter = {...newFilter, 'ratingStart': ratingStart}
+                newFilterText = {...newFilterText, 'ratingStart': [ratingStart]}
+            }
+            if (searchParams.get('ivi_grades')) {
+
+                const countRatingStart = Number(searchParams.get('ivi_grades'))
+                newFilter = {...newFilter, 'countRatingStart': countRatingStart}
+                newFilterText = {...newFilterText, 'countRatingStart': [countRatingStart]}
+            }
+            if (searchParams.get('dir')) {
+
+                const strMembersDir = searchParams.get('dir')
+
+                const StrNameDirReplace = strMembersDir?.replaceAll('%20', ' ')
+
+                const arrDir = listDir.filter(i => StrNameDirReplace?.includes(i.nameEN))
+
+                // @ts-ignore
+                if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
+                    // @ts-ignore
+                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {'idMember': arrDir[0].id, 'idProfession': 1}]}
+                    newFilterText = {
+                        ...newFilterText,
+                        'arrDirMembers': [arrDir[0].nameRU],
+                        'arrDirMembersEN': [arrDir[0].nameEN]
+                    }
+                } else {
+                    // @ts-ignore
+                    newFilter = {...newFilter, 'arrMembersFilterDto': [{'idMember': arrDir[0].id, 'idProfession': 1}]}
+                    newFilterText = {
+                        ...newFilterText,
+                        'arrDirMembers': [arrDir[0].nameRU],
+                        'arrDirMembersEN': [arrDir[0].nameEN]
+                    }
+                }
+            }
+
+
+            if (searchParams.get('actor')) {
+
+                const strMembersActor = searchParams.get('actor')
+
+                const StrNameActorReplace = strMembersActor?.replaceAll('%20', ' ')
+
+                const arrActor = listActor.filter(i => StrNameActorReplace?.includes(i.nameEN))
+
+
+                if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
+                    // @ts-ignore
+                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {'idMember': arrActor[0].id, 'idProfession': 2}]
+                    }
+                    newFilterText = {
+                        ...newFilterText,
+                        'arrActorMembers': [arrActor[0].nameRU],
+                        'arrActorMembersEN': [arrActor[0].nameEN]
+                    }
+                } else {
+                    // @ts-ignore
+                    newFilter = {...newFilter, 'arrMembersFilterDto': [{'idMember': arrActor[0].id, 'idProfession': 2}]}
+                    newFilterText = {
+                        ...newFilterText,
+                        'arrActorMembers': [arrActor[0].nameRU],
+                        'arrActorMembersEN': [arrActor[0].nameEN]
+                    }
+                }
+
+            }
+
+
+            console.log(newFilterText)
+            console.log(newFilter)
+            dispatch(getFilterObj(
+                {
+                    ...newFilter,
+                }
+            ))
+            dispatch(getFilterTextObj(
+                {
+                    ...newFilterText,
+                }
+            ))
+
+
+            const fetchData = async () => {
+
+                try {
+                    fetch('http://localhost:12120/api/films/filter', {
+                        method: 'POST',
+                        body: JSON.stringify({...newFilter}),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(data => setFilmsList(data))
+                } catch (error) {
+                    console.log(error.message)
+                }
+
+            }
+
+            fetchData()
+
+
+            console.log(searchPar)
 
         }
-
-        fetchData()
-
-        console.log(params)
-        console.log(searchParams)
+        ,
+        [searchPar]
+    )
 
 
-        // try {
-        //     const res = await fetch('http://localhost:12120/api/films/filter', {
-        //         method: 'POST',
-        //         body: JSON.stringify({...filterObj,
-        //         }),
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-        //     const films = await res.json()
-        //     if (filterObj.part > 1) {
-        //         setFilmsList(prev => [...prev, ...films])
-        //     } else {
-        //         setFilmsList(films)
-        //     }
-        // } catch (error) {
-        //     console.log(error.message)
-        // }
-
-
-    }, [params, searchParams])
-
-
-    const router = useRouter()
     const nextListFilms = (part) => {
-        dispatch(getFilterObj(
-            {
-                ...filterObj,
-                'part': part + 1,
-            }
-        ))
+        try {
+            fetch('http://localhost:12120/api/films/filter', {
+                method: 'POST',
+                body: JSON.stringify({
+                    ...filterObj,
+                    'part': part + 1,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    setFilmsList(prev => [...prev, ...data])
+                    console.log(filmsList)
+                })
+        } catch (error) {
+            console.log(error.message)
+        }
+
     }
 
 

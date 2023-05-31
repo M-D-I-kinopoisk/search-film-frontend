@@ -38,7 +38,7 @@ const FilterFilmsCategories: FC<FilterCategoriesProps> = ({
                     if (categoryRef.current?.contains(e.target)) return
 
                     if (!modalRef.current.contains(e.target)) {
-                        console.log('закрыть')
+                        // console.log('закрыть')
                         onClick()
                     }
                 }
@@ -60,8 +60,8 @@ const FilterFilmsCategories: FC<FilterCategoriesProps> = ({
                     <br/>
                     {filterText?.map((text, inx) =>
                         inx === 0 ?
-                            <span key={inx} className={styles.categories__text}>{text}</span> :
-                            <span className={styles.categories__text} key={inx}>, {text}</span>)}
+                            <span key={inx} className={styles.categories__text}>{text.toString().charAt(0).toUpperCase() + text.toString().slice(1)}</span> :
+                            <span className={styles.categories__text} key={inx}>, {text.toString().charAt(0).toUpperCase() + text.toString().slice(1)}</span>)}
                 </div>
                 {activePlank ? (<div style={{pointerEvents: 'none'}}><BsChevronCompactUp size={20}/></div>) :
                     (<div style={{pointerEvents: 'none'}}><BsChevronCompactDown size={20}/></div>)}

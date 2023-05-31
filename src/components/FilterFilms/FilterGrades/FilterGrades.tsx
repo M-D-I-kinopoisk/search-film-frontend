@@ -1,9 +1,7 @@
 import {useState} from 'react'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
-
+import { useSelector} from 'react-redux'
+import { selectFilter} from '@/redux/FilterSlice'
 
 import styles from './filterGrades.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
@@ -15,40 +13,25 @@ const FilterGrades = () => {
     const router = useRouter()
     const searchParams = useSearchParams()
 
-    const {filterObj} = useSelector(selectFilms)
-    const {filterTextObj} = useSelector(selectFilterText)
-    const dispatch = useDispatch()
+    const {filterObj} = useSelector(selectFilter)
 
     const [inputRange, setInputRange] = useState(filterObj.countRatingStart)
 
     const changeRating = (e) => {
-        setInputRange((prev) => (e.target.value))
+        setInputRange((e.target.value))
     }
 
 
     const onMouseUpRating = (e) => {
         const numberRating = Number(e.target.value)
-        console.log(e.target.value)
-        dispatch(getFilterTextObj(
-            {
-                ...filterTextObj,
-                'countRatingStart': [numberRating],
-            }
-        ))
-        dispatch(getFilterObj(
-            {
-                ...filterObj,
-                'countRatingStart': numberRating,
-                'part': 1,
-            }
-        ))
+
         let url = '/movies'
         if (searchParams.toString()) {
+
             if (searchParams.has('ivi_grades')) {
 
                 const valueStr = 'ivi_grades=' + searchParams.get('ivi_grades')
                 const newStr = searchParams.toString().replace(valueStr, `ivi_grades=${numberRating}`)
-                url = pathname + '?' + searchParams.toString()
 
                 router.push(`${pathname}/?${newStr}`)
             } else {

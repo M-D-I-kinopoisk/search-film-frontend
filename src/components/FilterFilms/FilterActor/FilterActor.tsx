@@ -1,39 +1,26 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 import Input from '@/components/UI/Input/Input'
 
 import {IoPersonCircleOutline} from 'react-icons/io5'
 
 import styles from './filterActor.module.scss'
-import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 
 
-const FilterActor = () => {
+const FilterActor = ({listActor}) => {
+
+    const pathname = usePathname()
+    const router = useRouter()
+    const searchParams = useSearchParams()
 
 
     const [inputActor, setInputActor] = useState('')
 
-    const [listActor, setListActor] = useState<[] | any>([])
 
     const [newListActor, setNewListActor] = useState<[] | any>([])
 
-    const {filterObj} = useSelector(selectFilms)
-    const {filterTextObj} = useSelector(selectFilterText)
-    const dispatch = useDispatch()
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const resMan = await fetch('http://localhost:12120/api/film-members/profession/1')
-            // const resWoman = await fetch('http://localhost:12120/api/film-members/profession/2')
-            const actorMan = await resMan.json()
-            // const actorWoman = await resWoman.json()
-            setListActor(actorMan)
-        }
-        fetchData()
-
-    }, [])
 
 
     function searchActor(e) {
@@ -50,75 +37,29 @@ const FilterActor = () => {
         }
     }
 
-    console.log(newListActor)
 
-    function filterActor(id, nameActor) {
-        console.log(id)
+    function filterActor(id, nameActor, nameActorEN) {
 
-        if ('arrMembersFilterDto' in filterObj) {
+        let url = '/movies'
+        if (searchParams.toString()) {
 
-            if (filterObj.arrMembersFilterDto.filter(item => item.idMember === id).length === 0) {
+            if (searchParams.has('actor')) {
 
-                if ('arrActorMembers' in filterTextObj) {
-                    dispatch(getFilterTextObj(
-                        {
-                            ...filterTextObj,
-                            'arrActorMembers': [...filterTextObj.arrActorMembers, nameActor],
-                        }
-                    ))
-                } else {
-                    dispatch(getFilterTextObj(
-                        {
-                            ...filterTextObj,
-                            'arrActorMembers': [nameActor],
-                        }
-                    ))
-                }
+                const valueStr = ('actor=' + searchParams.get('actor')).replaceAll(' ', '+')
+                const newStr = searchParams.toString().replace(valueStr, `actor=${nameActorEN}`)
 
-                dispatch(getFilterTextObj(
-                    {
-                        ...filterTextObj,
-                        'arrActorMembers': [...filterTextObj.arrActorMembers, nameActor],
-                    }
-                ))
-                dispatch(getFilterObj(
-                    {
-                        ...filterObj,
-                        'arrMembersFilterDto': [
-                            ...filterObj.arrMembersFilterDto,
-                            {
-                                'idMember': id,
-                                'idProfession': 1
-                            },
-                        ],
-                    }
-                ))
+                router.push(`${pathname}?${newStr}`)
+            } else {
+                url = pathname + '?' + searchParams.toString()
+                router.push(`${url}&actor=${nameActorEN}`)
             }
-            return
-
         } else {
-
-            dispatch(getFilterTextObj(
-                {
-                    ...filterTextObj,
-                    'arrActorMembers': [nameActor],
-                }
-            ))
-            dispatch(getFilterObj(
-                {
-                    ...filterObj,
-                    'arrMembersFilterDto': [
-                        {
-                            'idMember': id,
-                            'idProfession': 1
-                        },
-                    ],
-                }
-            ))
+            router.push(`${pathname}?actor=${nameActorEN}`)
         }
+
     }
 
-    console.log(filterObj)
+
 
     return (
         <div>
@@ -132,7 +73,7 @@ const FilterActor = () => {
                 {newListActor.map((item, inx) => {
                         if (inx <= 9)
                             return (<div key={inx} className={styles.filterActor}>
-                                <button onClick={() => filterActor(item.id, item.nameRU)}>
+                                <button onClick={() => filterActor(item.id, item.nameRU, item.nameEN)}>
                                     <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
                                     <span>{item.nameRU}</span>
                                 </button>

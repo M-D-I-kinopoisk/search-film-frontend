@@ -3,6 +3,8 @@ import styles from './actor.module.scss'
 import Image from 'next/image'
 
 import ActorFilms from '@/components/Actor/ActorFilms'
+import Link from 'next/link'
+import BackButton from "@/components/UI/BackButton/BackButton";
 
 
 type Props = {
@@ -40,13 +42,7 @@ const Actor = async ({params: {id}}: Props) => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.backLink}>
-                <Image alt='Назад'
-                       width={20}
-                       height={24}
-                       src='/img/left-arrow.png'/>
-                <span>Назад</span>
-            </div>
+           <BackButton/>
 
             <div className={styles.content}>
                 <div>

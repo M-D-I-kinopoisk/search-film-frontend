@@ -3,8 +3,11 @@ import {createSlice} from '@reduxjs/toolkit'
 interface FilterTextSliceState {
     filterTextObj: {
         arrActorMembers? : string[]
+        arrActorMembersEN? : string[]
         arrCountries? : string[]
+        arrCountriesEN? : string[]
         arrDirMembers?: string[]
+        arrDirMembersEN? : string[]
         arrGenres? : string[]
         arrGenresEN? : string[]
         arrYears? : string[]

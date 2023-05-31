@@ -59,8 +59,8 @@ export default async function Home() {
 
         <FilmsClause/>
 
-        <FilmsCategory list={fighters} title='Боевики'/>
+        <FilmsCategory list={fighters} title='Боевики' titleEN='fighter'/>
 
-        <FilmsCategory list={adventures} title='Приключения'/>
+        <FilmsCategory list={adventures} title='Приключения' titleEN='adventures'/>
     </div>
 }

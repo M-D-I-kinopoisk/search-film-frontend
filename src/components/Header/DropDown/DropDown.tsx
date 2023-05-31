@@ -32,15 +32,15 @@ const DropDown: FC<DropDownProps> = ({
         list = {
             genres: listGenres,
             country: [
-                {name: 'Русские', href: '/movies/ru'},
-                {name: 'Зарубежные', href: '/movies/foreign'},
-                {name: 'Советское кино', href: '/movies/su'},
+                {name: 'Русские', href: '/movies/russia'},
+                {name: 'США', href: '/movies/usa'},
+                {name: 'Советское кино', href: '/movies/the%20ussr'},
             ],
             years: [
-                {name: 'Фильмы 2023 года', href: '/movies/2023'} /*Готово */,
-                {name: 'Фильмы 2022 года', href: '/movies/2022'},
-                {name: 'Фильмы 2021 года', href: '/movies/2021'},
-                {name: 'Фильмы 2020 года', href: '/movies/2020'},
+                {name: 'Фильмы 2023 года', href: '/movies?year=2023_2023'},
+                {name: 'Фильмы 2022 года', href: '/movies?year=2022_2022'},
+                {name: 'Фильмы 2021 года', href: '/movies?year=2021_2021'},
+                {name: 'Фильмы 2020 года', href: '/movies?year=2020_2020'},
             ],
             new: [
                 {

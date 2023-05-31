@@ -1,8 +1,8 @@
 import {useState} from 'react'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
+import { useSelector} from 'react-redux'
+import { selectFilter} from '@/redux/FilterSlice'
+
 
 import styles from './filterRating.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
@@ -14,9 +14,8 @@ const FilterRating = () => {
     const router = useRouter()
     const searchParams = useSearchParams()
 
-    const {filterObj} = useSelector(selectFilms)
-    const {filterTextObj} = useSelector(selectFilterText)
-    const dispatch = useDispatch()
+    const {filterObj} = useSelector(selectFilter)
+
 
     const [inputRange, setInputRange] = useState(filterObj.ratingStart)
 
@@ -28,42 +27,24 @@ const FilterRating = () => {
 
     const onMouseUpRating = (e, inputRange) => {
         const numberRating = Number(e.target.value)
-        console.log(e.target.value)
-        dispatch(getFilterTextObj(
-            {
-                ...filterTextObj,
-                'ratingStart': [numberRating],
-            }
-        ))
-        dispatch(getFilterObj(
-            {
-                ...filterObj,
-                'ratingStart': numberRating,
-                'part': 1,
-            }
-        ))
-        router.push(`${pathname}?ivi_rating_10_gte=${inputRange}`)
         let url = '/movies'
         if (searchParams.toString()) {
-            console.log('324324effdsf')
+
             if (searchParams.has('ivi_rating_10_gte')) {
 
                 const valueStr = 'ivi_rating_10_gte=' + searchParams.get('ivi_rating_10_gte')
                 const newStr = searchParams.toString().replace(valueStr, `ivi_rating_10_gte=${numberRating}`)
-                url = pathname + '?' + searchParams.toString()
 
-                router.push(`${pathname}/?${newStr}`)
+                router.push(`${pathname}?${newStr}`)
             } else {
                 url = pathname + '?' + searchParams.toString()
-                router.push(`${url}&ivi_rating_10_gte=${inputRange}`)
+                router.push(`${url}&ivi_rating_10_gte=${numberRating}`)
             }
         } else {
-            router.push(`${pathname}?ivi_rating_10_gte=${inputRange}`)
+            router.push(`${pathname}?ivi_rating_10_gte=${numberRating}`)
         }
     }
 
-
-    console.log(filterObj)
 
 
     return (
