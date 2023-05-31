@@ -8,8 +8,8 @@ import {FiAward} from 'react-icons/fi'
 import {IoIosTv} from 'react-icons/io'
 import {AiOutlineCreditCard} from 'react-icons/ai'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {toggle, selectToggle} from '@/redux/AuthToggleSlice'
+import {useDispatch} from 'react-redux'
+import {toggle} from '@/redux/AuthToggleSlice'
 
 import style from './dropDownProfile.module.scss'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import Auth from '@/components/Auth/Auth'
+import Auth from '@/components/AuthWindow/Auth/Auth'
 import { useSelector} from 'react-redux'
 import {selectToggle} from '@/redux/AuthToggleSlice'
 
