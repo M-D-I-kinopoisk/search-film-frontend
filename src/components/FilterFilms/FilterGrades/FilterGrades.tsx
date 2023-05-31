@@ -6,9 +6,14 @@ import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 
 
 import styles from './filterGrades.module.scss'
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 
 
 const FilterGrades = () => {
+
+    const pathname = usePathname()
+    const router = useRouter()
+    const searchParams = useSearchParams()
 
     const {filterObj} = useSelector(selectFilms)
     const {filterTextObj} = useSelector(selectFilterText)
@@ -37,6 +42,22 @@ const FilterGrades = () => {
                 'part': 1,
             }
         ))
+        let url = '/movies'
+        if (searchParams.toString()) {
+            if (searchParams.has('ivi_grades')) {
+
+                const valueStr = 'ivi_grades=' + searchParams.get('ivi_grades')
+                const newStr = searchParams.toString().replace(valueStr, `ivi_grades=${numberRating}`)
+                url = pathname + '?' + searchParams.toString()
+
+                router.push(`${pathname}/?${newStr}`)
+            } else {
+                url = pathname + '?' + searchParams.toString()
+                router.push(`${url}&ivi_grades=${numberRating}`)
+            }
+        } else {
+            router.push(`/movies?ivi_grades=${numberRating}`)
+        }
     }
 
     return (

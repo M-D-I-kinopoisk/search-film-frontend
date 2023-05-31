@@ -6,6 +6,7 @@ interface FilterTextSliceState {
         arrCountries? : string[]
         arrDirMembers?: string[]
         arrGenres? : string[]
+        arrGenresEN? : string[]
         arrYears? : string[]
         countRatingStart?: number[]
         ratingStart?: number[]

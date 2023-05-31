@@ -1,6 +1,6 @@
 'use client'
 
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 import {useRouter} from 'next/router'
 
@@ -27,6 +27,18 @@ const Header = () => {
     const [categoryDropDown, setCategoryDropDown] = useState('')
 
     const [scrollList, setScrollList] = useState(0)
+
+    const [listGenres, setListGenres] = useState<[] | any>([])
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await fetch('http://localhost:12120/api/genres')
+            const genres = await res.json()
+            setListGenres(genres)
+        }
+        fetchData()
+    }, [])
 
 
     // const {locale} = useRouter()
@@ -56,6 +68,7 @@ const Header = () => {
                     categoryDropDown={categoryDropDown}
                     handleMouseEnter={(e) => handleMouseEnter(e)}
                     handleMouseLeave={handleMouseLeave}
+                    listGenres={listGenres}
                 />
 
                 <div className={styles.header__logo}>

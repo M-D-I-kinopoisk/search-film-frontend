@@ -9,10 +9,19 @@ import {BsCheckLg} from 'react-icons/bs'
 import styles from './filterGenres.module.scss'
 import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
+import Link from 'next/link'
+import {useRouter, useSearchParams, useParams, usePathname} from 'next/navigation'
+
 
 
 
 export default function FilterGenres() {
+
+    const router = useRouter()
+    const params = useParams()
+    const pathname = usePathname()
+
+    const searchParams = useSearchParams()
 
 
     const [listGenres, setListGenres] = useState<[] | any>([])
@@ -32,13 +41,16 @@ export default function FilterGenres() {
     }, [])
 
 
-    function filterGenres(id, nameGenres) {
+    function filterGenres(e, id, nameGenres, nameGenresEN) {
+        e.stopPropagation()
+
         nameGenres = firstLetterToUpperCase(nameGenres)
         if ('arrIdGenres' in filterObj) {
 
             if (filterObj.arrIdGenres && filterObj.arrIdGenres.includes(id)) {
 
                 if (filterObj.arrIdGenres.length === 1) {
+
                     const {arrGenres, ...restName} = filterTextObj
                     dispatch(getFilterTextObj(
                         {...restName}
@@ -50,15 +62,22 @@ export default function FilterGenres() {
                             'part': 1,
                         }
                     ))
-
+                    // const valueStr = 'ivi_rating_10_gte=' + searchParams.get('ivi_rating_10_gte')
+                    const newStr = pathname.toString().replace(nameGenresEN, '')
+                    // url = pathname + '?' + searchParams.toString()
+                    router.push(`${newStr}?${searchParams.toString()}`,)
+                    // history.pushState('/movies', 'Title', '/movies')
                 } else {
                     const filterListNameGenres = filterTextObj.arrGenres.filter((str) => str !== nameGenres)
+                    const filterListNameGenresEN = filterTextObj.arrGenresEN.filter((str) => str !== nameGenresEN)
                     dispatch(getFilterTextObj(
                         {
                             ...filterTextObj,
                             'arrGenres': filterListNameGenres,
+                            'arrGenresEN' : filterListNameGenresEN
                         }
                     ))
+                    console.log(1)
                     const filterListIdGenres = filterObj.arrIdGenres.filter((number) => number !== id)
                     dispatch(getFilterObj(
                         {
@@ -67,6 +86,13 @@ export default function FilterGenres() {
                             'part': 1,
                         }
                     ))
+                    console.log(123)
+                    const str = (filterListNameGenresEN.join('+'))
+                    const newStr = pathname.toString().replace(str, '')
+                    console.log(newStr)
+                    const newStr2 = newStr.toString().replace(newStr, '')
+                    router.push(`/movies/${filterListNameGenresEN.join('+')}${newStr2}?${searchParams.toString()}`,)
+
                 }
 
             } else {
@@ -75,6 +101,7 @@ export default function FilterGenres() {
                     {
                         ...filterTextObj,
                         'arrGenres': [...filterTextObj.arrGenres, nameGenres],
+                        'arrGenresEN' : [...filterTextObj.arrGenresEN, nameGenresEN]
                     }
                 ))
                 dispatch(getFilterObj(
@@ -84,6 +111,13 @@ export default function FilterGenres() {
                         'part': 1,
                     }
                 ))
+
+                const str = ([...filterTextObj.arrGenresEN, nameGenresEN].join('+'))
+                const newStr = pathname.toString().replace(str, '')
+                console.log(newStr)
+                const newStr2 = newStr.toString().replace(newStr, '')
+                router.push(`/movies/${str}${newStr2}?${searchParams.toString()}`,)
+
             }
         } else {
 
@@ -91,6 +125,7 @@ export default function FilterGenres() {
                 {
                     ...filterTextObj,
                     'arrGenres': [nameGenres],
+                    'arrGenresEN' : [nameGenresEN]
                 }
             ))
             dispatch(getFilterObj(
@@ -100,9 +135,14 @@ export default function FilterGenres() {
                     'part': 1,
                 }
             ))
+            console.log(5)
+            const newStr2 = pathname.toString().replace('movies', '')
+            router.push(`/movies/${nameGenresEN}${newStr2}?${searchParams.toString()}`,)
+
         }
     }
-
+    // console.log(JSON.stringify(params))
+    // console.log(searchParams)
 
     function firstLetterToUpperCase(string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
@@ -113,7 +153,7 @@ export default function FilterGenres() {
         <ul className={styles.genres__list}>
             {listGenres.map((element, inx) => {
                 return <li key={inx} className={styles.genres__item}>
-                    <button onClick={() => filterGenres(element.id, element.nameRU)}>
+                    <button onClick={(e) => filterGenres(e, element.id, element.nameRU, element.nameEN)}>
                         {firstLetterToUpperCase(element.nameRU)}
                     </button>
                     {filterObj.arrIdGenres?.includes(element.id) ?

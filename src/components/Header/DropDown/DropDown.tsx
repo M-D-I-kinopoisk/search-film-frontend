@@ -14,6 +14,7 @@ export interface DropDownProps {
     handleMouseLeave: (e: any) => void
     scrollList: number
     setScrollList: (i: any) => void
+    listGenres : object[]
 }
 
 const DropDown: FC<DropDownProps> = ({
@@ -22,35 +23,14 @@ const DropDown: FC<DropDownProps> = ({
                                          handleMouseLeave,
                                          scrollList,
                                          setScrollList,
+                                         listGenres,
                                      }) => {
-    let list = {genres: [], country: [], years: [], new: []}
+
+    let list
 
     if (categoryDropDown == 'header-movies') {
         list = {
-            genres: [
-                {name: 'Артхаус', href: '/movies/arthouse'},
-                {name: 'Боевики', href: '/movies/boeviki'},
-                {name: 'Вестерн', href: '/movies/western'},
-                {name: 'Военные', href: '/movies/voennye'},
-                {name: 'Детективы', href: '/movies/detective'},
-                {name: 'Для всей семьи', href: '/movies/dlya_vsej_semi'},
-                {name: 'Для детей', href: '/movies/dlya_vsej_semi'},
-                {name: 'Документальные', href: '/movies/dlya_vsej_semi'},
-                {name: 'Драмы', href: '/movies/dlya_vsej_semi'},
-                {name: 'Исторические', href: '/movies/dlya_vsej_semi'},
-                {name: 'Катастрофы', href: '/movies/dlya_vsej_semi'},
-                {name: 'Комедии', href: '/movies/dlya_vsej_semi'},
-                {name: 'Криминальные', href: '/movies/dlya_vsej_semi'},
-                {name: 'Мелодрамы', href: '/movies/dlya_vsej_semi'},
-                {name: 'Мистические', href: '/movies/dlya_vsej_semi'},
-                {name: 'По комиксам', href: '/movies/dlya_vsej_semi'},
-                {name: 'Приключения', href: '/movies/dlya_vsej_semi'},
-                {name: 'Спорт', href: '/movies/dlya_vsej_semi'},
-                {name: 'Триллеры', href: '/movies/dlya_vsej_semi'},
-                {name: 'Ужасы', href: '/movies/dlya_vsej_semi'},
-                {name: 'Фантастика', href: '/movies/dlya_vsej_semi'},
-                {name: 'Фэнтези', href: '/movies/dlya_vsej_semi'},
-            ],
+            genres: listGenres,
             country: [
                 {name: 'Русские', href: '/movies/ru'},
                 {name: 'Зарубежные', href: '/movies/foreign'},
@@ -58,9 +38,9 @@ const DropDown: FC<DropDownProps> = ({
             ],
             years: [
                 {name: 'Фильмы 2023 года', href: '/movies/2023'} /*Готово */,
-                {name: 'Фильмы 2022 года', href: '/movies/2023'},
-                {name: 'Фильмы 2021 года', href: '/movies/2023'},
-                {name: 'Фильмы 2020 года', href: '/movies/2023'},
+                {name: 'Фильмы 2022 года', href: '/movies/2022'},
+                {name: 'Фильмы 2021 года', href: '/movies/2021'},
+                {name: 'Фильмы 2020 года', href: '/movies/2020'},
             ],
             new: [
                 {
@@ -110,38 +90,38 @@ const DropDown: FC<DropDownProps> = ({
     if (categoryDropDown == 'header-series') {
         list = {
             genres: [
-                {name: 'Биография', href: '/series/arthouse'},
-                {name: 'Боевики', href: '/series/boeviki'},
-                {name: 'Военные', href: '/series/western'},
-                {name: 'Детективы', href: '/series/voennye'},
-                {name: 'Для всей семьи', href: '/series/detective'},
-                {name: 'Документальные', href: '/series/dlya_vsej_semi'},
-                {name: 'Дорамы', href: '/series/dlya_vsej_semi'},
-                {name: 'Драмы', href: '/series/dlya_vsej_semi'},
-                {name: 'Исторические', href: '/series/dlya_vsej_semi'},
-                {name: 'Криминальные', href: '/series/dlya_vsej_semi'},
-                {name: 'Медицинские', href: '/series/dlya_vsej_semi'},
-                {name: 'Мелодрамы', href: '/series/dlya_vsej_semi'},
-                {name: 'Мистические', href: '/series/dlya_vsej_semi'},
-                {name: 'Приключения', href: '/series/dlya_vsej_semi'},
-                {name: 'Романтические', href: '/series/dlya_vsej_semi'},
-                {name: 'Телешоу', href: '/series/dlya_vsej_semi'},
-                {name: 'Триллеры', href: '/series/dlya_vsej_semi'},
-                {name: 'Турецкие', href: '/series/dlya_vsej_semi'},
-                {name: 'Ужасы', href: '/series/dlya_vsej_semi'},
-                {name: 'Фантастика', href: '/series/dlya_vsej_semi'},
-                {name: 'Фэнтези', href: '/series/dlya_vsej_semi'},
+                {nameRU: 'Биография', nameEN: '#!'},
+                {nameRU: 'Боевики', nameEN: '#!'},
+                {nameRU: 'Военные', nameEN: '#!'},
+                {nameRU: 'Детективы', nameEN: '#!'},
+                {nameRU: 'Для всей семьи', nameEN: '#!'},
+                {nameRU: 'Документальные', nameEN: '#!'},
+                {nameRU: 'Дорамы', nameEN: '#!'},
+                {nameRU: 'Драмы', nameEN: '#!'},
+                {nameRU: 'Исторические', nameEN: '#!'},
+                {nameRU: 'Криминальные', nameEN: '#!'},
+                {nameRU: 'Медицинские', nameEN: '#!'},
+                {nameRU: 'Мелодрамы', nameEN: '#!'},
+                {nameRU: 'Мистические', nameEN: '#!'},
+                {nameRU: 'Приключения', nameEN: '#!'},
+                {nameRU: 'Романтические', nameEN: '#!'},
+                {nameRU: 'Телешоу', nameEN: '#!'},
+                {nameRU: 'Триллеры', nameEN: '#!'},
+                {nameRU: 'Турецкие', nameEN: '#!'},
+                {nameRU: 'Ужасы', nameEN: '#!'},
+                {nameRU: 'Фантастика', nameEN: '#!'},
+                {nameRU: 'Фэнтези', nameEN: '#!'},
             ],
             country: [
-                {name: 'Русские', href: '/series/ru'},
-                {name: 'Зарубежные', href: '/series/ru'},
-                {name: 'Советское кино', href: '/series/su'},
+                {name: 'Русские', href: '#!'},
+                {name: 'Зарубежные', href: '#!'},
+                {name: 'Советское кино', href: '#!'},
             ],
             years: [
-                {name: 'Фильмы 2023 года', href: '/series/2023'},
-                {name: 'Фильмы 2022 года', href: '/series/2023'},
-                {name: 'Фильмы 2021 года', href: '/series/2023'},
-                {name: 'Фильмы 2020 года', href: '/series/2023'},
+                {name: 'Фильмы 2023 года', href: '#!'},
+                {name: 'Фильмы 2022 года', href: '#!'},
+                {name: 'Фильмы 2021 года', href: '#!'},
+                {name: 'Фильмы 2020 года', href: '#!'},
             ],
             new: [
                 {
@@ -175,27 +155,27 @@ const DropDown: FC<DropDownProps> = ({
     if (categoryDropDown == 'header-animation') {
         list = {
             genres: [
-                {name: 'Аниме', href: '/series/arthouse'},
-                {name: 'Боевик', href: '/series/boeviki'},
-                {name: 'Детектив', href: '/series/western'},
-                {name: 'Для взрослых', href: '/series/voennye'},
-                {name: 'Для всей семьи', href: '/series/detective'},
-                {name: 'Для детей', href: '/series/dlya_vsej_semi'},
-                {name: 'Драма', href: '/series/dlya_vsej_semi'},
-                {name: 'История', href: '/series/dlya_vsej_semi'},
-                {name: 'Комедия', href: '/series/dlya_vsej_semi'},
-                {name: 'Криминальные', href: '/series/dlya_vsej_semi'},
-                {name: 'Мюзикл', href: '/series/dlya_vsej_semi'},
-                {name: 'Полнометражные', href: '/series/dlya_vsej_semi'},
-                {name: 'Мистические', href: '/series/dlya_vsej_semi'},
-                {name: 'Приключения', href: '/series/dlya_vsej_semi'},
-                {name: 'Развивающие', href: '/series/dlya_vsej_semi'},
-                {name: 'Сериалы', href: '/series/dlya_vsej_semi'},
-                {name: 'Спорт', href: '/series/dlya_vsej_semi'},
-                {name: 'Триллер', href: '/series/dlya_vsej_semi'},
-                {name: 'Ужасы', href: '/series/dlya_vsej_semi'},
-                {name: 'Фантастика', href: '/series/dlya_vsej_semi'},
-                {name: 'Фэнтези', href: '/series/dlya_vsej_semi'},
+                {nameRU: 'Аниме', nameEN: '#!'},
+                {nameRU: 'Боевик', nameEN: '#!'},
+                {nameRU: 'Детектив', nameEN: '#!'},
+                {nameRU: 'Для взрослых', nameEN: '#!'},
+                {nameRU: 'Для всей семьи', nameEN: '#!'},
+                {nameRU: 'Для детей', nameEN: '#!'},
+                {nameRU: 'Драма', nameEN: '#!'},
+                {nameRU: 'История', nameEN: '#!'},
+                {nameRU: 'Комедия', nameEN: '#!'},
+                {nameRU: 'Криминальные', nameEN: '#!'},
+                {nameRU: 'Мюзикл', nameEN: '#!'},
+                {nameRU: 'Полнометражные', nameEN: '#!'},
+                {nameRU: 'Мистические', nameEN: '#!'},
+                {nameRU: 'Приключения', nameEN: '#!'},
+                {nameRU: 'Развивающие', nameEN: '#!'},
+                {nameRU: 'Сериалы', nameEN: '#!'},
+                {nameRU: 'Спорт', nameEN: '#!'},
+                {nameRU: 'Триллер', nameEN: '#!'},
+                {nameRU: 'Ужасы', nameEN: '#!'},
+                {nameRU: 'Фантастика', nameEN: '#!'},
+                {nameRU: 'Фэнтези', nameEN: '#!'},
             ],
             country: [
                 {name: 'Советские', href: 'https://www.ivi.ru/animation/us'},
