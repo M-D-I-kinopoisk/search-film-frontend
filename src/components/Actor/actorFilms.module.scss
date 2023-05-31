@@ -1,0 +1,103 @@
+.filmsWrapper {
+  margin-top: 40px;
+
+  .profList {
+    position: relative;
+    color: #ffffff;
+
+    .prof, .active {
+      display: inline-block;
+
+      padding-bottom: 12px;
+      margin-right: 20px;
+
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 500;
+
+      height: 40px;
+      opacity: 1;
+      transition: 1s;
+      transition-duration: 80ms;
+      cursor: pointer;
+
+      p {
+        padding-left: 2px;
+      }
+    }
+
+    .active {
+      opacity: 1;
+      border-bottom: 4px solid #ea003d;
+    }
+
+    .borderProf {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+
+      background-color: rgba(255, 255, 255, .16);
+    }
+  }
+
+  .filmsTitle {
+    display: flex;
+    align-items: flex-end;
+
+    max-height: 28px;
+    margin-bottom: 20px;
+
+    div {
+      color: #a5a1b2;
+
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 400;
+    }
+
+    h2 {
+      color: #fff;
+
+      font-size: 24px;
+      line-height: 28px;
+      font-weight: 700;
+
+      margin-right: 10px;
+    }
+  }
+
+  .moreFilms {
+    margin-top: 16px;
+    color: #ffffff;
+
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+
+    button {
+      color: #a5a1b2;
+
+      transition-duration: 400ms;
+
+      &:hover {
+        color: #ffffff;
+
+        transition-duration: 400ms;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: #a5a1b2;
+
+      cursor: pointer;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}

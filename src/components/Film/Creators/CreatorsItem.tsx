@@ -3,6 +3,7 @@
 import styles from './Creators.module.scss'
 import Image from 'next/image'
 import {Actor} from '@/components/Film/InfoContent/InfoContent'
+import Link from 'next/link'
 
 type CreatorsItemProps = {
     inModal?: any,
@@ -14,7 +15,7 @@ const CreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
     return (
         <>
             {inModal ?
-                <div className={styles.modalCreatorsItem}>
+                <Link href={`/person/${actor.member.id}`} className={styles.modalCreatorsItem}>
                     <div className={styles.modalCreatorsItemImg}>
                         {actor.member.imageName === null ?
                             <Image alt='Создатель'
@@ -34,9 +35,9 @@ const CreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
                     <div className={styles.modalFilmsCount}>
                         9 фильмов
                     </div>
-                </div>
+                </Link>
                 :
-                <div className={styles.creatorsItem}>
+                <Link href={`/person/${actor.member.id}`} className={styles.creatorsItem}>
                     {actor.member.imageName === null ?
                         <Image alt='Создатель'
                                width={88}
@@ -55,7 +56,7 @@ const CreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
                     <div className={styles.creatorsItemJob}>
                         {actor.profession.nameRU}
                     </div>
-                </div>
+                </Link>
             }
         </>
     )

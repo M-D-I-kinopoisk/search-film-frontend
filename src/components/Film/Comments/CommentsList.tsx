@@ -1,29 +1,42 @@
 'use client'
 
-import React, {useState} from 'react'
-
 import styles from './Comments.module.scss'
+
 import CommentsItem from './CommentsItem'
-import MyModal from '../MyModal/MyModal'
+
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
+
 import {useRouter} from 'next/navigation'
+import {useEffect} from 'react'
 
-const CommentList = ({id}) => {
-    const {comments} = useSelector(selectFilms)
+export type Comment = {
+    id: number,
+    profile: {
+        profileName: string
+    },
+    createdAt: string,
+    text: string
+}
+
+interface Comments {
+    id: string,
+    filmComments: Comment[]
+}
+
+const CommentList = ({id, filmComments}: Comments) => {
     const router = useRouter()
-    const {modalOpen} = useSelector(selectFilms)
+
     const dispatch = useDispatch()
+    const {modalOpen} = useSelector(selectFilms)
 
-    const [isModalOpen, setIsModalOpen] = useState(false)
-
-    React.useEffect(() => {
-        if (isModalOpen) {
+    useEffect(() => {
+        if (modalOpen.modalState) {
             document.body.classList.add('modalScroll')
         }
 
         return () => document.body.classList.remove('modalScroll')
-    }, [isModalOpen])
+    }, [modalOpen.modalState])
 
     const modalOpenHandler = () => {
         dispatch(setOpenModal({
@@ -32,6 +45,7 @@ const CommentList = ({id}) => {
         }))
         router.push(`film/${id}/comments`)
     }
+
 
     return (
         <div className={styles.comments}>
@@ -48,14 +62,10 @@ const CommentList = ({id}) => {
             </div>
 
             <div className={styles.commentsItems}>
-                {comments.map((comment) => (
-                    <CommentsItem key={comment.id} comment={comment} openModal={setIsModalOpen}/>
+                {filmComments.map((comment) => (
+                    <CommentsItem key={comment.id} comment={comment}/>
                 ))}
             </div>
-
-            {/*<MyModal isModalOpen={isModalOpen}*/}
-            {/*         setIsModalOpen={setIsModalOpen}*/}
-            {/*         componentName={'comments'}/>*/}
         </div>
     )
 }

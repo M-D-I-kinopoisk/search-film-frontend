@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import {useEffect} from 'react'
 
 import styles from './Creators.module.scss'
 
@@ -15,15 +15,16 @@ import {useRouter} from 'next/navigation'
 
 interface Creators {
     actors: Actor[]
-    id : string
+    id: string
 }
 
 const CreatorsList = ({actors, id}: Creators) => {
     const router = useRouter()
+
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (modalOpen.modalState) {
             document.body.classList.add('modalScroll')
         }
@@ -36,6 +37,7 @@ const CreatorsList = ({actors, id}: Creators) => {
             modalState: true,
             value: 'creators'
         }))
+
         router.push(`film/${id}/creators`)
     }
 

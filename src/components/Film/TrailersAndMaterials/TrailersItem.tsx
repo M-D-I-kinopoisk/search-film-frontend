@@ -3,8 +3,6 @@
 import styles from './Trailers.module.scss'
 
 import {RxLapTimer} from 'react-icons/rx'
-import {useSelector} from 'react-redux'
-import {selectFilms} from '@/redux/FilmsSlice'
 import {FilmInfo} from '@/components/Film/InfoContent/InfoContent'
 
 type TrailersItemProps = {

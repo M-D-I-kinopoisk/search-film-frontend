@@ -3,21 +3,14 @@ import {FiVolume1} from 'react-icons/fi'
 import {BsKeyboard} from 'react-icons/bs'
 import React from 'react'
 import {funcDeclination} from '@/utils/funcDeclination'
+import {Film} from '@/components/Film/InfoContent/InfoContent'
 
 type FilmProps = {
-   film: {
-       year: number,
-       rating: number,
-       ageRating: string,
-       duration: number,
-       nameRU: string,
-       nameEN: string,
-       genres: object[],
-       countRating: number
-   }
+    film: Film
 }
 
 const MainInfo = ({film}: FilmProps) => {
+
     return (
         <div className={styles.mainInfo}>
             <h2>{film.nameRU} (Фильм {film.year})</h2>
