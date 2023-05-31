@@ -45,7 +45,7 @@ const FilterRating = () => {
         // router.push(`${pathname}?ivi_rating_10_gte=${inputRange}`)
         let url = '/movies'
         if (searchParams.toString()) {
-            // console.log('324324effdsf')
+
             if (searchParams.has('ivi_rating_10_gte')) {
 
                 const valueStr = 'ivi_rating_10_gte=' + searchParams.get('ivi_rating_10_gte')
@@ -62,8 +62,6 @@ const FilterRating = () => {
         }
     }
 
-
-    // console.log(filterObj)
 
 
     return (

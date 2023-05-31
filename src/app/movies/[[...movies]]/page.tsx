@@ -34,20 +34,40 @@ async function getCounties() {
     return response.json()
 }
 
+async function getListDir() {
+    const response = await fetch(
+        'http://localhost:12120/api/film-members/profession/9',
+        // {next: {revalidate: 100}}
+    )
+    return response.json()
+}
+
+async function getListActor() {
+    const response = await fetch(
+        'http://localhost:12120/api/film-members/profession/1',
+        // {next: {revalidate: 100}}
+    )
+    return response.json()
+}
+
 const Movies = async ({ params, searchParams  }) => {
 
     const genres = await getGenres()
 
     const countries = await getCounties()
 
+    const listDir = await getListDir()
+
+    const listActor = await getListActor()
+
     console.log(params)
 
 
     return (
-        <div style={{scrollBehavior : 'unset'}} className={styles.container}>
+        <div className={styles.container}>
             <div className={styles.wrapper}>
-                <FilterFilms genres={genres} countries={countries}/>
-                <FilmsList genres={genres} countries={countries} searchPar={searchParams}  />
+                <FilterFilms genres={genres} countries={countries} listDir={listDir} listActor={listActor}/>
+                <FilmsList genres={genres} countries={countries}  listDir={listDir} listActor={listActor} searchPar={searchParams}/>
             </div>
         </div>
     )

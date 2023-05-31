@@ -24,7 +24,7 @@ import styles from './filterFilms.module.scss'
 import Link from 'next/link'
 
 
-const FilterFilms = ({genres, countries}) => {
+const FilterFilms = ({genres, countries, listDir, listActor}) => {
 
     const router = useRouter()
 
@@ -202,7 +202,7 @@ const FilterFilms = ({genres, countries}) => {
                                                        searchActor: false,
                                                    })}>
 
-                                <FilterDir/>
+                                <FilterDir listDir={listDir}/>
 
                             </FilterFilmsCategories>
                         </div>
@@ -221,7 +221,7 @@ const FilterFilms = ({genres, countries}) => {
                                                        searchActor: !activePlank.searchActor,
                                                    })}>
 
-                                <FilterActor/>
+                                <FilterActor listActor={listActor}/>
 
                             </FilterFilmsCategories>
                         </div>

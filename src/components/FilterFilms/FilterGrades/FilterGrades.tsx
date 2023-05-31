@@ -28,13 +28,13 @@ const FilterGrades = () => {
 
     const onMouseUpRating = (e) => {
         const numberRating = Number(e.target.value)
-        console.log(e.target.value)
-        dispatch(getFilterTextObj(
-            {
-                ...filterTextObj,
-                'countRatingStart': [numberRating],
-            }
-        ))
+        // console.log(e.target.value)
+        // dispatch(getFilterTextObj(
+        //     {
+        //         ...filterTextObj,
+        //         'countRatingStart': [numberRating],
+        //     }
+        // ))
         // dispatch(getFilterObj(
         //     {
         //         ...filterObj,
@@ -44,6 +44,7 @@ const FilterGrades = () => {
         // ))
         let url = '/movies'
         if (searchParams.toString()) {
+
             if (searchParams.has('ivi_grades')) {
 
                 const valueStr = 'ivi_grades=' + searchParams.get('ivi_grades')
