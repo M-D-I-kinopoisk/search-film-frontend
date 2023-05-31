@@ -5,21 +5,15 @@ import {useEffect, useState} from 'react'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilter} from '@/redux/FilterSlice'
-import {useParams, usePathname, useRouter, useSearchParams} from 'next/navigation'
+import {useParams, useSearchParams} from 'next/navigation'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
-import {selectToggle} from '@/redux/AuthToggleSlice'
+
 
 
 export default function FilmsList({genres, countries, listDir, listActor, searchPar}) {
 
     const searchParams = useSearchParams()
     const params = useParams()
-    // const pathname = usePathname()
-
-    // const {filterObj} = useSelector(selectFilter)
-    const {authWindow} = useSelector(selectToggle)
-    // const dispatch = useDispatch()
-    console.log(authWindow)
 
 
     const [filmsList, setFilmsList] = useState<object[]>([])
@@ -119,7 +113,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 // @ts-ignore
                 if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
                     // @ts-ignore
-                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {'idMember': arrDir[0].id, 'idProfession': 9}]}
+                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {'idMember': arrDir[0].id, 'idProfession': 1}]}
                     newFilterText = {
                         ...newFilterText,
                         'arrDirMembers': [arrDir[0].nameRU],
@@ -127,7 +121,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                     }
                 } else {
                     // @ts-ignore
-                    newFilter = {...newFilter, 'arrMembersFilterDto': [{'idMember': arrDir[0].id, 'idProfession': 9}]}
+                    newFilter = {...newFilter, 'arrMembersFilterDto': [{'idMember': arrDir[0].id, 'idProfession': 1}]}
                     newFilterText = {
                         ...newFilterText,
                         'arrDirMembers': [arrDir[0].nameRU],
@@ -148,7 +142,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
                 if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
                     // @ts-ignore
-                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {'idMember': arrActor[0].id, 'idProfession': 1}]
+                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {'idMember': arrActor[0].id, 'idProfession': 2}]
                     }
                     newFilterText = {
                         ...newFilterText,
@@ -157,7 +151,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                     }
                 } else {
                     // @ts-ignore
-                    newFilter = {...newFilter, 'arrMembersFilterDto': [{'idMember': arrActor[0].id, 'idProfession': 9}]}
+                    newFilter = {...newFilter, 'arrMembersFilterDto': [{'idMember': arrActor[0].id, 'idProfession': 2}]}
                     newFilterText = {
                         ...newFilterText,
                         'arrActorMembers': [arrActor[0].nameRU],

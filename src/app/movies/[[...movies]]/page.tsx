@@ -8,7 +8,7 @@ import styles from '../[movies].module.scss'
 export async function generateMetadata({params}) {
     // const product = await fetch(`http://localhost:12120/api/members/${id}`).then((res) => res.json())
     return {
-        title: `${params.movies ? params.movies[0] : null} : фильмы смотреть онлайн бесплатно в хорошем качестве`
+        title: `${params.movies ? params.movies[0] : ''} : фильмы смотреть онлайн бесплатно в хорошем качестве`
     }
 }
 async function getGenres() {
@@ -29,7 +29,7 @@ async function getCounties() {
 
 async function getListDir() {
     const response = await fetch(
-        'http://localhost:12120/api/film-members/profession/9',
+        'http://localhost:12120/api/film-members/profession/1',
         // {next: {revalidate: 100}}
     )
     return response.json()
@@ -37,7 +37,7 @@ async function getListDir() {
 
 async function getListActor() {
     const response = await fetch(
-        'http://localhost:12120/api/film-members/profession/1',
+        'http://localhost:12120/api/film-members/profession/2',
         // {next: {revalidate: 100}}
     )
     return response.json()
