@@ -101,7 +101,6 @@ const MyModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
                                                                 <CreatorsItem key={actor.id} actor={actor}/> : ''))}
                                                     </div>
                                                 </div>
-
                                             ))}
                                         </div>}
 

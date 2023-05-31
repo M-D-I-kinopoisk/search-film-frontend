@@ -93,7 +93,7 @@ export default async function Film({params: {id}}: FilmProps) {
     const genres = await getGenresFilm(film.genres)
 
     return <div className={styles.wrapper}>
-        <div className={styles.genre}>
+        <div className={styles.breadcrumbs}>
             <div className={styles.title}>
                 <span>Фильмы</span>
                 <span>Драмы</span>

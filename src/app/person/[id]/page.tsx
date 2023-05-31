@@ -1,6 +1,8 @@
-
 import styles from './actor.module.scss'
+
 import Image from 'next/image'
+
+import ActorFilms from '@/components/Actor/ActorFilms'
 
 
 type Props = {
@@ -19,7 +21,7 @@ export async function generateMetadata({params: {id}}: Props) {
 async function getActor(id) {
     const response = await fetch(
         `http://localhost:12120/api/members/${id}`,
-        // {next: {revalidate: 100}}
+        {next: {revalidate: 100}}
     )
     return response.json()
 }
@@ -27,25 +29,14 @@ async function getActor(id) {
 async function getActorFilms(id) {
     const response = await fetch(
         `http://localhost:12120/api/films/member/${id}`,
-        // {next: {revalidate: 100}}
+        {next: {revalidate: 100}}
     )
     return response.json()
 }
 
-
 const Actor = async ({params: {id}}: Props) => {
-
     const actor = await getActor(id)
-
     const actorFilms = await getActorFilms(id)
-
-    function endingFilm(num) {
-        if (num === 0) return 'фильмов'
-        if (num === 1) return 'фильм'
-        if (num > 1 && num < 5) return 'фильма'
-        if (num > 4 && num < 21) return 'фильмов'
-    }
-
 
     return (
         <div className={styles.wrapper}>
@@ -57,14 +48,13 @@ const Actor = async ({params: {id}}: Props) => {
                 <span>Назад</span>
             </div>
 
-
             <div className={styles.content}>
                 <div>
                     <div className={styles.img}>
                         <Image alt='Актер'
                                width={120}
                                height={144}
-                               src={`data:image/png;base64,${actor.image.base64}`}/>
+                               src={actor.imageName}/>
                     </div>
 
                     <h2 className={styles.name}>{actor.nameRU}</h2>
@@ -77,42 +67,7 @@ const Actor = async ({params: {id}}: Props) => {
                         <a>Развернуть</a>
                     </div>
                 </div>
-
-                <div className={styles.films}>
-                    <div className={styles.filmsTitle}>
-                        <h2>Полная фильмография </h2>
-                        <div>{actorFilms.length} {endingFilm(actorFilms.length)}</div>
-                    </div>
-
-                    <div className={styles.items}>
-                        {actorFilms.map(item =>
-                            <div className={styles.item} key={item.film.id}>
-                                <div className={styles.filmImg}>
-                                    <Image alt='Фильм'
-                                           width={80}
-                                           height={122}
-                                           src={`data:image/png;base64,${item.film.image.base64}`}/>
-                                </div>
-                                <div className={styles.filmInfo}>
-                                    <div className={styles.itemWrapper}>
-                                        <div>{item.film.year}</div>
-                                        <div>{item.film.nameRU}</div>
-                                        <div>Рейтинг Иви: {item.film.rating}</div>
-                                    </div>
-
-                                    <div className={styles.look}>
-                                        <a> Смотреть </a>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-
-                {actorFilms.length > 7 &&
-                    <div className={styles.more}>
-                        <a>Ещё 10 фильмов</a>
-                    </div>}
+                <ActorFilms actorFilms={actorFilms}/>
             </div>
         </div>
     )
