@@ -3,9 +3,9 @@
 import {useState} from 'react'
 import {useRouter} from 'next/navigation'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
+import {useSelector} from 'react-redux'
+
+import { selectFilterText} from '@/redux/FilterTextSlice'
 
 import {VscChromeClose} from 'react-icons/vsc'
 
@@ -34,7 +34,7 @@ const FilterFilms = ({genres, countries, listDir, listActor}) => {
     })
 
     const {filterTextObj} = useSelector(selectFilterText)
-    const dispatch = useDispatch()
+
 
     const resetFilter = () => {
         router.push('/movies' )

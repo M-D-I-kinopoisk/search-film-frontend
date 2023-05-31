@@ -43,5 +43,5 @@ const FilterSlice = createSlice({
 
 export const {getFilterObj} = FilterSlice.actions
 
-export const selectFilms = (state) => state.filter
+export const selectFilter = (state) => state.filter
 export default FilterSlice.reducer

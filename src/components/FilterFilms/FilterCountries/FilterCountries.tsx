@@ -1,24 +1,20 @@
 import styles from './filterCountries.module.scss'
-import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
+import { useSelector} from 'react-redux'
+import {selectFilter} from '@/redux/FilterSlice'
+import { selectFilterText} from '@/redux/FilterTextSlice'
 import {BsCheckLg} from 'react-icons/bs'
-import {useParams, usePathname, useRouter, useSearchParams} from 'next/navigation'
+import { useRouter, useSearchParams} from 'next/navigation'
 
 
 const FilterCountries = ({countries}) => {
 
     const router = useRouter()
-    const params = useParams()
-    const pathname = usePathname()
 
     const searchParams = useSearchParams()
 
 
-    const {filterObj} = useSelector(selectFilms)
+    const {filterObj} = useSelector(selectFilter)
     const {filterTextObj} = useSelector(selectFilterText)
-    const dispatch = useDispatch()
-
 
     function filterCountries(id, nameCountries, nameCountriesEN) {
         if ('arrIdCountries' in filterObj) {

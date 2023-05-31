@@ -3,9 +3,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import {BsCheckLg} from 'react-icons/bs'
 
 import styles from './filterGenres.module.scss'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
-import {useRouter, useSearchParams, useParams, usePathname} from 'next/navigation'
+import { selectFilter} from '@/redux/FilterSlice'
+import { selectFilterText} from '@/redux/FilterTextSlice'
+import {useRouter, useSearchParams} from 'next/navigation'
 
 
 
@@ -13,19 +13,16 @@ import {useRouter, useSearchParams, useParams, usePathname} from 'next/navigatio
 export default function FilterGenres({genres}) {
 
     const router = useRouter()
-    const params = useParams()
-    const pathname = usePathname()
+
 
     const searchParams = useSearchParams()
 
-    const {filterObj} = useSelector(selectFilms)
+    const {filterObj} = useSelector(selectFilter)
     const {filterTextObj} = useSelector(selectFilterText)
-    const dispatch = useDispatch()
 
 
     function filterGenres(e, id, nameGenres, nameGenresEN) {
 
-        nameGenres = firstLetterToUpperCase(nameGenres)
         if ('arrIdGenres' in filterObj) {
 
             if (filterObj.arrIdGenres && filterObj.arrIdGenres.includes(id)) {

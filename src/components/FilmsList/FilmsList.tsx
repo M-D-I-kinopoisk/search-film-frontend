@@ -4,9 +4,10 @@ import styles from './filmList.module.scss'
 import {useEffect, useState} from 'react'
 
 import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
+import {getFilterObj, selectFilter} from '@/redux/FilterSlice'
 import {useParams, usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
+import {selectToggle} from '@/redux/AuthToggleSlice'
 
 
 export default function FilmsList({genres, countries, listDir, listActor, searchPar}) {
@@ -15,10 +16,15 @@ export default function FilmsList({genres, countries, listDir, listActor, search
     const params = useParams()
     // const pathname = usePathname()
 
+    // const {filterObj} = useSelector(selectFilter)
+    const {authWindow} = useSelector(selectToggle)
+    // const dispatch = useDispatch()
+    console.log(authWindow)
+
 
     const [filmsList, setFilmsList] = useState<object[]>([])
 
-    const {filterObj} = useSelector(selectFilms)
+    const {filterObj} = useSelector(selectFilter)
     const {filterTextObj} = useSelector(selectFilterText)
     const dispatch = useDispatch()
 

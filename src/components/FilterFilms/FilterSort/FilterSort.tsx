@@ -5,8 +5,8 @@ import {useEffect, useRef, useState} from 'react'
 import {BsChevronCompactDown, BsChevronCompactUp} from 'react-icons/bs'
 import {MdOutlineSort} from 'react-icons/md'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
+import { useSelector} from 'react-redux'
+import { selectFilter} from '@/redux/FilterSlice'
 
 import styles from './filterSort.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
@@ -24,8 +24,8 @@ const FilterSort = () => {
 
     const modalRef = useRef<HTMLDivElement>(null)
 
-    const {filterObj} = useSelector(selectFilms)
-    const dispatch = useDispatch()
+    const {filterObj} = useSelector(selectFilter)
+
 
 
     useEffect(() => {

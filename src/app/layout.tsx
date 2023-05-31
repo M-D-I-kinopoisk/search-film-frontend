@@ -6,6 +6,12 @@ import TabBar from '@/components/UI/TabBar/TabBar'
 import Auth from '@/components/Auth/Auth'
 import {Metadata} from 'next'
 import {Providers} from '@/redux/Provider'
+import {useDispatch, useSelector} from 'react-redux'
+import {selectFilter} from '@/redux/FilterSlice'
+import {selectFilterText} from '@/redux/FilterTextSlice'
+import {selectToggle} from '@/redux/AuthToggleSlice'
+import AuthWindow from "@/components/AuthWindow/AuthWindow";
+
 
 export const metadata: Metadata = {
     title: 'Онлайн-кинотеатр Иви - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем качестве',
@@ -15,20 +21,25 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {
     children: React.ReactNode
 }) {
+
+    // const {filterObj} = useSelector(selectFilter)
+    // const {authWindow} = useSelector(selectToggle)
+    // const dispatch = useDispatch()
+    // console.log(authWindow)
     return (
         <html lang='en'>
         <body>
-           <Providers>
-               <Header/>
-               {/*работает просто раскоментить*/}
-               {/*<Auth/>*/}
-               <main>
-                   {children}
-               </main>
-               {/*пока не работает, проблема с маршрутами в компоненте*/}
-               {/*<TabBar/>*/}
-               <Footer/>
-           </Providers>
+        <Providers>
+            <Header/>
+            <AuthWindow/>
+            {/*<Auth/>*/}
+            <main>
+                {children}
+            </main>
+            {/*пока не работает, проблема с маршрутами в компоненте*/}
+            {/*<TabBar/>*/}
+            <Footer/>
+        </Providers>
         </body>
         </html>
     )

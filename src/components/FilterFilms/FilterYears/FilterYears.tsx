@@ -1,8 +1,8 @@
 'use client'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
+import { useSelector} from 'react-redux'
+import {selectFilter} from '@/redux/FilterSlice'
+
 
 import {RxRadiobutton,} from 'react-icons/rx'
 import {MdOutlineRadioButtonUnchecked} from 'react-icons/md'
@@ -21,9 +21,7 @@ const FilterYears = () => {
     const searchParams = useSearchParams()
 
 
-    const {filterObj} = useSelector(selectFilms)
-    const {filterTextObj} = useSelector(selectFilterText)
-    const dispatch = useDispatch()
+    const {filterObj} = useSelector(selectFilter)
 
     const listYears = [
         {

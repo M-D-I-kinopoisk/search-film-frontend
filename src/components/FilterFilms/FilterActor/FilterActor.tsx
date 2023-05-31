@@ -5,9 +5,6 @@ import Input from '@/components/UI/Input/Input'
 import {IoPersonCircleOutline} from 'react-icons/io5'
 
 import styles from './filterActor.module.scss'
-import {useDispatch, useSelector} from 'react-redux'
-import {getFilterObj, selectFilms} from '@/redux/FilterSlice'
-import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 
 
@@ -22,10 +19,6 @@ const FilterActor = ({listActor}) => {
 
 
     const [newListActor, setNewListActor] = useState<[] | any>([])
-
-    const {filterObj} = useSelector(selectFilms)
-    const {filterTextObj} = useSelector(selectFilterText)
-    const dispatch = useDispatch()
 
 
 

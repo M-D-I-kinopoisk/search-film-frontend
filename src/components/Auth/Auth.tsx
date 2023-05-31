@@ -8,8 +8,17 @@ import {VscChromeClose} from 'react-icons/vsc'
 import {TbPencil} from 'react-icons/tb'
 
 import styles from './auth.module.scss'
+import {useDispatch} from 'react-redux'
+import {toggle} from '@/redux/AuthToggleSlice'
 
 const Auth = () => {
+
+    const dispatch = useDispatch()
+    const closeAuth = () => {
+        dispatch(toggle({
+            auth: false
+        }))
+    }
 
     useEffect(() => {
         document.body.classList.add('modalScroll')
@@ -51,7 +60,7 @@ const Auth = () => {
                     <div className={styles.auth}>
                         <div className={styles.auth__header}>
                             <p className={styles.auth__headerText}>{toggleBlock ? inputLogin : 'Вход или регистрация'}</p>
-                            <button className={styles.auth__btnClose}>
+                            <button onClick={() => closeAuth()} className={styles.auth__btnClose}>
                                 <VscChromeClose size={20}/>
                             </button>
                         </div>
