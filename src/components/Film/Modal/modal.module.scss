@@ -139,11 +139,12 @@
   display: flex;
   justify-content: flex-start;
   z-index: 2;
+
   overflow-x: scroll;
   overflow-y: hidden;
+
   white-space: nowrap;
   position: relative;
-  z-index: 2;
 
   &::-webkit-scrollbar {
     display: none;
@@ -177,10 +178,12 @@
 .active {
   &::after {
     content: '';
+
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0px;
+    bottom: 0;
+
     height: 4px;
     background-color: #ea003d;
   }
@@ -208,7 +211,7 @@
   font-size: 20px;
   line-height: 24px;
   font-weight: 700;
-  font-style: normal;
+
   padding-left: 12px;
   padding-right: 12px;
   margin-bottom: 16px;
@@ -226,7 +229,9 @@
   svg {
     margin-right: 12px;
     border-radius: 4px;
+
     background-color: #1f1b2e;
+
     height: 20px;
     padding: 2px;
   }
@@ -234,18 +239,24 @@
   input {
     background-color: #d9d7e0;
     color: #1f1b2e;
+
     padding-left: 12px;
+
     height: 40px;
     width: 100%;
+
     padding-top: 18px;
     padding-bottom: 2px;
+
     font-size: 15px;
     line-height: 20px;
     font-weight: 500;
-    font-style: normal;
+
+
     border: none;
     outline: none;
     cursor: pointer;
+
     border-radius: 8px;
     margin-right: 12px;
   }

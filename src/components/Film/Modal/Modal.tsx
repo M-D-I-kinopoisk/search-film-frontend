@@ -1,6 +1,6 @@
 'use client'
 
-import styles from './MyModal.module.scss'
+import styles from './modal.module.scss'
 
 import Image from 'next/image'
 
@@ -16,7 +16,7 @@ import {AiOutlineLike} from 'react-icons/ai'
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 import {funcDeclination} from '@/utils/funcDeclination'
-import {Actor, Film, FilmInfo} from '@/components/Film/InfoContent/InfoContent'
+import {Actor, Film, FilmInfo} from '@/components/Film/Info/Info'
 import {useRouter} from 'next/navigation'
 import {Comment} from '@/components/Film/Comments/CommentsList'
 
@@ -28,7 +28,7 @@ type MyModalProps = {
     id: string
 }
 
-const MyModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
+const Modal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
     const router = useRouter()
@@ -38,8 +38,7 @@ const MyModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
     const links = [
         {title: 'Создатели', value: 'creators'},
         {title: 'Комментарии', value: 'comments'},
-        {title: 'Трейлеры', value: 'trailers'},
-        {title: 'Награды', value: 'awards'}
+        {title: 'Трейлеры', value: 'trailers'}
     ]
     const closeModalHandler = () => {
         dispatch(setOpenModal({modalState: false}))
@@ -199,4 +198,4 @@ const MyModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
     )
 }
 
-export default MyModal
+export default Modal

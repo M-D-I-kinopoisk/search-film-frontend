@@ -3,7 +3,7 @@
 import styles from './Trailers.module.scss'
 
 import {RxLapTimer} from 'react-icons/rx'
-import {FilmInfo} from '@/components/Film/InfoContent/InfoContent'
+import {FilmInfo} from '@/components/Film/Info/Info'
 
 type TrailersItemProps = {
     inModal?: any,

@@ -8,18 +8,28 @@ import {funcDeclination} from '@/utils/funcDeclination'
 
 import Image from 'next/image'
 import Link from 'next/link'
-import {Film} from '@/components/Film/InfoContent/InfoContent'
+import {Film} from '@/components/Film/Info/Info'
+import React from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
 
 interface FilmCard {
-    film: Film,
-    filmId: string,
-    visible: boolean
+    film: Film
 }
 
-const FilmCart = ({film, filmId, visible}: FilmCard) => {
+const FilmCard = ({film}: FilmCard) => {
+    const [visible, setVisible] = React.useState(false)
+    const {filmId} = useSelector(selectFilms)
+    const dispatch = useDispatch()
+    const onMouseHandler = (id) => {
+        dispatch(getFilmId(id))
+        setVisible(true)
+    }
 
     return (
-        <Link href={`/film/${film.id}`} className={styles.link}>
+        <Link onMouseEnter={() => onMouseHandler(film.id)}
+              onMouseLeave={() => setVisible(false)}
+              href={`/film/${film.id}`} className={styles.link}>
             <div className={styles.image__section}>
                 {visible && filmId === film.id && <div className={styles.visible}>
                     <div className={styles.hoards}>
@@ -98,4 +108,4 @@ const FilmCart = ({film, filmId, visible}: FilmCard) => {
     )
 }
 
-export default FilmCart
+export default FilmCard
