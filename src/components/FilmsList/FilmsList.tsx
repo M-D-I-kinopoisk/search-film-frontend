@@ -7,7 +7,6 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilter} from '@/redux/FilterSlice'
 import {useParams, useSearchParams} from 'next/navigation'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
-import FilmCart from '@/components/FilmsCategory/FilmCard/FilmCard'
 import Skeleton from '@/components/UI/Skeleton/Skeleton'
 
 
