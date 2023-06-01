@@ -27,6 +27,7 @@ const Footer = () => {
                     <div className={styles.footer__column}>
                         <p className={styles.footer__title}>{t.footer.item1.title}</p>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={
                                 'https://corp.ivi.ru/?_gl=1%2Alvn2xf%2A_ga%2AMTMxNTY0MzcwMS4xNjgxMjE0Mzc5%2A_ga_GETQ4387MJ%2AMTY4MTQ4MjkyMy42LjEuMTY4MTUwNzAzNy42MC4wLjA.'
@@ -34,36 +35,43 @@ const Footer = () => {
                             {t.footer.item1.text1}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://corp.ivi.ru/career/#career-vacancy-block'}>
                             {t.footer.item1.text2}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/pages/beta/'}>
                             {t.footer.item1.text3}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/info/partners'}>
                             {t.footer.item1.text4}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://corp.ivi.ru/advertisers/'}>
                             {t.footer.item1.text5}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/info/agreement'}>
                             {t.footer.item1.text6}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/info/confidential'}>
                             {t.footer.item1.text7}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/info/goryachaya-liniya-komplaens'}>
                             {t.footer.item1.text8}
@@ -71,40 +79,47 @@ const Footer = () => {
                     </div>
                     <div className={styles.footer__column}>
                         <p className={styles.footer__title}>{t.footer.item2.title}</p>
-                        <Link className={styles.footer__link} href={'/'}>
+                        <Link prefetch={false} className={styles.footer__link} href={'/'}>
                             {t.footer.item2.text1}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/new'}>
                             {t.footer.item2.text2}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/movies'}>
                             {t.footer.item2.text3}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/series'}>
                             {t.footer.item2.text4}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/animation'}>
                             {t.footer.item2.text5}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/tvplus'}>
                             {t.footer.item2.text6}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/goodmovies'}>
                             {t.footer.item2.text7}
                         </Link>
                         <Link
+                            prefetch={false}
                             className={`${styles.footer__link} ${styles.gradient} `}
                             href={'https://www.ivi.ru/cert'}>
                             {t.footer.item2.text8}
@@ -125,6 +140,7 @@ const Footer = () => {
                         </div>
                         <div className={styles.footer__groupQuestions}>
                             <Link
+                                prefetch={false}
                                 className={styles.footer__linkAsk}
                                 href={'https://ask.ivi.ru/?_gl=1*fa2mrd*_ga*MTMxNTY0MzcwMS4xNjgxMjE0Mzc5*_ga_GETQ4387MJ*MTY4MTU2Njc5MS44LjEuMTY4MTU2NzI1My4zLjAuMA..'}>
                                 ask.ivi.ru
@@ -133,7 +149,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className={styles.footer__column}>
-                        <Link className={styles.footer__columnRight}
+                        <Link prefetch={false} className={styles.footer__columnRight}
                               href={'https://www.ivi.ru/subscribe?redirect_url=%2Fwatch%2F504525'}>
                             <div className={styles.footer__widget}>
                                 <MdVolumeOff size={60} color={'#fff'}/>
@@ -146,6 +162,7 @@ const Footer = () => {
                     <div className={styles.footer__downBlock_left}>
                         <div className={styles.footer__downBlock_group}>
                             <Link
+                                prefetch={false}
                                 className={styles.footer__smartBtn}
                                 href={'https://apps.apple.com/RU/app/id455705533?mt=8'}>
                                 <Image src={'https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/appleLogo.svg'}
@@ -156,6 +173,7 @@ const Footer = () => {
                                 </div>
                             </Link>
                             <Link
+                                prefetch={false}
                                 className={styles.footer__smartBtn}
                                 href={'https://apps.apple.com/RU/app/id455705533?mt=8'}>
                                 <Image src={'https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/googlePlayLogo.svg'}
@@ -166,6 +184,7 @@ const Footer = () => {
                                 </div>
                             </Link>
                             <Link
+                                prefetch={false}
                                 className={styles.footer__smartBtn}
                                 href={'https://www.ivi.ru/pages/tvsmart/'}>
                                 <MdDesktopMac size={20}/>
@@ -175,6 +194,7 @@ const Footer = () => {
                                 </div>
                             </Link>
                             <Link
+                                prefetch={false}
                                 className={styles.footer__smartBtn}
                                 href={'https://apps.apple.com/RU/app/id455705533?mt=8'}>
                                 <Image src={'https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/appleLogo.svg'}

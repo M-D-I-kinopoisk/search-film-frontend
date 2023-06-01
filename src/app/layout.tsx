@@ -3,14 +3,9 @@ import Footer from '@/components/Footer/Footer'
 import React from 'react'
 import Header from '@/components/Header/Header'
 import TabBar from '@/components/UI/TabBar/TabBar'
-import Auth from '@/components/AuthWindow/Auth/Auth'
 import {Metadata} from 'next'
 import {Providers} from '@/redux/Provider'
-import {useDispatch, useSelector} from 'react-redux'
-import {selectFilter} from '@/redux/FilterSlice'
-import {selectFilterText} from '@/redux/FilterTextSlice'
-import {selectToggle} from '@/redux/AuthToggleSlice'
-import AuthWindow from "@/components/AuthWindow/AuthWindow";
+import AuthWindow from '@/components/AuthWindow/AuthWindow'
 
 
 export const metadata: Metadata = {
@@ -22,10 +17,7 @@ export default function RootLayout({children}: {
     children: React.ReactNode
 }) {
 
-    // const {filterObj} = useSelector(selectFilter)
-    // const {authWindow} = useSelector(selectToggle)
-    // const dispatch = useDispatch()
-    // console.log(authWindow)
+
     return (
         <html lang='en'>
         <body>

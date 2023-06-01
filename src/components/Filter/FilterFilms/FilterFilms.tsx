@@ -1,29 +1,29 @@
 'use client'
 
-import {useState} from 'react'
+import { useState} from 'react'
 import {useRouter} from 'next/navigation'
 
 import {useSelector} from 'react-redux'
 
-import { selectFilterText} from '@/redux/FilterTextSlice'
+import {selectFilterText} from '@/redux/FilterTextSlice'
 
 import {VscChromeClose} from 'react-icons/vsc'
 
-import FilterFilmsCategories from '@/components/FilterFilms/FilterFilmsCategories/FilterFilmsCategories'
-import FilterSort from '@/components/FilterFilms/FilterSort/FilterSort'
-import FilterGenres from '@/components/FilterFilms/FilterGenres/FilterGenres'
-import FilterCountries from '@/components/FilterFilms/FilterCountries/FilterCountries'
-import FilterYears from '@/components/FilterFilms/FilterYears/FilterYears'
-import FilterRating from '@/components/FilterFilms/FilterRating/FilterRating'
-import FilterActor from '@/components/FilterFilms/FilterActor/FilterActor'
-import FilterDir from '@/components/FilterFilms/FilterDir/FilterDir'
-import FilterGrades from '@/components/FilterFilms/FilterGrades/FilterGrades'
-import FilterParameters from '@/components/FilterFilms/FilterParameters/FilterParameters'
+import FilterFilmsCategories from '@/components/Filter/FilterFilms/FilterFilmsCategories/FilterFilmsCategories'
+import FilterSort from '@/components/Filter/FilterFilms/FilterSort/FilterSort'
+import FilterGenres from '@/components/Filter/FilterFilms/FilterGenres/FilterGenres'
+import FilterCountries from '@/components/Filter/FilterFilms/FilterCountries/FilterCountries'
+import FilterYears from '@/components/Filter/FilterFilms/FilterYears/FilterYears'
+import FilterRating from '@/components/Filter/FilterFilms/FilterRating/FilterRating'
+import FilterActor from '@/components/Filter/FilterFilms/FilterActor/FilterActor'
+import FilterDir from '@/components/Filter/FilterFilms/FilterDir/FilterDir'
+import FilterGrades from '@/components/Filter/FilterFilms/FilterGrades/FilterGrades'
+import FilterParameters from '@/components/Filter/FilterFilms/FilterParameters/FilterParameters'
 
 import styles from './filterFilms.module.scss'
 
 
-const FilterFilms = ({genres, countries, listDir, listActor}) => {
+const FilterFilms = ({genres, countries, listActor, listDir}) => {
 
     const router = useRouter()
 
@@ -33,12 +33,15 @@ const FilterFilms = ({genres, countries, listDir, listActor}) => {
         grade: false, searchDir: false, searchActor: false
     })
 
+
+
     const {filterTextObj} = useSelector(selectFilterText)
 
 
     const resetFilter = () => {
-        router.push('/movies' )
+        router.replace('/movies')
     }
+
 
 
     return (

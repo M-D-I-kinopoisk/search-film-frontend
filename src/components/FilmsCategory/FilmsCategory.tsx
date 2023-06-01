@@ -14,11 +14,11 @@ import {BsChevronRight} from 'react-icons/bs'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
-import FilmCategory from '@/components/FilmsCategory/FilmCart/FilmCart'
+import FilmCard from '@/components/FilmsCategory/FilmCard/FilmCard'
 
 type FilmsCategoryProps = {
     title: string,
-    titleEN : string
+    titleEN? : string
     list: string[]
 }
 const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, titleEN, list}) => {
@@ -49,11 +49,11 @@ const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, titleEN, list}) => 
                                  onClick={() => onMouseHandler(film.id)}
                                  onMouseEnter={() => onMouseHandler(film.id)}
                                  onMouseLeave={() => setVisible(false)}>
-                        <FilmCategory film={film} filmId={filmId} visible={visible}/>
+                        <FilmCard film={film} filmId={filmId} visible={visible}/>
                     </SwiperSlide>
                 ))}
                 <SwiperSlide className={styles.film}>
-                    <Link href='/'>
+                    <Link href={`/movies/${titleEN}`}>
                         <div className={styles.image__section}>Посмотреть все</div>
                     </Link>
                 </SwiperSlide>

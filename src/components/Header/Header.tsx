@@ -91,6 +91,7 @@ const Header = () => {
 
                     <div className={styles.header__rightContainer}>
                         <Link
+                            prefetch={false}
                             className={styles.header__btnPay}
                             href={
                                 'https://www.ivi.ru/login?action=%2Fuser%2Fsubscription&from=top_menu&redirect_url=%2F&buy=true&type=subscriptionChange&renew_period=2592000&subscription_id=6'
@@ -100,6 +101,7 @@ const Header = () => {
                     </div>
                     <div className={styles.header__rightSearch}>
                         <Link
+                            prefetch={false}
                             className={styles.header__btnSearch}
                             href={'https://www.ivi.ru/?ivi_search'}>
                             <BiSearch size={20}/>
@@ -111,6 +113,7 @@ const Header = () => {
                         onMouseEnter={(e) => handleMouseEnter(e)}
                         className={styles.header__notifications}>
                         <Link
+                            prefetch={false}
                             id='header-notifications'
                             className={styles.header__btnSearch}
                             href={'https://www.ivi.ru/profile/pull_notifications'}>

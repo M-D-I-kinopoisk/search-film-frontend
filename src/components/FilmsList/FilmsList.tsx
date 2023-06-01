@@ -7,6 +7,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilter} from '@/redux/FilterSlice'
 import {useParams, useSearchParams} from 'next/navigation'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
+import FilmCart from '@/components/FilmsCategory/FilmCard/FilmCard'
+import Skeleton from '@/components/UI/Skeleton/Skeleton'
 
 
 
@@ -19,10 +21,10 @@ export default function FilmsList({genres, countries, listDir, listActor, search
     const [filmsList, setFilmsList] = useState<object[]>([])
 
     const {filterObj} = useSelector(selectFilter)
-    const {filterTextObj} = useSelector(selectFilterText)
+    // const {filterTextObj} = useSelector(selectFilterText)
     const dispatch = useDispatch()
 
-
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
             console.log('useEffect работает')
@@ -161,9 +163,9 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
             }
 
-
-            console.log(newFilterText)
-            console.log(newFilter)
+            //
+            // console.log(newFilterText)
+            // console.log(newFilter)
             dispatch(getFilterObj(
                 {
                     ...newFilter,
@@ -178,7 +180,8 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
             const fetchData = async () => {
 
-                try {
+                setLoading(false)
+                setTimeout(() => {  try {
                     fetch('http://localhost:12120/api/films/filter', {
                         method: 'POST',
                         body: JSON.stringify({...newFilter}),
@@ -191,13 +194,27 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 } catch (error) {
                     console.log(error.message)
                 }
-
+                    setLoading(true) }, 3000)
+                // try {
+                //     fetch('http://localhost:12120/api/films/filter', {
+                //         method: 'POST',
+                //         body: JSON.stringify({...newFilter}),
+                //         headers: {
+                //             'Content-Type': 'application/json'
+                //         }
+                //     })
+                //         .then(response => response.json())
+                //         .then(data => setFilmsList(data))
+                // } catch (error) {
+                //     console.log(error.message)
+                // }
+                // setLoading(true)
             }
 
             fetchData()
 
 
-            console.log(searchPar)
+            // console.log(searchPar)
 
         }
         ,
@@ -231,12 +248,21 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
     return (
         <>
-            {filmsList && filmsList.map((item: any, inx) => <p style={{color: 'white'}} key={inx}>{item.nameRU}</p>)}
+            {!loading && <Skeleton/>}
+            {loading && filmsList.map((item: any, inx) => <p style={{color: 'white'}} key={inx}>{item.nameRU}</p>)}
             {filmsList.length > 0 &&
                 filmsList.length % 28 === 0 &&
                 <button className={styles.movies__btn} onClick={() => nextListFilms(filterObj.part)}>
                     Показать еще
                 </button>}
+            {/*{filmsList && filmsList.map((item: any, inx) => <div key={inx}>*/}
+            {/*    <FilmCart film={item} filmId={item.id} visible={false}/></div>)}*/}
+            {/*{filmsList.length > 0 &&*/}
+            {/*    filmsList.length % 28 === 0 &&*/}
+            {/*    <button className={styles.movies__btn} onClick={() => nextListFilms(filterObj.part)}>*/}
+            {/*        Показать еще*/}
+            {/*    </button>}*/}
+
         </>
     )
 }

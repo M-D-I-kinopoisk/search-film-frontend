@@ -1,8 +1,6 @@
-import FilterFilms from '@/components/FilterFilms/FilterFilms'
-import FilmsList from '@/components/FilmsList/FilmsList'
+import Filter from '@/components/Filter/Filter'
 
 import styles from '../[movies].module.scss'
-
 
 
 export async function generateMetadata({params}) {
@@ -11,10 +9,11 @@ export async function generateMetadata({params}) {
         title: `${params.movies ? params.movies[0] : ''} : фильмы смотреть онлайн бесплатно в хорошем качестве`
     }
 }
+
 async function getGenres() {
     const response = await fetch(
         'http://localhost:12120/api/genres',
-        // {next: {revalidate: 100}}
+        {next: {revalidate: 100}}
     )
     return response.json()
 }
@@ -22,45 +21,23 @@ async function getGenres() {
 async function getCounties() {
     const response = await fetch(
         'http://localhost:12120/api/countries',
-        // {next: {revalidate: 100}}
+        {next: {revalidate: 100}}
     )
     return response.json()
 }
 
-async function getListDir() {
-    const response = await fetch(
-        'http://localhost:12120/api/film-members/profession/1',
-        // {next: {revalidate: 100}}
-    )
-    return response.json()
-}
 
-async function getListActor() {
-    const response = await fetch(
-        'http://localhost:12120/api/film-members/profession/2',
-        // {next: {revalidate: 100}}
-    )
-    return response.json()
-}
-
-const Movies = async ({ params, searchParams  }) => {
+const Movies = async ({searchParams}) => {
 
     const genres = await getGenres()
 
     const countries = await getCounties()
 
-    const listDir = await getListDir()
-
-    const listActor = await getListActor()
-
-    console.log(params)
-
 
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                <FilterFilms genres={genres} countries={countries} listDir={listDir} listActor={listActor}/>
-                <FilmsList genres={genres} countries={countries}  listDir={listDir} listActor={listActor} searchPar={searchParams}/>
+                <Filter genres={genres} countries={countries} searchParams={searchParams}/>
             </div>
         </div>
     )

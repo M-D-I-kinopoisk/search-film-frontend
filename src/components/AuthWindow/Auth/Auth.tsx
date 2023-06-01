@@ -10,6 +10,8 @@ import {TbPencil} from 'react-icons/tb'
 import styles from './auth.module.scss'
 import {useDispatch} from 'react-redux'
 import {toggle} from '@/redux/AuthToggleSlice'
+import {Simulate} from "react-dom/test-utils";
+import submit = Simulate.submit;
 
 const Auth = () => {
 
@@ -52,6 +54,11 @@ const Auth = () => {
         }, 1300)
     }
 
+    const submitHandler = (e) => {
+        e.preventDefault()
+        console.log(e.target)
+    }
+
 
     return (
         <div className={styles.modal}>
@@ -69,7 +76,7 @@ const Auth = () => {
                                  style={animate ? {width: '33%'} : undefined}></div>
                         </div>
                         <div className={styles.container}>
-                            <form className={styles.form}>
+                            <form className={styles.form} onSubmit={submitHandler}>
                                 <div className={styles.form__blockText}>
                                     <p className={styles.form__title}>Войдите или зарегистрируйтесь</p>
                                     {!toggleBlock &&
@@ -130,6 +137,7 @@ const Auth = () => {
                                             </div>
                                             <div className={styles.form__btnContainer}>
                                                 <button
+                                                    type={'submit'}
                                                     className={inputPass.length > 0 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
                                                     Продолжить
                                                 </button>
