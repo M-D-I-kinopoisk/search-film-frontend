@@ -5,7 +5,6 @@ import Image from 'next/image'
 import ActorFilms from '@/components/Actor/ActorFilms'
 import BackButton from '@/components/UI/BackButton/BackButton'
 
-
 type Props = {
     params: {
         id: string

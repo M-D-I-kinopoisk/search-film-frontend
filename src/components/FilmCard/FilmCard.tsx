@@ -1,6 +1,6 @@
 'use client'
 
-import styles from '../filmsCategory.module.scss'
+import styles from './filmCard.module.scss'
 
 import {RiBookmarkLine, RiMagicLine, RiStarLine} from 'react-icons/ri'
 import {MdOutlineHideSource} from 'react-icons/md'
