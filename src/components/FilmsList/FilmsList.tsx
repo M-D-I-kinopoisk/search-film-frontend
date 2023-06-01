@@ -8,7 +8,7 @@ import {getFilterObj, selectFilter} from '@/redux/FilterSlice'
 import {useParams, useSearchParams} from 'next/navigation'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 import Skeleton from '@/components/UI/Skeleton/Skeleton'
-import FilmCard from "@/components/FilmCard/FilmCard";
+import FilmCard from '@/components/FilmCard/FilmCard'
 
 
 export default function FilmsList({genres, countries, listDir, listActor, searchPar}) {
@@ -169,9 +169,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
             }
 
-            //
-            // console.log(newFilterText)
-            // console.log(newFilter)
+
             dispatch(getFilterObj(
                 {
                     ...newFilter,
@@ -187,22 +185,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             const fetchData = async () => {
 
                 setLoading(false)
-                // setTimeout(() => {
-                //     try {
-                //         fetch('http://localhost:12120/api/films/filter', {
-                //             method: 'POST',
-                //             body: JSON.stringify({...newFilter}),
-                //             headers: {
-                //                 'Content-Type': 'application/json'
-                //             }
-                //         })
-                //             .then(response => response.json())
-                //             .then(data => setFilmsList(data))
-                //     } catch (error) {
-                //         console.log(error.message)
-                //     }
-                //     setLoading(true)
-                // }, 3000)
                 try {
                     fetch('http://localhost:12120/api/films/filter', {
                         method: 'POST',
@@ -222,7 +204,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             fetchData()
 
 
-            // console.log(searchPar)
 
         }
         ,
@@ -257,17 +238,11 @@ export default function FilmsList({genres, countries, listDir, listActor, search
     return (
         <>
             {!loading && <Skeleton/>}
-            {/*{loading && filmsList.map((item: any, inx) => <p style={{color: 'white'}} key={inx}>{item.nameRU}</p>)}*/}
-            {/*{filmsList.length > 0 &&*/}
-            {/*    filmsList.length % 28 === 0 &&*/}
-            {/*    <button className={styles.movies__btn} onClick={() => nextListFilms(filterObj.part)}>*/}
-            {/*        Показать еще*/}
-            {/*    </button>}*/}
+
             <div className={styles.cardList}>
                 {loading &&
-
                     filmsList && filmsList.map((item: any, inx) => <div key={inx}>
-                        <FilmCard film={item} filmId={item.id} visible={false}/></div>)}
+                        <FilmCard film={item}/></div>)}
 
             </div>
 
