@@ -14,7 +14,7 @@ import {BsChevronRight} from 'react-icons/bs'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
-import FilmCategory from '@/components/FilmCard/FilmCard'
+import FilmСard from '@/components/FilmCard/FilmCard'
 
 type FilmsCategoryProps = {
     title: string,
@@ -49,7 +49,7 @@ const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, titleEN, list}) => 
                                  onClick={() => onMouseHandler(film.id)}
                                  onMouseEnter={() => onMouseHandler(film.id)}
                                  onMouseLeave={() => setVisible(false)}>
-                        <FilmCategory film={film} filmId={filmId} visible={visible}/>
+                        <FilmСard film={film} filmId={filmId} visible={visible}/>
                     </SwiperSlide>
                 ))}
                 <SwiperSlide className={styles.film}>

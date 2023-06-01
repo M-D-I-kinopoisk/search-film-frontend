@@ -8,7 +8,7 @@ import {getFilterObj, selectFilter} from '@/redux/FilterSlice'
 import {useParams, useSearchParams} from 'next/navigation'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 import Skeleton from '@/components/UI/Skeleton/Skeleton'
-
+import FilmCard from "@/components/FilmCard/FilmCard";
 
 
 export default function FilmsList({genres, countries, listDir, listActor, searchPar}) {
@@ -114,7 +114,11 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 // @ts-ignore
                 if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
                     // @ts-ignore
-                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {'idMember': arrDir[0].id, 'idProfession': 1}]}
+                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
+                            'idMember': arrDir[0].id,
+                            'idProfession': 1
+                        }]
+                    }
                     newFilterText = {
                         ...newFilterText,
                         'arrDirMembers': [arrDir[0].nameRU],
@@ -143,7 +147,10 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
                 if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
                     // @ts-ignore
-                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {'idMember': arrActor[0].id, 'idProfession': 2}]
+                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
+                            'idMember': arrActor[0].id,
+                            'idProfession': 2
+                        }]
                     }
                     newFilterText = {
                         ...newFilterText,
@@ -180,7 +187,23 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             const fetchData = async () => {
 
                 setLoading(false)
-                setTimeout(() => {  try {
+                // setTimeout(() => {
+                //     try {
+                //         fetch('http://localhost:12120/api/films/filter', {
+                //             method: 'POST',
+                //             body: JSON.stringify({...newFilter}),
+                //             headers: {
+                //                 'Content-Type': 'application/json'
+                //             }
+                //         })
+                //             .then(response => response.json())
+                //             .then(data => setFilmsList(data))
+                //     } catch (error) {
+                //         console.log(error.message)
+                //     }
+                //     setLoading(true)
+                // }, 3000)
+                try {
                     fetch('http://localhost:12120/api/films/filter', {
                         method: 'POST',
                         body: JSON.stringify({...newFilter}),
@@ -193,21 +216,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 } catch (error) {
                     console.log(error.message)
                 }
-                    setLoading(true) }, 3000)
-                // try {
-                //     fetch('http://localhost:12120/api/films/filter', {
-                //         method: 'POST',
-                //         body: JSON.stringify({...newFilter}),
-                //         headers: {
-                //             'Content-Type': 'application/json'
-                //         }
-                //     })
-                //         .then(response => response.json())
-                //         .then(data => setFilmsList(data))
-                // } catch (error) {
-                //     console.log(error.message)
-                // }
-                // setLoading(true)
+                setLoading(true)
             }
 
             fetchData()
@@ -248,20 +257,28 @@ export default function FilmsList({genres, countries, listDir, listActor, search
     return (
         <>
             {!loading && <Skeleton/>}
-            {loading && filmsList.map((item: any, inx) => <p style={{color: 'white'}} key={inx}>{item.nameRU}</p>)}
-            {filmsList.length > 0 &&
-                filmsList.length % 28 === 0 &&
-                <button className={styles.movies__btn} onClick={() => nextListFilms(filterObj.part)}>
-                    Показать еще
-                </button>}
-            {/*{filmsList && filmsList.map((item: any, inx) => <div key={inx}>*/}
-            {/*    <FilmCart film={item} filmId={item.id} visible={false}/></div>)}*/}
+            {/*{loading && filmsList.map((item: any, inx) => <p style={{color: 'white'}} key={inx}>{item.nameRU}</p>)}*/}
             {/*{filmsList.length > 0 &&*/}
             {/*    filmsList.length % 28 === 0 &&*/}
             {/*    <button className={styles.movies__btn} onClick={() => nextListFilms(filterObj.part)}>*/}
             {/*        Показать еще*/}
             {/*    </button>}*/}
+            <div className={styles.cardList}>
+                {loading &&
 
+                    filmsList && filmsList.map((item: any, inx) => <div key={inx}>
+                        <FilmCard film={item} filmId={item.id} visible={false}/></div>)}
+
+            </div>
+
+
+            <div>
+                {filmsList.length > 0 &&
+                    filmsList.length % 28 === 0 &&
+                    <button className={styles.movies__btn} onClick={() => nextListFilms(filterObj.part)}>
+                        Показать еще
+                    </button>}
+            </div>
         </>
     )
 }

@@ -1,3 +1,11 @@
+.cardList {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+
 .movies__btn {
   width: 100%;
   height: 40px;
