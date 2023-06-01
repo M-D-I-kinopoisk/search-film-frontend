@@ -1,6 +1,6 @@
 'use client'
 
-import styles from '../filmsCategory.module.scss'
+import styles from './filmCard.module.scss'
 
 import {RiBookmarkLine, RiMagicLine, RiStarLine} from 'react-icons/ri'
 import {MdOutlineHideSource} from 'react-icons/md'
@@ -10,13 +10,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {Film} from '@/components/Film/InfoContent/InfoContent'
 
-interface FilmCart {
+interface FilmCard {
     film: Film,
     filmId: string,
     visible: boolean
 }
 
-const FilmCart = ({film, filmId, visible}: FilmCart) => {
+const FilmCart = ({film, filmId, visible}: FilmCard) => {
 
     return (
         <Link href={`/film/${film.id}`} className={styles.link}>

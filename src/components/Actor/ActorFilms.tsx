@@ -9,15 +9,13 @@ import ActorFilm from '@/components/Actor/ActorFilm/ActorFilm'
 
 const ActorFilms = ({actorFilms}) => {
     const [active, setActive] = useState(0)
-    const [showMore, setShowMore] = useState(false)
-    const uniqueProfessions = [...new Set(actorFilms?.map(item => item.profession.nameRU))]
+    const [numShownFilms, setNumShownFilms] = useState(7)
 
-    const actorFilmsByProfession = actorFilms.reduce((acc, item) => {
-        const {profession} = item
-        if (!acc[profession.nameEN]) { // создаем новый ключ в объекте, если его еще нет
-            acc[profession.nameEN] = []
-        }
-        acc[profession.nameEN].push(item) // добавляем фильм в соответствующий ключ
+    const uniqueProfessions = [...new Set(actorFilms?.map(item => item.profession.nameRU))]
+    const uniqueFilms = new Set(actorFilms.map(({film}) => film.nameRU))
+
+    const actorFilmsByProfession = actorFilms.reduce((acc, {profession, ...rest}) => {
+        acc[profession.nameEN] = [...acc[profession.nameEN] || [], {profession, ...rest}]
         return acc
     }, {})
     const filmKeys = Object.keys(actorFilmsByProfession)
@@ -26,7 +24,7 @@ const ActorFilms = ({actorFilms}) => {
         <div className={styles.filmsWrapper}>
             <div className={styles.filmsTitle}>
                 <h2>Полная фильмография </h2>
-                <div>{funcDeclination(actorFilms.length, ['фильм', 'фильма', 'фильмов'])}</div>
+                <div>{funcDeclination(uniqueFilms.size, ['фильм', 'фильма', 'фильмов'])}</div>
             </div>
             <div className={styles.profList}>
                 {uniqueProfessions.map((prof: string, i) => (
@@ -43,18 +41,19 @@ const ActorFilms = ({actorFilms}) => {
                 <div key={i}>
                     {i === active &&
                         <div className={styles.films}>
-                            {actorFilms.map((item) => (
+                            {actorFilmsByProfession[filmKeys[active]].slice(0, numShownFilms).map((item) => (
                                 item.profession.nameRU === prof &&
                                 <ActorFilm key={item.film.id} item={item}/>
                             ))}
                         </div>}
                 </div>))}
 
-            {(actorFilmsByProfession[filmKeys[active]].length) > 5 && (
+            {(actorFilmsByProfession[filmKeys[active]].length > 7 &&
+                    numShownFilms < actorFilmsByProfession[filmKeys[active]].length) &&
                 <div className={styles.moreFilms}>
-                    <button onClick={() => setShowMore(true)}>Показать еще фильмы</button>
+                    <button onClick={() => setNumShownFilms(numShownFilms + 7)}>Показать еще 7 фильмов</button>
                 </div>
-            )}
+            }
         </div>
     )
 }

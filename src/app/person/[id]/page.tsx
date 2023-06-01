@@ -3,9 +3,7 @@ import styles from './actor.module.scss'
 import Image from 'next/image'
 
 import ActorFilms from '@/components/Actor/ActorFilms'
-import Link from 'next/link'
-import BackButton from "@/components/UI/BackButton/BackButton";
-
+import BackButton from '@/components/UI/BackButton/BackButton'
 
 type Props = {
     params: {

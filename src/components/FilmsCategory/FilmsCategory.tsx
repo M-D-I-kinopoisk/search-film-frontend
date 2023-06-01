@@ -14,7 +14,7 @@ import {BsChevronRight} from 'react-icons/bs'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
-import FilmCategory from '@/components/FilmsCategory/FilmCart/FilmCart'
+import FilmCategory from '@/components/FilmCard/FilmCard'
 
 type FilmsCategoryProps = {
     title: string,
