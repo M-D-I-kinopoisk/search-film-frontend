@@ -2,7 +2,7 @@
 
 import {useState} from 'react'
 
-import styles from './InfoContent.module.scss'
+import styles from './Info.module.scss'
 
 import Image from 'next/image'
 
@@ -60,7 +60,7 @@ export interface infoContentProps {
     actors: Actor[]
 }
 
-const InfoContent = ({film, filmInfo, actors}: infoContentProps) => {
+const Info = ({film, filmInfo, actors}: infoContentProps) => {
     const [visible, setVisible] = useState(false)
 
     return (
@@ -165,4 +165,4 @@ const InfoContent = ({film, filmInfo, actors}: infoContentProps) => {
     )
 }
 
-export default InfoContent
+export default Info

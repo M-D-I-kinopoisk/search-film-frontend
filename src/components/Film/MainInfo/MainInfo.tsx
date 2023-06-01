@@ -1,9 +1,9 @@
-import styles from '@/components/Film/InfoContent/InfoContent.module.scss'
+import styles from '@/components/Film/Info/Info.module.scss'
 import {FiVolume1} from 'react-icons/fi'
 import {BsKeyboard} from 'react-icons/bs'
 import React from 'react'
 import {funcDeclination} from '@/utils/funcDeclination'
-import {Film} from '@/components/Film/InfoContent/InfoContent'
+import {Film} from '@/components/Film/Info/Info'
 
 type FilmProps = {
     film: Film

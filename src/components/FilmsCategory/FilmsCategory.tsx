@@ -12,23 +12,14 @@ import Link from 'next/link'
 
 import {BsChevronRight} from 'react-icons/bs'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
-import FilmCategory from '@/components/FilmCard/FilmCard'
+import FilmCard from '@/components/FilmCard/FilmCard'
 
 type FilmsCategoryProps = {
     title: string,
-    titleEN : string
+    titleEN: string
     list: string[]
 }
 const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, titleEN, list}) => {
-    const [visible, setVisible] = React.useState(false)
-    const {filmId} = useSelector(selectFilms)
-    const dispatch = useDispatch()
-    const onMouseHandler = (id) => {
-        dispatch(getFilmId(id))
-        setVisible(true)
-    }
 
     return (
         <div className={styles.films}>
@@ -45,11 +36,8 @@ const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, titleEN, list}) => 
                     modules={[Navigation]}
                     navigation={true}>
                 {list.slice(0, 20).map((film: any) => (
-                    <SwiperSlide key={film.id} className={styles.film}
-                                 onClick={() => onMouseHandler(film.id)}
-                                 onMouseEnter={() => onMouseHandler(film.id)}
-                                 onMouseLeave={() => setVisible(false)}>
-                        <FilmCategory film={film} filmId={filmId} visible={visible}/>
+                    <SwiperSlide key={film.id} className={styles.film}>
+                        <FilmCard film={film}/>
                     </SwiperSlide>
                 ))}
                 <SwiperSlide className={styles.film}>

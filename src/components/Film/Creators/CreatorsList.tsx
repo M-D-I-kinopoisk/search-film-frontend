@@ -8,7 +8,7 @@ import CreatorsItem from './CreatorsItem'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms} from '@/redux/FilmsSlice'
-import {Actor} from '@/components/Film/InfoContent/InfoContent'
+import {Actor} from '@/components/Film/Info/Info'
 import {setOpenModal} from '@/redux/FilmsSlice'
 import {useRouter} from 'next/navigation'
 

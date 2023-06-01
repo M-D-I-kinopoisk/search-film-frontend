@@ -1,14 +1,14 @@
 import styles from './film.module.scss'
 
 import {BsChevronRight} from 'react-icons/bs'
-import TrailerContent from '@/components/Film/TrailerContent/TrailerContent'
-import InfoContent from '@/components/Film/InfoContent/InfoContent'
+import MainTrailer from '@/components/Film/MainTrailer/MainTrailer'
+import Info from '@/components/Film/Info/Info'
 import CreatorsList from '@/components/Film/Creators/CreatorsList'
 import TrailersList from '@/components/Film/TrailersAndMaterials/TrailersList'
 import CommentList from '@/components/Film/Comments/CommentsList'
 import WatchAllDevices from '@/components/Film/WatchAllDevices/WatchAllDevices'
 import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
-import MyModal from '@/components/Film/MyModal/MyModal'
+import Modal from '@/components/Film/Modal/Modal'
 
 type FilmProps = {
     params: {
@@ -109,8 +109,8 @@ export default async function Film({params: {id}}: FilmProps) {
         </div>
 
         <div className={styles.mainContent}>
-            <TrailerContent filmInfo={filmInfo}/>
-            <InfoContent film={film} filmInfo={filmInfo} actors={actors}/>
+            <MainTrailer filmInfo={filmInfo}/>
+            <Info film={film} filmInfo={filmInfo} actors={actors}/>
         </div>
 
         <FilmsCategory title={`С фильмом «${film.nameRU}» смотрят`} list={genres}/>
@@ -118,6 +118,6 @@ export default async function Film({params: {id}}: FilmProps) {
         <TrailersList id={id[0]} filmInfo={filmInfo}/>
         <CommentList id={id[0]} filmComments={filmComments}/>
         <WatchAllDevices film={film}/>
-        <MyModal filmComments={filmComments} film={film} actors={actors} filmInfo={filmInfo} id={id[0]}/>
+        <Modal filmComments={filmComments} film={film} actors={actors} filmInfo={filmInfo} id={id[0]}/>
     </div>
 }

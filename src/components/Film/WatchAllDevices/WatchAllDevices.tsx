@@ -2,7 +2,7 @@
 
 import styles from './WatchAllDevices.module.scss'
 import Image from 'next/image'
-import {Film} from '@/components/Film/InfoContent/InfoContent'
+import {Film} from '@/components/Film/Info/Info'
 
 interface AllDevices {
     film: Film

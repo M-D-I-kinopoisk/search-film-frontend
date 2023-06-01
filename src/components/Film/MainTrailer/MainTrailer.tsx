@@ -1,4 +1,5 @@
-import styles from './TrailerContent.module.scss'
+import styles from './mainTrailer.module.scss'
+
 import MyButton from '@/components/UI/MyButton/MyButton'
 
 import {BsPlay} from 'react-icons/bs'
@@ -13,9 +14,9 @@ export type FilmInfoProps = {
     }
 }
 
-const TrailerContent = ({filmInfo}: FilmInfoProps) => {
-    const userButtonsInfo = [
-        {text: 'Трейлер', icon: <BsPlay size={26} color='rgba(255,255,255,.72)'/>, nameClass: 'trailerButton'},
+const MainTrailer = ({filmInfo}: FilmInfoProps) => {
+    const userButtons = [
+        {icon: <BsPlay size={26} color='rgba(255,255,255,.72)'/>, text: 'Трейлер', nameClass: 'trailerButton'},
         {icon: <BsBookmark size={16} color='rgba(255,255,255,.72)'/>, nameClass: 'markerButton'},
         {icon: <FiShare size={16} color='rgba(255,255,255,.72)'/>, nameClass: 'shareButton'},
     ]
@@ -30,7 +31,7 @@ const TrailerContent = ({filmInfo}: FilmInfoProps) => {
             </div>
             <div className={styles.userButtons}>
                 <div className={styles.userButtonsWrapper}>
-                    {userButtonsInfo.map((elem) =>
+                    {userButtons.map((elem) =>
                         <MyButton key={elem.nameClass}
                                   text={elem.text ? elem.text : null}
                                   icon={elem.icon}
@@ -46,4 +47,4 @@ const TrailerContent = ({filmInfo}: FilmInfoProps) => {
     )
 }
 
-export default TrailerContent
+export default MainTrailer

@@ -2,7 +2,7 @@
 
 import styles from './Creators.module.scss'
 import Image from 'next/image'
-import {Actor} from '@/components/Film/InfoContent/InfoContent'
+import {Actor} from '@/components/Film/Info/Info'
 import Link from 'next/link'
 
 type CreatorsItemProps = {

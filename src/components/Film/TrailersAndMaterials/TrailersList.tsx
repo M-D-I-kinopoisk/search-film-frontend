@@ -9,7 +9,7 @@ import TrailersItem from './TrailersItem'
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 import {useDispatch, useSelector} from 'react-redux'
 import {useRouter} from 'next/navigation'
-import {FilmInfo} from '@/components/Film/InfoContent/InfoContent'
+import {FilmInfo} from '@/components/Film/Info/Info'
 
 interface TrailersState {
     filmInfo: FilmInfo,
