@@ -1,6 +1,6 @@
-import styles from './WatchOptions.module.scss'
+import styles from './filmWatchOptions.module.scss'
 
-const WatchOptions = ({film}) => {
+const FilmWatchOptions = ({film}) => {
 
     return (
         <div className={styles.watchOptions}>
@@ -48,4 +48,4 @@ const WatchOptions = ({film}) => {
     )
 }
 
-export default WatchOptions
+export default FilmWatchOptions

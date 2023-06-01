@@ -2,21 +2,21 @@
 
 import React from 'react'
 
-import styles from './Trailers.module.scss'
+import styles from './filmTrailers.module.scss'
 
-import TrailersItem from './TrailersItem'
+import FilmTrailersItem from './FilmTrailersItem'
 
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 import {useDispatch, useSelector} from 'react-redux'
 import {useRouter} from 'next/navigation'
-import {FilmInfo} from '@/components/Film/Info/Info'
+import {FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
 
 interface TrailersState {
     filmInfo: FilmInfo,
     id: string
 }
 
-const TrailersList = ({filmInfo, id}: TrailersState) => {
+const FilmTrailers = ({filmInfo, id}: TrailersState) => {
     const router = useRouter()
 
     const {modalOpen} = useSelector(selectFilms)
@@ -45,10 +45,10 @@ const TrailersList = ({filmInfo, id}: TrailersState) => {
                 и доп. материалы
             </div>
             <div className={styles.addMaterialsItems}>
-                <TrailersItem filmInfo={filmInfo}/>
+                <FilmTrailersItem filmInfo={filmInfo}/>
             </div>
         </div>
     )
 }
 
-export default TrailersList
+export default FilmTrailers

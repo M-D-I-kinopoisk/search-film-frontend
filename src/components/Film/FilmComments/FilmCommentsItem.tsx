@@ -1,7 +1,7 @@
-import styles from './Comments.module.scss'
+import styles from './ailmComments.module.scss'
 
 import {AiOutlineLike} from 'react-icons/ai'
-import {Comment} from '@/components/Film/Comments/CommentsList'
+import {Comment} from '@/components/Film/FilmComments/FilmComments'
 
 
 interface CommentsItemProps {
@@ -9,7 +9,7 @@ interface CommentsItemProps {
     comment: Comment
 }
 
-const CommentsItem = ({inModal, comment}: CommentsItemProps) => {
+const FilmCommentsItem = ({inModal, comment}: CommentsItemProps) => {
     const date = new Date(comment.createdAt).toLocaleDateString()
 
     return (
@@ -63,4 +63,4 @@ const CommentsItem = ({inModal, comment}: CommentsItemProps) => {
     )
 }
 
-export default CommentsItem
+export default FilmCommentsItem

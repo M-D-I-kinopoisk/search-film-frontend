@@ -2,13 +2,13 @@
 
 import {useEffect} from 'react'
 
-import styles from './Creators.module.scss'
+import styles from './filmCreators.module.scss'
 
-import CreatorsItem from './CreatorsItem'
+import FilmCreatorsItem from './FilmCreatorsItem'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms} from '@/redux/FilmsSlice'
-import {Actor} from '@/components/Film/Info/Info'
+import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
 import {setOpenModal} from '@/redux/FilmsSlice'
 import {useRouter} from 'next/navigation'
 
@@ -18,7 +18,7 @@ interface Creators {
     id: string
 }
 
-const CreatorsList = ({actors, id}: Creators) => {
+const FilmCreators = ({actors, id}: Creators) => {
     const router = useRouter()
 
     const {modalOpen} = useSelector(selectFilms)
@@ -48,7 +48,7 @@ const CreatorsList = ({actors, id}: Creators) => {
             </div>
             <div className={styles.creatorsItems}>
                 {actors.slice(0, 10).map((actor) => (
-                    <CreatorsItem actor={actor} key={actor.id}/>
+                    <FilmCreatorsItem actor={actor} key={actor.id}/>
                 ))}
                 <div onClick={() => modalOpenHandler()}
                      className={styles.moreCreatorsBtn}>
@@ -59,4 +59,4 @@ const CreatorsList = ({actors, id}: Creators) => {
     )
 }
 
-export default CreatorsList
+export default FilmCreators

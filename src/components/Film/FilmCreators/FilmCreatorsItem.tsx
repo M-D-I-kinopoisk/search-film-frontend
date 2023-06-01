@@ -1,8 +1,8 @@
 'use client'
 
-import styles from './Creators.module.scss'
+import styles from './filmCreators.module.scss'
 import Image from 'next/image'
-import {Actor} from '@/components/Film/Info/Info'
+import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
 import Link from 'next/link'
 
 type CreatorsItemProps = {
@@ -10,7 +10,7 @@ type CreatorsItemProps = {
     actor: Actor
 }
 
-const CreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
+const FilmCreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
 
     return (
         <>
@@ -62,4 +62,4 @@ const CreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
     )
 }
 
-export default CreatorsItem
+export default FilmCreatorsItem

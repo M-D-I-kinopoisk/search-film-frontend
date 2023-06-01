@@ -2,7 +2,7 @@
 
 import {useState} from 'react'
 
-import styles from './Info.module.scss'
+import styles from './filmInfo.module.scss'
 
 import Image from 'next/image'
 
@@ -11,9 +11,9 @@ import {BsBookmark} from 'react-icons/bs'
 import {FiShare} from 'react-icons/fi'
 import {MdOndemandVideo} from 'react-icons/md'
 
-import MainInfo from '@/components/Film/MainInfo/MainInfo'
+import MainInfo from '@/components/Film/FilmInfo/MainInfo/MainInfo'
 import MyButton from '@/components/UI/MyButton/MyButton'
-import WatchOptions from '@/components/Film/WatchOptions/WatchOptions'
+import FilmWatchOptions from '@/components/Film/FilmWatchOptions/FilmWatchOptions'
 
 import {funcDeclination} from '@/utils/funcDeclination'
 
@@ -60,7 +60,7 @@ export interface infoContentProps {
     actors: Actor[]
 }
 
-const Info = ({film, filmInfo, actors}: infoContentProps) => {
+const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
     const [visible, setVisible] = useState(false)
 
     return (
@@ -127,7 +127,7 @@ const Info = ({film, filmInfo, actors}: infoContentProps) => {
                 <p>{filmInfo.text}</p>
                 {visible && <div>
                     <div className={styles.hideWatchOptions}>
-                        <WatchOptions film={film}/>
+                        <FilmWatchOptions film={film}/>
                     </div>
                 </div>}
             </div>
@@ -159,10 +159,10 @@ const Info = ({film, filmInfo, actors}: infoContentProps) => {
             </div>
 
             <div className={styles.showWatchOptions}>
-                <WatchOptions film={film}/>
+                <FilmWatchOptions film={film}/>
             </div>
         </div>
     )
 }
 
-export default Info
+export default FilmInfo

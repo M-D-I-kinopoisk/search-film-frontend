@@ -1,13 +1,13 @@
 'use client'
 
-import styles from './modal.module.scss'
+import styles from './filmModal.module.scss'
 
 import Image from 'next/image'
 
-import CommentsItem from '../Comments/CommentsItem'
+import FilmCommentsItem from '../FilmComments/FilmCommentsItem'
 
-import CreatorsItem from '../Creators/CreatorsItem'
-import TrailersItem from '../TrailersAndMaterials/TrailersItem'
+import FilmCreatorsItem from '../FilmCreators/FilmCreatorsItem'
+import FilmTrailersItem from '../FilmTrailers/FilmTrailersItem'
 
 import {BsChevronRight} from 'react-icons/bs'
 import {RiUserLine} from 'react-icons/ri'
@@ -16,9 +16,9 @@ import {AiOutlineLike} from 'react-icons/ai'
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 import {funcDeclination} from '@/utils/funcDeclination'
-import {Actor, Film, FilmInfo} from '@/components/Film/Info/Info'
+import {Actor, Film, FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
 import {useRouter} from 'next/navigation'
-import {Comment} from '@/components/Film/Comments/CommentsList'
+import {Comment} from '@/components/Film/FilmComments/FilmComments'
 
 type MyModalProps = {
     actors: Actor[],
@@ -28,7 +28,7 @@ type MyModalProps = {
     id: string
 }
 
-const Modal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
+const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
     const router = useRouter()
@@ -97,7 +97,7 @@ const Modal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
                                                     <div className={styles.directorsItems}>
                                                         {actors.map((actor: any) =>
                                                             (actor.profession.nameRU === item ?
-                                                                <CreatorsItem key={actor.id} actor={actor}/> : ''))}
+                                                                <FilmCreatorsItem key={actor.id} actor={actor}/> : ''))}
                                                     </div>
                                                 </div>
                                             ))}
@@ -122,7 +122,7 @@ const Modal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
 
                                             <div>
                                                 {filmComments.map((comment) =>
-                                                    <CommentsItem key={comment.id} inModal={true} comment={comment}/>
+                                                    <FilmCommentsItem key={comment.id} inModal={true} comment={comment}/>
                                                 )}
                                                 <AiOutlineLike size={20} fill='#fff'/>
 
@@ -136,7 +136,7 @@ const Modal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
 
                                     {modalOpen.value === 'trailers' &&
                                         <div className={styles.trailers}>
-                                            <TrailersItem filmInfo={filmInfo} inModal={true}/>
+                                            <FilmTrailersItem filmInfo={filmInfo} inModal={true}/>
                                         </div>
                                     }
                                 </div>
@@ -198,4 +198,4 @@ const Modal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
     )
 }
 
-export default Modal
+export default FilmModal

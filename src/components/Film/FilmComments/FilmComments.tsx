@@ -1,8 +1,8 @@
 'use client'
 
-import styles from './Comments.module.scss'
+import styles from './ailmComments.module.scss'
 
-import CommentsItem from './CommentsItem'
+import FilmCommentsItem from './FilmCommentsItem'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
@@ -63,7 +63,7 @@ const CommentList = ({id, filmComments}: Comments) => {
 
             <div className={styles.commentsItems}>
                 {filmComments.map((comment) => (
-                    <CommentsItem key={comment.id} comment={comment}/>
+                    <FilmCommentsItem key={comment.id} comment={comment}/>
                 ))}
             </div>
         </div>

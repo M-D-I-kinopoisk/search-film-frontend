@@ -6,7 +6,7 @@ import {BsPlay} from 'react-icons/bs'
 import {BsBookmark} from 'react-icons/bs'
 import {FiShare} from 'react-icons/fi'
 import {MdOndemandVideo} from 'react-icons/md'
-import MainInfo from '@/components/Film/MainInfo/MainInfo'
+import MainInfo from '@/components/Film/FilmInfo/MainInfo/MainInfo'
 
 export type FilmInfoProps = {
     filmInfo: {

@@ -1,16 +1,16 @@
 'use client'
 
-import styles from './Trailers.module.scss'
+import styles from './filmTrailers.module.scss'
 
 import {RxLapTimer} from 'react-icons/rx'
-import {FilmInfo} from '@/components/Film/Info/Info'
+import {FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
 
 type TrailersItemProps = {
     inModal?: any,
     filmInfo: FilmInfo
 }
 
-const TrailersItem = ({inModal, filmInfo}: TrailersItemProps) => {
+const FilmTrailersItem = ({inModal, filmInfo}: TrailersItemProps) => {
 
     return (
         <>
@@ -47,4 +47,4 @@ const TrailersItem = ({inModal, filmInfo}: TrailersItemProps) => {
     )
 }
 
-export default TrailersItem
+export default FilmTrailersItem
