@@ -9,7 +9,15 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import {Navigation} from 'swiper'
 import Link from 'next/link'
 
-const FilmsRating: React.FC = () => {
+type Film = {}
+
+interface FilmsRating {
+    ratingFilms: Film[]
+}
+
+const FilmsRating = ({ratingFilms}: FilmsRating) => {
+
+
     return (
         <div className={styles.films__rating}>
             <div className={styles.title}>

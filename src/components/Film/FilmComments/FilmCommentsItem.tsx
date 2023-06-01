@@ -1,4 +1,4 @@
-import styles from './ailmComments.module.scss'
+import styles from './filmComments.module.scss'
 
 import {AiOutlineLike} from 'react-icons/ai'
 import {Comment} from '@/components/Film/FilmComments/FilmComments'

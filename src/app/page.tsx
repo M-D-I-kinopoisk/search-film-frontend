@@ -1,10 +1,10 @@
 import styles from './home.module.scss'
 
 import TeaserBtn from '@/components/UI/TeaserBtn'
-import MainSlider from '@/components/MainSlider/MainSlider'
-import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
-import FilmsRating from '@/components/FilmsRating/FilmsRating'
-import FilmsClause from '@/components/FilmsClause/FilmsClause'
+import MainSlider from '@/components/Home/MainSlider/MainSlider'
+import FilmsCategory from '@/components/Home/FilmsCategory/FilmsCategory'
+import FilmsRating from '@/components/Home/FilmsRating/FilmsRating'
+import FilmsClause from '@/components/Home/FilmsClause/FilmsClause'
 
 async function getFightersFilms() {
     const response = await fetch('http://localhost:12120/api/films/filter', {
@@ -38,9 +38,24 @@ async function getAdventuresFilms() {
     return response.json()
 }
 
+async function getRatingFilms() {
+    const response = await fetch('http://localhost:12120/api/films/filter', {
+        method: 'POST',
+        body: JSON.stringify({
+            'ratingStart': 8.5,
+            'part': 1
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    return response.json()
+}
+
 export default async function Home() {
     const fighters = await getFightersFilms()
     const adventures = await getAdventuresFilms()
+    const ratingFilms = await getRatingFilms()
 
     return <div className={styles.wrapper}>
         <MainSlider/>
@@ -55,7 +70,7 @@ export default async function Home() {
             </ul>
         </div>
 
-        <FilmsRating/>
+        <FilmsRating ratingFilms={ratingFilms}/>
 
         <FilmsClause/>
 

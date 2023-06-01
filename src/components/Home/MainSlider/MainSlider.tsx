@@ -13,9 +13,9 @@ const MainSlider: React.FC = () => {
 
     const compilations = [
         {
-            imageURL: 'https://thumbs.dfs.ivi.ru/storage2/contents/0/a/3968a59b80ff14ce76a96299850bde.jpg/1216x524/?q=85',
-            title: 'Пропуск в мир аниме за 1 рубль',
-            subtitle: 'Успей купить шедевры Хаяо Миядзаки до 31 мая, и они останутся с тобой навсегда',
+            imageURL: 'https://thumbs.dfs.ivi.ru/storage33/contents/e/6/d9d1fabb4fbbee5b8d119efacc73ff.jpg/1216x524/?q=85',
+            title: 'Лето начинается внезапно',
+            subtitle: 'Успей оценить фильмы из праздничной подборки',
             id: '1'
         },
         {
@@ -31,9 +31,9 @@ const MainSlider: React.FC = () => {
             id: '3'
         },
         {
-            imageURL: 'https://thumbs.dfs.ivi.ru/storage33/contents/1/4/c3d16554533406ac90475bfda5989f.jpg/1216x524/?q=85',
-            title: 'Роскошные корейские дорамы',
-            subtitle: 'Главный культурный феномен последних лет',
+            imageURL: 'https://thumbs.dfs.ivi.ru/storage4/contents/8/e/38164799443c7d7ec1039886ba7ddb.jpg/1216x524/?q=85',
+            title: 'Для тех кто хочет, хочет опять',
+            subtitle: 'Лучшие фильмы по мнению зрителей',
             id: '4'
         }
     ]

@@ -1,6 +1,6 @@
 'use client'
 
-import styles from './ailmComments.module.scss'
+import styles from './filmComments.module.scss'
 
 import FilmCommentsItem from './FilmCommentsItem'
 

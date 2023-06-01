@@ -9,7 +9,7 @@ import ActorFilm from '@/components/Actor/ActorFilm/ActorFilm'
 
 const ActorFilms = ({actorFilms}) => {
     const [active, setActive] = useState(0)
-    const [numShownFilms, setNumShownFilms] = useState(7)
+    const [visible, setVisible] = useState(false)
 
     const uniqueProfessions = [...new Set(actorFilms?.map(item => item.profession.nameRU))]
     const uniqueFilms = new Set(actorFilms.map(({film}) => film.nameRU))
@@ -18,7 +18,9 @@ const ActorFilms = ({actorFilms}) => {
         acc[profession.nameEN] = [...acc[profession.nameEN] || [], {profession, ...rest}]
         return acc
     }, {})
+
     const filmKeys = Object.keys(actorFilmsByProfession)
+    const actorFilmsShow = actorFilmsByProfession[filmKeys[active]].slice(3)
 
     return (
         <div className={styles.filmsWrapper}>
@@ -41,19 +43,23 @@ const ActorFilms = ({actorFilms}) => {
                 <div key={i}>
                     {i === active &&
                         <div className={styles.films}>
-                            {actorFilmsByProfession[filmKeys[active]].slice(0, numShownFilms).map((item) => (
+                            {actorFilmsByProfession[filmKeys[active]].slice(0, 3).map((item) => (
                                 item.profession.nameRU === prof &&
                                 <ActorFilm key={item.film.id} item={item}/>
                             ))}
                         </div>}
                 </div>))}
-
-            {(actorFilmsByProfession[filmKeys[active]].length > 7 &&
-                    numShownFilms < actorFilmsByProfession[filmKeys[active]].length) &&
-                <div className={styles.moreFilms}>
-                    <button onClick={() => setNumShownFilms(numShownFilms + 7)}>Показать еще 7 фильмов</button>
-                </div>
-            }
+            {visible && actorFilmsShow.map((item) => (
+                <ActorFilm key={item.film.id} item={item}/>
+            ))}
+            {!visible &&
+                (actorFilmsByProfession[filmKeys[active]].length > 3 &&
+                    <div className={styles.moreFilms}>
+                        <button onClick={() => setVisible(true)}>Показать еще
+                            {funcDeclination(actorFilmsShow.length, ['фильм', 'фильма', 'фильмов'])}
+                        </button>
+                    </div>
+                )}
         </div>
     )
 }
