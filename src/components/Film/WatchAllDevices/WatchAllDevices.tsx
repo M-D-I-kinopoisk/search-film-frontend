@@ -2,7 +2,7 @@
 
 import styles from './WatchAllDevices.module.scss'
 import Image from 'next/image'
-import {Film} from '@/components/Film/Info/Info'
+import {Film} from '@/components/Film/FilmInfo/FilmInfo'
 
 interface AllDevices {
     film: Film
@@ -42,13 +42,13 @@ const WatchAllDevices = ({film}: AllDevices) => {
                        alt='frame'
                        width={188}
                        height={102}
-                       src='https://thumbs.dfs.ivi.ru/storage8/contents/0/e/8091320a67fabb8119ac00fdc386c5.jpg/400x226/'/>
+                       src={`http://localhost:12120/api/films/images/${film.imageName}`}/>
 
                 <Image className={styles.mainTvImg}
                        alt='frame'
                        width={337}
                        height={192}
-                       src='https://thumbs.dfs.ivi.ru/storage8/contents/0/e/8091320a67fabb8119ac00fdc386c5.jpg/400x226/'/>
+                       src={`http://localhost:12120/api/films/images/${film.imageName}`}/>
             </div>
         </div>
     )

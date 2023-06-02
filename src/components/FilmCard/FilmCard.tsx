@@ -8,7 +8,7 @@ import {funcDeclination} from '@/utils/funcDeclination'
 
 import Image from 'next/image'
 import Link from 'next/link'
-import {Film} from '@/components/Film/Info/Info'
+import {Film} from '@/components/Film/FilmInfo/FilmInfo'
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
