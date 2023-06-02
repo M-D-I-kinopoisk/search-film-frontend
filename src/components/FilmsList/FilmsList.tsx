@@ -169,7 +169,9 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
             }
 
-
+            //
+            // console.log(newFilterText)
+            // console.log(newFilter)
             dispatch(getFilterObj(
                 {
                     ...newFilter,
@@ -183,7 +185,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
 
             const fetchData = async () => {
-
                 setLoading(false)
                 try {
                     fetch('http://localhost:12120/api/films/filter', {
@@ -204,6 +205,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             fetchData()
 
 
+            // console.log(searchPar)
 
         }
         ,
