@@ -23,6 +23,8 @@ export default function AdminFilms() {
 
     const [loading, setLoading] = useState<boolean>(true)
 
+    const [empty, setEmpty] = useState(false)
+
 
     const [toggle, setToggle] = useState(
         {changeFilm: false, addFilm: false})
@@ -30,8 +32,8 @@ export default function AdminFilms() {
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log('работает')
-            console.log(part)
+            // console.log('работает')
+            // console.log(part)
             setLoading(false)
             try {
 
@@ -50,16 +52,15 @@ export default function AdminFilms() {
                     }
                 })
                 const data = await response.json()
-                console.log(typeof data)
-                console.log(data)
-                console.log(Object.keys(data).length !== 0)
+
                 if (Object.keys(data).length !== 0) {
-                    // console.log(data)
-                    const filmFilter = data.filter(i => i.nameRU.toLowerCase() === inputSearch.toLowerCase())
-                    if (filmFilter.length > 0) {
+                    console.log(data)
+                    const filmFilter = data.filter(i => i.nameRU?.toLowerCase() === inputSearch.toLowerCase())
+                    const filmFilterEN = data.filter(i => i.nameEN?.toLowerCase() === inputSearch.toLowerCase())
+                    if (filmFilter.length > 0 || filmFilterEN.length > 0) {
                         setLoading(true)
                         console.log('найдено')
-                        setFilmsList(filmFilter)
+                        setFilmsList(filmFilter.length > 0 ? filmFilter: filmFilterEN)
                         setPart(0)
 
                     } else {
@@ -67,6 +68,8 @@ export default function AdminFilms() {
 
                     }
                 } else {
+                    setLoading(true)
+                    setEmpty(true)
                     console.log('не найдено')
                 }
 
@@ -111,6 +114,7 @@ export default function AdminFilms() {
 
     const searchFilm = (inputValue, filmsList) => {
         if (inputValue.length > 0) {
+            setEmpty(false)
             setPart(1)
         }
     }
@@ -140,7 +144,7 @@ export default function AdminFilms() {
             <div className={styles.search__film}>
                 <div className={styles.input}>
                     <Input onChange={(e) => setInputSearch(e.target.value)} value={inputSearch}
-                           label={'Введите название фильма'}
+                           label={'Введите полное название фильма'}
                            type={'text'}/>
                 </div>
                 <button onClick={() => searchFilm(inputSearch, filmsList)}
@@ -149,7 +153,9 @@ export default function AdminFilms() {
             </div>
 
             {!loading && <Skeleton/>}
+            {empty && <h3 className={styles.not__found}>Фильм не найден, введите другое название</h3>}
             {loading &&
+                !empty &&
                 filmsList && filmsList.map((item: any, inx) =>
                     <div key={inx} className={styles.filmBlock}>
                         <FilmCard film={item}/>
