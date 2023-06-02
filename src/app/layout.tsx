@@ -28,8 +28,7 @@ export default function RootLayout({children}: {
             <main>
                 {children}
             </main>
-            {/*пока не работает, проблема с маршрутами в компоненте*/}
-            {/*<TabBar/>*/}
+            <TabBar/>
             <Footer/>
         </Providers>
         </body>

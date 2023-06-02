@@ -16,6 +16,7 @@ import style from './TabBar.module.scss'
 
 const TabBar = () => {
 
+    let route = '/'
 
     // const {locale, route} = useRouter()
 

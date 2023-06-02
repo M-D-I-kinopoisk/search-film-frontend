@@ -86,6 +86,12 @@ const Header = () => {
                 <NavBar handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}/>
 
                 <div className={styles.header__right}>
+                    
+                        <Link
+                            className={styles.header__linkAdmin}
+                            href={'/admin'}>
+                            ADMIN
+                        </Link>
 
                     {/*<Locales/>*/}
 
