@@ -32,7 +32,8 @@ export type Film = {
     },
     genres: {
         id: string,
-        nameRU: string
+        nameRU: string,
+        nameEN: string
     }[]
 }
 

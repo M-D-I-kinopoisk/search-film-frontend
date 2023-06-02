@@ -9,6 +9,7 @@ import CommentList from '@/components/Film/FilmComments/FilmComments'
 import WatchAllDevices from '@/components/Film/WatchAllDevices/WatchAllDevices'
 import FilmsCategory from '@/components/Home/FilmsCategory/FilmsCategory'
 import FilmModal from '@/components/Film/FilmModal/FilmModal'
+import FilmGenres from '@/components/Film/FilmGenres/FilmGenres'
 
 type FilmProps = {
     params: {
@@ -93,11 +94,8 @@ export default async function Film({params: {id}}: FilmProps) {
     const genres = await getGenresFilm(film.genres)
 
     return <div className={styles.wrapper}>
-        <div className={styles.breadcrumbs}>
-            <div className={styles.title}>
-                <span>Фильмы</span>
-                <span>Драмы</span>
-            </div>
+        <div className={styles.filmGenres}>
+            <FilmGenres genres={film.genres}/>
 
             <div className={styles.arrow}>
                 <BsChevronRight size={22}/>
@@ -113,7 +111,7 @@ export default async function Film({params: {id}}: FilmProps) {
             <FilmInfo film={film} filmInfo={filmInfo} actors={actors}/>
         </div>
 
-        <FilmsCategory title={`С фильмом «${film.nameRU}» смотрят`} list={genres}/>
+        <FilmsCategory title={`С фильмом «${film.nameRU}» смотрят`} list={genres} titleEN={film.nameEN}/>
         <FilmCreators actors={actors} id={id[0]}/>
         <FilmTrailers id={id[0]} filmInfo={filmInfo}/>
         <CommentList id={id[0]} filmComments={filmComments}/>

@@ -16,7 +16,7 @@ import FilmCard from '@/components/FilmCard/FilmCard'
 
 type FilmsCategoryProps = {
     title: string,
-    titleEN: string
+    titleEN: string,
     list: string[]
 }
 const FilmsCategory: React.FC<FilmsCategoryProps> = ({title, titleEN, list}) => {
