@@ -16,7 +16,8 @@ export type Comment = {
         profileName: string
     },
     createdAt: string,
-    text: string
+    text: string,
+    title: string
 }
 
 interface Comments {
@@ -46,6 +47,7 @@ const CommentList = ({id, filmComments}: Comments) => {
         router.push(`film/${id}/comments`)
     }
 
+    console.log(filmComments)
 
     return (
         <div className={styles.comments}>
@@ -61,11 +63,11 @@ const CommentList = ({id, filmComments}: Comments) => {
                 </button>
             </div>
 
-            <div className={styles.commentsItems}>
+            <ul className={styles.commentsItems}>
                 {filmComments.map((comment) => (
                     <FilmCommentsItem key={comment.id} comment={comment}/>
                 ))}
-            </div>
+            </ul>
         </div>
     )
 }

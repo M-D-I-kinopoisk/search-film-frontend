@@ -5,20 +5,22 @@ import styles from './filmModal.module.scss'
 import Image from 'next/image'
 
 import FilmCommentsItem from '../FilmComments/FilmCommentsItem/FilmCommentsItem'
-
 import FilmCreatorsItem from '../FilmCreators/FilmCreatorsItem/FilmCreatorsItem'
 import FilmTrailersItem from '../FilmTrailers/FilmTrailersItem/FilmTrailersItem'
+import CommentForm from '@/components/UI/CommentForm/CommentForm'
 
 import {BsChevronRight} from 'react-icons/bs'
-import {RiUserLine} from 'react-icons/ri'
 import {RxLapTimer} from 'react-icons/rx'
 import {AiOutlineLike} from 'react-icons/ai'
+
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
+
 import {funcDeclination} from '@/utils/funcDeclination'
+
 import {Actor, Film, FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
+
 import {useRouter} from 'next/navigation'
-import {Comment} from '@/components/Film/FilmComments/FilmComments'
 
 type MyModalProps = {
     actors: Actor[],
@@ -26,6 +28,10 @@ type MyModalProps = {
     filmComments: Comment[],
     film: Film,
     id: string
+}
+
+function CommentsForm() {
+    return null
 }
 
 const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
@@ -59,13 +65,12 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
             {modalOpen.modalState &&
                 <div className={styles.modal}>
                     <div className={styles.modalOverlay}>
+                        <div onClick={() => closeModalHandler()}
+                             className={styles.backLink}>
+                            <BsChevronRight size={22}/>
+                            <span>К фильму </span>
+                        </div>
                         <div className={styles.modalContainer}>
-                            <div onClick={() => closeModalHandler()}
-                                 className={styles.backLink}>
-                                <BsChevronRight size={22}/>
-                                <span>К фильму </span>
-                            </div>
-
                             <div className={styles.modalWrapper}>
                                 <div className={styles.modalInfo}>
                                     <div className={styles.title}>
@@ -105,24 +110,11 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
 
                                     {modalOpen.value === 'comments' &&
                                         <div>
-                                            <div className={styles.addCommentBlock}>
-                                                <RiUserLine size={24}/>
-
-                                                <input type='text'
-                                                       placeholder='Написать комментарий'/>
-
-                                                <div className={styles.buttons}>
-                                                    <button
-                                                        className={styles.cancelButton}>
-                                                        Отменить
-                                                    </button>
-                                                    <button disabled>Отправить</button>
-                                                </div>
-                                            </div>
-
+                                            <CommentForm/>
                                             <div>
                                                 {filmComments.map((comment) =>
-                                                    <FilmCommentsItem key={comment.id} inModal={true} comment={comment}/>
+                                                    <FilmCommentsItem key={comment.id} inModal={true}
+                                                                      comment={comment}/>
                                                 )}
                                                 <AiOutlineLike size={20} fill='#fff'/>
 

@@ -94,12 +94,13 @@ const FilmCard = ({film}: FilmCard) => {
                     {film.imageName === null ?
                         <Image
                             src={'/img/static-filmImage.jpg'}
-                            width={154}
+                            width={170}
                             height={100}
                             alt='Film'/>
                         :
-                        <Image src={`http://localhost:12120/api/films/images/${film.imageName}`} width={154}
-                               height={100}
+                        <Image src={`http://localhost:12120/api/films/images/${film.imageName}`}
+                               width={170}
+                               height={200}
                                alt='image none'/>}
                 </div>
                 <div className={styles.text__section}>

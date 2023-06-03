@@ -1,9 +1,33 @@
 .modalComment {
+  list-style: none;
+  position: relative;
+
   margin-top: 28px;
 
   .modalInfoHeader {
     display: flex;
     justify-content: flex-start;
+  }
+
+  .modalButtonsContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .showMore {
+    display: block;
+    margin: 10px 0 10px 0;
+
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, .88);
+    cursor: pointer;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
 
   .modalAvatar {
@@ -64,21 +88,52 @@
   }
 
   .modalDescription {
+    height: 100%;
+
     padding-left: 40px;
     padding-right: 70px;
 
+    margin-top: 10px;
+
+    overflow: hidden;
+
     p {
+      padding-right: 82px;
+
       font-weight: 400;
       font-size: 15px;
       line-height: 22px;
 
       color: #d9d7e0;
     }
+
+    .partialText {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+    }
+
+    .fullText {
+      display: block;
+      height: 100%;
+    }
+  }
+
+  .modalDescription.more {
+    max-height: none;
+
+    .showMore {
+      display: none;
+    }
   }
 }
 
-.modalAnswerButton {
+.modalAnswer {
   color: rgb(39, 39, 187);
+
+  cursor: pointer;
 }
 
 .commentsItem {
