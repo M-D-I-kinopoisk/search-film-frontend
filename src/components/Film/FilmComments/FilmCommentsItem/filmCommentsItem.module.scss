@@ -1,0 +1,162 @@
+.modalComment {
+  margin-top: 28px;
+
+  .modalInfoHeader {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .modalAvatar {
+    width: 20px;
+    height: 20px;
+
+    border-radius: 5px;
+
+    background-color: palevioletred;
+    text-align: center;
+    font-size: 12px;
+
+    padding: 2px;
+    margin-right: 20px;
+  }
+
+  .modalName {
+    margin-right: 8px;
+
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+
+    color: #a5a1b2;
+  }
+
+  .modalDate {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+
+    color: #a5a1b2;
+  }
+
+  .modalLikes {
+    width: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-left: auto;
+
+    span {
+      color: #73a32f;
+
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 700;
+    }
+
+    svg {
+      cursor: pointer;
+
+      &:last-child {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .modalDescription {
+    padding-left: 40px;
+    padding-right: 70px;
+
+    p {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 22px;
+
+      color: #d9d7e0;
+    }
+  }
+}
+
+.modalAnswerButton {
+  color: rgb(39, 39, 187);
+}
+
+.commentsItem {
+  width: 286px;
+  height: 162px;
+
+  border-radius: 8px;
+  background-color: #1f1b2e;
+
+  padding: 20px 20px 52px;
+  margin: 10px 24px 0 0;
+
+
+  .commentsItemName {
+    color: #a5a1b2;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 700;
+  }
+
+  .commentsItemDescription {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+
+    height: 66px;
+
+    color: #fff;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .commentsItemBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 8px;
+  }
+
+  .commentsItemDate {
+    color: #a5a1b2;
+
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+
+  .commentsItemLikes {
+    width: 76px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      color: #73a32f;
+
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 700;
+
+    }
+
+    svg {
+      cursor: pointer;
+
+      &:last-child {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

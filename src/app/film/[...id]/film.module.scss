@@ -7,6 +7,8 @@
   .filmGenres {
     display: flex;
     justify-content: space-between;
+
+    padding: 0 20px 0 20px;
   }
 
   .arrow {
@@ -40,8 +42,7 @@
     justify-content: space-between;
     align-items: flex-start;
 
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding: 24px 20px 24px 20px;
   }
 }
 

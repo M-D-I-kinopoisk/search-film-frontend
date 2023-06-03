@@ -1,8 +1,8 @@
-import styles from './filmComments.module.scss'
+import styles from './filmCommentsItem.module.scss'
 
 import {AiOutlineLike} from 'react-icons/ai'
-import {Comment} from '@/components/Film/FilmComments/FilmComments'
 
+import {Comment} from '@/components/Film/FilmComments/FilmComments'
 
 interface CommentsItemProps {
     inModal?: any,

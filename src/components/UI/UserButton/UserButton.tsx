@@ -1,7 +1,6 @@
 import React from 'react'
 
-import Image from 'next/image'
-import styles from './MyButton.module.scss'
+import styles from './userButton.module.scss'
 
 type MyButtonProps = {
     text?: any
@@ -9,7 +8,7 @@ type MyButtonProps = {
     nameClass?: any
 }
 
-const MyButton: React.FC<MyButtonProps> = ({ text, icon, nameClass }) => {
+const UserButton: React.FC<MyButtonProps> = ({ text, icon, nameClass }) => {
     return (
         <button className={styles[nameClass]}>
             {text ?
@@ -22,4 +21,4 @@ const MyButton: React.FC<MyButtonProps> = ({ text, icon, nameClass }) => {
     )
 }
 
-export default MyButton
+export default UserButton

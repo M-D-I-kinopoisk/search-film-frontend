@@ -5,7 +5,7 @@
   padding: 48px 22px 48px 22px;
 
   &__header {
-    width: 906px;
+    max-width: 906px;
     color: #ffffff;
 
     font-size: 20px;
@@ -14,7 +14,7 @@
   }
 
   &__text {
-    width: 880px;
+    max-width: 880px;
     color: #a5a1b2;
 
     line-height: 22px;

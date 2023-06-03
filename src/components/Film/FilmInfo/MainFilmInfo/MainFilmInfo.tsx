@@ -1,8 +1,10 @@
-import styles from '@/components/Film/FilmInfo/filmInfo.module.scss'
+import styles from './mainFilmInfo.module.scss'
+
 import {FiVolume1} from 'react-icons/fi'
 import {BsKeyboard} from 'react-icons/bs'
-import React from 'react'
+
 import {funcDeclination} from '@/utils/funcDeclination'
+
 import {Film} from '@/components/Film/FilmInfo/FilmInfo'
 import FilmGenres from '@/components/Film/FilmGenres/FilmGenres'
 
@@ -10,7 +12,7 @@ type FilmProps = {
     film: Film
 }
 
-const MainInfo = ({film}: FilmProps) => {
+const MainFilmInfo = ({film}: FilmProps) => {
     
     return (
         <div className={styles.mainInfo}>
@@ -29,4 +31,4 @@ const MainInfo = ({film}: FilmProps) => {
     )
 }
 
-export default MainInfo
+export default MainFilmInfo

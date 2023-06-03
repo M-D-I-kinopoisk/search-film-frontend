@@ -1,107 +1,58 @@
-.creatorsTitle {
-  width: 243px;
-  padding-bottom: 4px;
-  font-size: 24px;
-  line-height: 28px;
-  font-weight: 700;
-  font-style: normal;
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, .16);
-  cursor: pointer;
-}
+.creators {
+  padding: 0 20px 0 20px;
 
-.creatorsItems {
-  margin-top: 20px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
+  .creatorsTitle {
+    display: inline-block;
 
-.moreCreatorsBtn {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  background-color: #1f1b2e;
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 500;
-  font-style: normal;
-  color: #a5a1b2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
+    padding-bottom: 4px;
 
-//FilmCreatorsItem
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
 
-.modalCreatorsItem {
-  width: 25%;
-  padding-left: 12px;
-  padding-right: 12px;
-  margin-bottom: 24px;
-}
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, .16);
 
-.modalCreatorsItemImg {
-  img {
-    border-radius: 50%;
-    width: 100%;
-    margin-bottom: 4px;
+    cursor: pointer;
   }
-}
 
-.modalCreatorsItemName {
-  color: #d9d7e0;
-  font-size: 15px;
-  line-height: 20px;
-  font-weight: 500;
-  font-style: normal;
-}
+  .creatorsItems {
+    margin-top: 20px;
 
-.modalFilmsCount {
-  color: #a5a1b2;
-  font-size: 13px;
-  line-height: 16px;
-  font-weight: 400;
-  font-style: normal;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+    display: flex;
 
-.creatorsItem {
-  margin-right: 24px;
-  margin-bottom: 24px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
 
-  width: 90px;
+    .moreCreators {
+      width: 88px;
+      height: 88px;
 
-  cursor: pointer;
+      border-radius: 50%;
+      background-color: #1f1b2e;
 
-  img {
-    border-radius: 50%;
-    object-fit: cover;
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 500;
+
+      transition-duration: 0.3s;
+      color: #a5a1b2;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+
+      &:hover {
+        transition-duration: 0.3s;
+        background-color: #312A44;
+
+        color: #ffffff;
+      }
+    }
   }
-}
-
-.creatorsItemName {
-  color: #d9d7e0;
-  font-size: 13px;
-  line-height: 16px;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.creatorsItemJob {
-  color: #a5a1b2;
-
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 @media(max-width: 600px) {

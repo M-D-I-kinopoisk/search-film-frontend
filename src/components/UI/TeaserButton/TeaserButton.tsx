@@ -1,4 +1,5 @@
 import styles from '@/app/home.module.scss'
+
 import Image from 'next/image'
 
 type TeaserBtnProps = {
@@ -10,7 +11,7 @@ type TeaserBtnProps = {
     className: string
 }
 
-const TeaserBtn = (props: TeaserBtnProps) => {
+const TeaserButton = (props: TeaserBtnProps) => {
     return (
         <li className={props.className}>
             <div className={styles.content}>
@@ -24,4 +25,4 @@ const TeaserBtn = (props: TeaserBtnProps) => {
     )
 }
 
-export default TeaserBtn
+export default TeaserButton

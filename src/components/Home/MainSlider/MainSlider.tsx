@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import styles from '@/app/home.module.scss'
+import styles from './mainSlider.module.scss'
 
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Autoplay, Navigation} from 'swiper'
@@ -47,25 +47,30 @@ const MainSlider: React.FC = () => {
                 }}
                 modules={[Navigation, Autoplay]}
                 initialSlide={0}
-                slidesPerView={1.5}
                 speed={800}
                 navigation={true}
                 loop={true}
-                centeredSlides={true}>
+                centeredSlides={true}
+                breakpoints={{
+                    1060: {
+                        slidesPerView: 1.5
+                    }, 300: {
+                        slidesPerView: 1
+                    }
+                }}>
             {compilations.map((item) => (
                 <SwiperSlide className='main__slide' key={item.id}>
                     <Link className={styles.slide} href='/actor'>
                         <Image className={styles.image}
+                               width={1200}
+                               height={520}
                                src={item.imageURL}
-                               layout='fill'
-                               objectFit='cover'
-                               objectPosition='center'
                                alt=''/>
                         <div className={styles.slide__content}>
                             <h3 className={styles.title}>{item.title}</h3>
                             <div className={styles.subtitle}>{item.subtitle}</div>
                             <button className={styles.showButton}>
-                                Смотреть по подписке
+                              Показать подборку
                             </button>
                         </div>
                     </Link>

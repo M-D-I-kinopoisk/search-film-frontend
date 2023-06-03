@@ -11,11 +11,12 @@ import {BsBookmark} from 'react-icons/bs'
 import {FiShare} from 'react-icons/fi'
 import {MdOndemandVideo} from 'react-icons/md'
 
-import MainInfo from '@/components/Film/FilmInfo/MainInfo/MainInfo'
-import MyButton from '@/components/UI/MyButton/MyButton'
+import MainFilmInfo from '@/components/Film/FilmInfo/MainFilmInfo/MainFilmInfo'
+import UserButton from '@/components/UI/UserButton/UserButton'
 import FilmWatchOptions from '@/components/Film/FilmWatchOptions/FilmWatchOptions'
 
 import {funcDeclination} from '@/utils/funcDeclination'
+import Link from 'next/link'
 
 export type Film = {
     id: string,
@@ -65,8 +66,8 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
     const [visible, setVisible] = useState(false)
 
     return (
-        <div className={styles.infoContent}>
-            <MainInfo film={film}/>
+        <div className={styles.filmInfo}>
+            <MainFilmInfo film={film}/>
             <div className={styles.otherInfo}>
                 <div className={styles.actors}>
                     <div className={styles.actor}>
@@ -78,7 +79,7 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
                         </div>
                     </div>
                     {actors.slice(0, 4).map((actor) => (
-                        <div key={actor.id} className={styles.actor}>
+                        <Link href={`/person/${actor.member.id}`} key={actor.id} className={styles.actor}>
                             <div className={styles.actorWrapper}>
                                 <div>
                                     {actor.member.imageName === null ?
@@ -98,30 +99,30 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
                             <div className={styles.actorName}>
                                 {actor.member.nameRU}
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 
                 <div className={styles.userButtons}>
-                    <MyButton text={'Трейлер'}
-                              icon={<BsPlay size={16} color='rgba(255,255,255,.72)'/>}
-                              nameClass='trailerButton'/>
+                    <UserButton text={'Трейлер'}
+                                icon={<BsPlay size={16} color='rgba(255,255,255,.72)'/>}
+                                nameClass='trailerButton'/>
 
                     <div className={styles.buttonsWrapper}>
-                        <MyButton
+                        <UserButton
                             icon={<BsBookmark size={16} color='rgba(255,255,255,.72)'/>}
                             nameClass='markerButton'/>
 
-                        <MyButton icon={<FiShare size={16} color='rgba(255,255,255,.72)'/>}
-                                  nameClass='shareButton'/>
+                        <UserButton icon={<FiShare size={16} color='rgba(255,255,255,.72)'/>}
+                                    nameClass='shareButton'/>
                     </div>
                 </div>
             </div>
 
             <div className={styles.freeFilmsWrapper}>
-                <MyButton text={'Бесплатные фильмы'}
-                          icon={<MdOndemandVideo size={16} color='rgba(255,255,255,.72)'/>}
-                          nameClass='freeFilmsButton'/>
+                <UserButton text={'Бесплатные фильмы'}
+                            icon={<MdOndemandVideo size={16} color='rgba(255,255,255,.72)'/>}
+                            nameClass='freeFilmsButton'/>
             </div>
 
             <div className={styles.filmDescription}>

@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
+import {useState} from 'react'
 
 import styles from './filmsClause.module.scss'
 
-const FilmsClause: React.FC = () => {
-    const [visible, setVisible] = React.useState(false)
+const FilmsClause = () => {
+    const [visible, setVisible] = useState(false)
 
     return (
         <div className={styles.clause}>

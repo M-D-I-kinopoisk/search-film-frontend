@@ -1,8 +1,8 @@
 import styles from './home.module.scss'
 
-import TeaserBtn from '@/components/UI/TeaserBtn'
+import TeaserButton from '@/components/UI/TeaserButton/TeaserButton'
 import MainSlider from '@/components/Home/MainSlider/MainSlider'
-import FilmsCategory from '@/components/Home/FilmsCategory/FilmsCategory'
+import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
 import FilmsRating from '@/components/Home/FilmsRating/FilmsRating'
 import FilmsClause from '@/components/Home/FilmsClause/FilmsClause'
 
@@ -57,16 +57,17 @@ export default async function Home() {
     const adventures = await getAdventuresFilms()
     const ratingFilms = await getRatingFilms()
 
+
     return <div className={styles.wrapper}>
         <MainSlider/>
         <div className={styles.container}>
             <ul className={styles.teaser__list}>
-                <TeaserBtn src='https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/lightning.svg'
-                           alt='/' width={24} height={32} text='30 дней подписки за 1 ₽'
-                           className={styles.teaser__item}/>
-                <TeaserBtn src='https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/gift.svg'
-                           alt='/' width={56} height={32} text='Активировать сертификат'
-                           className={styles.teaser__item}/>
+                <TeaserButton src='https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/lightning.svg'
+                              alt='/' width={24} height={32} text='30 дней подписки за 1 ₽'
+                              className={styles.teaser__item}/>
+                <TeaserButton src='https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/gift.svg'
+                              alt='/' width={56} height={32} text='Активировать сертификат'
+                              className={styles.teaser__item}/>
             </ul>
         </div>
 

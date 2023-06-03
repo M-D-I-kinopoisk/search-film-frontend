@@ -1,9 +1,11 @@
 'use client'
 
-import styles from './filmCreators.module.scss'
+import styles from './filmCreatorsItem.module.scss'
+
 import Image from 'next/image'
-import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
 import Link from 'next/link'
+
+import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
 
 type CreatorsItemProps = {
     inModal?: any,
@@ -15,7 +17,7 @@ const FilmCreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
     return (
         <>
             {inModal ?
-                <Link href={`/person/${actor.member.id}`} className={styles.modalCreatorsItem}>
+                <Link href={`/person/${actor.member.id}`} className={styles.modalCreatorsLink}>
                     <div className={styles.modalCreatorsItemImg}>
                         {actor.member.imageName === null ?
                             <Image alt='Создатель'
@@ -37,7 +39,7 @@ const FilmCreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
                     </div>
                 </Link>
                 :
-                <Link href={`/person/${actor.member.id}`} className={styles.creatorsItem}>
+                <Link href={`/person/${actor.member.id}`} className={styles.creatorsLink}>
                     {actor.member.imageName === null ?
                         <Image alt='Создатель'
                                width={88}

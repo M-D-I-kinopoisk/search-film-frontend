@@ -4,7 +4,7 @@ import {useEffect} from 'react'
 
 import styles from './filmCreators.module.scss'
 
-import FilmCreatorsItem from './FilmCreatorsItem'
+import FilmCreatorsItem from './FilmCreatorsItem/FilmCreatorsItem'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms} from '@/redux/FilmsSlice'
@@ -50,10 +50,10 @@ const FilmCreators = ({actors, id}: Creators) => {
                 {actors.slice(0, 10).map((actor) => (
                     <FilmCreatorsItem actor={actor} key={actor.id}/>
                 ))}
-                <div onClick={() => modalOpenHandler()}
-                     className={styles.moreCreatorsBtn}>
+                <button onClick={() => modalOpenHandler()}
+                        className={styles.moreCreators}>
                     Еще
-                </div>
+                </button>
             </div>
         </div>
     )

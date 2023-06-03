@@ -69,8 +69,8 @@ body {
 
   .swiper-button-prev,
   .swiper-button-next {
-    height: 290px !important;
-    margin-top: -155px !important;
+    height: 100% !important;
+    margin-top: -141px !important;
 
     background-color: #100e19;
   }
@@ -78,12 +78,12 @@ body {
 
 .slider__rating {
   max-width: 1303px;
-  padding: 0 22px 0 22px !important;
+  padding: 5px 22px 0 22px !important;
 
   .swiper-button-prev,
   .swiper-button-next {
-    height: 500px !important;
-    margin-top: -250px !important;
+    height: 100% !important;
+    margin-top: -245px !important;
 
     background-color: #100e19;
   }
@@ -206,7 +206,45 @@ button {
   animation: spin 2s linear infinite;
 }
 
+
+@media (max-width: 1060px) {
+  .main__slider {
+    padding: 0 21px 0 21px !important;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: calc(100% - 99.5%) !important;
+    }
+
+    .swiper-button-prev {
+      padding-right: 0;
+
+      margin-left: 0;
+    }
+
+    .swiper-button-next {
+      padding-left: 0;
+
+      margin-right: 0;
+    }
+  }
+}
+
+
+@media (max-width: 600px) {
+  .main__slider, .slider__rating, .slider__films {
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
+  }
+}
+
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

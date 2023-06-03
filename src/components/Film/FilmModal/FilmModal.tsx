@@ -4,10 +4,10 @@ import styles from './filmModal.module.scss'
 
 import Image from 'next/image'
 
-import FilmCommentsItem from '../FilmComments/FilmCommentsItem'
+import FilmCommentsItem from '../FilmComments/FilmCommentsItem/FilmCommentsItem'
 
-import FilmCreatorsItem from '../FilmCreators/FilmCreatorsItem'
-import FilmTrailersItem from '../FilmTrailers/FilmTrailersItem'
+import FilmCreatorsItem from '../FilmCreators/FilmCreatorsItem/FilmCreatorsItem'
+import FilmTrailersItem from '../FilmTrailers/FilmTrailersItem/FilmTrailersItem'
 
 import {BsChevronRight} from 'react-icons/bs'
 import {RiUserLine} from 'react-icons/ri'
