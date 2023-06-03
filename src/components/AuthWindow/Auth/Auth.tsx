@@ -10,8 +10,9 @@ import {TbPencil} from 'react-icons/tb'
 import styles from './auth.module.scss'
 import {useDispatch} from 'react-redux'
 import {toggle} from '@/redux/AuthToggleSlice'
-import {Simulate} from "react-dom/test-utils";
+import {Simulate} from 'react-dom/test-utils'
 import submit = Simulate.submit;
+import {signIn} from "next-auth/react";
 
 const Auth = () => {
 
@@ -54,9 +55,12 @@ const Auth = () => {
         }, 1300)
     }
 
-    const submitHandler = (e) => {
-        e.preventDefault()
-        console.log(e.target)
+    const onSubmit = async () => {
+      const result = await signIn('credentials', {
+          email : inputLogin,
+          password : inputPass,
+          redirect : false
+      })
     }
 
 
@@ -76,7 +80,7 @@ const Auth = () => {
                                  style={animate ? {width: '33%'} : undefined}></div>
                         </div>
                         <div className={styles.container}>
-                            <form className={styles.form} onSubmit={submitHandler}>
+                            <div className={styles.form} >
                                 <div className={styles.form__blockText}>
                                     <p className={styles.form__title}>Войдите или зарегистрируйтесь</p>
                                     {!toggleBlock &&
@@ -124,7 +128,7 @@ const Auth = () => {
                                         <div className={styles.form__blockTwo}>
                                             <div className={styles.form__blockText}>
                                                 <p className={styles.form__title}>Придумайте пароль для входа</p>
-                                                <span className={styles.form__text}>установите пароль для входа через email, минимум 6 символов
+                                                <span className={styles.form__text}>Установите пароль для входа через email, минимум 4 символов
                                         </span>
                                             </div>
                                             <div className={styles.form__LoginContainer}>
@@ -137,7 +141,8 @@ const Auth = () => {
                                             </div>
                                             <div className={styles.form__btnContainer}>
                                                 <button
-                                                    type={'submit'}
+                                                    // type={'submit'}
+                                                    onClick={onSubmit}
                                                     className={inputPass.length > 0 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
                                                     Продолжить
                                                 </button>
@@ -145,7 +150,7 @@ const Auth = () => {
                                         </div>
                                     </div>)
                                 }
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

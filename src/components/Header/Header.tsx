@@ -19,9 +19,17 @@ import {MdOutlineNotifications} from 'react-icons/md'
 import {FiUser} from 'react-icons/fi'
 
 import styles from './header.module.scss'
+import {signIn, signOut, useSession} from 'next-auth/react'
 
 
 const Header = () => {
+
+    const {data: session} = useSession()
+
+    console.log(session)
+
+
+
     const [headerModule, setHeaderModule] = useState(false)
 
     const [categoryDropDown, setCategoryDropDown] = useState('')
@@ -43,7 +51,7 @@ const Header = () => {
 
     // const {locale} = useRouter()
 
-    const t =  ru
+    const t = ru
 
 
     const handleMouseEnter = (e) => {
@@ -86,12 +94,12 @@ const Header = () => {
                 <NavBar handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}/>
 
                 <div className={styles.header__right}>
-                    
-                        <Link
-                            className={styles.header__linkAdmin}
-                            href={'/admin'}>
-                            ADMIN
-                        </Link>
+
+                    <Link
+                        className={styles.header__linkAdmin}
+                        href={'/admin'}>
+                        ADMIN
+                    </Link>
 
                     {/*<Locales/>*/}
 
@@ -130,10 +138,25 @@ const Header = () => {
                         id='header-user'
                         onMouseEnter={(e) => handleMouseEnter(e)}
                         className={styles.header__rightUser}>
-                        <Link id='header-user' className={styles.header__btnUser} href={''} title='Войти в профиль'>
-                            <FiUser size={20}/>
-                        </Link>
+                        {session?.user ?
+                            <Link id='header-user' className={`${styles.header__btnUser} ${styles.userActive}`} href={''} title='Войти в профиль'>
+                                П
+                            </Link> :
+                            <Link id='header-user' className={styles.header__btnUser} href={''} title='Войти в профиль'>
+                                <FiUser size={20}/>
+                            </Link>
+
+                        }
                     </div>
+                    {session?.user ?
+                        <button className={styles.header__rightUser} onClick={() => signOut()}>
+                            Выход
+                        </button> :
+                        <button className={styles.header__rightUser} onClick={() => signIn()}>
+                            Вход
+                        </button>
+
+                    }
                 </div>
             </div>
         </div>

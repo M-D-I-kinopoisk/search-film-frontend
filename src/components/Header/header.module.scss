@@ -180,3 +180,13 @@
     box-shadow: 0 4px 16px rgba(255, 255, 255, .24);
   }
 }
+
+.userActive {
+  background-color: #66bf3c;
+  &:hover {
+    color: #fff;
+    border-color: #fff;
+    border-width: 0;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, .24);
+  }
+}
