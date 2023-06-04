@@ -29,10 +29,11 @@ export default function Registration() {
         }
     })
 
+    const [inputName, setInputName] = useState('')
 
     const [inputLogin, setInputLogin] = useState('')
 
-    const [inputPass, setInputPass] = useState('')
+    const [inputPasswords, setInputPasswords] = useState({pass1 : '', pass2: ''})
 
     const [toggleBlock, setToggleBlock] = useState(false)
 
@@ -112,16 +113,16 @@ export default function Registration() {
                                         <div
                                             className={animate ? `${styles.form__LoginContainer} ${styles.btn__animate}` : `${styles.form__LoginContainer}`}>
                                             <Input label={'Придумайте имя'}
-                                                   onChange={(e) => setInputLogin(e.target.value)}
+                                                   onChange={(e) => setInputName(e.target.value)}
                                                    type={'text'}
-                                                   value={inputLogin}
+                                                   value={inputName}
                                                    login={true}
                                             />
                                         </div>
                                         <div
                                             className={animate ? `${styles.form__LoginContainer} ${styles.btn__animate}` : `${styles.form__LoginContainer}`}>
                                             <Input label={'Введите email'}
-                                                   // onChange={(e) => setInputLogin(e.target.value)}
+                                                   onChange={(e) => setInputLogin(e.target.value)}
                                                    type={'text'}
                                                    value={inputLogin}
                                                    login={true}
@@ -160,17 +161,25 @@ export default function Registration() {
                                             </div>
                                             <div className={styles.form__LoginContainer}>
                                                 <Input label={'Введите пароль'}
-                                                       onChange={(e) => setInputPass(e.target.value)}
+                                                       onChange={(e) => setInputPasswords({...inputPasswords, pass1 : e.target.value})}
                                                        type={'password'}
                                                        password={true}
-                                                       value={inputPass}
+                                                       value={inputPasswords.pass1}
+                                                />
+                                            </div>
+                                            <div className={styles.form__LoginContainer}>
+                                                <Input label={'Подтвердите пароль'}
+                                                       onChange={(e) => setInputPasswords({...inputPasswords, pass2 : e.target.value})}
+                                                       type={'password'}
+                                                       password={true}
+                                                       value={inputPasswords.pass2}
                                                 />
                                             </div>
                                             <div className={styles.form__btnContainer}>
                                                 <button
                                                     // type={'submit'}
                                                     onClick={onSubmit}
-                                                    className={inputPass.length > 0 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
+                                                    className={inputPasswords.pass1 === inputPasswords.pass2  ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
                                                     Продолжить
                                                 </button>
                                                 <button onClick={next}>вперед</button>

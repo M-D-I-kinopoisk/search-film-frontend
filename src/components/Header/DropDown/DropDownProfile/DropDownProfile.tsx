@@ -27,6 +27,7 @@ const DropDownProfile = () => {
         }))
     }
 
+
     return (
         <div className={style.dropDown__user}>
             <div className={style.dropDown__userLeftBlock}>

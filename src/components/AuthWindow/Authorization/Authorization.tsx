@@ -204,9 +204,9 @@ export default function Authorization() {
                                         <p className={styles.form__title}>Вы успешно вошли</p>
                                     </div>}
                                 {toggleBlock &&
-                                    session?.user?.message &&
+                                    !session?.user?.token &&
                                     <div className={styles.form__errorText} >
-                                        <p className={styles.form__title}>{session?.user?.message || 'неправильные данные'}</p>
+                                        <p className={styles.form__title}>{session?.user?.message || 'Неправильные данные'}</p>
                                         <p className={styles.form__title} onClick={buttonClickPop}>Нажмите чтобы вернуться назад</p>
                                     </div>}
                             </div>
