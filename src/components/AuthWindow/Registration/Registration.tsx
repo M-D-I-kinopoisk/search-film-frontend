@@ -1,27 +1,23 @@
-'use client'
-
-import {useState, useEffect} from 'react'
-
-import Input from '@/components/UI/Input/Input'
-
+import styles from '@/components/AuthWindow/Auth/auth.module.scss'
 import {VscChromeClose} from 'react-icons/vsc'
+import Input from '@/components/UI/Input/Input'
 import {TbPencil} from 'react-icons/tb'
-
-import styles from './auth.module.scss'
-import {useDispatch} from 'react-redux'
-import {toggle} from '@/redux/AuthToggleSlice'
-import {Simulate} from 'react-dom/test-utils'
-import submit = Simulate.submit;
 import {signIn, useSession} from 'next-auth/react'
+import {useDispatch, useSelector} from 'react-redux'
+import {selectToggle, toggle} from '@/redux/AuthToggleSlice'
+import {useEffect, useState} from 'react'
 
-const Auth = () => {
+export default function Registration() {
 
     const {data: session} = useSession()
 
     const dispatch = useDispatch()
+    const {auth} = useSelector(selectToggle)
+
     const closeAuth = () => {
         dispatch(toggle({
-            auth: false
+            authorization: false,
+            registration: false
         }))
     }
 
@@ -58,14 +54,14 @@ const Auth = () => {
     }
 
     const onSubmit = async () => {
-      const result = await signIn('credentials', {
-          email : inputLogin,
-          password : inputPass,
-          redirect : false
-      })
+        const result = await signIn('credentials', {
+            email: inputLogin,
+            password: inputPass,
+            redirect: false
+        })
         await console.log(result)
         await console.log(session?.user.idUser)
-        await  console.log(session?.user.token)
+        await console.log(session?.user.token)
         // const resProfile = await fetch(`http://localhost:12120/api/profiles/user/${session?.user.idUser}`, {
         //     method: 'GET',
         //     headers: {
@@ -89,7 +85,7 @@ const Auth = () => {
                 <div className={styles.modalScroll}>
                     <div className={styles.auth}>
                         <div className={styles.auth__header}>
-                            <p className={styles.auth__headerText}>{toggleBlock ? inputLogin : 'Вход или регистрация'}</p>
+                            <p className={styles.auth__headerText}>{toggleBlock ? inputLogin : 'Регистрация'}</p>
                             <button onClick={() => closeAuth()} className={styles.auth__btnClose}>
                                 <VscChromeClose size={20}/>
                             </button>
@@ -99,11 +95,14 @@ const Auth = () => {
                                  style={animate ? {width: '33%'} : undefined}></div>
                         </div>
                         <div className={styles.container}>
-                            <div className={styles.form} >
-                                <div className={styles.form__blockText}>
-                                    <p className={styles.form__title}>Войдите или зарегистрируйтесь</p>
+                            <div className={styles.form}>
+                                <div className={styles.form__blockText} onClick={() => dispatch(toggle({
+                                    authorization: true,
+                                    registration: false
+                                }))}>
+                                    <p className={styles.form__title} >Зарегистрируйтесь или нажмите сюда для входа</p>
                                     {!toggleBlock &&
-                                        <span className={styles.form__text}>чтобы пользоваться сервисом на любом
+                                        <span className={styles.form__text}>и пользуйтесь сервисом на любом
                                             устройстве
                                         </span>}
                                 </div>
@@ -112,8 +111,17 @@ const Auth = () => {
                                     <>
                                         <div
                                             className={animate ? `${styles.form__LoginContainer} ${styles.btn__animate}` : `${styles.form__LoginContainer}`}>
-                                            <Input label={'Через email или телефон'}
+                                            <Input label={'Придумайте имя'}
                                                    onChange={(e) => setInputLogin(e.target.value)}
+                                                   type={'text'}
+                                                   value={inputLogin}
+                                                   login={true}
+                                            />
+                                        </div>
+                                        <div
+                                            className={animate ? `${styles.form__LoginContainer} ${styles.btn__animate}` : `${styles.form__LoginContainer}`}>
+                                            <Input label={'Введите email'}
+                                                   // onChange={(e) => setInputLogin(e.target.value)}
                                                    type={'text'}
                                                    value={inputLogin}
                                                    login={true}
@@ -178,5 +186,3 @@ const Auth = () => {
         </div>
     )
 }
-
-export default Auth

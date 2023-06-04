@@ -5,8 +5,7 @@ import type {NextRequest} from 'next/server'
 export default withAuth(
     function middleware(request: NextRequest) {
 
-        // @ts-ignore
-        if (request.nextUrl.pathname.startsWith('/admin') && request.nextauth.token?.role.name !== 'ADMIN') {
+        if (request.nextUrl.pathname.startsWith('/admin') && request.nextauth.token?.role?.name !== 'ADMIN') {
             return NextResponse.rewrite(new URL('/', request.url))
         }
     },
@@ -14,7 +13,6 @@ export default withAuth(
         callbacks: {
             authorized: ({token}) => !!token
         },
-        secret: process.env.NEXTAUTH_SECRET,
     }
 )
 

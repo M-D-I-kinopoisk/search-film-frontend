@@ -1,14 +1,16 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 interface AuthToggleSliceState {
-    authWindow : {
-        auth : boolean
+    auth : {
+        registration : boolean
+        authorization : boolean
     }
 }
 
 const initialState: AuthToggleSliceState = {
-    authWindow : {
-        auth : false
+    auth : {
+        registration : false,
+        authorization : false
     }
 }
 
@@ -18,7 +20,7 @@ const AuthToggleSlice = createSlice({
     initialState: initialState,
     reducers: {
         toggle(state, action) {
-            state.authWindow = action.payload
+            state.auth = action.payload
         }
     }
 })

@@ -22,7 +22,8 @@ const DropDownProfile = () => {
     const dispatch = useDispatch()
     const openAuth = () => {
         dispatch(toggle({
-            auth: true
+            authorization: true,
+            registration: false
         }))
     }
 
@@ -75,7 +76,7 @@ const DropDownProfile = () => {
                 </Link>
             </div>
             <div className={style.dropDown__userRightBlock}>
-                {session?.user ?
+                {session?.user?.token ?
                     <button onClick={() => signOut({
                         redirect: false
                     })} className={style.dropDown__userRightBlock_btn}>

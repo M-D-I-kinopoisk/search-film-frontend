@@ -26,7 +26,7 @@ const Header = () => {
 
     const {data: session} = useSession()
 
-    console.log(session)
+    // console.log(session)
 
 
 
@@ -141,9 +141,10 @@ const Header = () => {
                         id='header-user'
                         onMouseEnter={(e) => handleMouseEnter(e)}
                         className={styles.header__rightUser}>
-                        {session?.user ?
+                        {session?.user?.token ?
                             <div id='header-user' className={styles.userActive} title='Войти в профиль'>
-                                {session?.user?.role?.name === 'ADMIN' ? 'A' : 'П'}
+                                {session?.user?.role?.name === 'ADMIN' ? 'A' : ''}
+
                             </div> :
                             <div id='header-user' className={styles.header__btnUser} >
                                 <FiUser size={20}/>
