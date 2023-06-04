@@ -162,6 +162,7 @@
 
 
 .header__btnUser {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -177,6 +178,25 @@
     color: #fff;
     border-color: #fff;
     border-width: 2px;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, .24);
+  }
+}
+
+.userActive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 47.2px;
+  height: 47.2px;
+  transition-duration: 0.4s;
+  background-color: #4a9423;
+  color: white;
+  border-radius: 8px;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover {
     box-shadow: 0 4px 16px rgba(255, 255, 255, .24);
   }
 }

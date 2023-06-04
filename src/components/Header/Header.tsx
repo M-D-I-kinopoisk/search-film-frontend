@@ -19,9 +19,17 @@ import {MdOutlineNotifications} from 'react-icons/md'
 import {FiUser} from 'react-icons/fi'
 
 import styles from './header.module.scss'
+import {signIn, signOut, useSession} from 'next-auth/react'
 
 
 const Header = () => {
+
+    const {data: session} = useSession()
+
+    // console.log(session)
+
+
+
     const [headerModule, setHeaderModule] = useState(false)
 
     const [categoryDropDown, setCategoryDropDown] = useState('')
@@ -43,7 +51,7 @@ const Header = () => {
 
     // const {locale} = useRouter()
 
-    const t =  ru
+    const t = ru
 
 
     const handleMouseEnter = (e) => {
@@ -86,12 +94,15 @@ const Header = () => {
                 <NavBar handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}/>
 
                 <div className={styles.header__right}>
-                    
+                    {session?.user?.role?.name === 'ADMIN' ?
                         <Link
                             className={styles.header__linkAdmin}
                             href={'/admin'}>
                             ADMIN
-                        </Link>
+                        </Link> :
+                        ''
+                    }
+
 
                     {/*<Locales/>*/}
 
@@ -130,9 +141,16 @@ const Header = () => {
                         id='header-user'
                         onMouseEnter={(e) => handleMouseEnter(e)}
                         className={styles.header__rightUser}>
-                        <Link id='header-user' className={styles.header__btnUser} href={''} title='Войти в профиль'>
-                            <FiUser size={20}/>
-                        </Link>
+                        {session?.user?.token ?
+                            <div id='header-user' className={styles.userActive} title='Войти в профиль'>
+                                {session?.user?.role?.name === 'ADMIN' ? 'A' : ''}
+
+                            </div> :
+                            <div id='header-user' className={styles.header__btnUser} >
+                                <FiUser size={20}/>
+                            </div>
+
+                        }
                     </div>
                 </div>
             </div>
