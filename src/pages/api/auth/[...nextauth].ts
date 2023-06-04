@@ -1,5 +1,6 @@
 import NextAuth, {NextAuthOptions} from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
+// import {User} from '@/types/interface'
 
 export const authOptions: NextAuthOptions = {
     // Configure one or more authentication providers
@@ -36,8 +37,13 @@ export const authOptions: NextAuthOptions = {
             }
         })
     ],
+    pages : {
+        signIn : '/',
+        signOut : '/',
+        error : '/'
+    },
     session : {
-      strategy : 'jwt'  
+      strategy : 'jwt'
     },
     callbacks : {
         async jwt({token, user}) {

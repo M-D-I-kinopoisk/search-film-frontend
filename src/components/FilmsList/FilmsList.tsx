@@ -71,12 +71,12 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             }
 
 
-            if (searchParams.get('ivi_rating_10_gte')) {
+            if (searchParams?.get('ivi_rating_10_gte')) {
 
                 const ratingStart = Number(searchParams.get('ivi_rating_10_gte'))
                 newFilter = {...newFilter, 'ratingStart': ratingStart}
             }
-            if (searchParams.get('year')) {
+            if (searchParams?.get('year')) {
 
                 const yearStart = Number(searchParams.get('year')?.split('_')[0])
                 const yearEnd = Number(searchParams.get('year')?.split('_')[1])
@@ -84,26 +84,26 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 newFilterText = {...newFilterText, 'arrYears': [nameYears]}
                 newFilter = {...newFilter, 'yearStart': yearStart, 'yearEnd': yearEnd}
             }
-            if (searchParams.get('sort')) {
+            if (searchParams?.get('sort')) {
 
                 const typeSorting = searchParams.get('sort')
                 // @ts-ignore
                 newFilter = {...newFilter, 'typeSorting': typeSorting}
             }
-            if (searchParams.get('ivi_rating_10_gte')) {
+            if (searchParams?.get('ivi_rating_10_gte')) {
 
                 const ratingStart = Number(searchParams.get('ivi_rating_10_gte'))
 
                 newFilter = {...newFilter, 'ratingStart': ratingStart}
                 newFilterText = {...newFilterText, 'ratingStart': [ratingStart]}
             }
-            if (searchParams.get('ivi_grades')) {
+            if (searchParams?.get('ivi_grades')) {
 
                 const countRatingStart = Number(searchParams.get('ivi_grades'))
                 newFilter = {...newFilter, 'countRatingStart': countRatingStart}
                 newFilterText = {...newFilterText, 'countRatingStart': [countRatingStart]}
             }
-            if (searchParams.get('dir')) {
+            if (searchParams?.get('dir')) {
 
                 const strMembersDir = searchParams.get('dir')
 
@@ -136,7 +136,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             }
 
 
-            if (searchParams.get('actor')) {
+            if (searchParams?.get('actor')) {
 
                 const strMembersActor = searchParams.get('actor')
 

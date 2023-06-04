@@ -94,12 +94,15 @@ const Header = () => {
                 <NavBar handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}/>
 
                 <div className={styles.header__right}>
+                    {session?.user?.role?.name === 'ADMIN' ?
+                        <Link
+                            className={styles.header__linkAdmin}
+                            href={'/admin'}>
+                            ADMIN
+                        </Link> :
+                        ''
+                    }
 
-                    <Link
-                        className={styles.header__linkAdmin}
-                        href={'/admin'}>
-                        ADMIN
-                    </Link>
 
                     {/*<Locales/>*/}
 
@@ -139,24 +142,15 @@ const Header = () => {
                         onMouseEnter={(e) => handleMouseEnter(e)}
                         className={styles.header__rightUser}>
                         {session?.user ?
-                            <Link id='header-user' className={`${styles.header__btnUser} ${styles.userActive}`} href={''} title='Войти в профиль'>
-                                П
-                            </Link> :
-                            <Link id='header-user' className={styles.header__btnUser} href={''} title='Войти в профиль'>
+                            <div id='header-user' className={styles.userActive} title='Войти в профиль'>
+                                {session?.user?.role?.name === 'ADMIN' ? 'A' : 'П'}
+                            </div> :
+                            <div id='header-user' className={styles.header__btnUser} >
                                 <FiUser size={20}/>
-                            </Link>
+                            </div>
 
                         }
                     </div>
-                    {session?.user ?
-                        <button className={styles.header__rightUser} onClick={() => signOut()}>
-                            Выход
-                        </button> :
-                        <button className={styles.header__rightUser} onClick={() => signIn()}>
-                            Вход
-                        </button>
-
-                    }
                 </div>
             </div>
         </div>

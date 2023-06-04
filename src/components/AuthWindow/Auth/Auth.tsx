@@ -12,9 +12,11 @@ import {useDispatch} from 'react-redux'
 import {toggle} from '@/redux/AuthToggleSlice'
 import {Simulate} from 'react-dom/test-utils'
 import submit = Simulate.submit;
-import {signIn} from "next-auth/react";
+import {signIn, useSession} from 'next-auth/react'
 
 const Auth = () => {
+
+    const {data: session} = useSession()
 
     const dispatch = useDispatch()
     const closeAuth = () => {
@@ -61,8 +63,25 @@ const Auth = () => {
           password : inputPass,
           redirect : false
       })
+        await console.log(result)
+        await console.log(session?.user.idUser)
+        await  console.log(session?.user.token)
+        const resProfile = await fetch(`http://localhost:12120/api/profiles/user/${session?.user.idUser}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization : `Bearer ${session?.user.token}`
+            }
+        })
+        const profile = await resProfile.json()
+        console.log(profile)
+
+        // setListGenres(genres)
     }
 
+    const next = async () => {
+
+    }
 
     return (
         <div className={styles.modal}>
@@ -146,6 +165,7 @@ const Auth = () => {
                                                     className={inputPass.length > 0 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
                                                     Продолжить
                                                 </button>
+                                                <button onClick={next}>вперед</button>
                                             </div>
                                         </div>
                                     </div>)

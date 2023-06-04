@@ -12,8 +12,11 @@ import {useDispatch} from 'react-redux'
 import {toggle} from '@/redux/AuthToggleSlice'
 
 import style from './dropDownProfile.module.scss'
+import {signOut, useSession} from 'next-auth/react'
 
 const DropDownProfile = () => {
+
+    const {data: session} = useSession()
 
 
     const dispatch = useDispatch()
@@ -72,9 +75,16 @@ const DropDownProfile = () => {
                 </Link>
             </div>
             <div className={style.dropDown__userRightBlock}>
-                <button onClick={() => openAuth()} className={style.dropDown__userRightBlock_btn}>Войти или
-                    зарегистрироваться
-                </button>
+                {session?.user ?
+                    <button onClick={() => signOut({
+                        redirect: false
+                    })} className={style.dropDown__userRightBlock_btn}>
+                        Выйти
+                    </button> :
+                    <button onClick={() => openAuth()} className={style.dropDown__userRightBlock_btn}>Войти или
+                        зарегистрироваться
+                    </button>
+                }
                 <div className={style.dropDown__userRightBlock_group}>
                     <Link className={style.dropDown__userLink}
                           href={'https://www.ivi.ru/profile/settings'}>Настройки</Link>
