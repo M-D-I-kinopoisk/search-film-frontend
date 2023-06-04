@@ -63,6 +63,8 @@ async function getCommentsFilmById(id) {
     }
 }
 
+
+
 async function getGenresFilm(genres) {
     const genresId = genres?.map((genre) => {
         return genre.id

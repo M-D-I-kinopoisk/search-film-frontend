@@ -2,10 +2,12 @@
 
 import styles from './filmCommentsItem.module.scss'
 
-import {AiOutlineLike} from 'react-icons/ai'
+import {AiOutlineLike, AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai'
 
 import {Comment} from '@/components/Film/FilmComments/FilmComments'
 import {useState} from 'react'
+import {funcDeclination} from '@/utils/funcDeclination'
+import FilmModalComment from '@/components/Film/FilmComments/FilmModalComment/FilmModalComment'
 
 interface CommentsItemProps {
     inModal?: any,
@@ -14,11 +16,22 @@ interface CommentsItemProps {
 
 const FilmCommentsItem = ({inModal, comment}: CommentsItemProps) => {
     const date = new Date(comment.createdAt).toLocaleDateString()
-    const [showFullText, setShowFullText] = useState(false)
 
+    const [showCommentAnswers, setShowCommentAnswers] = useState(false)
+    const [childrenComments, setChildrenComments] = useState({})
 
-    const addNewCommentHandler = () => {
-        // http://localhost:12120/api
+    async function showCommentAnswerHandler() {
+        try {
+            const response = await fetch(`http://localhost:12120/api/comments/comment/${comment.id}`)
+            const data = await response.json()
+
+            setChildrenComments(data)
+
+        } catch (e) {
+            console.log(e)
+        }
+
+        setShowCommentAnswers(!showCommentAnswers)
     }
 
     return (
@@ -26,29 +39,35 @@ const FilmCommentsItem = ({inModal, comment}: CommentsItemProps) => {
             {inModal ?
                 <li className={styles.modalComment}>
                     <div>
-                        <div className={styles.modalInfoHeader}>
-                            <div className={styles.modalAvatar}>А</div>
-                            <div className={styles.modalName}>{comment.profile.profileName}</div>
-                            <div className={styles.modalDate}>{date}</div>
-                            <div className={styles.modalLikes}>
-                                <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'}/>
-                                <span>128</span>
-                                <AiOutlineLike size={16} fill={'rgba(126,121,143,.72)'}/>
-                            </div>
-                        </div>
-                        <div className={styles.modalDescription}>
-                            <p className={showFullText ? styles.fullText : styles.partialText}>{comment.text}</p>
-                        </div>
-                     <div className={styles.modalButtonsContainer}>
-                         {comment.text.length > 100 && (
-                             <button className={styles.showMore} onClick={() => setShowFullText(!showFullText)}>
-                                 {showFullText ? 'Свернуть' : 'Развернуть'}
-                             </button>
-                         )}
-                         <button onClick={() => addNewCommentHandler()} className={styles.modalAnswer}>
-                             Ответить
-                         </button>
-                     </div>
+                        <FilmModalComment comment={comment}/>
+                        {(comment.childrenCount > 0) &&
+                            <>
+                                <button className={styles.answer} onClick={() => showCommentAnswerHandler()}>
+                                    {!showCommentAnswers ? <AiFillCaretDown/> : <AiFillCaretUp/>}
+                                    {funcDeclination(comment.childrenCount, ['ответ', 'ответа', 'ответов'])}
+                                </button>
+                                {showCommentAnswers && childrenComments['children'].map((comment) => (
+                                    <div key={comment.id} className={styles.childrenComment}>
+                                        <>
+                                            <FilmModalComment comment={comment}/>
+                                            {(comment.children.length > 0) &&
+                                                <>
+                                                    <button className={styles.answer} onClick={() => showCommentAnswerHandler()}>
+                                                        {!showCommentAnswers ? <AiFillCaretDown/> : <AiFillCaretUp/>}
+                                                        {funcDeclination(comment.children.length, ['ответ', 'ответа', 'ответов'])}
+                                                    </button>
+                                                    {showCommentAnswers && comment.children.map((comment) => (
+                                                        <div key={comment.id} className={styles.childrenComment}>
+                                                            <FilmModalComment comment={comment}/>
+                                                        </div>
+                                                    ))}
+                                                </>
+                                            }
+                                        </>
+                                    </div>
+                                ))}
+                            </>
+                        }
                     </div>
                 </li>
                 :

@@ -19,6 +19,7 @@ import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 import {funcDeclination} from '@/utils/funcDeclination'
 
 import {Actor, Film, FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
+import {Comment} from '@/components/Film/FilmComments/FilmComments'
 
 import {useRouter} from 'next/navigation'
 
@@ -28,10 +29,6 @@ type MyModalProps = {
     filmComments: Comment[],
     film: Film,
     id: string
-}
-
-function CommentsForm() {
-    return null
 }
 
 const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {

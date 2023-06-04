@@ -12,6 +12,7 @@ import {useEffect} from 'react'
 
 export type Comment = {
     id: number,
+    childrenCount: number,
     profile: {
         profileName: string
     },
@@ -47,7 +48,6 @@ const CommentList = ({id, filmComments}: Comments) => {
         router.push(`film/${id}/comments`)
     }
 
-    console.log(filmComments)
 
     return (
         <div className={styles.comments}>
