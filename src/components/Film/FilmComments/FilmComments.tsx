@@ -2,7 +2,7 @@
 
 import styles from './filmComments.module.scss'
 
-import FilmCommentsItem from './FilmCommentsItem'
+import FilmCommentsItem from './FilmCommentsItem/FilmCommentsItem'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
@@ -12,11 +12,13 @@ import {useEffect} from 'react'
 
 export type Comment = {
     id: number,
+    childrenCount: number,
     profile: {
         profileName: string
     },
     createdAt: string,
-    text: string
+    text: string,
+    title: string
 }
 
 interface Comments {
@@ -55,17 +57,17 @@ const CommentList = ({id, filmComments}: Comments) => {
                     Комментарии
                 </div>
 
-                <div onClick={() => modalOpenHandler()}
-                     className={styles.addCommentButton}>
+                <button onClick={() => modalOpenHandler()}
+                        className={styles.addComment}>
                     Оставить комментарий
-                </div>
+                </button>
             </div>
 
-            <div className={styles.commentsItems}>
+            <ul className={styles.commentsItems}>
                 {filmComments.map((comment) => (
                     <FilmCommentsItem key={comment.id} comment={comment}/>
                 ))}
-            </div>
+            </ul>
         </div>
     )
 }

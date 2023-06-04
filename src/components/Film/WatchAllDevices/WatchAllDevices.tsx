@@ -1,7 +1,9 @@
 'use client'
 
 import styles from './WatchAllDevices.module.scss'
+
 import Image from 'next/image'
+
 import {Film} from '@/components/Film/FilmInfo/FilmInfo'
 
 interface AllDevices {
@@ -11,7 +13,7 @@ interface AllDevices {
 const WatchAllDevices = ({film}: AllDevices) => {
     return (
         <div className={styles.devices}>
-            <div>
+            <div className={styles.devicesInfo}>
                 <div className={styles.devicesInfoTitle}>
                     Cмотреть «{film.nameRU}» на всех устройствах
                 </div>
@@ -40,14 +42,14 @@ const WatchAllDevices = ({film}: AllDevices) => {
 
                 <Image className={styles.mainIpadImg}
                        alt='frame'
-                       width={188}
-                       height={102}
+                       width={184}
+                       height={250}
                        src={`http://localhost:12120/api/films/images/${film.imageName}`}/>
 
                 <Image className={styles.mainTvImg}
                        alt='frame'
                        width={337}
-                       height={192}
+                       height={350}
                        src={`http://localhost:12120/api/films/images/${film.imageName}`}/>
             </div>
         </div>

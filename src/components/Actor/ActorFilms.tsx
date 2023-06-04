@@ -55,8 +55,7 @@ const ActorFilms = ({actorFilms}) => {
             {!visible &&
                 (actorFilmsByProfession[filmKeys[active]].length > 3 &&
                     <div className={styles.moreFilms}>
-                        <button onClick={() => setVisible(true)}>Показать еще
-                            {funcDeclination(actorFilmsShow.length, ['фильм', 'фильма', 'фильмов'])}
+                        <button onClick={() => setVisible(true)}>Показать еще {funcDeclination(actorFilmsShow.length, ['фильм', 'фильма', 'фильмов'])}
                         </button>
                     </div>
                 )}

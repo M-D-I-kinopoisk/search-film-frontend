@@ -4,19 +4,21 @@ import React from 'react'
 
 import styles from './filmTrailers.module.scss'
 
-import FilmTrailersItem from './FilmTrailersItem'
+import FilmTrailersItem from './FilmTrailersItem/FilmTrailersItem'
 
 import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 import {useDispatch, useSelector} from 'react-redux'
+
 import {useRouter} from 'next/navigation'
+
 import {FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
 
-interface TrailersState {
+interface FilmTrailersState {
     filmInfo: FilmInfo,
     id: string
 }
 
-const FilmTrailers = ({filmInfo, id}: TrailersState) => {
+const FilmTrailers = ({filmInfo, id}: FilmTrailersState) => {
     const router = useRouter()
 
     const {modalOpen} = useSelector(selectFilms)
@@ -39,12 +41,11 @@ const FilmTrailers = ({filmInfo, id}: TrailersState) => {
         router.push(`film/${id}/trailers`)
     }
     return (
-        <div className={styles.addMaterials}>
-            <div className={styles.addMaterialsTitle}>
-                <div onClick={() => modalOpenHandler()}>Трейлеры</div>
-                и доп. материалы
+        <div className={styles.trailersContainer}>
+            <div className={styles.trailersTitle}>
+                <span onClick={() => modalOpenHandler()}>Трейлеры</span> и доп. материалы
             </div>
-            <div className={styles.addMaterialsItems}>
+            <div className={styles.trailers}>
                 <FilmTrailersItem filmInfo={filmInfo}/>
             </div>
         </div>

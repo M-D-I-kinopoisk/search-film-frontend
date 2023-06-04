@@ -1,5 +1,4 @@
 .films__rating {
-
   max-width: 1303px;
   margin: 0 auto;
 
@@ -22,7 +21,6 @@
   }
 
   .film {
-    height: 492px;
 
     .link {
 
@@ -41,11 +39,15 @@
         position: relative;
 
         .image {
-          width: 100%;
           height: 450px;
 
+          overflow: hidden;
           border-radius: 10px 10px 0 0;
-          background-color: #834CC2;
+
+          img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+          }
         }
 
         .imageFade {

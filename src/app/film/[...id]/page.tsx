@@ -7,7 +7,7 @@ import FilmCreators from '@/components/Film/FilmCreators/FilmCreators'
 import FilmTrailers from '@/components/Film/FilmTrailers/FilmTrailers'
 import CommentList from '@/components/Film/FilmComments/FilmComments'
 import WatchAllDevices from '@/components/Film/WatchAllDevices/WatchAllDevices'
-import FilmsCategory from '@/components/Home/FilmsCategory/FilmsCategory'
+import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
 import FilmModal from '@/components/Film/FilmModal/FilmModal'
 import FilmGenres from '@/components/Film/FilmGenres/FilmGenres'
 
@@ -62,6 +62,8 @@ async function getCommentsFilmById(id) {
         console.log('Произошла ошибка: ', error)
     }
 }
+
+
 
 async function getGenresFilm(genres) {
     const genresId = genres?.map((genre) => {

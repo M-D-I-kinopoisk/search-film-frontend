@@ -1,12 +1,12 @@
 import styles from './mainTrailer.module.scss'
 
-import MyButton from '@/components/UI/MyButton/MyButton'
+import UserButton from '@/components/UI/UserButton/UserButton'
 
 import {BsPlay} from 'react-icons/bs'
 import {BsBookmark} from 'react-icons/bs'
 import {FiShare} from 'react-icons/fi'
 import {MdOndemandVideo} from 'react-icons/md'
-import MainInfo from '@/components/Film/FilmInfo/MainInfo/MainInfo'
+import MainFilmInfo from '@/components/Film/FilmInfo/MainFilmInfo/MainFilmInfo'
 
 export type FilmInfoProps = {
     filmInfo: {
@@ -23,7 +23,7 @@ const MainTrailer = ({filmInfo}: FilmInfoProps) => {
 
     return (
         <div className={styles.trailerContent}>
-            {/*<MainInfo/>*/}
+            {/*<MainFilmInfo/>*/}
             <div className={styles.video}>
                 <div className={styles.trailerWrapper}>
                     <iframe src={filmInfo.trailerLink} className={styles.trailer} frameBorder={0}></iframe>
@@ -32,16 +32,16 @@ const MainTrailer = ({filmInfo}: FilmInfoProps) => {
             <div className={styles.userButtons}>
                 <div className={styles.userButtonsWrapper}>
                     {userButtons.map((elem) =>
-                        <MyButton key={elem.nameClass}
-                                  text={elem.text ? elem.text : null}
-                                  icon={elem.icon}
-                                  nameClass={elem.nameClass}/>
+                        <UserButton key={elem.nameClass}
+                                    text={elem.text ? elem.text : null}
+                                    icon={elem.icon}
+                                    nameClass={elem.nameClass}/>
                     )}
                 </div>
 
-                <MyButton text={'Бесплатные фильмы'}
-                          icon={<MdOndemandVideo size={16} color='rgba(255,255,255,.72)'/>}
-                          nameClass='freeFilmsButton'/>
+                <UserButton text={'Бесплатные фильмы'}
+                            icon={<MdOndemandVideo size={16} color='rgba(255,255,255,.72)'/>}
+                            nameClass='freeFilmsButton'/>
             </div>
         </div>
     )
