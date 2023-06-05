@@ -24,6 +24,8 @@ export default function Authorization() {
 
     const [toggleBlock, setToggleBlock] = useState(false)
 
+    const [nextToggle, setNextToggle] = useState(false)
+
     const [animate, setAnimate] = useState(false)
 
     const [progressLine, setProgressLine] = useState('5')
@@ -37,6 +39,7 @@ export default function Authorization() {
             registration: false
         }))
     }
+
 
     useEffect(() => {
         if (session?.user?.token) {
@@ -71,6 +74,7 @@ export default function Authorization() {
     }
 
     const buttonClickPop = () => {
+        setNextToggle(false)
         setProgressLine('5')
         setAnimate(false)
         setTimeout(function () {
@@ -86,7 +90,9 @@ export default function Authorization() {
             password: inputPass,
             redirect: false
         })
+        setNextToggle(true)
         setProgressLine('100')
+
     }
 
 
@@ -189,16 +195,16 @@ export default function Authorization() {
                                         </div>
                                     </div>)
                                 }
-                                {toggleBlock &&
+                                {nextToggle &&
                                     status === 'authenticated' &&
                                     <div className={styles.form__enterText}>
                                         <p className={styles.form__title}>Вы успешно вошли</p>
                                     </div>}
-                                {toggleBlock &&
+                                {nextToggle &&
                                     status === 'unauthenticated' &&
-                                    <div className={styles.form__errorText}>
+                                    <div className={styles.form__errorText} onClick={buttonClickPop}>
                                         <p className={styles.form__title}>Неправильные данные</p>
-                                        <p className={styles.form__title} onClick={buttonClickPop}>Нажмите чтобы
+                                        <p className={styles.form__title}>Нажмите чтобы
                                             вернуться назад</p>
                                     </div>}
                             </div>

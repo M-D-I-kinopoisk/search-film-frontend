@@ -2,9 +2,9 @@ import styles from '@/components/AuthWindow/Auth/auth.module.scss'
 import {VscChromeClose} from 'react-icons/vsc'
 import Input from '@/components/UI/Input/Input'
 import {TbPencil} from 'react-icons/tb'
-import {signIn, useSession} from 'next-auth/react'
-import {useDispatch, useSelector} from 'react-redux'
-import {selectToggle, toggle} from '@/redux/AuthToggleSlice'
+import {useSession} from 'next-auth/react'
+import {useDispatch} from 'react-redux'
+import {toggle} from '@/redux/AuthToggleSlice'
 import {useEffect, useState} from 'react'
 
 export default function Registration() {
@@ -12,7 +12,6 @@ export default function Registration() {
     const {data: session} = useSession()
 
     const dispatch = useDispatch()
-    const {auth} = useSelector(selectToggle)
 
     const closeAuth = () => {
         dispatch(toggle({
@@ -33,11 +32,13 @@ export default function Registration() {
 
     const [inputEmail, setInputEmail] = useState('')
 
-    const [inputPasswords, setInputPasswords] = useState({pass1 : '', pass2: ''})
+    const [inputPasswords, setInputPasswords] = useState({pass1: '', pass2: ''})
 
     const [toggleBlock, setToggleBlock] = useState(false)
 
-    const [nextBlock2, setToggleBlock2] = useState(false)
+    const [nextToggle, setNextToggle] = useState(false)
+
+    const [errorText, setErrorText] = useState('')
 
     const [animate, setAnimate] = useState(false)
 
@@ -50,16 +51,16 @@ export default function Registration() {
     }
 
     const buttonClickPop = () => {
+        setToggleBlock(false)
         setAnimate(false)
         setTimeout(function () {
-            setToggleBlock(false)
+            setErrorText('')
         }, 1300)
     }
 
     const registration = async (nameProfile, email, passwords) => {
         setAnimate(false)
-        console.log(email, passwords, nameProfile)
-        const reqProfile = await fetch('http://localhost:12120/api/profiles/reg/user', {
+        const response = await fetch('http://localhost:12120/api/profiles/reg/user', {
             method: 'POST',
             body: JSON.stringify({
                 'email': email,
@@ -70,9 +71,18 @@ export default function Registration() {
                 'Content-Type': 'application/json',
             }
         })
-        const profile = await reqProfile.json()
-        console.log(profile)
-
+        const profile = await response.json()
+        if (response.status === 201) {
+            setNextToggle(true)
+            setTimeout(function () {
+                dispatch(toggle({
+                    authorization: true,
+                    registration: false
+                }))
+            }, 2000)
+        } else {
+            setErrorText(profile[0])
+        }
     }
 
 
@@ -97,7 +107,7 @@ export default function Registration() {
                                     authorization: true,
                                     registration: false
                                 }))}>
-                                    <p className={styles.form__title} >Зарегистрируйтесь или нажмите сюда для входа</p>
+                                    <p className={styles.form__title}>Зарегистрируйтесь или нажмите сюда для входа</p>
                                     {!toggleBlock &&
                                         <span className={styles.form__text}>и пользуйтесь сервисом на любом
                                             устройстве
@@ -157,7 +167,10 @@ export default function Registration() {
                                             </div>
                                             <div className={styles.form__LoginContainer}>
                                                 <Input label={'Введите пароль'}
-                                                       onChange={(e) => setInputPasswords({...inputPasswords, pass1 : e.target.value})}
+                                                       onChange={(e) => setInputPasswords({
+                                                           ...inputPasswords,
+                                                           pass1: e.target.value
+                                                       })}
                                                        type={'password'}
                                                        password={true}
                                                        value={inputPasswords.pass1}
@@ -165,7 +178,10 @@ export default function Registration() {
                                             </div>
                                             <div className={styles.form__LoginContainer}>
                                                 <Input label={'Подтвердите пароль'}
-                                                       onChange={(e) => setInputPasswords({...inputPasswords, pass2 : e.target.value})}
+                                                       onChange={(e) => setInputPasswords({
+                                                           ...inputPasswords,
+                                                           pass2: e.target.value
+                                                       })}
                                                        type={'password'}
                                                        password={true}
                                                        value={inputPasswords.pass2}
@@ -174,13 +190,23 @@ export default function Registration() {
                                             <div className={styles.form__btnContainer}>
                                                 <button
                                                     onClick={() => registration(inputName, inputEmail, inputPasswords.pass1)}
-                                                    className={inputPasswords.pass1 === inputPasswords.pass2 &&  inputPasswords.pass1.length > 3 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
+                                                    className={inputPasswords.pass1 === inputPasswords.pass2 && inputPasswords.pass1.length > 3 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
                                                     Зарегистрироваться
                                                 </button>
                                             </div>
                                         </div>
                                     </div>)
                                 }
+                                {nextToggle &&
+                                    <div className={styles.form__enterText}>
+                                        <p className={styles.form__title}>Вы успешно зарегистрировались</p>
+                                    </div>}
+                                {errorText &&
+                                    <div className={styles.form__errorText} onClick={buttonClickPop}>
+                                        <p className={styles.form__title}>{errorText}</p>
+                                        <p className={styles.form__title}>Нажмите чтобы
+                                            вернуться назад</p>
+                                    </div>}
                             </div>
                         </div>
                     </div>
