@@ -6,7 +6,7 @@ interface FilmsSliceState {
         modalState: boolean,
         value: string
     },
-    commentValue: string
+    comment: {}
 }
 
 const initialState: FilmsSliceState = {
@@ -15,7 +15,7 @@ const initialState: FilmsSliceState = {
         modalState: false,
         value: 'creators'
     },
-    commentValue: ''
+    comment: {}
 }
 
 const FilmsSlice = createSlice({
@@ -28,14 +28,13 @@ const FilmsSlice = createSlice({
         setOpenModal(state, action) {
             state.modalOpen = action.payload
         },
-        getInputValue(state, action) {
-            console.log(action.payload, 'это редакс форма инпут бла бла')
-            state.commentValue = action.payload
+        getComment(state, action) {
+            state.comment = action.payload
         }
     }
 })
 
-export const {getFilmId, setOpenModal, getInputValue} = FilmsSlice.actions
+export const {getFilmId, setOpenModal, getComment} = FilmsSlice.actions
 
 export const selectFilms = (state) => state.films
 export default FilmsSlice.reducer

@@ -12,6 +12,9 @@ import {useEffect} from 'react'
 
 export type Comment = {
     id: number,
+    idFilm: number,
+    idUser: number,
+    prevId: number,
     childrenCount: number,
     profile: {
         profileName: string

@@ -3,31 +3,64 @@
 import styles from './commentForm.module.scss'
 
 import {RiUserLine} from 'react-icons/ri'
-import {useDispatch} from 'react-redux'
-import {getInputValue} from '@/redux/FilmsSlice'
-import {useRef, useState} from 'react'
 
-const CommentForm = () => {
+import {ChangeEvent, useRef, useState} from 'react'
+
+import {Comment} from '@/components/Film/FilmComments/FilmComments'
+import {useSession} from 'next-auth/react'
+
+interface CommentForm {
+    comment: Comment
+}
+
+const CommentForm = ({comment}: CommentForm) => {
     const [value, setValue] = useState('')
+    const inputRef = useRef<HTMLInputElement>(null)
 
-    const dispatch = useDispatch()
-    const inputRef = useRef(null)
+    const {data: session} = useSession()
 
-    const onChangeInputHandler = (event) => {
+    const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
     }
 
-    const commentFormSubmit = () => {
+    const commentFormSubmit = (event) => {
+        event.preventDefault()
+
         setValue('')
-        dispatch(getInputValue(value))
+
+        postNewComment()
+    }
+
+    async function postNewComment() {
+        try {
+            const response = await fetch('http://localhost:12120/api/comments', {
+                method: 'POST',
+                body: JSON.stringify({
+                    'idFilm': comment.idFilm,
+                    'idUser': session?.user.idUser,
+                    'text': value,
+                    'prevId': comment.id
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${session?.user.token}`
+                },
+            })
+
+            return response.json()
+        } catch (e) {
+            console.log('Произошла ошибка: ', e)
+
+            throw e
+        }
     }
 
     return (
-        <form className={styles.formComment} onSubmit={() => commentFormSubmit()}>
+        <form className={styles.formComment} onSubmit={(event) => commentFormSubmit(event)}>
             <RiUserLine size={24}/>
 
             <div className={styles.inputContainer}>
-                <input ref={inputRef} value={value} onChange={(event) => onChangeInputHandler(event)}
+                <input ref={inputRef} value={value} onChange={(event) => onChangeInput(event)}
                        className={styles.inputComment} type='text'/>
                 <div className={styles.placeholder}>Написать комментарий</div>
             </div>

@@ -5,7 +5,9 @@ import styles from './filmModalComment.module.scss'
 import {AiOutlineLike} from 'react-icons/ai'
 
 import {Comment} from '@/components/Film/FilmComments/FilmComments'
+
 import {useState} from 'react'
+
 import CommentForm from '@/components/UI/CommentForm/CommentForm'
 
 interface FilmModalComment {
@@ -43,7 +45,7 @@ const FilmModalComment = ({comment}: FilmModalComment) => {
                     Ответить
                 </button>
             </div>
-            {showForm && <CommentForm/>}
+            {showForm && <CommentForm comment={comment}/>}
         </>
     )
 }
