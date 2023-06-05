@@ -77,7 +77,7 @@ const DropDownProfile = () => {
                 </Link>
             </div>
             <div className={style.dropDown__userRightBlock}>
-                {session?.user?.token ?
+                {session?.user?.token || session?.user?.name ?
                     <button onClick={() => signOut({
                         redirect: false
                     })} className={style.dropDown__userRightBlock_btn}>

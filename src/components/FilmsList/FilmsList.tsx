@@ -40,9 +40,11 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             const filterText = {}
             let newFilterText = {...filterText}
             let newFilter = {...filter}
+            // @ts-ignore
             if (Object.keys(params).length !== 0) {
 
-                const arrParams = params.movies.split('/')
+                // @ts-ignore
+                const arrParams = params?.movies.split('/')
                 arrParams.forEach(i => {
                     const strArr = i.replaceAll('%2B', ',').replaceAll('%20', ' ').split(',')
                     const arrGenres = genres.filter(i => strArr.includes(i.nameEN.toLowerCase()))

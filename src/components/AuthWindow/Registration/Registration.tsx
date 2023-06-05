@@ -31,7 +31,7 @@ export default function Registration() {
 
     const [inputName, setInputName] = useState('')
 
-    const [inputLogin, setInputLogin] = useState('')
+    const [inputEmail, setInputEmail] = useState('')
 
     const [inputPasswords, setInputPasswords] = useState({pass1 : '', pass2: ''})
 
@@ -54,31 +54,25 @@ export default function Registration() {
         }, 1300)
     }
 
-    const onSubmit = async () => {
-        const result = await signIn('credentials', {
-            email: inputLogin,
-            password: inputPass,
-            redirect: false
+    const registration = async (nameProfile, email, passwords) => {
+        setAnimate(false)
+        console.log(email, passwords, nameProfile)
+        const reqProfile = await fetch('http://localhost:12120/api/profiles/reg/user', {
+            method: 'POST',
+            body: JSON.stringify({
+                'email': email,
+                'password': passwords,
+                'profileName': nameProfile
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
         })
-        await console.log(result)
-        await console.log(session?.user.idUser)
-        await console.log(session?.user.token)
-        // const resProfile = await fetch(`http://localhost:12120/api/profiles/user/${session?.user.idUser}`, {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         Authorization : `Bearer ${session?.user.token}`
-        //     }
-        // })
-        // const profile = await resProfile.json()
-        // console.log(profile)
-
-        // setListGenres(genres)
-    }
-
-    const next = async () => {
+        const profile = await reqProfile.json()
+        console.log(profile)
 
     }
+
 
     return (
         <div className={styles.modal}>
@@ -86,7 +80,7 @@ export default function Registration() {
                 <div className={styles.modalScroll}>
                     <div className={styles.auth}>
                         <div className={styles.auth__header}>
-                            <p className={styles.auth__headerText}>{toggleBlock ? inputLogin : 'Регистрация'}</p>
+                            <p className={styles.auth__headerText}>{toggleBlock ? inputEmail : 'Регистрация'}</p>
                             <button onClick={() => closeAuth()} className={styles.auth__btnClose}>
                                 <VscChromeClose size={20}/>
                             </button>
@@ -122,9 +116,9 @@ export default function Registration() {
                                         <div
                                             className={animate ? `${styles.form__LoginContainer} ${styles.btn__animate}` : `${styles.form__LoginContainer}`}>
                                             <Input label={'Введите email'}
-                                                   onChange={(e) => setInputLogin(e.target.value)}
+                                                   onChange={(e) => setInputEmail(e.target.value)}
                                                    type={'text'}
-                                                   value={inputLogin}
+                                                   value={inputEmail}
                                                    login={true}
                                             />
                                         </div>
@@ -133,7 +127,7 @@ export default function Registration() {
                                             <button
                                                 type={'button'}
                                                 onClick={buttonClickNext}
-                                                className={inputLogin.length > 0 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
+                                                className={inputEmail.length > 0 && inputName.length > 0 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
                                                 Продолжить
                                             </button>
                                         </div>
@@ -150,7 +144,7 @@ export default function Registration() {
                                                 <TbPencil size={20}/>
                                             </button>
                                             <div className={styles.form__blockLogin_group}>
-                                                <p className={styles.form__title}>{inputLogin}</p>
+                                                <p className={styles.form__title}>{inputEmail}</p>
                                             </div>
                                         </div>
                                         <div className={styles.form__blockTwo}>
@@ -177,12 +171,10 @@ export default function Registration() {
                                             </div>
                                             <div className={styles.form__btnContainer}>
                                                 <button
-                                                    // type={'submit'}
-                                                    onClick={onSubmit}
-                                                    className={inputPasswords.pass1 === inputPasswords.pass2  ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
-                                                    Продолжить
+                                                    onClick={() => registration(inputName, inputEmail, inputPasswords.pass1)}
+                                                    className={inputPasswords.pass1 === inputPasswords.pass2 &&  inputPasswords.pass1.length > 3 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
+                                                    Зарегистрироваться
                                                 </button>
-                                                <button onClick={next}>вперед</button>
                                             </div>
                                         </div>
                                     </div>)

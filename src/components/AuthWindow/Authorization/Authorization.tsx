@@ -1,4 +1,4 @@
-import {signIn, useSession} from 'next-auth/react'
+import {signIn, signOut, useSession} from 'next-auth/react'
 import {useDispatch} from 'react-redux'
 import {toggle} from '@/redux/AuthToggleSlice'
 import {useEffect, useState} from 'react'
@@ -6,6 +6,8 @@ import styles from '@/components/AuthWindow/Auth/auth.module.scss'
 import {VscChromeClose} from 'react-icons/vsc'
 import Input from '@/components/UI/Input/Input'
 import {TbPencil} from 'react-icons/tb'
+import {ImGoogle} from 'react-icons/im'
+import {SlSocialVkontakte} from 'react-icons/sl'
 
 export default function Authorization() {
     const {data: session} = useSession()
@@ -92,23 +94,10 @@ export default function Authorization() {
         console.log(result)
         console.log(session?.user.idUser)
         console.log(session?.user.token)
-        // setValidation(true)
-        // const resProfile = await fetch(`http://localhost:12120/api/profiles/user/${session?.user.idUser}`, {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         Authorization : `Bearer ${session?.user.token}`
-        //     }
-        // })
-        // const profile = await resProfile.json()
-        // console.log(profile)
-
-        // setListGenres(genres)
-    }
-
-    const next = async () => {
 
     }
+
+
 
     return (
         <div className={styles.modal}>
@@ -159,6 +148,8 @@ export default function Authorization() {
                                                     'Введите корректный email и нажмите'}
                                             </button>
                                         </div>
+                                        <button className={styles.auth__headerText} onClick={() => signIn('google')}><ImGoogle size={20}/></button>
+                                        <button className={styles.auth__headerText} onClick={() => signIn('vk')}><SlSocialVkontakte size={20}/></button>
                                     </>)}
 
                                 {toggleBlock &&

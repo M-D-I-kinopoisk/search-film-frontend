@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    // env : {
+    //     GOOGLE_CLIENT_ID : '814539564665-5dnl3htnkdq69nk44togcmcvj6jurq04.apps.googleusercontent.com',
+    //     GOOGLE_CLIENT_SECRET : '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'
+    // }
 }
 
 module.exports = nextConfig

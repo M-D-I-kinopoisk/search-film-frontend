@@ -141,10 +141,9 @@ const Header = () => {
                         id='header-user'
                         onMouseEnter={(e) => handleMouseEnter(e)}
                         className={styles.header__rightUser}>
-                        {session?.user?.token ?
+                        {session?.user?.token || session?.user?.name ?
                             <div id='header-user' className={styles.userActive} title='Войти в профиль'>
-                                {session?.user?.role?.name === 'ADMIN' ? 'A' : ''}
-
+                                {session?.user?.role?.name === 'ADMIN' ? 'A' : 'П'}
                             </div> :
                             <div id='header-user' className={styles.header__btnUser} >
                                 <FiUser size={20}/>
