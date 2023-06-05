@@ -55,15 +55,15 @@ async function getActorFilmById(id) {
 
 async function getCommentsFilmById(id) {
     try {
-        const response = await fetch(`http://localhost:12120/api/comments/film/${id}`)
+        const response = await fetch(`http://localhost:12120/api/comments/film/${id}`, {
+            next: {revalidate: 100}
+        })
 
         return response.json()
     } catch (error) {
         console.log('Произошла ошибка: ', error)
     }
 }
-
-
 
 async function getGenresFilm(genres) {
     const genresId = genres?.map((genre) => {

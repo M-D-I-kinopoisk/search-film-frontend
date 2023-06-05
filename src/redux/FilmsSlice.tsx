@@ -29,7 +29,6 @@ const FilmsSlice = createSlice({
             state.modalOpen = action.payload
         },
         getInputValue(state, action) {
-            console.log(action.payload, 'это редакс форма инпут бла бла')
             state.commentValue = action.payload
         }
     }

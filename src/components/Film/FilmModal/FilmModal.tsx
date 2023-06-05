@@ -22,6 +22,8 @@ import {Actor, Film, FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
 import {Comment} from '@/components/Film/FilmComments/FilmComments'
 
 import {useRouter} from 'next/navigation'
+import {useSession} from 'next-auth/react'
+import {useEffect} from 'react'
 
 type MyModalProps = {
     actors: Actor[],
@@ -34,7 +36,10 @@ type MyModalProps = {
 const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
+    const {commentValue} = useSelector(selectFilms)
     const router = useRouter()
+
+    const {data: session} = useSession()
 
     const uniqueProfessions = [...new Set(actors?.map(item => item.profession.nameRU))]
 
@@ -56,6 +61,36 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
 
         router.push(`/film/${id}/${link.value}`)
     }
+
+
+    // useEffect(() => {
+    //     async function postNewComment() {
+    //         try {
+    //             const response = await fetch('http://localhost:12120/api/comments', {
+    //                 method: 'POST',
+    //                 body: JSON.stringify({
+    //                     'idFilm': id,
+    //                     'idUser': session.idUser,
+    //                     'text': commentValue,
+    //                     'prevId': null
+    //                 }),
+    //                 headers: {
+    //                     'Content-Type': 'application/json'
+    //                 },
+    //             })
+    //
+    //             return response.json()
+    //
+    //         } catch (e) {
+    //             console.log('Произошла ошибка: ', e)
+    //
+    //             throw e
+    //         }
+    //     }
+    //
+    //     postNewComment()
+    // }, [])
+
 
     return (
         <>
@@ -107,7 +142,7 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
 
                                     {modalOpen.value === 'comments' &&
                                         <div>
-                                            <CommentForm/>
+                                            {/*<CommentForm/>*/}
                                             <div>
                                                 {filmComments.map((comment) =>
                                                     <FilmCommentsItem key={comment.id} inModal={true}

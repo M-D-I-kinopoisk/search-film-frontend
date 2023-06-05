@@ -22,13 +22,15 @@ const FilmCommentsItem = ({inModal, comment}: CommentsItemProps) => {
 
     async function showCommentAnswerHandler() {
         try {
-            const response = await fetch(`http://localhost:12120/api/comments/comment/${comment.id}`)
+            const response = await fetch(`http://localhost:12120/api/comments/comment/${comment.id}`, {
+                next: {revalidate: 1}
+            })
             const data = await response.json()
 
             setChildrenComments(data)
 
         } catch (e) {
-            console.log(e)
+            console.log('Произошла ошибка: ', e)
         }
 
         setShowCommentAnswers(!showCommentAnswers)
@@ -52,7 +54,8 @@ const FilmCommentsItem = ({inModal, comment}: CommentsItemProps) => {
                                             <FilmModalComment comment={comment}/>
                                             {(comment.children.length > 0) &&
                                                 <>
-                                                    <button className={styles.answer} onClick={() => showCommentAnswerHandler()}>
+                                                    <button className={styles.answer}
+                                                            onClick={() => showCommentAnswerHandler()}>
                                                         {!showCommentAnswers ? <AiFillCaretDown/> : <AiFillCaretUp/>}
                                                         {funcDeclination(comment.children.length, ['ответ', 'ответа', 'ответов'])}
                                                     </button>
