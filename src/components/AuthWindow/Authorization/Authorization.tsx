@@ -6,13 +6,14 @@ import styles from '@/components/AuthWindow/Auth/auth.module.scss'
 import {VscChromeClose} from 'react-icons/vsc'
 import Input from '@/components/UI/Input/Input'
 import {TbPencil} from 'react-icons/tb'
-import {ImGoogle} from 'react-icons/im'
-import {SlSocialVkontakte} from 'react-icons/sl'
+import {SlSocialVkontakte, SlSocialGoogle} from 'react-icons/sl'
 
 export default function Authorization() {
-    const {data: session} = useSession()
+    const {data: session, status} = useSession()
 
     console.log(session)
+
+    console.log(status)
 
     const dispatch = useDispatch()
 
@@ -56,11 +57,6 @@ export default function Authorization() {
     })
 
 
-
-
-
-
-
     const buttonClickNext = () => {
         if (inputLogin.includes('@')) {
             setProgressLine('33')
@@ -91,12 +87,7 @@ export default function Authorization() {
             redirect: false
         })
         setProgressLine('100')
-        console.log(result)
-        console.log(session?.user.idUser)
-        console.log(session?.user.token)
-
     }
-
 
 
     return (
@@ -147,9 +138,19 @@ export default function Authorization() {
                                                 {validation ? 'Продолжить' :
                                                     'Введите корректный email и нажмите'}
                                             </button>
+                                            <div className={styles.socialBlock}>
+                                                <p className={styles.form__title}>Или зайдите через</p>
+                                                <div className={styles.socialLink}>
+                                                <button onClick={() => signIn('google')}>
+                                                    <SlSocialGoogle size={25} />
+                                                </button>
+                                                <button onClick={() => signIn('vk')}>
+                                                    <SlSocialVkontakte size={25} />
+                                                </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <button className={styles.auth__headerText} onClick={() => signIn('google')}><ImGoogle size={20}/></button>
-                                        <button className={styles.auth__headerText} onClick={() => signIn('vk')}><SlSocialVkontakte size={20}/></button>
+
                                     </>)}
 
                                 {toggleBlock &&
@@ -180,7 +181,6 @@ export default function Authorization() {
                                             </div>
                                             <div className={styles.form__btnContainer}>
                                                 <button
-                                                    // type={'submit'}
                                                     onClick={authorization}
                                                     className={inputPass.length > 0 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
                                                     Продолжить
@@ -190,15 +190,16 @@ export default function Authorization() {
                                     </div>)
                                 }
                                 {toggleBlock &&
-                                    session?.user?.token &&
-                                    <div className={styles.form__enterText} >
+                                    status === 'authenticated' &&
+                                    <div className={styles.form__enterText}>
                                         <p className={styles.form__title}>Вы успешно вошли</p>
                                     </div>}
                                 {toggleBlock &&
-                                    !session?.user?.token &&
-                                    <div className={styles.form__errorText} >
-                                        <p className={styles.form__title}>{session?.user?.message || 'Неправильные данные'}</p>
-                                        <p className={styles.form__title} onClick={buttonClickPop}>Нажмите чтобы вернуться назад</p>
+                                    status === 'unauthenticated' &&
+                                    <div className={styles.form__errorText}>
+                                        <p className={styles.form__title}>Неправильные данные</p>
+                                        <p className={styles.form__title} onClick={buttonClickPop}>Нажмите чтобы
+                                            вернуться назад</p>
                                     </div>}
                             </div>
                         </div>

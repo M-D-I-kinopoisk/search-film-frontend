@@ -14,53 +14,53 @@ export const authOptions: NextAuthOptions = {
         VkProvider({
             clientId: process.env.VK_CLIENT_ID,
             clientSecret: process.env.VK_CLIENT_SECRET
-        })
-        // CredentialsProvider({
-        //     name: 'Credentials',
-        //     credentials: {
-        //         email: {label: 'Username', type: 'text', placeholder: 'jsmith'},
-        //         password: {label: 'Password', type: 'password'}
-        //     },
-        //     async authorize(credentials, req) {
-        //
-        //         const res = await fetch('http://localhost:12120/api/users/login', {
-        //             method: 'POST',
-        //             body: JSON.stringify({
-        //                 email: credentials?.email,
-        //                 password:  credentials?.password,
-        //             }),
-        //             headers: {
-        //                 'Content-Type': 'application/json'
-        //             }
-        //         })
-        //         const user = await res.json()
-        //
-        //         if (user) {
-        //             // Any object returned will be saved in `user` property of the JWT
-        //             return user
-        //         } else {
-        //             // If you return null then an error will be displayed advising the user to check their details.
-        //             return null
-        //
-        //             // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
-        //         }
-        //     }
-        // }),
+        }),
+        CredentialsProvider({
+            name: 'Credentials',
+            credentials: {
+                email: {label: 'Username', type: 'text', placeholder: 'jsmith'},
+                password: {label: 'Password', type: 'password'}
+            },
+            async authorize(credentials, req) {
+
+                const res = await fetch('http://localhost:12120/api/users/login', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        email: credentials?.email,
+                        password: credentials?.password,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                const user = await res.json()
+
+                if (user.token || user.name) {
+                    // Any object returned will be saved in `user` property of the JWT
+                    return user
+                } else {
+                    // If you return null then an error will be displayed advising the user to check their details.
+                    return user.message
+
+                    // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+                }
+            }
+        }),
     ],
-    pages : {
-        signIn : '/',
-        signOut : '/',
+    pages: {
+        signIn: '/',
+        signOut: '/',
         // error : '/'
     },
-    session : {
-      strategy : 'jwt'
+    session: {
+        strategy: 'jwt'
     },
-    callbacks : {
+    callbacks: {
         async jwt({token, user}) {
-            return { ...token, ...user}
+            return {...token, ...user}
         },
         async session({session, token, user}) {
-            session.user = token
+                session.user = token
             return session
         }
     }

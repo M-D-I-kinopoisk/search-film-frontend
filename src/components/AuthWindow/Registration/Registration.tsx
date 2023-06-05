@@ -37,6 +37,8 @@ export default function Registration() {
 
     const [toggleBlock, setToggleBlock] = useState(false)
 
+    const [nextBlock2, setToggleBlock2] = useState(false)
+
     const [animate, setAnimate] = useState(false)
 
 

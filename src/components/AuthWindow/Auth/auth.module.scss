@@ -515,3 +515,20 @@
     opacity: 1;
   }
 }
+
+
+.socialBlock {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //gap: 30px;
+  color: white;
+}
+
+.socialLink {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
