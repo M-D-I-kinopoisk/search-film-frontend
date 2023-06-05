@@ -1,4 +1,3 @@
-import styles from '@/components/AuthWindow/Auth/auth.module.scss'
 import {VscChromeClose} from 'react-icons/vsc'
 import Input from '@/components/UI/Input/Input'
 import {TbPencil} from 'react-icons/tb'
@@ -6,6 +5,8 @@ import {useSession} from 'next-auth/react'
 import {useDispatch} from 'react-redux'
 import {toggle} from '@/redux/AuthToggleSlice'
 import {useEffect, useState} from 'react'
+
+import styles from '@/components/Auth/auth.module.scss'
 
 export default function Registration() {
 

@@ -5,8 +5,8 @@ import Header from '@/components/Header/Header'
 import TabBar from '@/components/UI/TabBar/TabBar'
 import {Metadata} from 'next'
 import {Providers} from '@/redux/Provider'
-import AuthWindow from '@/components/AuthWindow/AuthWindow'
-import Provider from '@/app/Provider'
+import Auth from '@/components/Auth/Auth'
+import ProviderAuth from '@/app/Provider'
 
 
 export const metadata: Metadata = {
@@ -22,10 +22,10 @@ export default function RootLayout({children}: {
     return (
         <html lang='en'>
         <body>
-        <Provider>
+        <ProviderAuth>
             <Providers>
                 <Header/>
-                <AuthWindow/>
+                <Auth/>
                 {/*<Auth/>*/}
                 <main>
                     {children}
@@ -33,7 +33,7 @@ export default function RootLayout({children}: {
                 <TabBar/>
                 <Footer/>
             </Providers>
-        </Provider>
+        </ProviderAuth>
         </body>
         </html>
     )
