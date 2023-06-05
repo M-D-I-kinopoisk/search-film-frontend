@@ -1,13 +1,13 @@
 'use client'
 
 import styles from './filmModal.module.scss'
+import modalClasses from '@/components/UI/CommentForm/commentForm.module.scss'
 
 import Image from 'next/image'
 
 import FilmCommentsItem from '../FilmComments/FilmCommentsItem/FilmCommentsItem'
 import FilmCreatorsItem from '../FilmCreators/FilmCreatorsItem/FilmCreatorsItem'
 import FilmTrailersItem from '../FilmTrailers/FilmTrailersItem/FilmTrailersItem'
-import CommentForm from '@/components/UI/CommentForm/CommentForm'
 
 import {BsChevronRight} from 'react-icons/bs'
 import {RxLapTimer} from 'react-icons/rx'
@@ -23,7 +23,9 @@ import {Comment} from '@/components/Film/FilmComments/FilmComments'
 
 import {useRouter} from 'next/navigation'
 import {useSession} from 'next-auth/react'
-import {useEffect} from 'react'
+
+import {RiUserLine} from 'react-icons/ri'
+import {useState} from 'react'
 
 type MyModalProps = {
     actors: Actor[],
@@ -36,12 +38,13 @@ type MyModalProps = {
 const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
-    const {commentValue} = useSelector(selectFilms)
     const router = useRouter()
 
     const {data: session} = useSession()
 
     const uniqueProfessions = [...new Set(actors?.map(item => item.profession.nameRU))]
+
+    const [value, setValue] = useState('')
 
     const links = [
         {title: 'Создатели', value: 'creators'},
@@ -62,35 +65,37 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
         router.push(`/film/${id}/${link.value}`)
     }
 
+    const newCommentSubmit = (event) => {
+        event.preventDefault()
 
-    // useEffect(() => {
-    //     async function postNewComment() {
-    //         try {
-    //             const response = await fetch('http://localhost:12120/api/comments', {
-    //                 method: 'POST',
-    //                 body: JSON.stringify({
-    //                     'idFilm': id,
-    //                     'idUser': session.idUser,
-    //                     'text': commentValue,
-    //                     'prevId': null
-    //                 }),
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //             })
-    //
-    //             return response.json()
-    //
-    //         } catch (e) {
-    //             console.log('Произошла ошибка: ', e)
-    //
-    //             throw e
-    //         }
-    //     }
-    //
-    //     postNewComment()
-    // }, [])
+        setValue('')
 
+        newComment()
+    }
+
+    async function newComment() {
+        try {
+            const response = await fetch('http://localhost:12120/api/comments', {
+                method: 'POST',
+                body: JSON.stringify({
+                    'idFilm': +id,
+                    'idUser': session?.user.idUser,
+                    'text': value,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${session?.user.token}`
+                },
+                next: {revalidate: 1}
+            })
+            return response.json()
+
+        } catch (e) {
+            console.log('Произошла ошибка: ', e)
+
+            throw e
+        }
+    }
 
     return (
         <>
@@ -142,7 +147,19 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
 
                                     {modalOpen.value === 'comments' &&
                                         <div>
-                                            {/*<CommentForm/>*/}
+                                            <form className={modalClasses.formComment}
+                                                  onSubmit={(event) => newCommentSubmit(event)}>
+                                                <RiUserLine size={24}/>
+
+                                                <div className={modalClasses.inputContainer}>
+                                                    <input value={value}
+                                                           onChange={(event) => setValue(event.target.value)}
+                                                           className={modalClasses.inputComment} type='text'/>
+                                                    <div className={modalClasses.placeholder}>Написать комментарий</div>
+                                                </div>
+
+                                                <button type='submit'>Отправить</button>
+                                            </form>
                                             <div>
                                                 {filmComments.map((comment) =>
                                                     <FilmCommentsItem key={comment.id} inModal={true}

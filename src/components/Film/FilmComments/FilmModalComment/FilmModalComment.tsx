@@ -5,10 +5,10 @@ import styles from './filmModalComment.module.scss'
 import {AiOutlineLike} from 'react-icons/ai'
 
 import {Comment} from '@/components/Film/FilmComments/FilmComments'
-import {useEffect, useState} from 'react'
+
+import {useState} from 'react'
+
 import CommentForm from '@/components/UI/CommentForm/CommentForm'
-import {selectFilms} from '@/redux/FilmsSlice'
-import {useSelector} from 'react-redux'
 
 interface FilmModalComment {
     comment: Comment

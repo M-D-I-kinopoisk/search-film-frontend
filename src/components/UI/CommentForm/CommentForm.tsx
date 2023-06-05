@@ -4,10 +4,7 @@ import styles from './commentForm.module.scss'
 
 import {RiUserLine} from 'react-icons/ri'
 
-import {useDispatch, useSelector} from 'react-redux'
-import {getInputValue, selectFilms} from '@/redux/FilmsSlice'
-
-import {useRef, useState} from 'react'
+import {ChangeEvent, useRef, useState} from 'react'
 
 import {Comment} from '@/components/Film/FilmComments/FilmComments'
 import {useSession} from 'next-auth/react'
@@ -18,24 +15,18 @@ interface CommentForm {
 
 const CommentForm = ({comment}: CommentForm) => {
     const [value, setValue] = useState('')
-    const {data: session} = useSession()
-
-    const dispatch = useDispatch()
     const inputRef = useRef<HTMLInputElement>(null)
 
-    const onChangeInputHandler = (event, id) => {
-        console.log(id, '100% айдишка комента тоесть ну по идее там где выбрал')
+    const {data: session} = useSession()
+
+    const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value)
-
-
-        console.log(comment, 'собственно сам коментарий где происходит эта лабуда')
     }
 
     const commentFormSubmit = (event) => {
         event.preventDefault()
 
         setValue('')
-        dispatch(getInputValue(value))
 
         postNewComment()
     }
@@ -46,9 +37,9 @@ const CommentForm = ({comment}: CommentForm) => {
                 method: 'POST',
                 body: JSON.stringify({
                     'idFilm': comment.idFilm,
-                    'idUser': session.user.idUser,
+                    'idUser': session?.user.idUser,
                     'text': value,
-                    'prevId': comment.prevId
+                    'prevId': comment.id
                 }),
                 headers: {
                     'Content-Type': 'application/json',
@@ -69,7 +60,7 @@ const CommentForm = ({comment}: CommentForm) => {
             <RiUserLine size={24}/>
 
             <div className={styles.inputContainer}>
-                <input ref={inputRef} value={value} onChange={(event) => onChangeInputHandler(event, comment.prevId)}
+                <input ref={inputRef} value={value} onChange={(event) => onChangeInput(event)}
                        className={styles.inputComment} type='text'/>
                 <div className={styles.placeholder}>Написать комментарий</div>
             </div>
