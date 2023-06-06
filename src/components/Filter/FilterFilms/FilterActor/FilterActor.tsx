@@ -41,7 +41,7 @@ const FilterActor = ({listActor}) => {
     function filterActor(id, nameActor, nameActorEN) {
 
         let url = '/movies'
-        if (searchParams.toString()) {
+        if (searchParams?.toString()) {
 
             if (searchParams.has('actor')) {
 

@@ -245,12 +245,10 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
             <div className={styles.cardList}>
                 {loading &&
-                    filmsList && filmsList.map((item: any, inx) => <div key={inx}>
+                    filmsList && filmsList.map((item: any, inx) => <div key={inx} className={styles.filmCard}>
                         <FilmCard film={item}/></div>)}
 
             </div>
-
-
             <div>
                 {filmsList.length > 0 &&
                     filmsList.length % 28 === 0 &&

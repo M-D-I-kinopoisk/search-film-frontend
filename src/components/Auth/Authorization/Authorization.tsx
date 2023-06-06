@@ -1,4 +1,4 @@
-import {signIn, signOut, useSession} from 'next-auth/react'
+import {signIn, useSession} from 'next-auth/react'
 import {useDispatch} from 'react-redux'
 import {toggle} from '@/redux/AuthToggleSlice'
 import {useEffect, useState} from 'react'
@@ -12,9 +12,6 @@ import styles from '@/components/Auth/auth.module.scss'
 export default function Authorization() {
     const {data: session, status} = useSession()
 
-    console.log(session)
-
-    console.log(status)
 
     const dispatch = useDispatch()
 
@@ -199,7 +196,8 @@ export default function Authorization() {
                                 {nextToggle &&
                                     status === 'authenticated' &&
                                     <div className={styles.form__enterText}>
-                                        <p className={styles.form__title}>Вы успешно вошли</p>
+                                        <p className={styles.form__title}>{session?.user?.role?.name === 'ADMIN' ?
+                                            'Вы успешно вошли как Администратор' : 'Вы успешно вошли'}</p>
                                     </div>}
                                 {nextToggle &&
                                     status === 'unauthenticated' &&
