@@ -57,8 +57,10 @@ const MainSlider: React.FC = () => {
                 centeredSlides={true}
                 breakpoints={{
                     1060: {
+                        spaceBetween: 25,
                         slidesPerView: 1.5
                     }, 300: {
+                        spaceBetween: 25,
                         slidesPerView: 1
                     }
                 }}>
@@ -74,7 +76,7 @@ const MainSlider: React.FC = () => {
                             <h3 className={styles.title}>{item.title}</h3>
                             <div className={styles.subtitle}>{item.subtitle}</div>
                             <button className={styles.showButton}>
-                              Показать подборку
+                                Показать подборку
                             </button>
                         </div>
                     </Link>

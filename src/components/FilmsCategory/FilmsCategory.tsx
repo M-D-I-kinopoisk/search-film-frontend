@@ -38,27 +38,27 @@ const FilmsCategory = ({title, titleEN, list}: FilmsCategoryProps) => {
                         }, 960: {
                             slidesPerView: 6,
                             slidesPerGroup: 5,
-                            spaceBetween: 15
+                            spaceBetween: 25
                         }, 800: {
                             slidesPerView: 5,
                             slidesPerGroup: 4,
-                            spaceBetween: 15
+                            spaceBetween: 25
                         }, 600: {
                             slidesPerView: 4,
                             slidesPerGroup: 3,
-                            spaceBetween: 15
+                            spaceBetween: 25
                         }, 500: {
                             slidesPerView: 3,
                             slidesPerGroup: 2,
-                            spaceBetween: 15
+                            spaceBetween: 25
                         }, 300: {
                             slidesPerView: 2,
                             slidesPerGroup: 2,
-                            spaceBetween: 15
+                            spaceBetween: 25
                         }, 100: {
                             slidesPerView: 1,
                             slidesPerGroup: 1,
-                            spaceBetween: 15
+                            spaceBetween: 25
                         },
                     }}>
                 {list.slice(0, 20).map((film: any) => (

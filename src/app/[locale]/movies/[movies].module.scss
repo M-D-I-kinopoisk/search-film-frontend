@@ -7,9 +7,14 @@
 }
 
 .wrapper {
-  border-top: 1px solid rgba(255,255,255,.16);
+  border-top: 1px solid rgba(255, 255, 255, .16);
 }
 
+@media (max-width: 770px) {
+  .filterNav {
+    display: none;
+  }
+}
 
 .text {
   color : white;

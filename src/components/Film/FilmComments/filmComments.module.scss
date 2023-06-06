@@ -1,11 +1,12 @@
 .comments {
-  padding: 0 20px 0 20px;
   margin-top: 20px;
 
   .commentsTop {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+
+    padding: 0 20px 0 20px;
 
     .commentsTitle {
       width: 161px;
@@ -40,15 +41,62 @@
   }
 
   .commentsItems {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+
+    .filmContainer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 0.3fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 0;
+
+      padding: 0 22px 0 22px;
+    }
   }
 }
 
-@media(max-width: 400px) {
-  .commentsTop {
-    display: block;
-    margin-bottom: 14px;
+@media(max-width: 1300px) {
+  .comments {
+    .commentsItems {
+
+      .filmContainer {
+        grid-row-gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+@media(max-width: 600px) {
+  .comments {
+    .commentsItems {
+
+      .filmContainer {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media(max-width: 520px) {
+  .comments {
+    .addComment {
+      display: none;
+    }
+  }
+}
+
+@media(max-width: 450px) {
+  .comments {
+    .commentsItems {
+
+      .filmContainer {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    .commentsTop {
+      display: block;
+      margin-bottom: 14px;
+    }
   }
 }

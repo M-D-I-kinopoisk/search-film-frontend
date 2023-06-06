@@ -77,3 +77,20 @@
     }
   }
 }
+
+@media(max-width: 520px) {
+  .film {
+    .filmInfo {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .look {
+      width: 100%;
+    }
+
+    .filmsTitle {
+      display: block;
+    }
+  }
+}

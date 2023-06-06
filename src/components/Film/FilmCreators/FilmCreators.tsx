@@ -1,6 +1,6 @@
 'use client'
 
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 
 import styles from './filmCreators.module.scss'
 
@@ -12,7 +12,6 @@ import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
 import {setOpenModal} from '@/redux/FilmsSlice'
 import {useRouter} from 'next/navigation'
 
-
 interface Creators {
     actors: Actor[]
     id: string
@@ -23,6 +22,28 @@ const FilmCreators = ({actors, id}: Creators) => {
 
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
+
+    const getNumActorsToDisplay = () => {
+        if (typeof window !== 'undefined') {
+            return window.innerWidth >= 880 ? 10 : 4
+        }
+        return 4
+    }
+
+    const [numActorsToDisplay, setNumActorsToDisplay] = useState(getNumActorsToDisplay())
+
+    useEffect(() => {
+        const handleResize = () => {
+            setNumActorsToDisplay(getNumActorsToDisplay())
+        }
+            if (typeof window !== 'undefined') {
+                window.addEventListener('resize', handleResize)
+
+                return () => {
+                    window.removeEventListener('resize', handleResize)
+                }
+            }
+    }, [])
 
     useEffect(() => {
         if (modalOpen.modalState) {
@@ -47,7 +68,7 @@ const FilmCreators = ({actors, id}: Creators) => {
                 Актёры и создатели
             </div>
             <div className={styles.creatorsItems}>
-                {actors.slice(0, 10).map((actor) => (
+                {actors.slice(0, numActorsToDisplay).map((actor) => (
                     <FilmCreatorsItem actor={actor} key={actor.id}/>
                 ))}
                 <button onClick={() => modalOpenHandler()}

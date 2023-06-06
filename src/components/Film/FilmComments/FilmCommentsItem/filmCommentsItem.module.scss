@@ -17,15 +17,15 @@
 }
 
 .commentsItem {
-  width: 286px;
   height: 162px;
+  width: 100%;
+
+  overflow: hidden;
 
   border-radius: 8px;
   background-color: #1f1b2e;
 
   padding: 20px 20px 52px;
-  margin: 10px 24px 0 0;
-
 
   .commentsItemName {
     color: #a5a1b2;
@@ -42,6 +42,7 @@
     line-height: 22px;
     font-weight: 400;
 
+    width: 100%;
     height: 66px;
 
     color: #fff;
@@ -93,5 +94,12 @@
         transform: rotate(180deg);
       }
     }
+  }
+}
+
+
+@media (max-width: 1300px) {
+  .commentsItem {
+    width: 100%;
   }
 }

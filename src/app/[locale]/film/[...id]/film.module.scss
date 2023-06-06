@@ -47,17 +47,31 @@
 }
 
 @media(max-width: 1160px) {
-  .mainContent {
-    display: block;
+  .wrapper {
+    .mainContent {
+      display: block;
+    }
   }
 }
 
 @media(max-width: 600px) {
-  .title {
-    display: none;
-  }
+  .wrapper {
+    .title {
+      display: none;
+    }
 
-  .arrow {
-    display: block;
+    .arrow {
+      display: block;
+    }
+  }
+}
+
+@media(max-width: 520px) {
+  .wrapper {
+    .filmGenres {
+      .filmGenresContainer {
+        display: none;
+      }
+    }
   }
 }

@@ -101,3 +101,18 @@
     }
   }
 }
+
+@media (max-width: 1160px) {
+  .filmsWrapper {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 520px) {
+  .filmsWrapper {
+    .filmsTitle {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+}

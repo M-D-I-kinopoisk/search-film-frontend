@@ -5,6 +5,8 @@ import FilmsList from '@/components/FilmsList/FilmsList'
 
 import styles from '../[movies].module.scss'
 
+import Breadcrumbs from '@/components/UI/Breadcrumbs/Breadcrumbs'
+
 export async function generateMetadata({params}) {
     // const product = await fetch(`http://localhost:12120/api/members/${id}`).then((res) => res.json())
     return {
@@ -60,6 +62,9 @@ const Movies = async ({searchParams, params}) => {
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
+                <div className={styles.filterNav}>
+                    <Breadcrumbs title={'Фильмы'}/>
+                </div>
                 <FilterFilms genres={genres} countries={countries}  listActor={listActor} listDir={listDir}/>
                 <FilmsList genres={genres} countries={countries}  listDir={listDir} listActor={listActor} searchPar={searchParams}/>
             </div>
