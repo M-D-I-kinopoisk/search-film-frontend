@@ -1,12 +1,33 @@
+@font-face {
+  font-family: 'iviSans';
+  src: local('iviSans'), url('@/fonts/iviSansRegular.woff2') format('woff2');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'iviSans';
+  src: local('iviSans'), url('@/fonts/iviSansMedium.woff2') format('woff2');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'iviSans';
+  src: local('iviSans'), url('@/fonts/iviSansBold.woff2') format('woff2');
+  font-weight: 700;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  font-family: 'iviSans', sans-serif;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #100e19;
+
   font-family: 'iviSans', sans-serif;
 }
 
