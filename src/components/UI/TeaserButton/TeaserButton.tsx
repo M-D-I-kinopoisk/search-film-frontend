@@ -1,4 +1,4 @@
-import styles from '@/app/home.module.scss'
+import styles from '@/app/[locale]/home.module.scss'
 
 import Image from 'next/image'
 

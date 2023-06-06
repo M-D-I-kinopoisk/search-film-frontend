@@ -30,6 +30,7 @@ export type Film = {
     imageName: string,
     country: {
         nameRU: string
+        nameEN : string
     },
     genres: {
         id: string,

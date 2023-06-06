@@ -4,9 +4,12 @@ import {selectFilter} from '@/redux/FilterSlice'
 import { selectFilterText} from '@/redux/FilterTextSlice'
 import {BsCheckLg} from 'react-icons/bs'
 import { useRouter, useSearchParams} from 'next/navigation'
+import {useLocale} from 'next-intl'
 
 
 const FilterCountries = ({countries}) => {
+
+    const locale = useLocale()
 
     const router = useRouter()
 
@@ -59,7 +62,7 @@ const FilterCountries = ({countries}) => {
             {countries.map((element, inx) => {
                 return <li key={inx} className={styles.country__item}>
                     <button onClick={() => filterCountries(element.id, element.nameRU, element.nameEN)}>
-                        {element.nameRU}
+                        {locale === 'ru' ? element.nameRU : element.nameEN}
                     </button>
                     {filterObj.arrIdCountries?.includes(element.id) ?
                         <div className={styles.country__checkbox_active}>

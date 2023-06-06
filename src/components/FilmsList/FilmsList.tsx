@@ -11,11 +11,13 @@ import Skeleton from '@/components/UI/Skeleton/Skeleton'
 import FilmCard from '@/components/FilmCard/FilmCard'
 
 
-export default function FilmsList({genres, countries, listDir, listActor, searchPar}) {
+export default function FilmsList({genres, countries, listDir, listActor, searchPar,}) {
 
     const searchParams = useSearchParams()
     const params = useParams()
-
+    // console.log(searchParams)
+    // console.log(searchPar)
+// console.log(paramse)
 
     const [filmsList, setFilmsList] = useState<object[]>([])
 
@@ -27,7 +29,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
     useEffect(() => {
             console.log('useEffect работает')
-            console.log(params)
+            // console.log(params)
 
             const filter = {
                 'ratingStart': 1,
@@ -41,8 +43,9 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             let newFilterText = {...filterText}
             let newFilter = {...filter}
             // @ts-ignore
-            if (Object.keys(params).length !== 0) {
+            if (params.hasOwnProperty('movies')) {
 
+                // console.log(params)
                 // @ts-ignore
                 const arrParams = params?.movies.split('/')
                 arrParams.forEach(i => {
@@ -66,7 +69,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         newFilterText = {...newFilterText, 'arrGenres': arrGenresRU, 'arrGenresEN': arrGenresEN}
                         // @ts-ignore
                         newFilter = {...newFilter, 'arrIdGenres': genresArrId}
-                        console.log(arrGenres)
+                        // console.log(arrGenres)
                     }
                 })
 
@@ -230,7 +233,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 .then(response => response.json())
                 .then(data => {
                     setFilmsList(prev => [...prev, ...data])
-                    console.log(filmsList)
+                    // console.log(filmsList)
                 })
         } catch (error) {
             console.log(error.message)

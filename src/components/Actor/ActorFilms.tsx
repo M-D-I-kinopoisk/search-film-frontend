@@ -6,8 +6,15 @@ import styles from './actorFilms.module.scss'
 
 import {funcDeclination} from '@/utils/funcDeclination'
 import ActorFilm from '@/components/Actor/ActorFilm/ActorFilm'
+import {useParams, useSearchParams} from 'next/navigation'
 
 const ActorFilms = ({actorFilms}) => {
+
+    const searchParams = useSearchParams()
+    const paramse = useParams()
+    console.log(searchParams)
+    console.log(paramse)
+    
     const [active, setActive] = useState(0)
     const [visible, setVisible] = useState(false)
 

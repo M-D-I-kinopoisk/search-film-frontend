@@ -1,6 +1,6 @@
 'use client'
 
-import styles from '@/app/person/[id]/actor.module.scss'
+import styles from '@/app/[locale]/person/[id]/actor.module.scss'
 import Image from 'next/image'
 import {useRouter} from 'next/navigation'
 

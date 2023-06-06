@@ -13,12 +13,16 @@ import {Film} from '@/components/Film/FilmInfo/FilmInfo'
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
+import {useLocale} from 'next-intl'
 
 interface FilmCard {
     film: Film
 }
 
 const FilmCard = ({film}: FilmCard) => {
+
+    const locale = useLocale()
+
     const [visible, setVisible] = React.useState(false)
     const {filmId} = useSelector(selectFilms)
     const dispatch = useDispatch()
@@ -80,11 +84,11 @@ const FilmCard = ({film}: FilmCard) => {
                             </div>
                             <div className={styles.info}>
                                 <div
-                                    className={styles.text}>{film.year}, {film.country.nameRU}
+                                    className={styles.text}>{film.year}, {locale === 'ru' ? film.country.nameRU : film.country.nameEN}
                                 </div>
                                 {film.genres.slice(0, 1).map((genre) => (
                                     <div className={styles.text}
-                                         key={genre.id}>{genre.nameRU}</div>
+                                         key={genre.id}>{locale === 'ru' ? genre.nameRU : genre.nameEN }</div>
                                 ))}
                                 <div
                                     className={styles.text}>{funcDeclination(film.duration, ['минута', 'минуты', 'минут'])}</div>
@@ -104,7 +108,7 @@ const FilmCard = ({film}: FilmCard) => {
                                alt='image none'/>}
                 </div>
                 <div className={styles.text__section}>
-                    <div className={styles.title}>{film.nameRU}</div>
+                    <div className={styles.title}>{locale === 'ru'  ? film.nameRU : (film.nameEN ? film.nameEN : film.nameRU) }</div>
                     <div className={styles.extra}>Бесплатно</div>
                 </div>
             </Link>

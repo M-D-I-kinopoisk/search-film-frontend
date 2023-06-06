@@ -1,3 +1,5 @@
+'use client'
+
 import {useDispatch, useSelector} from 'react-redux'
 
 import {BsCheckLg} from 'react-icons/bs'
@@ -6,11 +8,14 @@ import styles from './filterGenres.module.scss'
 import { selectFilter} from '@/redux/FilterSlice'
 import { selectFilterText} from '@/redux/FilterTextSlice'
 import {useRouter, useSearchParams} from 'next/navigation'
+import {useLocale} from 'next-intl'
 
 
 
 
 export default function FilterGenres({genres}) {
+
+    const locale = useLocale()
 
     const router = useRouter()
 
@@ -73,7 +78,7 @@ export default function FilterGenres({genres}) {
             {genres.map((element, inx) => {
                 return <li key={inx} className={styles.genres__item}>
                     <button onClick={(e) => filterGenres(e, element.id, element.nameRU, element.nameEN)}>
-                        {firstLetterToUpperCase(element.nameRU)}
+                        {firstLetterToUpperCase(locale === 'ru' ? element.nameRU : element.nameEN)}
                     </button>
                     {filterObj.arrIdGenres?.includes(element.id) ?
                         <div className={styles.genres__checkbox_active}>

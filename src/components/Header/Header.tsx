@@ -104,7 +104,7 @@ const Header = () => {
                     }
 
 
-                    {/*<Locales/>*/}
+                    <Locales/>
 
                     <div className={styles.header__rightContainer}>
                         <Link

@@ -21,11 +21,14 @@ import FilterGrades from '@/components/Filter/FilterFilms/FilterGrades/FilterGra
 import FilterParameters from '@/components/Filter/FilterFilms/FilterParameters/FilterParameters'
 
 import styles from './filterFilms.module.scss'
+import {useTranslations} from 'next-intl'
 
 
 const FilterFilms = ({genres, countries, listActor, listDir}) => {
 
     const router = useRouter()
+
+    const t = useTranslations('Index')
 
 
     const [activePlank, setActivePlank] = useState({
@@ -71,7 +74,7 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
                 {/*    <h1>Фильмы</h1> : null}*/}
                 <h1>Фильмы</h1>
             </div>
-
+            <p className={styles.title}>{t('title')}</p>
             <FilterParameters/>
 
             <FilterSort/>
