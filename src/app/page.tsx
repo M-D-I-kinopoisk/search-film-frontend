@@ -6,56 +6,56 @@ import FilmsCategory from '@/components/FilmsCategory/FilmsCategory'
 import FilmsRating from '@/components/Home/FilmsRating/FilmsRating'
 import FilmsClause from '@/components/Home/FilmsClause/FilmsClause'
 
-async function getFightersFilms() {
-    const response = await fetch('http://localhost:12120/api/films/filter', {
-        method: 'POST',
-        body: JSON.stringify({
-            'arrIdGenres': [
-                2
-            ],
-            'part': 3
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    return response.json()
-}
+// async function getFightersFilms() {
+//     const response = await fetch('http://localhost:12120/api/films/filter', {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             'arrIdGenres': [
+//                 2
+//             ],
+//             'part': 3
+//         }),
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     })
+//     return response.json()
+// }
 
-async function getAdventuresFilms() {
-    const response = await fetch('http://localhost:12120/api/films/filter', {
-        method: 'POST',
-        body: JSON.stringify({
-            'arrIdGenres': [
-                15
-            ],
-            'part': 4
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-    return response.json()
-}
+// async function getAdventuresFilms() {
+//     const response = await fetch('http://localhost:12120/api/films/filter', {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             'arrIdGenres': [
+//                 15
+//             ],
+//             'part': 4
+//         }),
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//     })
+//     return response.json()
+// }
 
-async function getRatingFilms() {
-    const response = await fetch('http://localhost:12120/api/films/filter', {
-        method: 'POST',
-        body: JSON.stringify({
-            'ratingStart': 8.5,
-            'part': 1
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-    return response.json()
-}
+// async function getRatingFilms() {
+//     const response = await fetch('http://localhost:12120/api/films/filter', {
+//         method: 'POST',
+//         body: JSON.stringify({
+//             'ratingStart': 8.5,
+//             'part': 1
+//         }),
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//     })
+//     return response.json()
+// }
 
 export default async function Home() {
-    const fighters = await getFightersFilms()
-    const adventures = await getAdventuresFilms()
-    const ratingFilms = await getRatingFilms()
+    // const fighters = await getFightersFilms()
+    // const adventures = await getAdventuresFilms()
+    // const ratingFilms = await getRatingFilms()
 
 
     return <div className={styles.wrapper}>
@@ -71,12 +71,12 @@ export default async function Home() {
             </ul>
         </div>
 
-        <FilmsRating ratingFilms={ratingFilms}/>
+        {/* <FilmsRating ratingFilms={ratingFilms}/> */}
 
         <FilmsClause/>
 
-        <FilmsCategory list={fighters} title='Боевики' titleEN='fighter'/>
+        {/* <FilmsCategory list={fighters} title='Боевики' titleEN='fighter'/> */}
 
-        <FilmsCategory list={adventures} title='Приключения' titleEN='adventures'/>
+        {/* <FilmsCategory list={adventures} title='Приключения' titleEN='adventures'/> */}
     </div>
 }

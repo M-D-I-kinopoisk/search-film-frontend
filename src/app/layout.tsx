@@ -25,7 +25,7 @@ export default function RootLayout({children}: {
         <Provider>
             <Providers>
                 <Header/>
-                <AuthWindow/>
+                {/* <AuthWindow/> */}
                 {/*<Auth/>*/}
                 <main>
                     {children}
