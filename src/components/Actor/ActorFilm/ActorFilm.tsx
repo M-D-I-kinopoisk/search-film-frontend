@@ -1,7 +1,5 @@
 'use client'
 
-import {useState} from 'react'
-
 import styles from './actorFilm.module.scss'
 
 import Image from 'next/image'
@@ -22,26 +20,17 @@ interface ActorFilm {
 }
 
 const ActorFilm = ({item}: ActorFilm) => {
-    const [isAltUsed, setIsAltUsed] = useState(false)
-    const onError = (event) => {
-        if (!event.target.alt) {
-            setIsAltUsed(false)
-        } else {
-            setIsAltUsed(true)
-        }
-    }
 
     return (
         <Link href={`/film/${item.film.id}`} className={styles.film}>
             <div className={styles.filmImg}>
-                {isAltUsed ?
+                {item.film.imageName === null ?
                     <Image src={'/img/static-filmImage.jpg'}
                            width={80}
                            height={122}
-                           alt='болванка'/>
+                           alt='alt'/>
                     :
-                    <Image onError={(event) => onError(event)}
-                           alt='Фильм'
+                    <Image alt='Фильм'
                            width={80}
                            height={122}
                            src={`http://localhost:12120/api/films/images/${item.film.imageName}`}/>}

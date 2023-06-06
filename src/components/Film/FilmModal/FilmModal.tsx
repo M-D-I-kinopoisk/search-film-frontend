@@ -26,6 +26,7 @@ import {useSession} from 'next-auth/react'
 
 import {RiUserLine} from 'react-icons/ri'
 import {useState} from 'react'
+import FilmsInteresting from '@/components/Home/FilmsInteresting/FilmsInteresting'
 
 type MyModalProps = {
     actors: Actor[],
@@ -162,8 +163,8 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
                                             </form>
                                             <div>
                                                 {filmComments.map((comment) =>
-                                                    <FilmCommentsItem key={comment.id} inModal={true}
-                                                                      comment={comment}/>
+                                                        <FilmCommentsItem key={comment.id} inModal={true}
+                                                                          comment={comment}/>
                                                 )}
                                                 <AiOutlineLike size={20} fill='#fff'/>
 

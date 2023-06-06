@@ -5,7 +5,7 @@ import styles from './filmCommentsItem.module.scss'
 import {AiOutlineLike, AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai'
 
 import {Comment} from '@/components/Film/FilmComments/FilmComments'
-import {useEffect, useRef, useState} from 'react'
+import {useState} from 'react'
 import {funcDeclination} from '@/utils/funcDeclination'
 import FilmModalComment from '@/components/Film/FilmComments/FilmModalComment/FilmModalComment'
 
@@ -21,7 +21,7 @@ const FilmCommentsItem = ({inModal, comment}: CommentsItemProps) => {
     const [showChildrenAnswers, setShowChildrenAnswers] = useState(false)
     const [childrenComments, setChildrenComments] = useState({})
 
-    const [activeComment, setActiveComment] = useState(null)
+    const [changeToggle, setChangeToggle] = useState(-1)
 
     const onClickButton = () => {
         setShowCommentAnswers(!showCommentAnswers)
@@ -29,8 +29,14 @@ const FilmCommentsItem = ({inModal, comment}: CommentsItemProps) => {
         showCommentAnswerHandler()
     }
 
-    const onClickButtonChildren = () => {
-        setShowChildrenAnswers(!showChildrenAnswers)
+    const onClickButtonChildren = (index) => {
+
+        if (index === changeToggle) {
+            setShowChildrenAnswers(!showChildrenAnswers)
+        } else {
+            setChangeToggle(index)
+            setShowChildrenAnswers(true)
+        }
 
         showCommentAnswerHandler()
     }
@@ -61,25 +67,25 @@ const FilmCommentsItem = ({inModal, comment}: CommentsItemProps) => {
                                     {!showCommentAnswers ? <AiFillCaretDown/> : <AiFillCaretUp/>}
                                     {funcDeclination(comment.childrenCount, ['ответ', 'ответа', 'ответов'])}
                                 </button>
-                                {showCommentAnswers && childrenComments['children']?.map((comment) => (
+
+                                {showCommentAnswers && childrenComments['children']?.map((comment, index) => (
                                     <div key={comment.id} className={styles.childrenComment}>
-                                        <>
-                                            <FilmModalComment comment={comment}/>
-                                            {(comment.children.length > 0) &&
-                                                <>
-                                                    {<button className={styles.answer}
-                                                             onClick={() => onClickButtonChildren()}>
-                                                        {!showChildrenAnswers ? <AiFillCaretDown/> : <AiFillCaretUp/>}
-                                                        {funcDeclination(comment.children.length, ['ответ', 'ответа', 'ответов'])}
-                                                    </button>}
-                                                    {showChildrenAnswers && comment.children.map((comment) => (
-                                                        <div key={comment.id} className={styles.childrenComment}>
-                                                            <FilmModalComment comment={comment}/>
-                                                        </div>
-                                                    ))}
-                                                </>
-                                            }
-                                        </>
+                                        <FilmModalComment comment={comment}/>
+                                        {(comment.children.length > 0) &&
+                                            <>
+                                                <button className={styles.answer}
+                                                        onClick={() => onClickButtonChildren(index)}>
+                                                    {showChildrenAnswers && index === changeToggle ?
+                                                        <AiFillCaretUp/> : <AiFillCaretDown/>}
+                                                    {funcDeclination(comment.children.length, ['ответ', 'ответа', 'ответов'])}
+                                                </button>
+                                                {showChildrenAnswers && index === changeToggle && comment.children.map((comment) => (
+                                                    <div key={comment.id} className={styles.childrenComment}>
+                                                        <FilmModalComment comment={comment}/>
+                                                    </div>
+                                                ))}
+                                            </>
+                                        }
                                     </div>
                                 ))}
                             </>

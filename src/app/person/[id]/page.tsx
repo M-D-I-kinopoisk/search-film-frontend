@@ -1,9 +1,10 @@
-import styles from './actor.module.scss'
+import styles from './person.module.scss'
 
 import Image from 'next/image'
 
 import ActorFilms from '@/components/Actor/ActorFilms'
 import BackButton from '@/components/UI/BackButton/BackButton'
+import Breadcrumbs from '@/components/UI/Breadcrumbs/Breadcrumbs'
 
 type Props = {
     params: {
@@ -41,7 +42,6 @@ const Actor = async ({params: {id}}: Props) => {
     return (
         <div className={styles.wrapper}>
            <BackButton/>
-
             <div className={styles.content}>
                 <div>
                     <div className={styles.img}>
@@ -62,6 +62,9 @@ const Actor = async ({params: {id}}: Props) => {
                     </div>
                 </div>
                 <ActorFilms actorFilms={actorFilms}/>
+            </div>
+            <div className={styles.actorNav}>
+            <Breadcrumbs title={actor.nameRU}/>
             </div>
         </div>
     )

@@ -67,7 +67,9 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
 
     return (
         <div className={styles.filmInfo}>
-            <MainFilmInfo film={film}/>
+            <div className={styles.mainInfoContainer}>
+                <MainFilmInfo film={film}/>
+            </div>
             <div className={styles.otherInfo}>
                 <div className={styles.actors}>
                     <div className={styles.actor}>
