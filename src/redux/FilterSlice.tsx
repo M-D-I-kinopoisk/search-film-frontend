@@ -6,16 +6,16 @@ interface FilmsSliceState {
         arrIdCountries?: number[] | undefined
         arrMembersFilterDto?: [
             {
-                idMember: number,
-                idProfession: number
+                idMember?: number,
+                idProfession?: number
             }
         ] | undefined
-        ratingStart: number
-        countRatingStart: number,
-        'yearStart': number,
-        'yearEnd': number,
-        'part': number,
-        'typeSorting': string
+        ratingStart?: number
+        countRatingStart?: number,
+        'yearStart'?: number,
+        'yearEnd'?: number,
+        'part'?: number,
+        'typeSorting'?: string
     }
 }
 
