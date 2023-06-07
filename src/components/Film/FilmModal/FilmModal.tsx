@@ -23,7 +23,10 @@ import {useSession} from 'next-auth/react'
 
 import {RiUserLine} from 'react-icons/ri'
 import {useState} from 'react'
+
 import {FilmModalProps} from '@/types/components/Film'
+
+import FilmCreatorsItem from '@/components/Film/FilmCreators/FilmCreatorsItem/FilmCreatorsItem'
 
 const FilmModal = ({actors, filmInfo, filmComments, film, id}: FilmModalProps) => {
     const {modalOpen} = useSelector(selectFilms)
@@ -129,8 +132,8 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: FilmModalProps) =
                                                     <div className={styles.directorsItems}>
                                                         {actors.map((actor: any) =>
                                                             (actor.profession.nameRU === item ?
-                                                                <FilmModalCreator inModal={true} key={actor.id}
-                                                                                  actor={actor}/> : ''))}
+                                                                <FilmCreatorsItem key={actor.key} actor={actor}
+                                                                                  inModal={true}/> : ''))}
                                                     </div>
                                                 </div>
                                             ))}
