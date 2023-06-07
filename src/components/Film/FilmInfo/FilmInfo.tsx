@@ -21,7 +21,7 @@ import {funcDeclination} from '@/utils/funcDeclination'
 import Link from 'next/link'
 
 export type Film = {
-    id: string,
+    id: number,
     year: number,
     rating: number,
     ageRating: string,

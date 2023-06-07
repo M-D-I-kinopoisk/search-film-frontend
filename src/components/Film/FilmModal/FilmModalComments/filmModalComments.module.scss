@@ -1,0 +1,17 @@
+.modalComment {
+  list-style: none;
+  position: relative;
+
+  margin-top: 28px;
+
+  .childrenComment {
+    margin: 15px 0 14px 40px;
+  }
+
+  .answer {
+    display: flex;
+    align-items: center;
+
+    font-weight: 700;
+  }
+}

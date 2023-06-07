@@ -5,9 +5,9 @@ import modalClasses from '@/components/UI/CommentForm/commentForm.module.scss'
 
 import Image from 'next/image'
 
-import FilmCommentsItem from '../FilmComments/FilmCommentsItem/FilmCommentsItem'
-import FilmCreatorsItem from '../FilmCreators/FilmCreatorsItem/FilmCreatorsItem'
-import FilmTrailersItem from '../FilmTrailers/FilmTrailersItem/FilmTrailersItem'
+import FilmModalCreator from '@/components/Film/FilmModal/FilmModalCreators/FilmModalCreators'
+import FilmModalComments from '@/components/Film/FilmModal/FilmModalComments/FilmModalComments'
+import FilmModalTrailer from '@/components/Film/FilmModal/FilmModalTrailer/FilmModalTrailer'
 
 import {BsChevronRight} from 'react-icons/bs'
 import {RxLapTimer} from 'react-icons/rx'
@@ -26,7 +26,6 @@ import {useSession} from 'next-auth/react'
 
 import {RiUserLine} from 'react-icons/ri'
 import {useState} from 'react'
-import FilmsInteresting from '@/components/Home/FilmsInteresting/FilmsInteresting'
 
 type MyModalProps = {
     actors: Actor[],
@@ -140,7 +139,8 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
                                                     <div className={styles.directorsItems}>
                                                         {actors.map((actor: any) =>
                                                             (actor.profession.nameRU === item ?
-                                                                <FilmCreatorsItem key={actor.id} actor={actor}/> : ''))}
+                                                                <FilmModalCreator inModal={true} key={actor.id}
+                                                                                  actor={actor}/> : ''))}
                                                     </div>
                                                 </div>
                                             ))}
@@ -163,8 +163,8 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
                                             </form>
                                             <div>
                                                 {filmComments.map((comment) =>
-                                                        <FilmCommentsItem key={comment.id} inModal={true}
-                                                                          comment={comment}/>
+                                                    <FilmModalComments key={comment.id} inModal={true}
+                                                                       comment={comment}/>
                                                 )}
                                                 <AiOutlineLike size={20} fill='#fff'/>
 
@@ -178,7 +178,7 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
 
                                     {modalOpen.value === 'trailers' &&
                                         <div className={styles.trailers}>
-                                            <FilmTrailersItem filmInfo={filmInfo} inModal={true}/>
+                                            <FilmModalTrailer filmInfo={filmInfo} inModal={true}/>
                                         </div>
                                     }
                                 </div>

@@ -53,7 +53,6 @@ const FilmComments = ({id, filmComments}: Comments) => {
         router.push(`film/${id}/comments`)
     }
 
-
     return (
         <div className={styles.comments}>
             <div className={styles.commentsTop}>

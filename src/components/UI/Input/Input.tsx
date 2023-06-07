@@ -1,4 +1,4 @@
-import {FC,useEffect, useRef, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 
 import {BiSearch} from 'react-icons/bi'
 import {AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai'
@@ -16,14 +16,7 @@ export interface InputProps {
     password?: boolean
 }
 
-const Input: FC<InputProps> = ({
-                                          label,
-                                          onChange, type,
-                                          value,
-                                          login,
-                                          password,
-                                          search
-                                      }) => {
+const Input = ({label, onChange, type, value, login, password, search}: InputProps) => {
 
     const [passToggle, setPassToggle] = useState(false)
 

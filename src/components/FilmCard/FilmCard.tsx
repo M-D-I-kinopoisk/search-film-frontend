@@ -4,7 +4,7 @@ import styles from './filmCard.module.scss'
 
 import {RiBookmarkLine, RiMagicLine, RiStarLine} from 'react-icons/ri'
 import {MdOutlineHideSource} from 'react-icons/md'
-import {funcDeclination} from '@/utils/funcDeclination'
+import {funcDeclination} from '../../utils/funcDeclination'
 
 import Image from 'next/image'
 import Link from 'next/link'
