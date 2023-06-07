@@ -26,7 +26,7 @@ const FilterGrades = () => {
         const numberRating = Number(e.target.value)
 
         let url = '/movies'
-        if (searchParams.toString()) {
+        if (searchParams?.toString()) {
 
             if (searchParams.has('ivi_grades')) {
 

@@ -7,7 +7,7 @@ import {selectFilter} from '@/redux/FilterSlice'
 import {RxRadiobutton,} from 'react-icons/rx'
 import {MdOutlineRadioButtonUnchecked} from 'react-icons/md'
 
-import {useRouter, useSearchParams, useParams, usePathname} from 'next/navigation'
+import {useRouter, useSearchParams,usePathname} from 'next/navigation'
 
 import styles from './filterYears.module.scss'
 import {useLocale} from 'next-intl'
@@ -149,14 +149,14 @@ const FilterYears = () => {
         if (filterObj.yearStart !== start || filterObj.yearEnd !== end) {
             if (nameYears === 'Все годы') {
 
-                const valueStr = 'year=' + searchParams.get('year')?.replaceAll('+','_')
-                const newStr = searchParams.toString().replace(valueStr, '')
+                const valueStr = 'year=' + searchParams?.get('year')?.replaceAll('+','_')
+                const newStr = searchParams?.toString().replace(valueStr, '')
                 router.push(`${pathname}?${newStr}`)
 
             } else {
 
                 let url = '/movies'
-                if (searchParams.toString()) {
+                if (searchParams?.toString()) {
 
                     if (searchParams.has('year')) {
 

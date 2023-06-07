@@ -1,7 +1,7 @@
 import AdminFilms from '@/components/Admin/AdminFilms/AdminFilms'
 import AdminGenres from '@/components/Admin/AdminGenres/AdminGenres'
 import styles from './admin.module.scss'
-import Image from 'next/image'
+
 
 export const metadata = {
     title: 'Admin Ivi',

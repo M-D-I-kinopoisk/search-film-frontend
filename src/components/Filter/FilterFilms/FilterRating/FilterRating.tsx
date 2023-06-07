@@ -28,7 +28,7 @@ const FilterRating = () => {
     const onMouseUpRating = (e, inputRange) => {
         const numberRating = Number(e.target.value)
         let url = '/movies'
-        if (searchParams.toString()) {
+        if (searchParams?.toString()) {
 
             if (searchParams.has('ivi_rating_10_gte')) {
 

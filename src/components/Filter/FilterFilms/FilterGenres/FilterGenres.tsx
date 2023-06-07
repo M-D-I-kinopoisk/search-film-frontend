@@ -1,6 +1,6 @@
 'use client'
 
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 
 import {BsCheckLg} from 'react-icons/bs'
 
@@ -37,7 +37,7 @@ export default function FilterGenres({genres}) {
                     const strCountries = filterTextObj.hasOwnProperty('arrCountriesEN') ?
                         filterTextObj.arrCountriesEN.join('+').toLowerCase() :
                         ''
-                    router.push(`movies/${strCountries}?${searchParams.toString()}`,)
+                    router.push(`movies/${strCountries}?${searchParams?.toString()}`,)
 
                 } else {
 
@@ -46,7 +46,7 @@ export default function FilterGenres({genres}) {
                     const strCountries = filterTextObj.hasOwnProperty('arrCountriesEN') ?
                         filterTextObj.arrCountriesEN.join('+').toLowerCase() :
                         ''
-                    router.push(`/movies/${str}/${strCountries}?${searchParams.toString()}`,)
+                    router.push(`/movies/${str}/${strCountries}?${searchParams?.toString()}`,)
 
                 }
 
@@ -56,14 +56,14 @@ export default function FilterGenres({genres}) {
                 const strCountries = filterTextObj.hasOwnProperty('arrCountriesEN') ?
                     filterTextObj.arrCountriesEN.join('+').toLowerCase() :
                     ''
-                router.push(`/movies/${str}/${strCountries}?${searchParams.toString()}`,)
+                router.push(`/movies/${str}/${strCountries}?${searchParams?.toString()}`,)
             }
         } else {
 
             const strCountries = filterTextObj.hasOwnProperty('arrCountriesEN') ?
                 filterTextObj.arrCountriesEN.join('+').toLowerCase() :
                 ''
-            router.push(`/movies/${nameGenresEN}/${strCountries}?${searchParams.toString()}`,)
+            router.push(`/movies/${nameGenresEN}/${strCountries}?${searchParams?.toString()}`,)
         }
     }
 

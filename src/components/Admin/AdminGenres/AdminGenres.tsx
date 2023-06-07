@@ -6,7 +6,10 @@ import {BsChevronCompactDown, BsChevronCompactUp} from 'react-icons/bs'
 
 import Input from '@/components/UI/Input/Input'
 
+import {useSession} from 'next-auth/react'
+
 import styles from './adminGenres.module.scss'
+
 
 
 interface listGenres {
@@ -16,6 +19,8 @@ interface listGenres {
 }
 
 export default function AdminGenres() {
+
+    const {data: session, status} = useSession()
 
     const [toggle, setToggle] = useState<boolean>(false)
 

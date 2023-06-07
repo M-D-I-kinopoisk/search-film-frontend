@@ -43,7 +43,7 @@ const FilterDir = ({listDir}) => {
     const filterDir = (id, nameDir, nameDirEN) => {
 
         let url = '/movies'
-        if (searchParams.toString()) {
+        if (searchParams?.toString()) {
             if (searchParams.has('dir')) {
                 const valueStr = ('dir=' + searchParams.get('dir')).replaceAll(' ', '+')
                 const newStr = searchParams.toString().replace(valueStr, `dir=${nameDirEN}`)

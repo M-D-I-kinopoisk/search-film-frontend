@@ -52,7 +52,7 @@ const FilterSort = () => {
 
 
         let url = '/movies'
-        if (searchParams.toString()) {
+        if (searchParams?.toString()) {
 
             if (searchParams.has('sort')) {
 

@@ -28,7 +28,7 @@ const FilterCountries = ({countries}) => {
                     const strGenres = filterTextObj.hasOwnProperty('arrGenresEN') ?
                         filterTextObj.arrGenresEN.join('+') :
                         ''
-                    router.push(`movies/${strGenres}?${searchParams.toString()}`,)
+                    router.push(`movies/${strGenres}?${searchParams?.toString()}`,)
 
                 } else {
                     const filterListNameCountriesEN = filterTextObj.arrCountriesEN.filter((str) => str !== nameCountriesEN)
@@ -36,7 +36,7 @@ const FilterCountries = ({countries}) => {
                     const strGenres = filterTextObj.hasOwnProperty('arrGenresEN') ?
                         filterTextObj.arrGenresEN.join('+') :
                         ''
-                    router.push(`/movies/${strGenres}/${str.toLowerCase()}?${searchParams.toString()}`,)
+                    router.push(`/movies/${strGenres}/${str.toLowerCase()}?${searchParams?.toString()}`,)
                 }
             } else {
 
@@ -44,7 +44,7 @@ const FilterCountries = ({countries}) => {
                 const strGenres = filterTextObj.hasOwnProperty('arrGenresEN') ?
                     filterTextObj.arrGenresEN.join('+') :
                     ''
-                router.push(`/movies/${strGenres}/${str.toLowerCase()}?${searchParams.toString()}`,)
+                router.push(`/movies/${strGenres}/${str.toLowerCase()}?${searchParams?.toString()}`,)
 
             }
         } else {
@@ -52,7 +52,7 @@ const FilterCountries = ({countries}) => {
             const strGenres = filterTextObj.hasOwnProperty('arrGenresEN') ?
                 filterTextObj.arrGenresEN.join('+') :
                 ''
-            router.push(`/movies/${strGenres}/${nameCountriesEN.toLowerCase()}?${searchParams.toString()}`,)
+            router.push(`/movies/${strGenres}/${nameCountriesEN.toLowerCase()}?${searchParams?.toString()}`,)
         }
     }
 

@@ -16,9 +16,9 @@ export default function AdminFilms() {
 
     const {data: session, status} = useSession()
 
-    if (session?.user?.role?.name !== 'ADMIN') {
-        return notFound()
-    }
+
+
+
 
     const [inputSearch, setInputSearch] = useState<string>('')
 
@@ -149,7 +149,11 @@ export default function AdminFilms() {
 
     }
 
+    if (session?.user?.role?.name !== 'ADMIN') {
+        return notFound()
+    }
 
+    console.log(session?.user?.role?.name)
     return (
         <>
             <div className={styles.search__film}>
