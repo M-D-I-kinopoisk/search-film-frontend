@@ -1,11 +1,13 @@
-import Footer from './Footer'
+import NavBar from '../components/Header/NavBar/NavBar'
 
 import {Meta, StoryObj} from '@storybook/react'
 
 
-const meta: Meta<typeof Footer> = {
-    title: 'Components/Footer',
-    component: Footer,
+
+const meta: Meta<typeof NavBar> = {
+    title: 'Components/NavBar',
+    component: NavBar,
+    tags: ['autodocs'],
     parameters: {
         backgrounds: {
             default: 'ivi',
@@ -24,7 +26,8 @@ const meta: Meta<typeof Footer> = {
 }
 export default meta
 
-type Story = StoryObj<typeof Footer>;
+type Story = StoryObj<typeof NavBar>;
 
 
-export const footer: Story = {}
+
+export const navBar: Story = {}

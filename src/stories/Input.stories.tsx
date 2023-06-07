@@ -1,4 +1,4 @@
-import Input from './Input'
+import Input from '../components/UI/Input/Input'
 
 import {Meta, StoryObj} from '@storybook/react'
 

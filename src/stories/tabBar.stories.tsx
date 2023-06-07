@@ -1,4 +1,4 @@
-import TabBar from './TabBar'
+import TabBar from '../components/UI/TabBar/TabBar'
 
 import {Meta, StoryObj} from '@storybook/react'
 

@@ -4,7 +4,7 @@ import styles from './filmCard.module.scss'
 
 import {RiBookmarkLine, RiMagicLine, RiStarLine} from 'react-icons/ri'
 import {MdOutlineHideSource} from 'react-icons/md'
-import {funcDeclination} from '@/utils/funcDeclination'
+import {funcDeclination} from '../../utils/funcDeclination'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,7 +12,7 @@ import Link from 'next/link'
 import {Film} from '@/components/Film/FilmInfo/FilmInfo'
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
+import {getFilmId, selectFilms} from '../../redux/FilmsSlice'
 import {useLocale} from 'next-intl'
 
 interface FilmCard {
@@ -20,7 +20,6 @@ interface FilmCard {
 }
 
 const FilmCard = ({film}: FilmCard) => {
-
     const locale = useLocale()
 
     const [visible, setVisible] = React.useState(false)
