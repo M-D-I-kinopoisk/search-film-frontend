@@ -43,10 +43,7 @@ async function getDir() {
 }
 
 
-
-
 const Movies = async ({searchParams, params}) => {
-    
 
     const genres = await getGenres()
 
@@ -55,7 +52,6 @@ const Movies = async ({searchParams, params}) => {
     const listActor = await getActor()
 
     const listDir = await getDir()
-    
 
 
     return (

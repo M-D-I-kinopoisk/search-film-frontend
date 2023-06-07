@@ -10,10 +10,18 @@ import {getFilterTextObj} from '@/redux/FilterTextSlice'
 import Skeleton from '@/components/UI/Skeleton/Skeleton'
 import FilmCard from '@/components/FilmCard/FilmCard'
 import {useTranslations} from 'next-intl'
+import {Actor, Country, Dir, Genre} from '@/types/components/Filter'
 
 
-export default function FilmsList({genres, countries, listDir, listActor, searchPar,}) {
+export interface FilmsListProps {
+    genres: Genre[],
+    countries: Country[],
+    listActor: Actor[],
+    listDir: Dir[],
+    searchPar: {}
+}
 
+export default function FilmsList({genres, countries, listDir, listActor, searchPar}: FilmsListProps) {
     const t = useTranslations('FilmsList')
 
     const searchParams = useSearchParams()
@@ -23,14 +31,11 @@ export default function FilmsList({genres, countries, listDir, listActor, search
     const [filmsList, setFilmsList] = useState<object[]>([])
 
     const {filterObj} = useSelector(selectFilter)
-    // const {filterTextObj} = useSelector(selectFilterText)
     const dispatch = useDispatch()
 
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-            console.log('useEffect работает')
-
             const filter = {
                 'ratingStart': 1,
                 'countRatingStart': 1000,
@@ -42,19 +47,17 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             const filterText = {}
             let newFilterText = {...filterText}
             let newFilter = {...filter}
-            // @ts-ignore
-            if (params.hasOwnProperty('movies')) {
 
+            if (params?.hasOwnProperty('movies')) {
                 // @ts-ignore
                 const arrParams = params?.movies.split('/')
                 arrParams.forEach(i => {
                     const strArr = i.replaceAll('%2B', ',')
                         .replaceAll('%20', ' ')
-                            .replaceAll('%C3%BC', 'ü')
+                        .replaceAll('%C3%BC', 'ü')
                         .toLowerCase().split(',')
                     const arrGenres = genres.filter(i => strArr.includes(i.nameEN.toLowerCase()))
                     const arrCountries = countries.filter(i => strArr.includes(i.nameEN.toLowerCase()))
-
 
                     if (arrCountries.length > 0) {
                         const countriesArrId = arrCountries.map(i => i.id)
@@ -69,13 +72,12 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         const arrGenresEN = arrGenres.map(i => i.nameEN)
                         const arrGenresRU = arrGenres.map(i => i.nameRU)
                         newFilterText = {...newFilterText, 'arrGenres': arrGenresRU, 'arrGenresEN': arrGenresEN}
+
                         // @ts-ignore
                         newFilter = {...newFilter, 'arrIdGenres': genresArrId}
                     }
                 })
-
             }
-
 
             if (searchParams?.get('ivi_rating_10_gte')) {
 
@@ -120,7 +122,9 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 // @ts-ignore
                 if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
                     // @ts-ignore
-                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
+                    newFilter = {
+                        ...newFilter,
+                        'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
                             'idMember': arrDir[0].id,
                             'idProfession': 1
                         }]
@@ -141,7 +145,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 }
             }
 
-
             if (searchParams?.get('actor')) {
 
                 const strMembersActor = searchParams.get('actor')
@@ -153,7 +156,9 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
                 if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
                     // @ts-ignore
-                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
+                    newFilter = {
+                        ...newFilter,
+                        'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
                             'idMember': arrActor[0].id,
                             'idProfession': 2
                         }]
@@ -172,9 +177,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         'arrActorMembersEN': [arrActor[0].nameEN]
                     }
                 }
-
             }
-
 
             dispatch(getFilterObj(
                 {
@@ -186,7 +189,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                     ...newFilterText,
                 }
             ))
-
 
             const fetchData = async () => {
                 setLoading(false)
@@ -207,14 +209,9 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             }
 
             fetchData()
-
-
-
-        }
-        ,
+        },
         [searchPar]
     )
-
 
     const nextListFilms = (part) => {
         try {
@@ -237,7 +234,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
         }
 
     }
-
 
     return (
         <>

@@ -5,30 +5,26 @@ import {useEffect, useRef, useState} from 'react'
 import {BsChevronCompactDown, BsChevronCompactUp} from 'react-icons/bs'
 import {MdOutlineSort} from 'react-icons/md'
 
-import { useSelector} from 'react-redux'
-import { selectFilter} from '@/redux/FilterSlice'
+import {useSelector} from 'react-redux'
+import {selectFilter} from '@/redux/FilterSlice'
 
 import styles from './filterSort.module.scss'
+
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {useTranslations} from 'next-intl'
 
-
 const FilterSort = () => {
-
     const t = useTranslations('FilterSort')
 
     const pathname = usePathname()
-
     const router = useRouter()
 
     const searchParams = useSearchParams()
 
     const [sortToggle, SetSortToggle] = useState(false)
-
     const modalRef = useRef<HTMLDivElement>(null)
 
     const {filterObj} = useSelector(selectFilter)
-
 
 
     useEffect(() => {
@@ -50,7 +46,6 @@ const FilterSort = () => {
 
     function sort(str) {
 
-
         let url = '/movies'
         if (searchParams?.toString()) {
 
@@ -69,14 +64,13 @@ const FilterSort = () => {
         }
     }
 
-
     return (
         <div className={styles.sort}>
             <div className={styles.sort__block} ref={modalRef}>
                 <div className={styles.sort__group} onClick={() => SetSortToggle(!sortToggle)}>
                     <MdOutlineSort style={{transform: ' scale(-1, 1)'}} size={20}/>
                     <p className={styles.sort__title}>
-                        {filterObj.typeSorting === 'year' && t('title1') }
+                        {filterObj.typeSorting === 'year' && t('title1')}
                         {filterObj.typeSorting === 'rating' && t('title2')}
                         {filterObj.typeSorting === 'countRating' && t('title3')}
                         {filterObj.typeSorting === 'alphabetRU' && t('title4')}

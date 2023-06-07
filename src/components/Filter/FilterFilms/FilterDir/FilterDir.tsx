@@ -11,22 +11,18 @@ import styles from './filterDir.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {useLocale} from 'next-intl'
 
+import {ListDir} from '@/types/components/Filter'
 
-const FilterDir = ({listDir}) => {
-
+const FilterDir = ({listDir}: ListDir) => {
     const locale = useLocale()
-
     const pathname = usePathname()
+
     const router = useRouter()
+
     const searchParams = useSearchParams()
 
     const [inputDir, setInputDir] = useState('')
-
-
-
     const [newListDir, setNewListDir] = useState<[] | any>([])
-
-
 
 
     function searchDir(e) {
@@ -67,20 +63,17 @@ const FilterDir = ({listDir}) => {
                    type={'text'}
                    value={inputDir}
                    search={true}
-                   onChange={(e) => searchDir(e)}
-            />
+                   onChange={(e) => searchDir(e)}/>
             <div className={styles.filterDir__list}>
                 {newListDir.map((item, inx) => {
-                        if (inx <= 9)
-                            return (<div key={inx} className={styles.filterDir}>
-                                <button onClick={() => filterDir(item.id, item.nameRU, item.nameEN)}>
-                                    <GiFilmProjector color={'rgb(234, 0, 61)'} size={20}/>
-                                    <span>{locale === 'ru' ? item.nameRU : item.nameEN}</span>
-                                </button>
-                            </div>)
-                    }
-                )
-                }
+                    if (inx <= 9)
+                        return (<div key={inx} className={styles.filterDir}>
+                            <button onClick={() => filterDir(item.id, item.nameRU, item.nameEN)}>
+                                <GiFilmProjector color={'rgb(234, 0, 61)'} size={20}/>
+                                <span>{locale === 'ru' ? item.nameRU : item.nameEN}</span>
+                            </button>
+                        </div>)
+                })}
             </div>
         </div>
     )

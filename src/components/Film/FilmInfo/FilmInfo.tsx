@@ -20,51 +20,7 @@ import {useLocale, useTranslations} from 'next-intl'
 import {funcDeclination} from '@/utils/funcDeclination'
 import Link from 'next/link'
 
-export type Film = {
-    id: number,
-    year: number,
-    rating: number,
-    ageRating: string,
-    duration: number,
-    nameRU: string,
-    nameEN: string,
-    countRating: number,
-    imageName: string,
-    country: {
-        nameRU: string
-        nameEN : string
-    },
-    genres: {
-        id: string,
-        nameRU: string,
-        nameEN: string
-    }[]
-}
-
-export type FilmInfo = {
-    trailerLink: string,
-    text: string
-}
-
-export type Actor = {
-    member: {
-        id: string,
-        nameEN: string,
-        nameRU: string,
-        imageName: string
-    },
-    profession: {
-        nameRU: string
-        nameEN : string
-    },
-    id: string
-}
-
-export interface infoContentProps {
-    filmInfo: FilmInfo,
-    film: Film,
-    actors: Actor[]
-}
+import {infoContentProps} from '@/types/components/Film'
 
 const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
 

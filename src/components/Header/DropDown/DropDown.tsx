@@ -1,32 +1,25 @@
 'use client'
 
 import Link from 'next/link'
-import {FC} from 'react'
+
 import HeaderBanner from '@/components/Header/HeaderBaner/HeaderBanner'
+
 import style from './DropDown.module.scss'
+
 import DropDownProfile from '@/components/Header/DropDown/DropDownProfile/DropDownProfile'
 import DropDownNotification from '@/components/Header/DropDown/DropDownNotification/DropDownNotification'
 import DropDownFilter from '@/components/Header/DropDown/DropDownFilter/DropDownFilter'
 
+import {DropDownProps} from '@/types/components/Header'
 
-export interface DropDownProps {
-    headerModule: boolean
-    categoryDropDown: string
-    handleMouseEnter: (e: any) => void
-    handleMouseLeave: (e: any) => void
-    scrollList: number
-    setScrollList: (i: any) => void
-    listGenres : object[]
-}
-
-const DropDown: FC<DropDownProps> = ({
+const DropDown = ({
                                          headerModule,
                                          categoryDropDown,
                                          handleMouseLeave,
                                          scrollList,
                                          setScrollList,
                                          listGenres,
-                                     }) => {
+                                     }: DropDownProps) => {
 
 
     let list

@@ -1,6 +1,5 @@
 'use client'
 
-
 import Link from 'next/link'
 
 import {useLocale} from 'next-intl'
@@ -8,12 +7,9 @@ import {useTranslations} from 'next-intl'
 
 import style from './dropDownFilter.module.scss'
 
-
 const DropDownFilter = ({list}) => {
-
     const locale = useLocale()
     const t = useTranslations('DropDownFilter')
-
 
     return (
         <>

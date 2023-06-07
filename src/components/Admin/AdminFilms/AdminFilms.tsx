@@ -17,7 +17,7 @@ export default function AdminFilms() {
 
 
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+
     const [inputSearch, setInputSearch] = useState<string>('')
 
     const [inputChange, setInputChange] = useState(

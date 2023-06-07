@@ -8,11 +8,8 @@ import {useLocale, useTranslations} from 'next-intl'
 
 
 export default function FilterParameters() {
-
     const locale = useLocale()
-
     const t = useTranslations('FilterParameters')
-
 
     const {filterTextObj} = useSelector(selectFilterText)
 

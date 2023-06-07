@@ -8,15 +8,12 @@ import FilmCreatorsItem from './FilmCreatorsItem/FilmCreatorsItem'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms} from '@/redux/FilmsSlice'
-import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
 import {setOpenModal} from '@/redux/FilmsSlice'
+
 import {useRouter} from 'next/navigation'
 import {useTranslations} from 'next-intl'
 
-interface Creators {
-    actors: Actor[]
-    id: string
-}
+import {Creators} from '@/types/components/Film'
 
 const FilmCreators = ({actors, id}: Creators) => {
 

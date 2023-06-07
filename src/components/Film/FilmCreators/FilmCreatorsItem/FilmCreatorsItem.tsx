@@ -5,12 +5,11 @@ import styles from './filmCreatorsItem.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import {CreatorsItemProps} from '@/types/components/Film'
 import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
 import {useLocale} from 'next-intl'
 
-type CreatorsItemProps = {
-    actor: Actor
-}
+
 
 const FilmCreatorsItem = ({actor}: CreatorsItemProps) => {
 

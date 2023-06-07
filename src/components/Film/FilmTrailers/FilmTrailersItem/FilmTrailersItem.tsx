@@ -2,12 +2,7 @@
 
 import styles from './filmTrailersItem.module.scss'
 
-import {FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
-
-type TrailersItemProps = {
-    inModal?: any,
-    filmInfo: FilmInfo
-}
+import {TrailersItemProps} from '@/types/components/Film'
 
 const FilmTrailersItem = ({ filmInfo}: TrailersItemProps) => {
 

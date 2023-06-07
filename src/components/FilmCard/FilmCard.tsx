@@ -4,28 +4,27 @@ import styles from './filmCard.module.scss'
 
 import {RiBookmarkLine, RiMagicLine, RiStarLine} from 'react-icons/ri'
 import {MdOutlineHideSource} from 'react-icons/md'
-import {funcDeclination} from '../../utils/funcDeclination'
+import {funcDeclination} from '@/utils/funcDeclination'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {Film} from '@/components/Film/FilmInfo/FilmInfo'
-import React from 'react'
+import {useState} from 'react'
+
 import {useDispatch, useSelector} from 'react-redux'
+
 import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
 import {useLocale, useTranslations} from 'next-intl'
 
-interface FilmCard {
-    film: Film
-}
+import {FilmCard} from '@/types/components/FilmCard'
 
 const FilmCard = ({film}: FilmCard) => {
 
     const locale = useLocale()
 
+    const [visible, setVisible] = useState(false)
     const t = useTranslations('FilmCard')
 
-    const [visible, setVisible] = React.useState(false)
     const {filmId} = useSelector(selectFilms)
     const dispatch = useDispatch()
     const onMouseHandler = (id) => {
@@ -90,7 +89,7 @@ const FilmCard = ({film}: FilmCard) => {
                                 </div>
                                 {film.genres.slice(0, 1).map((genre) => (
                                     <div className={styles.text}
-                                         key={genre.id}>{locale === 'ru' ? genre.nameRU : genre.nameEN }</div>
+                                         key={genre.id}>{locale === 'ru' ? genre.nameRU : genre.nameEN}</div>
                                 ))}
                                 <div
                                     className={styles.text}>{funcDeclination(film.duration, ['минута', 'минуты', 'минут'])}</div>
