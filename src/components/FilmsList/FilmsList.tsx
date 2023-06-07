@@ -6,7 +6,7 @@ import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilter} from '@/redux/FilterSlice'
 import {useParams, useSearchParams} from 'next/navigation'
-import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
+import {getFilterTextObj} from '@/redux/FilterTextSlice'
 import Skeleton from '@/components/UI/Skeleton/Skeleton'
 import FilmCard from '@/components/FilmCard/FilmCard'
 import {useTranslations} from 'next-intl'
@@ -18,9 +18,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
     const searchParams = useSearchParams()
     const params = useParams()
-    // console.log(searchParams)
-    // console.log(searchPar)
-// console.log(paramse)
+
 
     const [filmsList, setFilmsList] = useState<object[]>([])
 
@@ -48,11 +46,13 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             // @ts-ignore
             if (params.hasOwnProperty('movies')) {
 
-                // console.log(params)
                 // @ts-ignore
                 const arrParams = params?.movies.split('/')
                 arrParams.forEach(i => {
-                    const strArr = i.replaceAll('%2B', ',').replaceAll('%20', ' ').split(',')
+                    const strArr = i.replaceAll('%2B', ',')
+                        .replaceAll('%20', ' ')
+                            .replaceAll('%C3%BC', 'ü')
+                        .toLowerCase().split(',')
                     const arrGenres = genres.filter(i => strArr.includes(i.nameEN.toLowerCase()))
                     const arrCountries = countries.filter(i => strArr.includes(i.nameEN.toLowerCase()))
 
@@ -72,7 +72,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         newFilterText = {...newFilterText, 'arrGenres': arrGenresRU, 'arrGenresEN': arrGenresEN}
                         // @ts-ignore
                         newFilter = {...newFilter, 'arrIdGenres': genresArrId}
-                        // console.log(arrGenres)
                     }
                 })
 
@@ -177,9 +176,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
             }
 
-            //
-            // console.log(newFilterText)
-            // console.log(newFilter)
+
             dispatch(getFilterObj(
                 {
                     ...newFilter,
@@ -213,7 +210,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             fetchData()
 
 
-            // console.log(searchPar)
 
         }
         ,
@@ -236,7 +232,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 .then(response => response.json())
                 .then(data => {
                     setFilmsList(prev => [...prev, ...data])
-                    // console.log(filmsList)
                 })
         } catch (error) {
             console.log(error.message)

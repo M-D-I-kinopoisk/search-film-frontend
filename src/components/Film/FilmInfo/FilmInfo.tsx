@@ -105,7 +105,7 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
                                 </div>
                             </div>
                             <div className={styles.actorName}>
-                                {locale === 'ru' ? actor.member.nameRU : actor.member.nameEN }
+                                {actor.member.nameRU }
                             </div>
                         </Link>
                     ))}

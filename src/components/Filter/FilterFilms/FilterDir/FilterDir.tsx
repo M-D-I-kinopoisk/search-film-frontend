@@ -7,9 +7,12 @@ import Input from '@/components/UI/Input/Input'
 
 import styles from './filterDir.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
+import {useLocale} from 'next-intl'
 
 
 const FilterDir = ({listDir}) => {
+
+    const locale = useLocale()
 
     const pathname = usePathname()
     const router = useRouter()
@@ -70,7 +73,7 @@ const FilterDir = ({listDir}) => {
                             return (<div key={inx} className={styles.filterDir}>
                                 <button onClick={() => filterDir(item.id, item.nameRU, item.nameEN)}>
                                     <GiFilmProjector color={'rgb(234, 0, 61)'} size={20}/>
-                                    <span>{item.nameRU}</span>
+                                    <span>{locale === 'ru' ? item.nameRU : item.nameEN}</span>
                                 </button>
                             </div>)
                     }

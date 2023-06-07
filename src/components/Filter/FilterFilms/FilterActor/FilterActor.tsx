@@ -6,9 +6,12 @@ import {IoPersonCircleOutline} from 'react-icons/io5'
 
 import styles from './filterActor.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
+import {useLocale} from 'next-intl'
 
 
 const FilterActor = ({listActor}) => {
+
+    const locale = useLocale()
 
     const pathname = usePathname()
     const router = useRouter()
@@ -75,7 +78,7 @@ const FilterActor = ({listActor}) => {
                             return (<div key={inx} className={styles.filterActor}>
                                 <button onClick={() => filterActor(item.id, item.nameRU, item.nameEN)}>
                                     <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
-                                    <span>{item.nameRU}</span>
+                                    <span>{locale === 'ru' ? item.nameRU : item.nameEN}</span>
                                 </button>
                             </div>)
                     }

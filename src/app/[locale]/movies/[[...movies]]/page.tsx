@@ -1,4 +1,4 @@
-import {useTranslations} from 'next-intl'
+
 
 import FilterFilms from '@/components/Filter/FilterFilms/FilterFilms'
 import FilmsList from '@/components/FilmsList/FilmsList'
@@ -46,8 +46,7 @@ async function getDir() {
 
 
 const Movies = async ({searchParams, params}) => {
-
-    // const t = useTranslations('Index')
+    
 
     const genres = await getGenres()
 

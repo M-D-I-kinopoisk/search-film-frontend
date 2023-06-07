@@ -16,6 +16,8 @@ import {FiUser} from 'react-icons/fi'
 import styles from './header.module.scss'
 import { useSession} from 'next-auth/react'
 import {useTranslations} from 'next-intl'
+import {toggle} from '@/redux/AuthToggleSlice'
+import {useDispatch} from 'react-redux'
 
 
 const Header = () => {
@@ -34,6 +36,8 @@ const Header = () => {
 
     const [listGenres, setListGenres] = useState<[] | any>([])
 
+    const dispatch = useDispatch()
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,7 +48,12 @@ const Header = () => {
         fetchData()
     }, [])
 
-
+    const openAuth = () => {
+        dispatch(toggle({
+            authorization: true,
+            registration: false
+        }))
+    }
 
 
 
@@ -133,6 +142,7 @@ const Header = () => {
                     </div>
                     <div
                         id='header-user'
+                        onClick={ session?.user?.token || session?.user?.name ? undefined : openAuth}
                         onMouseEnter={(e) => handleMouseEnter(e)}
                         className={styles.header__rightUser}>
                         {session?.user?.token || session?.user?.name ?

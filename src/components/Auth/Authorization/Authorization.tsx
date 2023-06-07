@@ -6,10 +6,16 @@ import {VscChromeClose} from 'react-icons/vsc'
 import Input from '@/components/UI/Input/Input'
 import {TbPencil} from 'react-icons/tb'
 import {SlSocialVkontakte, SlSocialGoogle} from 'react-icons/sl'
+import {useTranslations} from 'next-intl'
 
 import styles from '@/components/Auth/auth.module.scss'
 
+
 export default function Authorization() {
+
+    const t = useTranslations('Authorization')
+
+
     const {data: session, status} = useSession()
 
 
@@ -100,7 +106,7 @@ export default function Authorization() {
                 <div className={styles.modalScroll}>
                     <div className={styles.auth}>
                         <div className={styles.auth__header}>
-                            <p className={styles.auth__headerText}>{toggleBlock ? inputLogin : 'Вход'}</p>
+                            <p className={styles.auth__headerText}>{toggleBlock ? inputLogin : t('title1')}</p>
                             <button onClick={() => closeAuth()} className={styles.auth__btnClose}>
                                 <VscChromeClose size={20}/>
                             </button>
@@ -115,10 +121,10 @@ export default function Authorization() {
                                     authorization: false,
                                     registration: true
                                 }))}>
-                                    <p className={styles.form__title}>Войдите или нажмите сюда для регистрации</p>
+                                    <p className={styles.form__title}>{t('title2')}</p>
                                     {!toggleBlock &&
-                                        <span className={styles.form__text}>чтобы пользоваться сервисом на любом
-                                            устройстве
+                                        <span className={styles.form__text}>
+                                            {t('title3')}
                                         </span>}
                                 </div>
 
@@ -126,7 +132,7 @@ export default function Authorization() {
                                     <>
                                         <div
                                             className={animate ? `${styles.form__LoginContainer} ${styles.btn__animate}` : `${styles.form__LoginContainer}`}>
-                                            <Input label={'Через email'}
+                                            <Input label={t('input')}
                                                    onChange={(e) => setInputLogin(e.target.value)}
                                                    type={'text'}
                                                    value={inputLogin}
@@ -139,11 +145,11 @@ export default function Authorization() {
                                                 type={'button'}
                                                 onClick={buttonClickNext}
                                                 className={inputLogin.length > 0 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
-                                                {validation ? 'Продолжить' :
-                                                    'Введите корректный email и нажмите'}
+                                                {validation ? t('btn1') :
+                                                    t('btn2')}
                                             </button>
                                             <div className={styles.socialBlock}>
-                                                <p className={styles.form__title}>Или зайдите через</p>
+                                                <p className={styles.form__title}>{t('title4')}</p>
                                                 <div className={styles.socialLink}>
                                                 <button onClick={() => signIn('google')}>
                                                     <SlSocialGoogle size={25} />
@@ -173,10 +179,10 @@ export default function Authorization() {
                                         </div>
                                         <div className={styles.form__blockTwo}>
                                             <div className={styles.form__blockText}>
-                                                <p className={styles.form__title}>Введите пароль для входа</p>
+                                                <p className={styles.form__title}>{t('title5')}</p>
                                             </div>
                                             <div className={styles.form__LoginContainer}>
-                                                <Input label={'Введите пароль'}
+                                                <Input label={t('input2')}
                                                        onChange={(e) => setInputPass(e.target.value)}
                                                        type={'password'}
                                                        password={true}
@@ -187,7 +193,7 @@ export default function Authorization() {
                                                 <button
                                                     onClick={authorization}
                                                     className={inputPass.length > 0 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
-                                                    Продолжить
+                                                    {t('btn1')}
                                                 </button>
                                             </div>
                                         </div>
@@ -197,14 +203,15 @@ export default function Authorization() {
                                     status === 'authenticated' &&
                                     <div className={styles.form__enterText}>
                                         <p className={styles.form__title}>{session?.user?.role?.name === 'ADMIN' ?
-                                            'Вы успешно вошли как Администратор' : 'Вы успешно вошли'}</p>
+                                            t('enter1') : t('enter2')}</p>
                                     </div>}
                                 {nextToggle &&
                                     status === 'unauthenticated' &&
                                     <div className={styles.form__errorText} onClick={buttonClickPop}>
-                                        <p className={styles.form__title}>Неправильные данные</p>
-                                        <p className={styles.form__title}>Нажмите чтобы
-                                            вернуться назад</p>
+                                        <p className={styles.form__title}>{t('error')}</p>
+                                        <p className={styles.form__title}>
+                                            {t('btn3')}
+                                        </p>
                                     </div>}
                             </div>
                         </div>

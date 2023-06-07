@@ -5,7 +5,6 @@ import style from './DropDown.module.scss'
 import DropDownProfile from '@/components/Header/DropDown/DropDownProfile/DropDownProfile'
 import DropDownNotification from '@/components/Header/DropDown/DropDownNotification/DropDownNotification'
 import DropDownFilter from '@/components/Header/DropDown/DropDownFilter/DropDownFilter'
-import {useLocale} from 'next-intl'
 
 
 export interface DropDownProps {
@@ -27,7 +26,6 @@ const DropDown: FC<DropDownProps> = ({
                                          listGenres,
                                      }) => {
 
-    const locale = useLocale()
 
     let list
 

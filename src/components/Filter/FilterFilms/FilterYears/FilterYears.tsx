@@ -10,9 +10,12 @@ import {MdOutlineRadioButtonUnchecked} from 'react-icons/md'
 import {useRouter, useSearchParams, useParams, usePathname} from 'next/navigation'
 
 import styles from './filterYears.module.scss'
+import {useLocale} from 'next-intl'
 
 
 const FilterYears = () => {
+
+    const locale = useLocale()
 
     const pathname = usePathname()
 
@@ -184,7 +187,7 @@ const FilterYears = () => {
                                    `${styles.years__item} ${styles.years__item_active}` :
                                    styles.years__item}>
                     <button onClick={() => filterYears(element.yearStart, element.yearEnd, element.nameYears)}>
-                        {element.nameYears}
+                        {locale === 'ru' ? element.nameYears : element.nameYearsEN }
                     </button>
                     {filterObj.yearStart === element.yearStart && filterObj.yearEnd === element.yearEnd ?
                         <div className={styles.years__checkbox_active}>
