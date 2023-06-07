@@ -1,7 +1,6 @@
 import AdminFilms from '@/components/Admin/AdminFilms/AdminFilms'
 import AdminGenres from '@/components/Admin/AdminGenres/AdminGenres'
 import styles from './admin.module.scss'
-import {useSession} from 'next-auth/react'
 
 export const metadata = {
     title: 'Admin Ivi',
