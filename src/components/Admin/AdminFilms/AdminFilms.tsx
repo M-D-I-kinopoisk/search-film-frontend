@@ -9,11 +9,16 @@ import FilmCard from '@/components/FilmCard/FilmCard'
 
 
 import styles from './adminFilms.module.scss'
+import {notFound} from 'next/navigation'
 
 
 export default function AdminFilms() {
 
     const {data: session, status} = useSession()
+
+    if (session?.user?.role?.name !== 'ADMIN') {
+        return notFound()
+    }
 
     const [inputSearch, setInputSearch] = useState<string>('')
 
