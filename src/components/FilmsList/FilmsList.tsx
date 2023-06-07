@@ -30,7 +30,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
     useEffect(() => {
             console.log('useEffect работает')
-            // console.log(params)
 
             const filter = {
                 'ratingStart': 1,
@@ -242,7 +241,17 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
     return (
         <>
-            {!loading && <Skeleton/>}
+            {!loading &&
+                <div className={styles.filmCard}>
+                    <Skeleton/>
+                    <Skeleton/>
+                    <Skeleton/>
+                    <Skeleton/>
+                    <Skeleton/>
+                    <Skeleton/>
+                    <Skeleton/>
+                </div>
+                }
 
             <div className={styles.cardList}>
                 {loading &&

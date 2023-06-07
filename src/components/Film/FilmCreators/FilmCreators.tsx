@@ -11,6 +11,7 @@ import {selectFilms} from '@/redux/FilmsSlice'
 import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
 import {setOpenModal} from '@/redux/FilmsSlice'
 import {useRouter} from 'next/navigation'
+import {useTranslations} from 'next-intl'
 
 interface Creators {
     actors: Actor[]
@@ -18,6 +19,10 @@ interface Creators {
 }
 
 const FilmCreators = ({actors, id}: Creators) => {
+
+
+    const t = useTranslations('FilmCreators')
+
     const router = useRouter()
 
     const {modalOpen} = useSelector(selectFilms)
@@ -65,7 +70,7 @@ const FilmCreators = ({actors, id}: Creators) => {
     return (
         <div className={styles.creators}>
             <div className={styles.creatorsTitle}>
-                Актёры и создатели
+                {t('title')}
             </div>
             <div className={styles.creatorsItems}>
                 {actors.slice(0, numActorsToDisplay).map((actor) => (
@@ -73,7 +78,7 @@ const FilmCreators = ({actors, id}: Creators) => {
                 ))}
                 <button onClick={() => modalOpenHandler()}
                         className={styles.moreCreators}>
-                    Еще
+                    {t('title1')}
                 </button>
             </div>
         </div>

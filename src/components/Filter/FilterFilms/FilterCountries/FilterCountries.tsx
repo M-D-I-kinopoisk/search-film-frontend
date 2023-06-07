@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './filterCountries.module.scss'
 import { useSelector} from 'react-redux'
 import {selectFilter} from '@/redux/FilterSlice'

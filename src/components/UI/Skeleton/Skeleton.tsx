@@ -1,9 +1,13 @@
 'use client'
 
+import styles from './skeleton.module.scss'
+
 export default function Skeleton () {
     return (
-        <div>
-            <h1 style={{fontSize : '20px', color : 'white'}}>Загрузка</h1>
+        <div className={styles.skeleton}>
+            <div className={styles.imgBlock}></div>
+            <div className={styles.textBlock}></div>
+            <div className={styles.nextTextBlock}></div>
         </div>
     )
 }

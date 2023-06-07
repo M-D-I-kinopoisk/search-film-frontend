@@ -6,12 +6,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
+import {useLocale} from 'next-intl'
 
 type CreatorsItemProps = {
     actor: Actor
 }
 
 const FilmCreatorsItem = ({actor}: CreatorsItemProps) => {
+
+    const locale = useLocale()
+
 
     return (
         <Link href={`/person/${actor.member.id}`} className={styles.creatorsLink}>
@@ -25,13 +29,13 @@ const FilmCreatorsItem = ({actor}: CreatorsItemProps) => {
                        height={88}
                        src={actor.member.imageName}/>}
             <div className={styles.creatorsItemName}>
-                {actor.member.nameRU.split(' ')[0]}
+                {locale === 'ru' ? actor.member.nameRU.split(' ')[0] :  actor.member.nameEN.split(' ')[0]}
                 <br/>
-                {actor.member.nameRU.split(' ')[1]}
+                {locale === 'ru' ? actor.member.nameRU.split(' ')[1] :  actor.member.nameEN.split(' ')[1]}
             </div>
 
             <div className={styles.creatorsItemJob}>
-                {actor.profession.nameRU}
+                {locale === 'ru' ? actor.profession.nameRU :   actor.profession.nameEN }
             </div>
         </Link>
     )
