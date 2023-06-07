@@ -11,9 +11,9 @@ import {selectFilterText} from '@/redux/FilterTextSlice'
 
 import {useRouter, useSearchParams} from 'next/navigation'
 import {useLocale} from 'next-intl'
-import {Genres} from '@/types/components/Filter'
+import {GenresProps} from '@/types/components/Filter'
 
-export default function FilterGenres({genres}: Genres) {
+export default function FilterGenres({genres}: GenresProps) {
     const locale = useLocale()
     const router = useRouter()
 

@@ -6,6 +6,6 @@ export type Film = {
 
 }
 
-export interface FilmsRating {
+export interface FilmsRatingProps {
     ratingFilms: Film[]
 }

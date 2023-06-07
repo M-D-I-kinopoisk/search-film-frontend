@@ -1,5 +1,5 @@
 import {Film} from '@/types/components/Film'
 
-export interface FilmCard {
+export interface FilmCardProps {
     film: Film
 }

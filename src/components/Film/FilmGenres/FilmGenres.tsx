@@ -4,9 +4,9 @@ import styles from './filmGenres.module.scss'
 import Link from 'next/link'
 import {useLocale} from 'next-intl'
 
-import {FilmGenres} from '@/types/components/Film'
+import {FilmGenresProps} from '@/types/components/Film'
 
-const FilmGenres = ({genres}: FilmGenres) => {
+const FilmGenres = ({genres}: FilmGenresProps) => {
 
     const locale = useLocale()
 

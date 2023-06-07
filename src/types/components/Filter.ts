@@ -3,7 +3,7 @@ export type Actor = {
     nameEN: string
 }
 
-export interface ListActor {
+export interface ListActorProps {
     listActor: Actor[]
 }
 
@@ -14,7 +14,7 @@ export type Country = {
     nameEN: string
 }
 
-export interface Countries {
+export interface CountriesProps {
     countries: Country[]
 }
 
@@ -23,7 +23,7 @@ export type Dir = {
     nameEN: string
 }
 
-export interface ListDir {
+export interface ListDirProps {
     listDir: Dir[]
 }
 
@@ -44,7 +44,7 @@ export type Genre = {
     nameEN: string
 }
 
-export interface Genres {
+export interface GenresProps {
     genres: Genre[]
 }
 

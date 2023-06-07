@@ -5,7 +5,6 @@ import modalClasses from '@/components/UI/CommentForm/commentForm.module.scss'
 
 import Image from 'next/image'
 
-import FilmModalCreator from '@/components/Film/FilmModal/FilmModalCreators/FilmModalCreators'
 import FilmModalComments from '@/components/Film/FilmModal/FilmModalComments/FilmModalComments'
 import FilmModalTrailer from '@/components/Film/FilmModal/FilmModalTrailer/FilmModalTrailer'
 

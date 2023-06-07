@@ -4,9 +4,9 @@ import styles from './WatchAllDevices.module.scss'
 
 import Image from 'next/image'
 
-import {AllDevices} from '@/types/components/Film'
+import {AllDevicesProps} from '@/types/components/Film'
 
-const WatchAllDevices = ({film}: AllDevices) => {
+const WatchAllDevices = ({film}: AllDevicesProps) => {
     return (
         <div className={styles.devices}>
             <div className={styles.devicesInfo}>
