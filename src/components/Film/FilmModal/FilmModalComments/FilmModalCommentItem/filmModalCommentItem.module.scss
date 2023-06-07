@@ -1,0 +1,133 @@
+.modalInfoHeader {
+  display: flex;
+  justify-content: flex-start;
+
+  .modalAvatar {
+    width: 20px;
+    height: 20px;
+
+    border-radius: 5px;
+
+    background-color: palevioletred;
+    text-align: center;
+    font-size: 12px;
+
+    padding: 2px;
+    margin-right: 20px;
+  }
+
+  .modalName {
+    margin-right: 8px;
+
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+
+    color: #a5a1b2;
+  }
+
+  .modalDate {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+
+    color: #a5a1b2;
+  }
+
+  .modalLikes {
+    width: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-left: auto;
+
+    span {
+      color: #73a32f;
+
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 700;
+    }
+
+    svg {
+      cursor: pointer;
+
+      &:last-child {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.modalDescription {
+  height: 100%;
+
+  padding-left: 40px;
+  padding-right: 70px;
+
+  margin-top: 10px;
+
+  overflow: hidden;
+
+  p {
+    padding-right: 82px;
+
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+
+    color: #d9d7e0;
+  }
+
+  .partialText {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
+
+  .fullText {
+    display: block;
+    height: 100%;
+  }
+}
+
+.modalDescription.more {
+  max-height: none;
+
+  .showMore {
+    display: none;
+  }
+}
+
+.modalButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+
+  .showMore {
+    display: block;
+    margin: 10px 0 10px 0;
+
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, .88);
+    cursor: pointer;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+
+  .modalAnswer {
+    color: rgb(39, 39, 187);
+
+    margin: 10px 0 10px 0;
+
+    cursor: pointer;
+  }
+
+}

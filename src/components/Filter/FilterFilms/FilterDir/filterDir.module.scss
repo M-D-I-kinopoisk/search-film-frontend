@@ -1,0 +1,24 @@
+.filterDir__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.filterDir {
+  cursor: pointer;
+  display: flex;
+  min-width: 40%;
+  gap: 5px;
+  align-items: center;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #a5a1b2;
+
+  &:hover {
+    color: rgb(234, 0, 61);
+    transition: color .4s;
+
+  }
+}

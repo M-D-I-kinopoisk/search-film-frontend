@@ -1,0 +1,450 @@
+.filmInfo {
+  width: 37.5%;
+
+  .otherInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .actors {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      div {
+        &:nth-child(n+6) {
+          display: none;
+        }
+      }
+    }
+
+    .mainInfoContainer {
+      display: block;
+    }
+
+    .actor {
+      width: 85px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      cursor: pointer;
+
+      .rating {
+        text-align: center;
+        margin-top: 8px;
+
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 400;
+
+        color: rgba(255, 255, 255, 0.72);
+        transition-duration: 0.5s;
+
+        height: 32px;
+      }
+
+      .actorName {
+        text-align: center;
+        margin-top: 8px;
+
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 400;
+
+        height: 32px;
+
+        transition-duration: 0.5s;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+
+      .actorWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: rgba(255, 255, 255, .16);
+
+        width: 56px;
+        height: 56px;
+
+        border-radius: 12px;
+
+        transition-duration: 0.5s;
+
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 44px;
+          height: 44px;
+          border-radius: 8px;
+
+          position: relative;
+          overflow: hidden;
+
+          background-color: #66bf3c;
+
+          h3 {
+            position: absolute;
+            top: 27%;
+            left: 27%;
+          }
+
+          img {
+            height: 44px;
+          }
+        }
+
+        .img {
+          object-fit: cover;
+        }
+      }
+
+      &:hover {
+        .actorWrapper {
+          transition-duration: 0.2s;
+          background-color: rgba(255, 255, 255, .32)
+        }
+
+        .actorName, .rating {
+          transition-duration: 0.2s;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .actorImage {
+    background-color: #1f1b2e;
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    width: 44px;
+  }
+
+  .userButtons {
+    display: none;
+  }
+
+  .buttonsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .premy {
+    background-color: rgba(255, 255, 255, .08);
+    height: 98px;
+
+    margin-bottom: 24px;
+    margin-top: 24px;
+    border-radius: 12px;
+
+    width: 100%;
+    padding: 0 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      margin: 0 18px;
+    }
+  }
+
+  .premyInfo {
+    h3 {
+      margin-bottom: 4px;
+
+      font-size: 17px;
+      line-height: 22px;
+      font-weight: 700;
+
+      text-align: left;
+    }
+  }
+
+  .premyDescription {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, .48);
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+  }
+
+  .freeFilmsWrapper {
+    display: none;
+  }
+
+  .filmDescription {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+
+    color: rgba(255, 255, 255, .72);
+
+    margin-bottom: 8px;
+
+    p {
+      margin-top: 10px;
+    }
+  }
+
+  .detailsButton,
+  .showDetailsButton {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, .48);
+    transition-duration: 0.3s;
+
+    margin-top: 15px;
+    cursor: pointer;
+
+    &:hover {
+      transition-duration: 0.3s;
+      color: #ffffff;
+    }
+  }
+
+  .showDetailsButton {
+    display: none;
+  }
+
+  .filmRating {
+    background-color: rgba(255, 255, 255, .08);
+
+    border-radius: 12px;
+    padding: 10px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 24px;
+  }
+
+  .filmRatingWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > h3 {
+      width: 64px;
+      height: 64px;
+
+      background-color: #73a32f;
+
+      border-radius: 8px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .filmRatingDescription {
+    margin-left: 16px;
+
+    h2 {
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 500;
+
+      color: #fff;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 400;
+
+      color: rgba(255, 255, 255, .72);
+    }
+  }
+
+  .evaluateButton {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, .32);
+
+    width: 72px;
+    height: 24px;
+
+    border-radius: 6px;
+    padding: 3px 7px;
+
+    color: #fff;
+
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+
+    text-align: center;
+  }
+
+  .showWatchOptions {
+    display: none;
+  }
+}
+
+@media(max-width: 1160px) {
+  .filmInfo {
+    width: 100%;
+
+    .mainInfoContainer {
+      display: none;
+    }
+
+    .otherInfo {
+      margin-top: 32px;
+    }
+
+    .actors {
+      width: 740px;
+
+      div {
+        &:nth-child(n+7) {
+          display: none;
+        }
+
+        &:nth-child(n+6) {
+          display: flex;
+        }
+      }
+    }
+
+    .userButtons {
+      display: block;
+      width: 334px;
+    }
+
+    .premy {
+      width: 66%;
+    }
+
+    .freeFilmsWrapper {
+      display: none;
+    }
+
+
+    .filmDescription {
+      width: 66%;
+      margin-top: 24px;
+    }
+
+    .hideWatchOptions {
+      display: none;
+    }
+
+    .detailsButton {
+      display: none;
+    }
+
+    .showDetailsButton {
+      display: block;
+    }
+
+    .filmRating {
+      width: 66%;
+    }
+
+    .showWatchOptions {
+      display: block;
+    }
+  }
+}
+
+@media(max-width: 880px) {
+  .filmInfo {
+    .otherInfo {
+      flex-direction: column-reverse;
+      margin-top: 0;
+    }
+
+    .actors {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+    }
+
+    .userButtons {
+      width: 223px;
+      margin-bottom: 24px;
+
+      display: flex;
+      justify-content: center;
+
+      border-radius: 0 0 12px 12px;
+
+      padding: 4px 10px;
+
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .16) 100%);
+    }
+
+    .premy {
+      width: 100%;
+    }
+
+    .filmDescription {
+      width: 100%;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .filmRating {
+      width: 100%;
+    }
+
+    .filmRatingWrapper {
+      h3 {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    .filmRatingDescription {
+      width: 100%;
+
+      p {
+        &:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 520px) {
+  .filmInfo {
+    .actors {
+
+    }
+  }
+}
+
+@media(max-width: 400px) {
+  .actors {
+    > div {
+      &:nth-child(n+5) {
+        display: none;
+      }
+    }
+  }
+}

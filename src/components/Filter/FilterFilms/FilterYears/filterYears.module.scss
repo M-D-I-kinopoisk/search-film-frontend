@@ -1,0 +1,42 @@
+.years__item {
+  margin-top: 12px;
+  position: relative;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  color: rgba(217, 215, 224, .8);
+  transition: color 400ms;
+
+  cursor: pointer;
+
+
+  &:hover {
+    color: #fff;
+    transition: color 400ms;
+  }
+
+  &:hover .years__checkbox {
+    opacity: 1;
+    color: rgba(217, 215, 224, .8);
+    transition: opacity 400ms;
+  }
+}
+
+.years__item_active {
+  color: white;
+}
+
+.years__checkbox {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: -2px;
+  fill: red;
+}
+
+.years__checkbox_active {
+  position: absolute;
+  right: 0;
+  top: -2px;
+  color: white;
+}

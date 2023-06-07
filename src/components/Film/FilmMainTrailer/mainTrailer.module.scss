@@ -1,0 +1,206 @@
+.trailerContent {
+  width: 720px;
+  margin-right: 24px;
+  position: sticky;
+  top: 0;
+  position: -webkit-sticky;
+
+  .mainInfoContainer {
+    display: none;
+  }
+
+  .video {
+    position: relative;
+    width: 100%;
+    border: 2px solid red;
+  }
+
+  .trailerWrapper {
+    position: relative;
+    width: 100%;
+
+    padding-bottom: 56.25%;
+
+    height: 0;
+
+    overflow: hidden;
+    display: block;
+
+    .trailer {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .expand {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    cursor: pointer;
+
+    span {
+      font-size: 13px;
+      line-height: 16px;
+      font-weight: 500;
+
+      color: rgba(255, 255, 255, .88);
+      margin-left: 12px;
+    }
+  }
+
+  .subscription {
+    position: absolute;
+    margin: auto;
+    width: 320px;
+    height: 72px;
+
+    top: 50%;
+    left: 50%;
+  }
+
+  .subscriptionBtn {
+    background-color: #ff0f4d;
+    border-color: #ff0f4d;
+
+    width: 320px;
+    height: 48px;
+    text-align: center;
+
+    border-width: 1px;
+    border-radius: 8px;
+    padding: 5px 15px;
+
+    div {
+      &:last-child {
+        color: rgba(255, 255, 255, .72);
+
+        text-align: center;
+
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .saleSub {
+    margin-top: 8px;
+
+    color: rgb(255, 255, 255);
+
+    text-align: center;
+
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+
+
+  .age1,
+  .age2 {
+    position: absolute;
+    background-color: #100e19;
+
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: 500;
+
+    color: rgba(255, 255, 255, .88);
+
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 2px;
+  }
+
+  .age1 {
+    bottom: 8px;
+    left: 8px;
+  }
+
+  .age2 {
+    display: none;
+    top: 8px;
+    right: 8px;
+  }
+
+  .userButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 24px;
+  }
+
+  .userButtonsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media(max-width: 1160px) {
+  .trailerContent {
+    width: 100%;
+
+    margin: auto;
+    position: static;
+
+    .mainInfoContainer {
+      display: block;
+    }
+
+    .trailerWrapper {
+
+      .trailer {
+        height: 100%;
+      }
+    }
+
+    .userButtons {
+      display: none;
+    }
+  }
+}
+
+@media(max-width: 880px) {
+  .mainInfo {
+    text-align: center;
+
+    h2 {
+      text-align: center;
+    }
+
+    .params {
+      justify-content: center;
+    }
+
+
+  }
+}
+
+@media(max-width: 600px) {
+  .mainInfo {
+    h2 {
+      font-size: 42px;
+      line-height: 44px;
+    }
+  }
+
+  .expand {
+    display: none;
+  }
+
+  .age2 {
+    display: block;
+  }
+
+  .age1 {
+    display: none;
+  }
+}

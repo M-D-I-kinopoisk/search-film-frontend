@@ -1,0 +1,89 @@
+.tabBar {
+  display: none;
+  position: fixed;
+  background-color: rgba(31, 27, 46, .88);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  height: 48px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001;
+  box-shadow: 0 -20px 40px rgba(7, 5, 14, .24);
+  @media (max-width: 1158px) {
+    display: flex;
+  }
+}
+
+
+.tabBar__group {
+  position: relative;
+  text-decoration: none;
+  max-width: 120px;
+  padding-top: 8px;
+  padding-bottom: 4px;
+  flex-direction: column;
+  flex-grow: 1;
+  cursor: pointer;
+  flex-shrink: 1;
+  flex-basis: 100%;
+  //backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, .48);
+  fill: rgba(255, 255, 255, .48);
+}
+
+.tabBar__group_active {
+  color: white;
+  fill: white;
+}
+
+.tabBar__itemGlowImage {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 64px;
+  height: 48px;
+  background-image: url(https://solea-parent.dfs.ivi.ru/picture/7e798f,7e798f/tabBarGlow.svg);
+  background-size: 64px 48px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  opacity: 0;
+
+}
+
+.tabBar__itemGlowImage_active {
+  opacity: 1;
+}
+
+.tabBar__items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabBar__icon {
+  width: 20px;
+  height: 20px;
+}
+
+
+.tabBar__itemCaption {
+  max-width: 100%;
+  align-self: center;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 500;
+  font-style: normal;
+  height: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 4px;
+}
+
+.exit {
+  color : #a20808;
+}
+

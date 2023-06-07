@@ -1,0 +1,159 @@
+.devices {
+  padding: 0 20px 0 20px;
+  margin: 40px 0 40px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  overflow: hidden;
+
+  .devicesInfoTitle {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .devicesInfoDescription {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+
+    color: #a5a1b2;
+
+    margin-bottom: 24px;
+  }
+
+  .connectBtn {
+    background-color: #ea003d;
+    border-color: #ea003d;
+
+    width: 215px;
+    height: 40px;
+
+    border-width: 1px;
+    border-radius: 8px;
+
+    padding: 9px 15px;
+
+    text-align: center;
+
+    color: #fff;
+
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+
+    cursor: pointer;
+  }
+
+  .devicesImages {
+    display: inline-block;
+
+    position: relative;
+    width: 536px;
+    height: 272px;
+
+    margin: auto;
+
+    .frameImg {
+      position: absolute;
+
+      z-index: 1;
+
+      overflow: hidden;
+    }
+
+    .ipadFrameImg {
+      position: absolute;
+
+      z-index: 3;
+      right: 0;
+      top: 136px;
+
+      border: 4px;
+      overflow: hidden;
+    }
+
+    .mainIpadImg {
+      position: absolute;
+
+      z-index: 2;
+      right: 9px;
+      top: 161px;
+
+      border: 2px;
+    }
+
+    .mainTvImg {
+      position: absolute;
+
+      z-index: 0;
+      left: 100px;
+      bottom: 76px;
+
+      overflow: hidden;
+    }
+  }
+}
+
+@media(max-width: 600px) {
+  .devices {
+    margin: 40px 20px 40px 20px;
+    padding: 24px;
+
+    background-color: #1f1b2e;
+    border-radius: 8px;
+
+    flex-direction: column-reverse;
+
+    .devicesImages {
+      width: 100%;
+      height: 160px;
+
+      .frameImg {
+        width: 268px;
+        height: 136px;
+        left: 50%;
+        margin-left: -139px;
+      }
+
+      .ipadFrameImg {
+        width: 100px;
+        height: 67px;
+        left: 52%;
+        top: 26%;
+      }
+
+      .mainIpadImg {
+        width: 94px;
+        height: 51px;
+        left: 52.5%;
+        top: 31%;
+      }
+
+      .mainTvImg {
+        width: 168px;
+        height: 96px;
+        left: 50%;
+        top: 1%;
+
+        margin-left: -89px;
+      }
+
+      .devicesImg {
+        height: 136px;
+        width: 100%;
+
+        margin-bottom: 24px;
+      }
+    }
+
+    .connectBtn {
+      width: 100%;
+    }
+  }
+}

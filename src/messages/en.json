@@ -1,0 +1,194 @@
+{
+  "Index": {
+    "title": "Hello world!"
+  },
+  "header": {
+    "title1": "My Ivi",
+    "title2": "What's new",
+    "title3": "Movies",
+    "title4": "Series",
+    "title5": "Сartoons",
+    "title6": "TV+",
+    "title7": "Pay for Subscription",
+    "title8": "Search"
+  },
+  "DropDownFilter": {
+    "title": "Genres",
+    "title2": "Countries",
+    "title3": "Years"
+  },
+  "DropDownNotification": {
+    "title": "Only important messages appear here"
+  },
+  "DropDownProfile": {
+    "title1": "Shopping",
+    "title2": "Watch later",
+    "title3": "View History",
+    "title4": "Subscriptions",
+    "title5": "Certificate Activation",
+    "description": "Connect",
+    "title6": "Enter by code",
+    "title7": "Payment Methods",
+    "title8": "Invite Friends",
+    "enter": "Login or register",
+    "exit": "Exit",
+    "text1": "Settings",
+    "text2": "Help"
+  },
+  "Authorization": {
+    "title1": "Login",
+    "title2": "Log in or click here to register",
+    "title3": "to use the service on any device",
+    "btn1": "Continue",
+    "btn2": "Enter valid email and click",
+    "title4": "Or visit via",
+    "title5": "Enter Password to Login",
+    "enter1": "You have successfully logged in as Administrator",
+    "enter2": "You have successfully logged in",
+    "error": "Invalid data",
+    "btn3": "Click to go back",
+    "input": "Via email",
+    "input2": "Enter password"
+  },
+  "Registration": {
+    "title1": "Registration",
+    "title2": "Register or click here to login",
+    "title3": "and use the service on any device",
+    "btn1": "Continue",
+    "btn2": "Register",
+    "title4": "Create a login password",
+    "title5": "for email login, minimum 4 characters",
+    "enter1": "You have successfully registered",
+    "enter2": "You have successfully logged in",
+    "btn3": "Click to go back",
+    "input1": "Come up with a name",
+    "input2": "Enter email",
+    "input3": "Enter password",
+    "input4": "Confirm password"
+  },
+  "MainSlider": {
+    "title": "Show collection"
+  },
+  "FilmsRating": {
+    "title": "during the week"
+  },
+  "FilmsClause": {
+    "title": "Evie Online Cinema: Good quality movies are always a real pleasure",
+    "description": "Every day, millions of people search for movies online, and no one wants to make things difficult for themselves - and you must be one of them! And if so, then Evie is the resource you need. From the best films in HD- quality is literally one click away from you.We do not just free you from the need to go to the cinema or study the TV program guide - visitors to our resource have much more opportunities.",
+    "description2": "Evie's video library is a constantly growing collection in RuNet, which has more than 60 thousand domestic and foreign content available for viewing online. We were the first in Russia to sign contracts with the largest Hollywood studios (Walt Disney, Warner Bros., Sony, 20th Century Fox, Universal, Paramount, MGM and others) and we cooperate with the largest Russian companies and TV channels on an ongoing basis.",
+    "description3": "ivi.ru online cinema is:",
+    "description4": "a unique recommendation system that takes into account your preferences and offers you exactly what you will definitely like to watch;",
+    "description5": "one-touch browsing on any of the devices connected to your Ivy account - from smartphones to smart TVs;",
+    "description6": "the ability to download licensed content to the memory of a mobile device and watch it without access to the Internet;",
+    "description7": "unique terms and benefits for Evie subscribers that make watching movies comfortable and enjoyable;",
+    "description8": "convenient and advanced notification system, you won't miss the release of a cool discussed blockbuster - we will notify you in a way suitable for you;",
+    "description9": "the ability to add movies to watch later so you can come back to them in your spare time;",
+    "description10": "content that doesn't require installing video players or searching for codecs to view;",
+    "description11": "view high resolution online content without registering and sms.",
+    "description12": "Discover the opportunity to watch movies online for free in excellent quality with Evie Cinema!",
+    "toggle": "Minimize",
+    "toggle2": "Toggle"
+  },
+  "FilmsCategory": {
+    "title": "View All"
+  },
+  "FilmsList": {
+    "btn": "Show more"
+  },
+  "FilmCard": {
+    "plot": "plot",
+    "free": "Free"
+  },
+  "FilterFilms": {
+    "title": "Movies",
+    "reset": "Reset filters"
+  },
+  "FilterSort": {
+    "title": "Sort",
+    "title1": "By release date",
+    "title2": "By Movie Search rating",
+    "title3": "By Kinopoisk ratings",
+    "title4": "Alphabetical",
+    "text1": "Number of Kinopoisk ratings",
+    "text2": "Movie Search Rating",
+    "text3": "Exit date",
+    "text4": "Alphabet"
+  },
+  "FilterParameters": {
+    "genres" : "All genres, ",
+    "countries" : "All countries, ",
+    "years" : "All years",
+    "ratingStart" : ", Rating is greater than",
+    "countRatingStart": ", More ratings "
+  },
+  "BackButton": {
+    "title": "Back"
+  },
+  "FilmInfo" : {
+    "title": "Rating Ivi",
+    "btn": "Trailer",
+    "btn2": "Free Movies",
+    "toggle": "Collapse details",
+    "toggle1": "Movie details",
+    "toggle2": "Minimize",
+    "toggle3": "Read more",
+    "title1": "Interesting story",
+    "title2": "Rate"
+  },
+  "MainFilmInfo" : {
+    "title" : "Movie",
+    "text": "Rus"
+  },
+  "FilmCreators": {
+    "title" : "Actors and Creators",
+    "title1" : "More"
+  },
+  "footer": {
+    "item1": {
+      "title": "My Ivi",
+      "text1": "About the company",
+      "text2": "Jobs",
+      "text3": "Beta Program",
+      "text4": "Information for partners",
+      "text5": "Ad placement",
+      "text6": "DropDownProfile Agreement",
+      "text7": "Privacy Policy",
+      "text8": "Compliance"
+    },
+    "item2": {
+      "title": "Sections",
+      "text1": "My Ivi",
+      "text2": "What\\'s new",
+      "text3": "Movies",
+      "text4": "Series",
+      "text5": "Cartoons",
+      "text6": "TV+",
+      "text7": "What to see",
+      "text8": "Certificate activation"
+    },
+    "item3": {
+      "title": "Help desk",
+      "text1": "We are here to help you.",
+      "text2": "Our operators are online 24/7",
+      "text3": "Comment in chat",
+      "text4": "Answers to questions"
+    },
+    "item4": {
+      "title": "Watch movies, series and cartoons without ads"
+    },
+    "item5": {
+      "text1": "Load to",
+      "text2": "Available in",
+      "text3": "Look at",
+      "text4": "All devices"
+    }
+  },
+  "TabBar": {
+    "title1": "My Ivi",
+    "title2": "Catalog",
+    "title3": "Search",
+    "title4": "TV+",
+    "title5": "More",
+    "title6": "Exit"
+  }
+}

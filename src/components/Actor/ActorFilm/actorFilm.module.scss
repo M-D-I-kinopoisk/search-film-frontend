@@ -1,0 +1,98 @@
+.film {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 16px;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  .filmImg {
+    width: 80px;
+    min-width: 75px;
+    height: 122px;
+
+    img {
+      border-radius: 4px;
+      width: 100%;
+    }
+  }
+
+  .filmInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 83%;
+    height: 122px;
+    margin-left: 20px;
+
+    .filmInfoContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      height: 68px;
+      width: 360px;
+      color: #fff;
+
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 500;
+
+
+      div {
+        &:nth-child(3) {
+          color: #a5a1b2;
+          font-size: 13px;
+          line-height: 16px;
+          font-weight: 500;
+          font-style: normal;
+        }
+      }
+    }
+
+    .lookFilm {
+      cursor: pointer;
+
+      text-align: center;
+      width: 140px;
+      height: 40px;
+
+      padding: 9px 15px;
+      background-color: #312b45;
+
+      border-color: #312b45;
+      border-radius: 8px;
+
+      color: #fff;
+
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 500;
+
+      &:hover {
+        background-color: #453e5d;
+      }
+    }
+  }
+}
+
+@media(max-width: 520px) {
+  .film {
+    .filmInfo {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .look {
+      width: 100%;
+    }
+
+    .filmsTitle {
+      display: block;
+    }
+  }
+}

@@ -1,464 +1,202 @@
 .header {
-    // background-color: aliceblue;
-    color: rgba(255,255,255,.48);
+  position: relative;
+  z-index: 100;
+  color: rgba(255, 255, 255, 0.48);
+  display: flex;
+  height: 72px;
+  align-items: center;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
 
- 
-    &__logo {
-        
-    }
+  &__logo {
+    margin-right: 20px;
+  }
 }
-
 
 
 .wrapper {
-    max-width: 1240px;
-    margin: 0 auto;
+  position: relative;
+  max-width: 1302px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 
+.header__right {
+  height: 100%;
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+}
 
-.DIV_1 {
-    
-    align-items: stretch;
-    background-position: 0px 0px;
-    block-size: 72px;
-    // border-block-end-color: rgb(255, 255, 255);
-    // border-block-start-color: rgb(255, 255, 255);
-    // border-inline-end-color: rgb(255, 255, 255);
-    // border-inline-start-color: rgb(255, 255, 255);
-    // caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    // column-rule-color: rgb(255, 255, 255);
-    display: flex;
-    height: 72px;
-    inline-size: 492.2px;
-    margin-inline-start: 32px;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    perspective-origin: 246.1px 36px;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    transform-origin: 246.1px 36px;
-    width: 492.2px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    margin: 0px 0px 0px 32px;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#DIV_1*/
+.header__rightContainer {
+  padding-right: 20px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
 
-.DIV_1:after {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#DIV_1:after*/
+.header__linkAdmin {
+  display: flex;
+  justify-content: center;
+  width: 70px;
+  margin-right: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: linear-gradient(279deg, #622466, #da00e8, #dbbcdd);
+  background-size: 600% 600%;
+  -webkit-animation: AnimationName 3s ease infinite;
+  -moz-animation: AnimationName 3s ease infinite;
+  animation: AnimationName 3s ease infinite;
+}
 
-.DIV_1:before {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#DIV_1:before*/
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
 
-.NAV_2 {
-    
-    align-items: stretch;
-    background-position: 0px 0px;
-    block-size: 72px;
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: flex;
-    height: 72px;
-    inline-size: 492.2px;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    perspective-origin: 246.1px 36px;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    transform-origin: 246.1px 36px;
-    width: 492.2px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#NAV_2*/
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
 
-.NAV_2:after {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#NAV_2:after*/
-
-.NAV_2:before {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#NAV_2:before*/
-
-.UL_3 {
-    gap: 16px;
-    align-items: stretch;
-    background-position: 0px 0px;
-    block-size: 72px;
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: flex;
-    height: 72px;
-    inline-size: 492.2px;
-    margin-block-end: 0px;
-    margin-block-start: 0px;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    padding-inline-start: 0px;
-    perspective-origin: 246.1px 36px;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    transform-origin: 246.1px 36px;
-    width: 492.2px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    margin: 0px;
-    outline: rgb(255, 255, 255) none 0px;
-    padding: 0px;
-}/*#UL_3*/
-
-.UL_3:after {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#UL_3:after*/
-
-.UL_3:before {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#UL_3:before*/
-
-#LI_4 {
-    align-items: center;
-    background-position: 0px 0px;
-    block-size: 72px;
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: flex;
-    height: 72px;
-    inline-size: 64.9625px;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    perspective-origin: 32.475px 36px;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    transform-origin: 32.4813px 36px;
-    width: 64.9625px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#LI_4*/
-
-#LI_4:after {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#LI_4:after*/
-
-#LI_4:before {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    border: 0px none rgb(255, 255, 255);
-    font: 16px / 16px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#LI_4:before*/
-
-#A_5 {
-    align-items: center;
-    background-position: 0px 0px;
-    block-size: 40px;
-    border-block-end-color: rgba(0, 0, 0, 0);
-    border-block-end-style: solid;
-    border-block-start-color: rgba(0, 0, 0, 0);
-    border-block-start-style: solid;
-    border-end-end-radius: 8px;
-    border-end-start-radius: 8px;
-    border-inline-end-color: rgba(0, 0, 0, 0);
-    border-inline-end-style: solid;
-    border-inline-start-color: rgba(0, 0, 0, 0);
-    border-inline-start-style: solid;
-    border-start-end-radius: 8px;
-    border-start-start-radius: 8px;
-    bottom: 0px;
-    box-sizing: border-box;
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: flex;
-    height: 40px;
-    inline-size: 64.9625px;
-    inset-block-end: 0px;
-    inset-block-start: 0px;
-    inset-inline-end: 0px;
-    inset-inline-start: 0px;
-    justify-content: center;
-    left: 0px;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    padding-block-end: 10px;
-    padding-block-start: 10px;
-    perspective-origin: 32.475px 20px;
-    position: relative;
-    right: 0px;
-    text-align: left;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    top: 0px;
-    transform-origin: 32.4813px 20px;
-    white-space: nowrap;
-    width: 64.9625px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto border-box border-box;
-    border: 0px solid rgba(0, 0, 0, 0);
-    border-radius: 8px;
-    flex-flow: column nowrap;
-    font: 0px / 0px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-    padding: 10px 0px;
-    transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
-}/*#A_5*/
-
-#A_5:after {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-align: left;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    white-space: nowrap;
-    border: 0px none rgb(255, 255, 255);
-    font: 0px / 0px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#A_5:after*/
-
-#A_5:before {
-    border-block-end-color: rgb(255, 255, 255);
-    border-block-start-color: rgb(255, 255, 255);
-    border-inline-end-color: rgb(255, 255, 255);
-    border-inline-start-color: rgb(255, 255, 255);
-    caret-color: rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    column-rule-color: rgb(255, 255, 255);
-    display: block;
-    text-align: left;
-    text-decoration: none solid rgb(255, 255, 255);
-    text-emphasis-color: rgb(255, 255, 255);
-    text-size-adjust: 100%;
-    white-space: nowrap;
-    border: 0px none rgb(255, 255, 255);
-    font: 0px / 0px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgb(255, 255, 255) none 0px;
-}/*#A_5:before*/
-
-#DIV_6 {
-    background-position: 0px 0px;
-    block-size: 20px;
-    border-block-end-color: rgba(255, 255, 255, 0.48);
-    border-block-start-color: rgba(255, 255, 255, 0.48);
-    border-inline-end-color: rgba(255, 255, 255, 0.48);
-    border-inline-start-color: rgba(255, 255, 255, 0.48);
-    caret-color: rgba(255, 255, 255, 0.48);
-    color: rgba(255, 255, 255, 0.48);
-    column-rule-color: rgba(255, 255, 255, 0.48);
-    cursor: pointer;
-    height: 20px;
-    inline-size: 64.9625px;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    perspective-origin: 32.475px 10px;
-    text-align: left;
-    text-decoration: none solid rgba(255, 255, 255, 0.48);
-    text-emphasis-color: rgba(255, 255, 255, 0.48);
-    text-size-adjust: 100%;
-    transform-origin: 32.4813px 10px;
-    white-space: nowrap;
-    width: 64.9625px;
-    background: rgba(0, 0, 0, 0) none repeat scroll 0px 0px / auto padding-box border-box;
-    border: 0px none rgba(255, 255, 255, 0.48);
-    font: 500 15px / 20px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgba(255, 255, 255, 0.48) none 0px;
-    transition: color 0.4s ease 0s;
-}/*#DIV_6*/
-
-#DIV_6:after {
-    border-block-end-color: rgba(255, 255, 255, 0.48);
-    border-block-start-color: rgba(255, 255, 255, 0.48);
-    border-inline-end-color: rgba(255, 255, 255, 0.48);
-    border-inline-start-color: rgba(255, 255, 255, 0.48);
-    caret-color: rgba(255, 255, 255, 0.48);
-    color: rgba(255, 255, 255, 0.48);
-    column-rule-color: rgba(255, 255, 255, 0.48);
-    cursor: pointer;
-    text-align: left;
-    text-decoration: none solid rgba(255, 255, 255, 0.48);
-    text-emphasis-color: rgba(255, 255, 255, 0.48);
-    text-size-adjust: 100%;
-    white-space: nowrap;
-    border: 0px none rgba(255, 255, 255, 0.48);
-    font: 500 15px / 20px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgba(255, 255, 255, 0.48) none 0px;
-}/*#DIV_6:after*/
-
-#DIV_6:before {
-    border-block-end-color: rgba(255, 255, 255, 0.48);
-    border-block-start-color: rgba(255, 255, 255, 0.48);
-    border-inline-end-color: rgba(255, 255, 255, 0.48);
-    border-inline-start-color: rgba(255, 255, 255, 0.48);
-    caret-color: rgba(255, 255, 255, 0.48);
-    color: rgba(255, 255, 255, 0.48);
-    column-rule-color: rgba(255, 255, 255, 0.48);
-    cursor: pointer;
-    text-align: left;
-    text-decoration: none solid rgba(255, 255, 255, 0.48);
-    text-emphasis-color: rgba(255, 255, 255, 0.48);
-    text-size-adjust: 100%;
-    white-space: nowrap;
-    border: 0px none rgba(255, 255, 255, 0.48);
-    font: 500 15px / 20px iviSans, Arial, Helvetica, "Helvetica Neue", FreeSans, sans-serif;
-    list-style: outside none none;
-    outline: rgba(255, 255, 255, 0.48) none 0px;
-}/*#DIV_6:before*/
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
 
 
+.header__rightSearch {
+  padding-right: 10px;
+  display: flex;
+  height: 100%;
+  align-items: center;
 
+  @media (max-width: 1158px) {
+    display: none;
+  }
+}
+
+
+.header__notifications {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 10px;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.header__rightUser {
+  padding: 0 0 0 10px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.header__btnPay {
+  font-weight: 500;
+  color: #fff;
+  font-size: 13px;
+  align-content: center;
+  align-items: center;
+  display: flex;
+  height: 32px;
+  text-align: center;
+  text-size-adjust: 100%;
+  width: 150.488px;
+  background: rgb(234, 0, 61) linear-gradient(270deg, rgb(234, 0, 61) 0px, rgb(196, 71, 255) 100%) repeat scroll 0 0px / auto border-box border-box;
+  border: 0.8px solid rgba(0, 0, 0, 0);
+  border-radius: 8px;
+  line-height: 16px;
+  padding: 7px 11px;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.header__btnSearch {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  border: none;
+  color: rgba(255, 255, 255, 0.48);
+  transition-duration: 0.4s;
+
+  &:hover {
+    color: #fff;
+    transition-duration: 0.4s;
+  }
+}
+
+
+.header__btnUser {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 47.2px;
+  height: 47.2px;
+  border: 1.6px solid rgba(255, 255, 255, 0.48);
+  color: rgba(255, 255, 255, 0.48);
+  border-radius: 8px;
+  transition: border-color 0.4s ease 0.1s, background-color 0.4s ease 0.1s;
+  transition-duration: 0.4s;
+
+  &:hover {
+    color: #fff;
+    border-color: #fff;
+    border-width: 2px;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, .24);
+  }
+}
+
+.userActive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 47.2px;
+  height: 47.2px;
+  transition-duration: 0.4s;
+  background-color: #4a9423;
+  color: white;
+  border-radius: 8px;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 4px 16px rgba(255, 255, 255, .24);
+  }
+}

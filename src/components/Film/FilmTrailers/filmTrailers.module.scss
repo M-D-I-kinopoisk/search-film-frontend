@@ -1,0 +1,43 @@
+.trailersContainer {
+  padding: 0 20px 0 20px;
+  margin-top: 20px;
+
+  .trailersTitle {
+    display: inline-block;
+
+    width: 350px;
+
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+
+    color: #fff;
+
+    margin-bottom: 20px;
+
+    span {
+      cursor: pointer;
+
+      padding-bottom: 4px;
+
+      border-bottom: 1px solid rgba(255, 255, 255, .16);
+    }
+  }
+
+  .trailers {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+  }
+}
+
+@media(max-width: 520px) {
+  .trailersContainer {
+    width: 100%;
+
+    .trailersTitle {
+      width: 100%;
+    }
+  }
+}
