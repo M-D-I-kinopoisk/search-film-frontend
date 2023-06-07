@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next-intl/link'
 import styles from './locales.module.scss'
 import {useLocale} from 'next-intl'
