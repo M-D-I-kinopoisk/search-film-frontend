@@ -12,9 +12,9 @@ import {setOpenModal} from '@/redux/FilmsSlice'
 
 import {useRouter} from 'next/navigation'
 
-import {Creators} from '@/types/components/Film'
+import {CreatorsProps} from '@/types/components/Film'
 
-const FilmCreators = ({actors, id}: Creators) => {
+const FilmCreators = ({actors, id}: CreatorsProps) => {
     const router = useRouter()
 
     const {modalOpen} = useSelector(selectFilms)
@@ -33,13 +33,13 @@ const FilmCreators = ({actors, id}: Creators) => {
         const handleResize = () => {
             setNumActorsToDisplay(getNumActorsToDisplay())
         }
-            if (typeof window !== 'undefined') {
-                window.addEventListener('resize', handleResize)
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize)
 
-                return () => {
-                    window.removeEventListener('resize', handleResize)
-                }
+            return () => {
+                window.removeEventListener('resize', handleResize)
             }
+        }
     }, [])
 
     useEffect(() => {
@@ -66,7 +66,7 @@ const FilmCreators = ({actors, id}: Creators) => {
             </div>
             <div className={styles.creatorsItems}>
                 {actors.slice(0, numActorsToDisplay).map((actor) => (
-                    <FilmCreatorsItem actor={actor} key={actor.id}/>
+                        <FilmCreatorsItem actor={actor} key={actor.id} inModal={true}/>
                 ))}
                 <button onClick={() => modalOpenHandler()}
                         className={styles.moreCreators}>

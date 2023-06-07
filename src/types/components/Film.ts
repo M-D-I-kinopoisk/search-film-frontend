@@ -33,7 +33,8 @@ export interface CommentsItemProps {
 }
 
 export interface CreatorsItemProps {
-    actor: Actor
+    actor: Actor,
+    inModal: boolean
 }
 
 export type Actor = {
@@ -51,7 +52,7 @@ export type Actor = {
     id: string
 }
 
-export interface Creators {
+export interface CreatorsProps {
     actors: Actor[]
     id: string
 }
@@ -131,7 +132,7 @@ export interface FilmModalProps {
     filmInfo: FilmInfo,
     filmComments: Comment[],
     film: Film,
-    id: number
+    id: string
 }
 
 
@@ -143,7 +144,7 @@ export interface TrailersItemProps {
 
 export interface FilmTrailersState {
     filmInfo: FilmInfo,
-    id: number
+    id: string
 }
 
 
