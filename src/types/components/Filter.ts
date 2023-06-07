@@ -1,6 +1,7 @@
 export type Actor = {
     nameRU: string,
-    nameEN: string
+    nameEN: string,
+    id : number
 }
 
 export interface ListActor {
@@ -20,7 +21,8 @@ export interface Countries {
 
 export type Dir = {
     nameRU: string,
-    nameEN: string
+    nameEN: string,
+    id : number
 }
 
 export interface ListDir {

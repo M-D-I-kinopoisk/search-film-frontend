@@ -11,6 +11,7 @@ import Skeleton from '@/components/UI/Skeleton/Skeleton'
 import FilmCard from '@/components/FilmCard/FilmCard'
 import {useTranslations} from 'next-intl'
 import {Actor, Country, Dir, Genre} from '@/types/components/Filter'
+import FilterTextSliceState from '../../redux/FilterTextSlice'
 
 
 export interface FilmsListProps {
@@ -46,11 +47,27 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             }
             const filterText = {}
             let newFilterText = {...filterText}
-            let newFilter = {...filter}
+            let newFilter: {
+                arrIdGenres?: number[] | undefined
+                arrIdCountries?: number[] | undefined
+                arrMembersFilterDto?: [
+                    {
+                        idMember?: number,
+                        idProfession?: number
+                    }
+                ] | undefined | any
+                ratingStart?: number
+                countRatingStart?: number,
+                'yearStart'?: number,
+                'yearEnd'?: number,
+                'part'?: number,
+                'typeSorting'?: string,
+
+            } = {...filter}
 
             if (params?.hasOwnProperty('movies')) {
-                // @ts-ignore
-                const arrParams = params?.movies.split('/')
+
+                const arrParams = (params?.movies as string).split('/')
                 arrParams.forEach(i => {
                     const strArr = i.replaceAll('%2B', ',')
                         .replaceAll('%20', ' ')
@@ -60,11 +77,11 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                     const arrCountries = countries.filter(i => strArr.includes(i.nameEN.toLowerCase()))
 
                     if (arrCountries.length > 0) {
-                        const countriesArrId = arrCountries.map(i => i.id)
+                        const countriesArrId: number[] = arrCountries.map(i => i.id)
                         const arrCountriesEN = arrCountries.map(i => i.nameEN)
                         const arrCountriesRU = arrCountries.map(i => i.nameRU)
                         newFilterText = {...newFilterText, 'arrCountries': arrCountriesRU, 'arrCountriesEN': arrCountriesEN}
-                        // @ts-ignore
+
                         newFilter = {...newFilter, 'arrIdCountries': countriesArrId}
                     }
                     if (arrGenres.length > 0) {
@@ -73,7 +90,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         const arrGenresRU = arrGenres.map(i => i.nameRU)
                         newFilterText = {...newFilterText, 'arrGenres': arrGenresRU, 'arrGenresEN': arrGenresEN}
 
-                        // @ts-ignore
+
                         newFilter = {...newFilter, 'arrIdGenres': genresArrId}
                     }
                 })
@@ -94,8 +111,8 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             }
             if (searchParams?.get('sort')) {
 
-                const typeSorting = searchParams.get('sort')
-                // @ts-ignore
+                const typeSorting = searchParams.get('sort')!
+
                 newFilter = {...newFilter, 'typeSorting': typeSorting}
             }
             if (searchParams?.get('ivi_rating_10_gte')) {
@@ -119,9 +136,9 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
                 const arrDir = listDir.filter(i => StrNameDirReplace?.includes(i.nameEN))
 
-                // @ts-ignore
+
                 if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
-                    // @ts-ignore
+
                     newFilter = {
                         ...newFilter,
                         'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
@@ -135,7 +152,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         'arrDirMembersEN': [arrDir[0].nameEN]
                     }
                 } else {
-                    // @ts-ignore
+
                     newFilter = {...newFilter, 'arrMembersFilterDto': [{'idMember': arrDir[0].id, 'idProfession': 1}]}
                     newFilterText = {
                         ...newFilterText,
@@ -155,7 +172,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
 
                 if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
-                    // @ts-ignore
+
                     newFilter = {
                         ...newFilter,
                         'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
@@ -169,7 +186,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         'arrActorMembersEN': [arrActor[0].nameEN]
                     }
                 } else {
-                    // @ts-ignore
+
                     newFilter = {...newFilter, 'arrMembersFilterDto': [{'idMember': arrActor[0].id, 'idProfession': 2}]}
                     newFilterText = {
                         ...newFilterText,
@@ -239,15 +256,11 @@ export default function FilmsList({genres, countries, listDir, listActor, search
         <>
             {!loading &&
                 <div className={styles.cardList}>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
-                    <Skeleton/>
+                    {new Array(7).map((index) => <div key={index}><Skeleton/>
+                        </div>
+                    )}
                 </div>
-                }
+            }
 
             <div className={styles.cardList}>
                 {loading &&
