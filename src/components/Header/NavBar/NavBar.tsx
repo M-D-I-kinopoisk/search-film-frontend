@@ -1,11 +1,11 @@
+'use client'
+
 import {FC} from 'react'
-import {useRouter} from 'next/router'
+
 import Link from 'next/link'
 
-import {en} from '../../../../public/locales/en'
-import {ru} from '../../../../public/locales/ru'
-
 import styles from './navBar.module.scss'
+import {useTranslations} from 'next-intl'
 
 export interface NavBarProps {
     handleMouseEnter: (e) => void
@@ -14,9 +14,8 @@ export interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
 
-    // const {locale, locales, asPath} = useRouter()
+    const t = useTranslations('header')
 
-    const t = ru
 
     return (
         <nav className={styles.navbar}>
@@ -25,7 +24,7 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
                     <Link href='/' className={styles.navbar__a}
                           prefetch={false}
                           title='Мой Иви'>
-                        {t.header.title1}
+                        {t('title1')}
                     </Link>
                 </li>
                 <li className={styles.navbar__li}>
@@ -36,7 +35,7 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
                         className={styles.navbar__a}
                         onMouseEnter={handleMouseLeave}
                     >
-                        {t.header.title2}
+                        {t('title2')}
                     </Link>
                 </li>
                 <li
@@ -50,7 +49,7 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
                         title='Фильмы онлайн'
                         className={styles.navbar__a}
                     >
-                        {t.header.title3}
+                        {t('title3')}
                     </Link>
                 </li>
                 <li
@@ -65,7 +64,7 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
                         className={styles.navbar__a}
                         title='Сериалы онлайн'
                     >
-                        {t.header.title4}
+                        {t('title4')}
                     </Link>
                 </li>
                 <li
@@ -80,7 +79,7 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
                         title='Мультфильмы онлайн'
                         className={styles.navbar__a}
                     >
-                        {t.header.title5}
+                        {t('title5')}
                     </Link>
                 </li>
                 <li className={styles.navbar__li}>
@@ -91,7 +90,7 @@ const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
                         title='TV+'
                         className={styles.navbar__a}
                     >
-                        {t.header.title6}
+                        {t('title6')}
                     </Link>
                 </li>
             </ul>

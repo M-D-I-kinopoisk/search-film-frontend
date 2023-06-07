@@ -9,9 +9,12 @@ import {useParams, useSearchParams} from 'next/navigation'
 import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
 import Skeleton from '@/components/UI/Skeleton/Skeleton'
 import FilmCard from '@/components/FilmCard/FilmCard'
+import {useTranslations} from 'next-intl'
 
 
 export default function FilmsList({genres, countries, listDir, listActor, searchPar,}) {
+
+    const t = useTranslations('FilmsList')
 
     const searchParams = useSearchParams()
     const params = useParams()
@@ -256,7 +259,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 {filmsList.length > 0 &&
                     filmsList.length % 28 === 0 &&
                     <button className={styles.movies__btn} onClick={() => nextListFilms(filterObj.part)}>
-                        Показать еще
+                        {t('btn')}
                     </button>}
             </div>
         </>

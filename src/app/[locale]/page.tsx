@@ -64,9 +64,11 @@ export default async function Home() {
             <ul className={styles.teaser__list}>
                 <TeaserButton src='https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/lightning.svg'
                               alt='/' width={24} height={32} text='30 дней подписки за 1 ₽'
+                              textEN={'30 days subscription for 1 ₽'}
                               className={styles.teaser__item}/>
                 <TeaserButton src='https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/gift.svg'
                               alt='/' width={56} height={32} text='Активировать сертификат'
+                              textEN={'Activate Certificate'}
                               className={styles.teaser__item}/>
             </ul>
         </div>

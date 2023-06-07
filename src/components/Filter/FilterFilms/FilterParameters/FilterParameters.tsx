@@ -2,11 +2,14 @@ import {useSelector} from 'react-redux'
 import {selectFilterText} from '@/redux/FilterTextSlice'
 
 import styles from './filterParameters.module.scss'
+import {useLocale} from 'next-intl'
 
 
 
 
 export default function FilterParameters () {
+
+    const locale = useLocale()
 
     const {filterTextObj} = useSelector(selectFilterText)
     

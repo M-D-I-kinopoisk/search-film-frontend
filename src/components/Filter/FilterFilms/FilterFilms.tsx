@@ -28,7 +28,7 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
 
     const router = useRouter()
 
-    const t = useTranslations('Index')
+    const t = useTranslations('FilterFilms')
 
 
     const [activePlank, setActivePlank] = useState({
@@ -50,31 +50,8 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.title}>
-                {/*{filterTextObj.arrYears?.length === 1 &&*/}
-                {/*    !filterTextObj.hasOwnProperty('arrCountries') &&*/}
-                {/*    !filterTextObj.hasOwnProperty('arrGenres') &&*/}
-                {/*    filterTextObj.arrYears?.map((item, inx) =>*/}
-                {/*        <h1 key={inx}>Фильмы: {item}</h1>)}*/}
-                {/*{filterTextObj.arrGenres?.length === 1 &&*/}
-                {/*    !filterTextObj.hasOwnProperty('arrYears') &&*/}
-                {/*    !filterTextObj.hasOwnProperty('arrCountries') &&*/}
-                {/*    filterTextObj.arrGenres?.map((item, inx) =>*/}
-                {/*        <h1 key={inx}>Фильмы: {item}</h1>)}*/}
-                {/*{filterTextObj.arrCountries?.length === 1 &&*/}
-                {/*    !filterTextObj.hasOwnProperty('arrYears') &&*/}
-                {/*    !filterTextObj.hasOwnProperty('arrGenres') &&*/}
-                {/*    filterTextObj.arrCountries?.map((item, inx) =>*/}
-                {/*        <h1 key={inx}>Фильмы: {item}</h1>)}*/}
-                {/*{Object.keys(filterTextObj).length === 0 ||*/}
-                {/*    Object.keys(filterTextObj).length > 1 ||*/}
-                {/*    filterTextObj.hasOwnProperty('ratingStart') ||*/}
-                {/*filterTextObj.hasOwnProperty('countRatingStart') ||*/}
-                {/*filterTextObj.arrGenres?.length > 1 ||*/}
-                {/*    filterTextObj.arrCountries?.length > 1 ?*/}
-                {/*    <h1>Фильмы</h1> : null}*/}
-                <h1>Фильмы</h1>
+                <h1>{t('title')}</h1>
             </div>
-            <p className={styles.title}>{t('title')}</p>
             <FilterParameters/>
 
             <FilterSort/>
@@ -85,7 +62,9 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
                         <div className={styles.filter__plankItem}>
                             <FilterFilmsCategories className={styles.filterGenres}
                                                    title={'Жанры'}
+                                                   titleEN={'Genres'}
                                                    filterText={filterTextObj.arrGenres}
+                                                   filterTextEN={filterTextObj.arrGenresEN}
                                                    activePlank={activePlank.genres}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -105,7 +84,9 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
                         <div className={styles.filter__plankItem}>
                             <FilterFilmsCategories className={styles.filterCountries}
                                                    title={'Страны'}
+                                                   titleEN={'Countries'}
                                                    filterText={filterTextObj.arrCountries}
+                                                   filterTextEN={filterTextObj.arrCountriesEN}
                                                    activePlank={activePlank.countries}
                                                    onClick={() => setActivePlank({
                                                        countries: !activePlank.countries,
@@ -124,7 +105,9 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
                         <div className={styles.filter__plankItem}>
                             <FilterFilmsCategories className={styles.filterYears}
                                                    title={'Годы'}
+                                                   titleEN={'Years'}
                                                    filterText={filterTextObj.arrYears}
+                                                   filterTextEN={filterTextObj.arrYears}
                                                    activePlank={activePlank.years}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -143,7 +126,9 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
                         <div className={styles.filter__plankItem}>
                             <FilterFilmsCategories className={styles.filterRating}
                                                    title={'Рейтинг Кинопоиска'}
+                                                   titleEN={'Kinopoisk Rating'}
                                                    filterText={filterTextObj.ratingStart}
+                                                   filterTextEN={filterTextObj.ratingStart}
                                                    activePlank={activePlank.rating}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -162,7 +147,9 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
                         <div className={styles.filter__plankItem}>
                             <FilterFilmsCategories className={styles.filterRating}
                                                    title={'Оценки Кинопоиска'}
+                                                   titleEN={'Kinopoisk estimates'}
                                                    filterText={filterTextObj.countRatingStart}
+                                                   filterTextEN={filterTextObj.countRatingStart}
                                                    activePlank={activePlank.grade}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -181,7 +168,9 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
                         <div className={styles.filter__plankItem}>
                             <FilterFilmsCategories className={styles.filterSearch}
                                                    title={'Поиск по режиссерам'}
+                                                   titleEN={'Search by directors'}
                                                    filterText={filterTextObj.arrDirMembers}
+                                                   filterTextEN={filterTextObj.arrDirMembersEN}
                                                    activePlank={activePlank.searchDir}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -200,7 +189,9 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
                         <div className={styles.filter__plankItem}>
                             <FilterFilmsCategories className={styles.filterSearch}
                                                    title={'Поиск по актерам'}
+                                                   titleEN={'Search by actors'}
                                                    filterText={filterTextObj.arrActorMembers}
+                                                   filterTextEN={filterTextObj.arrActorMembersEN}
                                                    activePlank={activePlank.searchActor}
                                                    onClick={() => setActivePlank({
                                                        countries: false,
@@ -226,7 +217,7 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
                             }
                             onClick={() => resetFilter()}>
                             <VscChromeClose size={22}/>
-                            Сбросить фильтры
+                            {t('reset')}
                         </button>
                     </div>
                 </div>

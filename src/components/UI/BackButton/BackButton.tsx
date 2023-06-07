@@ -1,6 +1,6 @@
 'use client'
 
-import styles from '@/app/person/[id]/person.module.scss'
+import styles from '@/app/[locale]/person/[id]/person.module.scss'
 
 import {useRouter} from 'next/navigation'
 import {AiOutlineLeft} from 'react-icons/ai'

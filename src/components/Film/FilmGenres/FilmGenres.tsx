@@ -2,6 +2,7 @@
 
 import styles from './filmGenres.module.scss'
 import Link from 'next/link'
+import {useLocale} from 'next-intl'
 
 type Genre = {
     id: string,
@@ -15,12 +16,14 @@ interface FilmGenres {
 
 const FilmGenres = ({genres}: FilmGenres) => {
 
+    const locale = useLocale()
+
     return (
         <ul className={styles.genres}>
             {genres.map((genre) => (
                 <li key={genre.id}>
                     <Link href={`/movies/${genre.nameEN}`}>
-                        {genre.nameRU}
+                        {locale === 'ru' ? genre.nameRU : genre.nameEN}
                     </Link>
                 </li>
             ))}

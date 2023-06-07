@@ -13,7 +13,7 @@ import {Film} from '@/components/Film/FilmInfo/FilmInfo'
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
-import {useLocale} from 'next-intl'
+import {useLocale, useTranslations} from 'next-intl'
 
 interface FilmCard {
     film: Film
@@ -22,6 +22,8 @@ interface FilmCard {
 const FilmCard = ({film}: FilmCard) => {
 
     const locale = useLocale()
+
+    const t = useTranslations('FilmCard')
 
     const [visible, setVisible] = React.useState(false)
     const {filmId} = useSelector(selectFilms)
@@ -77,7 +79,7 @@ const FilmCard = ({film}: FilmCard) => {
                                 </div>
                             </div>
                             <div className={styles.graphChart}>
-                                <div className={styles.name}>сюжет</div>
+                                <div className={styles.name}>{t('plot')}</div>
                                 <div className={styles.graph}>
                                     <div className={styles.graphProgress}></div>
                                 </div>
@@ -109,7 +111,7 @@ const FilmCard = ({film}: FilmCard) => {
                 </div>
                 <div className={styles.text__section}>
                     <div className={styles.title}>{locale === 'ru'  ? film.nameRU : (film.nameEN ? film.nameEN : film.nameRU) }</div>
-                    <div className={styles.extra}>Бесплатно</div>
+                    <div className={styles.extra}>{t('free')}</div>
                 </div>
             </Link>
         </div>

@@ -11,6 +11,7 @@ import Link from 'next/link'
 import {BsChevronRight} from 'react-icons/bs'
 
 import FilmCard from '@/components/FilmCard/FilmCard'
+import {useLocale, useTranslations} from 'next-intl'
 
 type FilmsCategoryProps = {
     title: string,
@@ -19,11 +20,15 @@ type FilmsCategoryProps = {
 }
 const FilmsCategory = ({title, titleEN, list}: FilmsCategoryProps) => {
 
+    const locale = useLocale()
+
+    const t = useTranslations('FilmsCategory')
+
     return (
         <div className={styles.films}>
             <Link href={`/movies/${titleEN}`}>
                 <div className={styles.films__title}>
-                    <h2>{title} <BsChevronRight size={21}/></h2>
+                    <h2>{locale === 'ru' ? title : titleEN} <BsChevronRight size={21}/></h2>
                 </div>
             </Link>
             <Swiper className='slider__films'
@@ -68,7 +73,7 @@ const FilmsCategory = ({title, titleEN, list}: FilmsCategoryProps) => {
                 ))}
                 <SwiperSlide className={styles.film}>
                     <Link href='/'>
-                        <div className={styles.image__section}>Посмотреть все</div>
+                        <div className={styles.image__section}>{t('title')}</div>
                     </Link>
                 </SwiperSlide>
             </Swiper>

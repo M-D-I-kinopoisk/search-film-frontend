@@ -8,6 +8,7 @@ import styles from './filmsRating.module.scss'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Navigation} from 'swiper'
 import React from 'react'
+import {useTranslations} from 'next-intl'
 
 type Film = {
     rating: number,
@@ -21,6 +22,9 @@ interface FilmsRating {
 }
 
 const FilmsRating = ({ratingFilms}: FilmsRating) => {
+
+    const t = useTranslations('FilmsRating')
+
     const topFilmsImg = [
         'https://solea-parent.dfs.ivi.ru/picture/bypass/number1.svg',
         'https://solea-parent.dfs.ivi.ru/picture/bypass/number2.svg',
@@ -47,7 +51,7 @@ const FilmsRating = ({ratingFilms}: FilmsRating) => {
                        width={116}
                        height={28}
                        alt='top10'/>
-                <span>за неделю</span>
+                <span>{t('title')}</span>
             </div>
             <Swiper className='slider__rating'
                     spaceBetween={25}

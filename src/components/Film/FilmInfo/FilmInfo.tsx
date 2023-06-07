@@ -15,6 +15,8 @@ import MainFilmInfo from '@/components/Film/FilmInfo/MainFilmInfo/MainFilmInfo'
 import UserButton from '@/components/UI/UserButton/UserButton'
 import FilmWatchOptions from '@/components/Film/FilmWatchOptions/FilmWatchOptions'
 
+import {useLocale} from 'next-intl'
+
 import {funcDeclination} from '@/utils/funcDeclination'
 import Link from 'next/link'
 
@@ -64,6 +66,9 @@ export interface infoContentProps {
 }
 
 const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
+
+    const locale = useLocale()
+
     const [visible, setVisible] = useState(false)
 
     return (
@@ -100,7 +105,7 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
                                 </div>
                             </div>
                             <div className={styles.actorName}>
-                                {actor.member.nameRU}
+                                {locale === 'ru' ? actor.member.nameRU : actor.member.nameEN }
                             </div>
                         </Link>
                     ))}
