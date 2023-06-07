@@ -34,11 +34,23 @@ export default function AdminGenres() {
                     method: 'PUT',
                     body: JSON.stringify(putObj),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${session?.user.token}`
                     }
                 })
-                    .then(response => response.json())
-                    .then(data => console.log(data))
+                    .then(response => {
+                        if (response.status === 200) {
+                            const fetchData = async () => {
+                                const response = await fetch('http://localhost:12120/api/genres')
+                                const data = await response.json()
+                                setListGenres(data)
+                            }
+
+                            fetchData()
+                        }
+                    })
+
+
             } catch (error) {
                 console.log(error.message)
             }
@@ -46,6 +58,7 @@ export default function AdminGenres() {
         if (Object.keys(putObj).length !== 0) {
             fetchData()
         }
+
 
     }, [putObj])
 
@@ -59,8 +72,6 @@ export default function AdminGenres() {
 
         fetchData()
     }, [])
-
-
 
 
     const openChange = (inx) => {
@@ -105,17 +116,17 @@ export default function AdminGenres() {
                                 {changeToggle === inx &&
                                     <div className={styles.group}>
                                         <Input
-                                            onChange={(e) => setInputChange({...inputChange, nameRU: e.target.value})}
-                                            value={inputChange.nameRU}
+                                            onChange={(e) => setInputChange({...inputChange, nameEN: e.target.value})}
+                                            value={inputChange.nameEN}
                                             label={'Новое название EN'}
                                             type={'text'}/>
                                         <Input
-                                            onChange={(e) => setInputChange({...inputChange, nameEN: e.target.value})}
-                                            value={inputChange.nameEN}
+                                            onChange={(e) => setInputChange({...inputChange, nameRU: e.target.value})}
+                                            value={inputChange.nameRU}
                                             label={'Новое название RU'}
                                             type={'text'}/>
                                         <button
-                                            onClick={() => putGenres(item.id, inputChange.nameRU, inputChange.nameRU)}
+                                            onClick={() => putGenres(item.id, inputChange.nameRU, inputChange.nameEN)}
                                             className={styles.btn__post}>
                                             Подтвердить
                                         </button>

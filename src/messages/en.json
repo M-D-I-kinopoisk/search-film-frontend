@@ -124,6 +124,25 @@
   "BackButton": {
     "title": "Back"
   },
+  "FilmInfo" : {
+    "title": "Rating Ivi",
+    "btn": "Trailer",
+    "btn2": "Free Movies",
+    "toggle": "Collapse details",
+    "toggle1": "Movie details",
+    "toggle2": "Minimize",
+    "toggle3": "Read more",
+    "title1": "Interesting story",
+    "title2": "Rate"
+  },
+  "MainFilmInfo" : {
+    "title" : "Movie",
+    "text": "Rus"
+  },
+  "FilmCreators": {
+    "title" : "Actors and Creators",
+    "title1" : "More"
+  },
   "footer": {
     "item1": {
       "title": "My Ivi",

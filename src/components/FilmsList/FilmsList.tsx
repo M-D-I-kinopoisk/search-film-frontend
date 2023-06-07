@@ -237,7 +237,17 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
     return (
         <>
-            {!loading && <Skeleton/>}
+            {!loading &&
+                <div className={styles.cardList}>
+                    <Skeleton/>
+                    <Skeleton/>
+                    <Skeleton/>
+                    <Skeleton/>
+                    <Skeleton/>
+                    <Skeleton/>
+                    <Skeleton/>
+                </div>
+                }
 
             <div className={styles.cardList}>
                 {loading &&

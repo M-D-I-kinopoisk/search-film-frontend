@@ -11,12 +11,13 @@ import {selectFilms} from '@/redux/FilmsSlice'
 import {setOpenModal} from '@/redux/FilmsSlice'
 
 import {useRouter} from 'next/navigation'
+import {useTranslations} from 'next-intl'
 
 import {CreatorsProps} from '@/types/components/Film'
 
 const FilmCreators = ({actors, id}: CreatorsProps) => {
     const router = useRouter()
-
+    const t = useTranslations('FilmCreators')
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
 
@@ -62,7 +63,7 @@ const FilmCreators = ({actors, id}: CreatorsProps) => {
     return (
         <div className={styles.creators}>
             <div className={styles.creatorsTitle}>
-                Актёры и создатели
+                {t('title')}
             </div>
             <div className={styles.creatorsItems}>
                 {actors.slice(0, numActorsToDisplay).map((actor) => (
@@ -70,7 +71,7 @@ const FilmCreators = ({actors, id}: CreatorsProps) => {
                 ))}
                 <button onClick={() => modalOpenHandler()}
                         className={styles.moreCreators}>
-                    Еще
+                    {t('title1')}
                 </button>
             </div>
         </div>

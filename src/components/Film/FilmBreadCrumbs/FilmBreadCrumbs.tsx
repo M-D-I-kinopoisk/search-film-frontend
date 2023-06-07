@@ -12,7 +12,8 @@ const FilmBreadCrumbs = ({name, genres}: FilmBreadCrumbs) => {
         <ul className={styles.filmNav}>
             <li><Link href={'/'}>Мой иви</Link></li>
             {genres.slice(0, 2).map((genre) => (
-                <li className={styles.filmGenres} key={genre.id}><Link
+                <li className={styles.filmGenres} key={genre.id}>
+                    <Link
                     href={`/movies/${genre.nameEN}`}>{genre.nameRU}</Link></li>
             ))}
             <li>{name}</li>

@@ -24,7 +24,7 @@ const FilmsCategory = memo(({title, titleEN, list}: FilmsCategoryProps) => {
 
     return (
         <div className={styles.films}>
-            <Link href={`/movies/${titleEN}`}>
+            <Link href={'/movies'}>
                 <div className={styles.films__title}>
                     <h2>{locale === 'ru' ? title : titleEN} <BsChevronRight size={21}/></h2>
                 </div>

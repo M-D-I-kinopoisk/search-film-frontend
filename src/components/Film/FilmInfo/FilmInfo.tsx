@@ -15,7 +15,7 @@ import MainFilmInfo from '@/components/Film/FilmInfo/MainFilmInfo/MainFilmInfo'
 import UserButton from '@/components/UI/UserButton/UserButton'
 import FilmWatchOptions from '@/components/Film/FilmWatchOptions/FilmWatchOptions'
 
-import {useLocale} from 'next-intl'
+import {useLocale, useTranslations} from 'next-intl'
 
 import {funcDeclination} from '@/utils/funcDeclination'
 import Link from 'next/link'
@@ -25,6 +25,8 @@ import {infoContentProps} from '@/types/components/Film'
 const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
 
     const locale = useLocale()
+
+    const t = useTranslations('FilmInfo')
 
     const [visible, setVisible] = useState(false)
 
@@ -40,7 +42,7 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
                             <div><h3>{film.rating.toFixed(1)}</h3></div>
                         </div>
                         <div className={styles.rating}>
-                            Рейтинг Иви
+                            {t('title')}
                         </div>
                     </div>
                     {actors.slice(0, 4).map((actor) => (
@@ -62,14 +64,14 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
                                 </div>
                             </div>
                             <div className={styles.actorName}>
-                                {actor.member.nameRU }
+                                {locale === 'ru' ? actor.member.nameRU :   (actor.member.nameEN ? actor.member.nameEN : actor.member.nameRU) }
                             </div>
                         </Link>
                     ))}
                 </div>
 
                 <div className={styles.userButtons}>
-                    <UserButton text={'Трейлер'}
+                    <UserButton text={t('btn')}
                                 icon={<BsPlay size={16} color='rgba(255,255,255,.72)'/>}
                                 nameClass='trailerButton'/>
 
@@ -85,7 +87,7 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
             </div>
 
             <div className={styles.freeFilmsWrapper}>
-                <UserButton text={'Бесплатные фильмы'}
+                <UserButton text={t('btn2')}
                             icon={<MdOndemandVideo size={16} color='rgba(255,255,255,.72)'/>}
                             nameClass='freeFilmsButton'/>
             </div>
@@ -101,12 +103,12 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
 
             <span onClick={() => setVisible(!visible)}
                   className={styles.detailsButton}>
-                    {visible ? 'Свернуть детали' : 'Детали о фильме'}
+                    {visible ? t('toggle') : t('toggle1')}
                         </span>
 
             <span onClick={() => setVisible(!visible)}
                   className={styles.showDetailsButton}>
-                    {visible ? 'Свернуть' : 'Читать дальше'}
+                    {visible ? t('toggle2') : t('toggle3')}
                         </span>
 
             <div className={styles.filmRating}>
@@ -114,14 +116,14 @@ const FilmInfo = ({film, filmInfo, actors}: infoContentProps) => {
                     <h3>{film.rating.toFixed(1)}</h3>
 
                     <div className={styles.filmRatingDescription}>
-                        <h3>Рейтинг Иви</h3>
-                        <p>Интересный сюжет</p>
+                        <h3>{t('title')}</h3>
+                        <p>{t('title1')}</p>
                         <p>{funcDeclination(film.countRating, ['оценка', 'оценки', 'оценок'])}</p>
                     </div>
                 </div>
 
                 <div className={styles.evaluateButton}>
-                    Оценить
+                    {t('title2')}
                 </div>
             </div>
 

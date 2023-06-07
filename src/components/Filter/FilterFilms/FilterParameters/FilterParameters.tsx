@@ -1,3 +1,5 @@
+'use client'
+
 import {useSelector} from 'react-redux'
 import {selectFilterText} from '@/redux/FilterTextSlice'
 

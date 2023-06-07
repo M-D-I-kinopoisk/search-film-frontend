@@ -1,3 +1,5 @@
+'use client'
+
 import {MdNotificationsActive} from 'react-icons/md'
 import {useTranslations} from 'next-intl'
 import styles from './dropDownNotifications.module.scss'
