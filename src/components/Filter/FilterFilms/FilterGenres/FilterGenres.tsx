@@ -5,26 +5,22 @@ import {useSelector} from 'react-redux'
 import {BsCheckLg} from 'react-icons/bs'
 
 import styles from './filterGenres.module.scss'
-import { selectFilter} from '@/redux/FilterSlice'
-import { selectFilterText} from '@/redux/FilterTextSlice'
+
+import {selectFilter} from '@/redux/FilterSlice'
+import {selectFilterText} from '@/redux/FilterTextSlice'
+
 import {useRouter, useSearchParams} from 'next/navigation'
 import {useLocale} from 'next-intl'
+import {Genres} from '@/types/components/Filter'
 
-
-
-
-export default function FilterGenres({genres}) {
-
+export default function FilterGenres({genres}: Genres) {
     const locale = useLocale()
-
     const router = useRouter()
-
 
     const searchParams = useSearchParams()
 
     const {filterObj} = useSelector(selectFilter)
     const {filterTextObj} = useSelector(selectFilterText)
-
 
     function filterGenres(e, id, nameGenres, nameGenresEN) {
 
@@ -47,11 +43,9 @@ export default function FilterGenres({genres}) {
                         filterTextObj.arrCountriesEN.join('+').toLowerCase() :
                         ''
                     router.push(`/movies/${str}/${strCountries}?${searchParams?.toString()}`,)
-
                 }
-
             } else {
-
+                
                 const str = ([...filterTextObj.arrGenresEN, nameGenresEN].join('+'))
                 const strCountries = filterTextObj.hasOwnProperty('arrCountriesEN') ?
                     filterTextObj.arrCountriesEN.join('+').toLowerCase() :
@@ -59,7 +53,7 @@ export default function FilterGenres({genres}) {
                 router.push(`/movies/${str}/${strCountries}?${searchParams?.toString()}`,)
             }
         } else {
-
+            
             const strCountries = filterTextObj.hasOwnProperty('arrCountriesEN') ?
                 filterTextObj.arrCountriesEN.join('+').toLowerCase() :
                 ''
@@ -67,11 +61,9 @@ export default function FilterGenres({genres}) {
         }
     }
 
-
     function firstLetterToUpperCase(string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
     }
-
 
     return (
         <ul className={styles.genres__list}>

@@ -9,27 +9,11 @@ import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 
 import {useRouter} from 'next/navigation'
 import {useEffect} from 'react'
+
 import {Navigation} from 'swiper'
 import {Swiper, SwiperSlide} from 'swiper/react'
 
-export type Comment = {
-    id: number,
-    idFilm: number,
-    idUser: number,
-    prevId: number,
-    childrenCount: number,
-    profile: {
-        profileName: string
-    },
-    createdAt: string,
-    text: string,
-    title: string
-}
-
-interface Comments {
-    id: string,
-    filmComments: Comment[]
-}
+import {Comments} from '@/types/components/Film'
 
 const FilmComments = ({id, filmComments}: Comments) => {
     const router = useRouter()
@@ -74,7 +58,7 @@ const FilmComments = ({id, filmComments}: Comments) => {
                             <FilmCommentsItem key={comment.id} comment={comment}/>
                         ))}
                     </div> :
-                    <Swiper className='slider__interesting'
+                    <Swiper className='slider__comments'
                             spaceBetween={25}
                             speed={700}
                             modules={[Navigation]}

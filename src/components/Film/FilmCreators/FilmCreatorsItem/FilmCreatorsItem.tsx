@@ -5,11 +5,7 @@ import styles from './filmCreatorsItem.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
-
-type CreatorsItemProps = {
-    actor: Actor
-}
+import {CreatorsItemProps} from '@/types/components/Film'
 
 const FilmCreatorsItem = ({actor}: CreatorsItemProps) => {
 

@@ -7,13 +7,8 @@ import {BsBookmark} from 'react-icons/bs'
 import {FiShare} from 'react-icons/fi'
 import {MdOndemandVideo} from 'react-icons/md'
 import MainFilmInfo from '@/components/Film/FilmInfo/MainFilmInfo/MainFilmInfo'
-import {Film, FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
 
-
-export type FilmInfoProps = {
-    filmInfo: FilmInfo,
-    film: Film
-}
+import {FilmInfoProps} from '@/types/components/Film'
 
 const MainTrailer = ({filmInfo, film}: FilmInfoProps) => {
     const userButtons = [

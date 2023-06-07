@@ -1,5 +1,7 @@
 'use client'
 
+import {memo} from 'react'
+
 import styles from './filmsCategory.module.scss'
 
 import 'swiper/css'
@@ -11,17 +13,13 @@ import Link from 'next/link'
 import {BsChevronRight} from 'react-icons/bs'
 
 import FilmCard from '@/components/FilmCard/FilmCard'
+import {FilmsCategoryProps} from '@/types/components/FilmsCategory'
 import {useLocale, useTranslations} from 'next-intl'
 
-type FilmsCategoryProps = {
-    title: string,
-    titleEN: string,
-    list: string[]
-}
-const FilmsCategory = ({title, titleEN, list}: FilmsCategoryProps) => {
+const FilmsCategory = memo(({title, titleEN, list}: FilmsCategoryProps) => {
+    FilmsCategory.displayName = 'FilmsCategory'
 
     const locale = useLocale()
-
     const t = useTranslations('FilmsCategory')
 
     return (
@@ -79,6 +77,6 @@ const FilmsCategory = ({title, titleEN, list}: FilmsCategoryProps) => {
             </Swiper>
         </div>
     )
-}
+})
 
 export default FilmsCategory

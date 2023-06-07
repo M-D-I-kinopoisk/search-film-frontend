@@ -6,14 +6,11 @@ import {RiUserLine} from 'react-icons/ri'
 
 import {ChangeEvent, useRef, useState} from 'react'
 
-import {Comment} from '@/components/Film/FilmComments/FilmComments'
 import {useSession} from 'next-auth/react'
 
-interface CommentForm {
-    comment: Comment
-}
+import {CommentFormProps} from '@/types/components/UI/CommentForm'
 
-const CommentForm = ({comment}: CommentForm) => {
+const CommentForm = ({comment}: CommentFormProps) => {
     const [value, setValue] = useState('')
     const inputRef = useRef<HTMLInputElement>(null)
 

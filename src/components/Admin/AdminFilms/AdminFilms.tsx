@@ -7,18 +7,12 @@ import Input from '@/components/UI/Input/Input'
 import Skeleton from '@/components/UI/Skeleton/Skeleton'
 import FilmCard from '@/components/FilmCard/FilmCard'
 
-
 import styles from './adminFilms.module.scss'
 import {notFound} from 'next/navigation'
 
-
 export default function AdminFilms() {
 
-    const {data: session, status} = useSession()
-
-
-
-
+    const {data: session} = useSession()
 
     const [inputSearch, setInputSearch] = useState<string>('')
 
@@ -29,7 +23,6 @@ export default function AdminFilms() {
 
     const [part, setPart] = useState<number>(0)
 
-
     const [loading, setLoading] = useState<boolean>(true)
 
     const [empty, setEmpty] = useState(false)
@@ -37,7 +30,6 @@ export default function AdminFilms() {
 
     const [toggle, setToggle] = useState(
         {changeFilm: false, addFilm: false})
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -66,7 +58,7 @@ export default function AdminFilms() {
                     if (filmFilter.length > 0 || filmFilterEN.length > 0) {
                         setLoading(true)
                         console.log('найдено')
-                        setFilmsList(filmFilter.length > 0 ? filmFilter: filmFilterEN)
+                        setFilmsList(filmFilter.length > 0 ? filmFilter : filmFilterEN)
                         setPart(0)
 
                     } else {
@@ -83,20 +75,13 @@ export default function AdminFilms() {
             } catch (error) {
                 console.log(error.message)
             }
-
-
         }
-
 
         if (part > 0) {
             fetchData()
         }
 
-
     }, [part])
-
-
-
 
     const searchFilm = (inputValue, filmsList) => {
         if (inputValue.length > 0) {
@@ -105,13 +90,12 @@ export default function AdminFilms() {
         }
     }
 
-
     const removeFilm = (idFilm) => {
         setToggle({changeFilm: false, addFilm: false})
         console.log(idFilm)
     }
 
-    const putChangeName = async  (film, nameRU, nameEN ) => {
+    const putChangeName = async (film, nameRU, nameEN) => {
         const arrIdGenres = film.genres.map(i => i.id)
         console.log(arrIdGenres)
         console.log(film)
@@ -119,41 +103,38 @@ export default function AdminFilms() {
         console.log(session?.user.token)
         try {
 
-           const response = await fetch('http://localhost:12120/api/films', {
+            const response = await fetch('http://localhost:12120/api/films', {
                 method: 'PUT',
                 body: JSON.stringify({
-                'id': film.id,
-                'nameRU': nameRU,
-                'nameEN': nameEN,
-                'year': film.year,
-                'ageRating': film.ageRating,
-                'duration': film.duration,
-                'idCountry': film.idCountry,
-                'arrIdGenres': arrIdGenres
+                    'id': film.id,
+                    'nameRU': nameRU,
+                    'nameEN': nameEN,
+                    'year': film.year,
+                    'ageRating': film.ageRating,
+                    'duration': film.duration,
+                    'idCountry': film.idCountry,
+                    'arrIdGenres': arrIdGenres
                 }),
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization : `Bearer ${session?.user.token}`
+                    Authorization: `Bearer ${session?.user.token}`
                 }
             })
             if (response.status === 200) {
 
             }
             console.log(response)
-          const data =  await  response.json()
+            const data = await response.json()
             console.log(data)
         } catch (error) {
             console.log(error.message)
         }
-
-
     }
 
     if (session?.user?.role?.name !== 'ADMIN') {
         return notFound()
     }
 
-    console.log(session?.user?.role?.name)
     return (
         <>
             <div className={styles.search__film}>

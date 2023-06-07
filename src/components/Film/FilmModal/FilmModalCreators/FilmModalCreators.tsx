@@ -1,14 +1,14 @@
-import Link from 'next/link'
-import styles from './FilmModalCreators.module.scss'
-import Image from 'next/image'
-import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
+'use client'
 
-interface FilmModalCreators {
-    actor: Actor,
-    inModal?: boolean,
-}
+import Link from 'next/link'
+import Image from 'next/image'
+
+import styles from './FilmModalCreators.module.scss'
+
+import {FilmModalCreators} from '@/types/components/Film'
 
 const FilmModalCreator = ({actor, inModal}: FilmModalCreators) => {
+    
     return (
         <>
             {inModal && <Link href={`/person/${actor.member.id}`} className={styles.modalCreatorsLink}>

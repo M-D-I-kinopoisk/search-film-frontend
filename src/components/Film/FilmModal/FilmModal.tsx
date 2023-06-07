@@ -18,24 +18,14 @@ import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 
 import {funcDeclination} from '@/utils/funcDeclination'
 
-import {Actor, Film, FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
-import {Comment} from '@/components/Film/FilmComments/FilmComments'
-
 import {useRouter} from 'next/navigation'
 import {useSession} from 'next-auth/react'
 
 import {RiUserLine} from 'react-icons/ri'
 import {useState} from 'react'
+import {FilmModalProps} from '@/types/components/Film'
 
-type MyModalProps = {
-    actors: Actor[],
-    filmInfo: FilmInfo,
-    filmComments: Comment[],
-    film: Film,
-    id: string
-}
-
-const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
+const FilmModal = ({actors, filmInfo, filmComments, film, id}: FilmModalProps) => {
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
     const router = useRouter()
@@ -70,10 +60,10 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
 
         setValue('')
 
-        newComment()
+        postNewComment()
     }
 
-    async function newComment() {
+    async function postNewComment() {
         try {
             const response = await fetch('http://localhost:12120/api/comments', {
                 method: 'POST',

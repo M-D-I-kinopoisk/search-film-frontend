@@ -1,18 +1,13 @@
 'use client'
 
-import {FC} from 'react'
-
 import Link from 'next/link'
 
 import styles from './navBar.module.scss'
+
 import {useTranslations} from 'next-intl'
+import {NavBarProps} from '@/types/components/Header'
 
-export interface NavBarProps {
-    handleMouseEnter: (e) => void
-    handleMouseLeave: (e) => void
-}
-
-const NavBar: FC<NavBarProps> = ({handleMouseEnter, handleMouseLeave}) => {
+const NavBar = ({handleMouseEnter, handleMouseLeave}: NavBarProps) => {
 
     const t = useTranslations('header')
 

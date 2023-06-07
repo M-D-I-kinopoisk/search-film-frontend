@@ -8,25 +8,15 @@ import {BiSearch} from 'react-icons/bi'
 import {CgMoreAlt} from 'react-icons/cg'
 import {RxDesktop} from 'react-icons/rx'
 
-
 import style from './TabBar.module.scss'
-import {useLocale, useTranslations} from 'next-intl'
+import {useTranslations} from 'next-intl'
 import {signOut, useSession} from 'next-auth/react'
 
-
 const TabBar = () => {
-
     const {data: session} = useSession()
-
     let route = '/'
 
-    const locale = useLocale()
-
     const t = useTranslations('TabBar')
-
-
-    // const t = locale === 'en' ? en : ru
-
 
     return (
         <div className={style.tabBar}>
@@ -69,7 +59,7 @@ const TabBar = () => {
                     <div className={style.tabBar__itemGlowImage}></div>
                     <div className={style.tabBar__items}>
                         <CgMoreAlt size={20}/>
-                            <span className={`${style.tabBar__itemCaption} ${style.exit}`}>{t('title6')}</span>
+                        <span className={`${style.tabBar__itemCaption} ${style.exit}`}>{t('title6')}</span>
                     </div>
                 </div> :
                 <div className={style.tabBar__group}>

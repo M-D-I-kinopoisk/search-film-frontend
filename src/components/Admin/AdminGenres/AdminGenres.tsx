@@ -10,13 +10,7 @@ import {useSession} from 'next-auth/react'
 
 import styles from './adminGenres.module.scss'
 
-
-
-interface listGenres {
-    id: number;
-    'nameRU': string,
-    'nameEN': string
-}
+import {listGenres} from '@/types/components/Admin'
 
 export default function AdminGenres() {
 

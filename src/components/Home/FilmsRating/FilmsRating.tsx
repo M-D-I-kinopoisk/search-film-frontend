@@ -7,22 +7,12 @@ import styles from './filmsRating.module.scss'
 
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Navigation} from 'swiper'
-import React from 'react'
+
 import {useTranslations} from 'next-intl'
 
-type Film = {
-    rating: number,
-    id: string,
-    imageName: string
-
-}
-
-interface FilmsRating {
-    ratingFilms: Film[]
-}
+import {FilmsRating} from '@/types/components/Home'
 
 const FilmsRating = ({ratingFilms}: FilmsRating) => {
-
     const t = useTranslations('FilmsRating')
 
     const topFilmsImg = [

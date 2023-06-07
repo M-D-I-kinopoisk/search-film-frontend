@@ -11,12 +11,7 @@ import {useDispatch, useSelector} from 'react-redux'
 
 import {useRouter} from 'next/navigation'
 
-import {FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
-
-interface FilmTrailersState {
-    filmInfo: FilmInfo,
-    id: string
-}
+import {FilmTrailersState} from '@/types/components/Film'
 
 const FilmTrailers = ({filmInfo, id}: FilmTrailersState) => {
     const router = useRouter()

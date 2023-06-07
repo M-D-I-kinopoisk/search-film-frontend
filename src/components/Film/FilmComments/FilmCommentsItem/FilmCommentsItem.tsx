@@ -4,13 +4,7 @@ import styles from './filmCommentsItem.module.scss'
 
 import {AiOutlineLike} from 'react-icons/ai'
 
-import {Comment} from '@/components/Film/FilmComments/FilmComments'
-
-
-interface CommentsItemProps {
-    inModal?: any,
-    comment: Comment
-}
+import {CommentsItemProps} from '@/types/components/Film'
 
 const FilmCommentsItem = ({comment}: CommentsItemProps) => {
     const date = new Date(comment.createdAt).toLocaleDateString()

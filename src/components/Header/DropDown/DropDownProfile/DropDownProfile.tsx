@@ -19,9 +19,7 @@ const DropDownProfile = () => {
 
     const t = useTranslations('DropDownProfile')
 
-
     const {data: session} = useSession()
-
 
     const dispatch = useDispatch()
     const openAuth = () => {
@@ -30,7 +28,6 @@ const DropDownProfile = () => {
             registration: false
         }))
     }
-
 
     return (
         <div className={style.dropDown__user}>

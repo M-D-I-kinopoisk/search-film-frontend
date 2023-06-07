@@ -4,11 +4,7 @@ import styles from './WatchAllDevices.module.scss'
 
 import Image from 'next/image'
 
-import {Film} from '@/components/Film/FilmInfo/FilmInfo'
-
-interface AllDevices {
-    film: Film
-}
+import {AllDevices} from '@/types/components/Film'
 
 const WatchAllDevices = ({film}: AllDevices) => {
     return (

@@ -9,15 +9,10 @@ import {IoCallOutline} from 'react-icons/io5'
 import {MdVolumeOff} from 'react-icons/md'
 import {MdDesktopMac} from 'react-icons/md'
 
-
 import styles from './footer.module.scss'
 
-
 const Footer = () => {
-
-    // const {locale} = useRouter()
     const t = useTranslations('footer')
-
 
     return (
         <div className={styles.wrapper}>

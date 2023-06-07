@@ -5,13 +5,10 @@ import {BsKeyboard} from 'react-icons/bs'
 
 import {funcDeclination} from '@/utils/funcDeclination'
 
-import {Film} from '@/components/Film/FilmInfo/FilmInfo'
 import FilmGenres from '@/components/Film/FilmGenres/FilmGenres'
 import {useLocale} from 'next-intl'
 
-type FilmProps = {
-    film: Film
-}
+import {FilmProps} from '@/types/components/Film'
 
 const MainFilmInfo = ({film}: FilmProps) => {
 

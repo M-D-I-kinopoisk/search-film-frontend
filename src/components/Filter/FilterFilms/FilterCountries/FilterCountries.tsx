@@ -1,13 +1,17 @@
 import styles from './filterCountries.module.scss'
-import { useSelector} from 'react-redux'
+
+import {useSelector} from 'react-redux'
 import {selectFilter} from '@/redux/FilterSlice'
-import { selectFilterText} from '@/redux/FilterTextSlice'
+import {selectFilterText} from '@/redux/FilterTextSlice'
+
 import {BsCheckLg} from 'react-icons/bs'
-import { useRouter, useSearchParams} from 'next/navigation'
+
+import {useRouter, useSearchParams} from 'next/navigation'
 import {useLocale} from 'next-intl'
 
+import {Countries} from '@/types/components/Filter'
 
-const FilterCountries = ({countries}) => {
+const FilterCountries = ({countries}: Countries) => {
 
     const locale = useLocale()
 

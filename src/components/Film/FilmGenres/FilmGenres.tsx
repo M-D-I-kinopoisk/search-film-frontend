@@ -4,15 +4,7 @@ import styles from './filmGenres.module.scss'
 import Link from 'next/link'
 import {useLocale} from 'next-intl'
 
-type Genre = {
-    id: string,
-    nameRU: string,
-    nameEN: string
-}
-
-interface FilmGenres {
-    genres: Genre[]
-}
+import {FilmGenres} from '@/types/components/Film'
 
 const FilmGenres = ({genres}: FilmGenres) => {
 

@@ -4,12 +4,8 @@ import styles from '@/components/Film/FilmTrailers/FilmTrailersItem/filmTrailers
 
 import {RxLapTimer} from 'react-icons/rx'
 
-import {FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
+import {FilmModalTrailerProps} from '@/types/components/Film'
 
-interface FilmModalTrailerProps {
-    inModal?: boolean,
-    filmInfo: FilmInfo
-}
 const FilmModalTrailer = ({inModal, filmInfo}: FilmModalTrailerProps) => {
     return (
         <>

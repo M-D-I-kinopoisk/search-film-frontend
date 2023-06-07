@@ -19,7 +19,6 @@ import {useTranslations} from 'next-intl'
 import {toggle} from '@/redux/AuthToggleSlice'
 import {useDispatch} from 'react-redux'
 
-
 const Header = () => {
 
     const {data: session} = useSession()

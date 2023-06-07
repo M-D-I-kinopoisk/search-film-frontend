@@ -1,6 +1,6 @@
 'use client'
 
-import { useState} from 'react'
+import {useState} from 'react'
 import {useRouter} from 'next/navigation'
 
 import {useSelector} from 'react-redux'
@@ -21,31 +21,26 @@ import FilterGrades from '@/components/Filter/FilterFilms/FilterGrades/FilterGra
 import FilterParameters from '@/components/Filter/FilterFilms/FilterParameters/FilterParameters'
 
 import styles from './filterFilms.module.scss'
+
 import {useTranslations} from 'next-intl'
 
+import {FilterFilmsProps} from '@/types/components/Filter'
 
-const FilterFilms = ({genres, countries, listActor, listDir}) => {
-
+const FilterFilms = ({genres, countries, listActor, listDir}: FilterFilmsProps) => {
     const router = useRouter()
 
     const t = useTranslations('FilterFilms')
-
 
     const [activePlank, setActivePlank] = useState({
         genres: false, countries: false, years: false, rating: false,
         grade: false, searchDir: false, searchActor: false
     })
 
-
-
     const {filterTextObj} = useSelector(selectFilterText)
-
 
     const resetFilter = () => {
         router.replace('/movies')
     }
-
-
 
     return (
         <div className={styles.wrapper}>
@@ -75,7 +70,6 @@ const FilterFilms = ({genres, countries, listActor, listDir}) => {
                                                        searchDir: false,
                                                        searchActor: false,
                                                    })}>
-
 
                                 <FilterGenres genres={genres}/>
 

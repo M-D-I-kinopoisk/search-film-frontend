@@ -8,14 +8,9 @@ import {funcDeclination} from '@/utils/funcDeclination'
 
 import {useState} from 'react'
 
-import {Comment} from '@/components/Film/FilmComments/FilmComments'
-
 import FilmModalCommentItem from './FilmModalCommentItem/FilmModalCommentItem'
 
-interface FilmModalCommentProps {
-    inModal: boolean,
-    comment: Comment
-}
+import {FilmModalCommentProps} from '@/types/components/Film'
 
 const FilmModalComments = ({inModal, comment}: FilmModalCommentProps) => {
 
