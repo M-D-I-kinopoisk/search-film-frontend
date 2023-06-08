@@ -2,7 +2,11 @@ import TabBar from '../components/UI/TabBar/TabBar'
 
 import {Meta, StoryObj} from '@storybook/react'
 
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import {INITIAL_VIEWPORTS} from '@storybook/addon-viewport'
+import {SessionProvider} from 'next-auth/react'
+import {NextIntlClientProvider} from 'next-intl'
+import messages from '../messages/ru.json'
+
 
 
 const meta: Meta<typeof TabBar> = {
@@ -28,11 +32,19 @@ const meta: Meta<typeof TabBar> = {
             defaultViewport: 'iphone5'
         },
     },
+    decorators: [
+        (Story) => (
+            <NextIntlClientProvider locale={'ru'} messages={messages}>
+            <SessionProvider>
+                <Story />
+            </SessionProvider>
+            </NextIntlClientProvider>
+        ),
+    ],
 }
 export default meta
 
 type Story = StoryObj<typeof TabBar>;
-
 
 
 export const tabBar: Story = {}

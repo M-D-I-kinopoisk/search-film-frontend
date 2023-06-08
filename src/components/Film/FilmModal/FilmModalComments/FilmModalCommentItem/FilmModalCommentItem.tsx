@@ -4,17 +4,13 @@ import styles from './filmModalCommentItem.module.scss'
 
 import {AiOutlineLike} from 'react-icons/ai'
 
-import {Comment} from '@/components/Film/FilmComments/FilmComments'
-
 import {useState} from 'react'
 
 import CommentForm from '../../../../UI/CommentForm/CommentForm'
 
-interface FilmModalCommentItem {
-    comment: Comment
-}
+import {FilmModalCommentItemProps} from '@/types/components/Film'
 
-const FilmModalComment = ({comment}: FilmModalCommentItem) => {
+const FilmModalComment = ({comment}: FilmModalCommentItemProps) => {
     const [showForm, setShowForm] = useState(false)
     const [showFullText, setShowFullText] = useState(false)
 

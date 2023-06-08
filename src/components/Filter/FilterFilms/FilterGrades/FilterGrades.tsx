@@ -1,14 +1,12 @@
 import {useState} from 'react'
 
-import { useSelector} from 'react-redux'
-import { selectFilter} from '@/redux/FilterSlice'
+import {useSelector} from 'react-redux'
+import {selectFilter} from '@/redux/FilterSlice'
 
 import styles from './filterGrades.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 
-
 const FilterGrades = () => {
-
     const pathname = usePathname()
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -21,12 +19,11 @@ const FilterGrades = () => {
         setInputRange((e.target.value))
     }
 
-
     const onMouseUpRating = (e) => {
         const numberRating = Number(e.target.value)
 
         let url = '/movies'
-        if (searchParams.toString()) {
+        if (searchParams?.toString()) {
 
             if (searchParams.has('ivi_grades')) {
 
@@ -48,7 +45,7 @@ const FilterGrades = () => {
             <input className={styles.inputRange__input} type='range' min='1000' max='1000000'
                    value={inputRange} step={1000}
                    onChange={(e) => changeRating(e)}
-                   onMouseUp={(e) =>  onMouseUpRating(e)}
+                   onMouseUp={(e) => onMouseUpRating(e)}
             />
             <div className={styles.inputRange__text}>{inputRange}</div>
             <div className={styles.inputRange__numStart}>1000</div>

@@ -10,7 +10,6 @@ import FilmCard from '@/components/FilmCard/FilmCard'
 
 import styles from './adminFilms.module.scss'
 
-
 export default function AdminFilms() {
 
     const {data: session, status} = useSession()
@@ -29,14 +28,20 @@ export default function AdminFilms() {
 
     const [empty, setEmpty] = useState(false)
 
+    const [status200, setStatus200] = useState(false)
+
 
     const [toggle, setToggle] = useState(
         {changeFilm: false, addFilm: false})
 
 
+
     useEffect(() => {
+
+
         const fetchData = async () => {
             setLoading(false)
+            setStatus200(false)
             try {
 
                 const response = await fetch('http://localhost:12120/api/films/filter', {
@@ -60,7 +65,6 @@ export default function AdminFilms() {
                     const filmFilterEN = data.filter(i => i.nameEN?.toLowerCase() === inputSearch.toLowerCase())
                     if (filmFilter.length > 0 || filmFilterEN.length > 0) {
                         setLoading(true)
-                        console.log('найдено')
                         setFilmsList(filmFilter.length > 0 ? filmFilter: filmFilterEN)
                         setPart(0)
 
@@ -71,7 +75,6 @@ export default function AdminFilms() {
                 } else {
                     setLoading(true)
                     setEmpty(true)
-                    console.log('не найдено')
                     setPart(0)
                 }
 
@@ -93,7 +96,7 @@ export default function AdminFilms() {
 
 
 
-    const searchFilm = (inputValue, filmsList) => {
+    const searchFilm = (inputValue) => {
         if (inputValue.length > 0) {
             setEmpty(false)
             setPart(1)
@@ -103,15 +106,12 @@ export default function AdminFilms() {
 
     const removeFilm = (idFilm) => {
         setToggle({changeFilm: false, addFilm: false})
-        console.log(idFilm)
+
     }
 
     const putChangeName = async  (film, nameRU, nameEN ) => {
         const arrIdGenres = film.genres.map(i => i.id)
-        console.log(arrIdGenres)
-        console.log(film)
-        console.log(film.arrIdGenres)
-        console.log(session?.user.token)
+
         try {
 
            const response = await fetch('http://localhost:12120/api/films', {
@@ -132,17 +132,18 @@ export default function AdminFilms() {
                 }
             })
             if (response.status === 200) {
-
+               setStatus200(true)
             }
-            console.log(response)
+
           const data =  await  response.json()
-            console.log(data)
+
         } catch (error) {
             console.log(error.message)
         }
 
 
     }
+
 
 
     return (
@@ -153,14 +154,16 @@ export default function AdminFilms() {
                            label={'Введите полное название фильма'}
                            type={'text'}/>
                 </div>
-                <button onClick={() => searchFilm(inputSearch, filmsList)}
+                <button onClick={() => searchFilm(inputSearch)}
                         className={styles.btn__search}>Поиск
                 </button>
             </div>
 
             {!loading && <Skeleton/>}
             {empty && <h3 className={styles.not__found}>Фильм не найден, введите другое название</h3>}
-            {loading &&
+            {status200 && <h3 className={styles.not__found}>Название изменено</h3>}
+            {!status200 &&
+                loading &&
                 !empty &&
                 filmsList && filmsList.map((item: any, inx) =>
                     <div key={inx} className={styles.filmBlock}>

@@ -1,6 +1,9 @@
 import Footer from '../components/Footer/Footer'
 
 import {Meta, StoryObj} from '@storybook/react'
+import {NextIntlClientProvider} from 'next-intl'
+import messages from '../messages/ru.json'
+import {SessionProvider} from 'next-auth/react'
 
 const meta: Meta<typeof Footer> = {
     title: 'Components/Footer',
@@ -20,6 +23,15 @@ const meta: Meta<typeof Footer> = {
             ],
         },
     },
+    decorators: [
+        (Story) => (
+            <NextIntlClientProvider locale={'ru'} messages={messages}>
+                <SessionProvider>
+                    <Story />
+                </SessionProvider>
+            </NextIntlClientProvider>
+        ),
+    ],
 }
 export default meta
 

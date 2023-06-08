@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-interface FilterTextSliceState {
+export interface FilterTextSliceState {
     filterTextObj: {
         arrActorMembers? : string[]
         arrActorMembersEN? : string[]

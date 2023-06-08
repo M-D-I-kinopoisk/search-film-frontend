@@ -5,10 +5,14 @@ import {useSession} from 'next-auth/react'
 import {useDispatch} from 'react-redux'
 import {toggle} from '@/redux/AuthToggleSlice'
 import {useEffect, useState} from 'react'
+import {useTranslations} from 'next-intl'
+
 
 import styles from '@/components/Auth/auth.module.scss'
 
 export default function Registration() {
+
+    const t = useTranslations('Registration')
 
     const {data: session} = useSession()
 
@@ -93,7 +97,7 @@ export default function Registration() {
                 <div className={styles.modalScroll}>
                     <div className={styles.auth}>
                         <div className={styles.auth__header}>
-                            <p className={styles.auth__headerText}>{toggleBlock ? inputEmail : 'Регистрация'}</p>
+                            <p className={styles.auth__headerText}>{toggleBlock ? inputEmail : t('title1')}</p>
                             <button onClick={() => closeAuth()} className={styles.auth__btnClose}>
                                 <VscChromeClose size={20}/>
                             </button>
@@ -108,10 +112,10 @@ export default function Registration() {
                                     authorization: true,
                                     registration: false
                                 }))}>
-                                    <p className={styles.form__title}>Зарегистрируйтесь или нажмите сюда для входа</p>
+                                    <p className={styles.form__title}>{t('title2')}</p>
                                     {!toggleBlock &&
-                                        <span className={styles.form__text}>и пользуйтесь сервисом на любом
-                                            устройстве
+                                        <span className={styles.form__text}>
+                                            {t('title3')}
                                         </span>}
                                 </div>
 
@@ -119,7 +123,7 @@ export default function Registration() {
                                     <>
                                         <div
                                             className={animate ? `${styles.form__LoginContainer} ${styles.btn__animate}` : `${styles.form__LoginContainer}`}>
-                                            <Input label={'Придумайте имя'}
+                                            <Input label={t('input1')}
                                                    onChange={(e) => setInputName(e.target.value)}
                                                    type={'text'}
                                                    value={inputName}
@@ -128,7 +132,7 @@ export default function Registration() {
                                         </div>
                                         <div
                                             className={animate ? `${styles.form__LoginContainer} ${styles.btn__animate}` : `${styles.form__LoginContainer}`}>
-                                            <Input label={'Введите email'}
+                                            <Input label={t('input2')}
                                                    onChange={(e) => setInputEmail(e.target.value)}
                                                    type={'text'}
                                                    value={inputEmail}
@@ -141,7 +145,7 @@ export default function Registration() {
                                                 type={'button'}
                                                 onClick={buttonClickNext}
                                                 className={inputEmail.length > 0 && inputName.length > 0 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
-                                                Продолжить
+                                                {t('btn1')}
                                             </button>
                                         </div>
                                     </>)}
@@ -162,12 +166,13 @@ export default function Registration() {
                                         </div>
                                         <div className={styles.form__blockTwo}>
                                             <div className={styles.form__blockText}>
-                                                <p className={styles.form__title}>Придумайте пароль для входа</p>
-                                                <span className={styles.form__text}>Установите пароль для входа через email, минимум 4 символов
+                                                <p className={styles.form__title}>{t('title4')}</p>
+                                                <span className={styles.form__text}>
+                                                    {t('title5')}
                                         </span>
                                             </div>
                                             <div className={styles.form__LoginContainer}>
-                                                <Input label={'Введите пароль'}
+                                                <Input label={t('input3')}
                                                        onChange={(e) => setInputPasswords({
                                                            ...inputPasswords,
                                                            pass1: e.target.value
@@ -178,7 +183,7 @@ export default function Registration() {
                                                 />
                                             </div>
                                             <div className={styles.form__LoginContainer}>
-                                                <Input label={'Подтвердите пароль'}
+                                                <Input label={t('input4')}
                                                        onChange={(e) => setInputPasswords({
                                                            ...inputPasswords,
                                                            pass2: e.target.value
@@ -192,7 +197,7 @@ export default function Registration() {
                                                 <button
                                                     onClick={() => registration(inputName, inputEmail, inputPasswords.pass1)}
                                                     className={inputPasswords.pass1 === inputPasswords.pass2 && inputPasswords.pass1.length > 3 ? `${styles.form__btn} ${styles.form__btnActive}` : `${styles.form__btn}`}>
-                                                    Зарегистрироваться
+                                                    {t('btn2')}
                                                 </button>
                                             </div>
                                         </div>
@@ -200,13 +205,14 @@ export default function Registration() {
                                 }
                                 {nextToggle &&
                                     <div className={styles.form__enterText}>
-                                        <p className={styles.form__title}>Вы успешно зарегистрировались</p>
+                                        <p className={styles.form__title}>{t('enter1')}</p>
                                     </div>}
                                 {errorText &&
                                     <div className={styles.form__errorText} onClick={buttonClickPop}>
                                         <p className={styles.form__title}>{errorText}</p>
-                                        <p className={styles.form__title}>Нажмите чтобы
-                                            вернуться назад</p>
+                                        <p className={styles.form__title}>
+                                            {t('btn3')}
+                                        </p>
                                     </div>}
                             </div>
                         </div>

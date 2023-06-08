@@ -1,3 +1,5 @@
+'use client'
+
 import {useState} from 'react'
 
 import Input from '@/components/UI/Input/Input'
@@ -6,22 +8,20 @@ import {IoPersonCircleOutline} from 'react-icons/io5'
 
 import styles from './filterActor.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
+import {useLocale} from 'next-intl'
 
+import {ListActorProps} from '@/types/components/Filter'
 
-const FilterActor = ({listActor}) => {
+const FilterActor = ({listActor}: ListActorProps) => {
+
+    const locale = useLocale()
 
     const pathname = usePathname()
     const router = useRouter()
     const searchParams = useSearchParams()
 
-
     const [inputActor, setInputActor] = useState('')
-
-
     const [newListActor, setNewListActor] = useState<[] | any>([])
-
-
-
 
     function searchActor(e) {
 
@@ -36,7 +36,6 @@ const FilterActor = ({listActor}) => {
             setNewListActor(actors)
         }
     }
-
 
     function filterActor(id, nameActor, nameActorEN) {
 
@@ -59,28 +58,23 @@ const FilterActor = ({listActor}) => {
 
     }
 
-
-
     return (
         <div>
             <Input label={'Актеры'}
                    type={'text'}
                    value={inputActor}
                    search={true}
-                   onChange={(e) => searchActor(e)}
-            />
+                   onChange={(e) => searchActor(e)}/>
             <div className={styles.filterActor__list}>
                 {newListActor.map((item, inx) => {
-                        if (inx <= 9)
-                            return (<div key={inx} className={styles.filterActor}>
-                                <button onClick={() => filterActor(item.id, item.nameRU, item.nameEN)}>
-                                    <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
-                                    <span>{item.nameRU}</span>
-                                </button>
-                            </div>)
-                    }
-                )
-                }
+                    if (inx <= 9)
+                        return (<div key={inx} className={styles.filterActor}>
+                            <button onClick={() => filterActor(item.id, item.nameRU, item.nameEN)}>
+                                <IoPersonCircleOutline color={'rgb(234, 0, 61)'} size={20}/>
+                                <span>{locale === 'ru' ? item.nameRU : item.nameEN}</span>
+                            </button>
+                        </div>)
+                })}
             </div>
         </div>
     )

@@ -4,11 +4,9 @@ import Link from 'next/link'
 
 import styles from './breadcrumbs.module.scss'
 
-interface Breadcrumbs {
-    title: string
-}
+import {BreadcrumbsProps} from '@/types/components/UI/Breadcrumbs'
 
-const Breadcrumbs = ({title}: Breadcrumbs) => {
+const Breadcrumbs = ({title}: BreadcrumbsProps) => {
     return (
         <ul className={styles.breadcrumbs}>
             <li className={styles.breadcrumbItem}>

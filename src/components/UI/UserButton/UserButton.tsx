@@ -1,16 +1,13 @@
-import React from 'react'
+'use client'
 
 import styles from './userButton.module.scss'
 
-type MyButtonProps = {
-    text?: any
-    icon?: any
-    nameClass?: any
-}
+import {UserButtonProps} from '@/types/components/UI/UserButton'
 
-const UserButton: React.FC<MyButtonProps> = ({ text, icon, nameClass }) => {
+const UserButton = ({text, icon, nameClass}: UserButtonProps) => {
     return (
-        <button className={styles[nameClass]}>
+        <button className={styles[nameClass]}
+            data-testid='user-button'        >
             {text ?
                 <>{icon}
                     <h3>{text}</h3>

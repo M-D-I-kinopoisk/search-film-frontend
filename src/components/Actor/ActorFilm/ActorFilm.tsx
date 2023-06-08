@@ -5,21 +5,9 @@ import styles from './actorFilm.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 
-type Film = {
-    film: {
-        year: number,
-        nameRU: string,
-        rating: number,
-        imageName: string,
-        id: string
-    }
-}
+import {ActorFilmProps} from '@/types/components/Actor'
 
-interface ActorFilm {
-    item: Film
-}
-
-const ActorFilm = ({item}: ActorFilm) => {
+const ActorFilm = ({item}: ActorFilmProps) => {
 
     return (
         <Link href={`/film/${item.film.id}`} className={styles.film}>

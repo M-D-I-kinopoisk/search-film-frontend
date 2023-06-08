@@ -1,3 +1,5 @@
+'use client'
+
 import {useEffect, useRef, useState} from 'react'
 
 import {BiSearch} from 'react-icons/bi'
@@ -6,21 +8,12 @@ import {RiUser6Line} from 'react-icons/ri'
 
 import styles from './input.module.scss'
 
-export interface InputProps {
-    label: string,
-    onChange?: (e) => void,
-    type: string,
-    value?: any,
-    search?: boolean,
-    login?: boolean,
-    password?: boolean
-}
+import {InputProps} from '@/types/components/UI/Input'
 
 const Input = ({label, onChange, type, value, login, password, search}: InputProps) => {
-
     const [passToggle, setPassToggle] = useState(false)
-
     const inputElement = useRef<HTMLInputElement>(null)
+    
     useEffect(() => {
         if (inputElement.current) {
             inputElement.current.focus()

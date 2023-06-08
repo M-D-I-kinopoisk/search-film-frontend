@@ -6,31 +6,37 @@ import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getFilterObj, selectFilter} from '@/redux/FilterSlice'
 import {useParams, useSearchParams} from 'next/navigation'
-import {getFilterTextObj, selectFilterText} from '@/redux/FilterTextSlice'
+import {getFilterTextObj} from '@/redux/FilterTextSlice'
 import Skeleton from '@/components/UI/Skeleton/Skeleton'
 import FilmCard from '@/components/FilmCard/FilmCard'
+import {useTranslations} from 'next-intl'
+import {Actor, Country, Dir, Genre} from '@/types/components/Filter'
+import FilterTextSliceState from '../../redux/FilterTextSlice'
 
 
-export default function FilmsList({genres, countries, listDir, listActor, searchPar,}) {
+export interface FilmsListProps {
+    genres: Genre[],
+    countries: Country[],
+    listActor: Actor[],
+    listDir: Dir[],
+    searchPar: {}
+}
+
+export default function FilmsList({genres, countries, listDir, listActor, searchPar}: FilmsListProps) {
+    const t = useTranslations('FilmsList')
 
     const searchParams = useSearchParams()
     const params = useParams()
-    // console.log(searchParams)
-    // console.log(searchPar)
-// console.log(paramse)
+
 
     const [filmsList, setFilmsList] = useState<object[]>([])
 
     const {filterObj} = useSelector(selectFilter)
-    // const {filterTextObj} = useSelector(selectFilterText)
     const dispatch = useDispatch()
 
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-            console.log('useEffect работает')
-            // console.log(params)
-
             const filter = {
                 'ratingStart': 1,
                 'countRatingStart': 1000,
@@ -41,25 +47,41 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             }
             const filterText = {}
             let newFilterText = {...filterText}
-            let newFilter = {...filter}
-            // @ts-ignore
-            if (params.hasOwnProperty('movies')) {
+            let newFilter: {
+                arrIdGenres?: number[] | undefined
+                arrIdCountries?: number[] | undefined
+                arrMembersFilterDto?: [
+                    {
+                        idMember?: number,
+                        idProfession?: number
+                    }
+                ] | undefined | any
+                ratingStart?: number
+                countRatingStart?: number,
+                'yearStart'?: number,
+                'yearEnd'?: number,
+                'part'?: number,
+                'typeSorting'?: string,
 
-                // console.log(params)
-                // @ts-ignore
-                const arrParams = params?.movies.split('/')
+            } = {...filter}
+
+            if (params?.hasOwnProperty('movies')) {
+
+                const arrParams = (params?.movies as string).split('/')
                 arrParams.forEach(i => {
-                    const strArr = i.replaceAll('%2B', ',').replaceAll('%20', ' ').split(',')
+                    const strArr = i.replaceAll('%2B', ',')
+                        .replaceAll('%20', ' ')
+                        .replaceAll('%C3%BC', 'ü')
+                        .toLowerCase().split(',')
                     const arrGenres = genres.filter(i => strArr.includes(i.nameEN.toLowerCase()))
                     const arrCountries = countries.filter(i => strArr.includes(i.nameEN.toLowerCase()))
 
-
                     if (arrCountries.length > 0) {
-                        const countriesArrId = arrCountries.map(i => i.id)
+                        const countriesArrId: number[] = arrCountries.map(i => i.id)
                         const arrCountriesEN = arrCountries.map(i => i.nameEN)
                         const arrCountriesRU = arrCountries.map(i => i.nameRU)
                         newFilterText = {...newFilterText, 'arrCountries': arrCountriesRU, 'arrCountriesEN': arrCountriesEN}
-                        // @ts-ignore
+
                         newFilter = {...newFilter, 'arrIdCountries': countriesArrId}
                     }
                     if (arrGenres.length > 0) {
@@ -67,14 +89,12 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         const arrGenresEN = arrGenres.map(i => i.nameEN)
                         const arrGenresRU = arrGenres.map(i => i.nameRU)
                         newFilterText = {...newFilterText, 'arrGenres': arrGenresRU, 'arrGenresEN': arrGenresEN}
-                        // @ts-ignore
+
+
                         newFilter = {...newFilter, 'arrIdGenres': genresArrId}
-                        // console.log(arrGenres)
                     }
                 })
-
             }
-
 
             if (searchParams?.get('ivi_rating_10_gte')) {
 
@@ -91,8 +111,8 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             }
             if (searchParams?.get('sort')) {
 
-                const typeSorting = searchParams.get('sort')
-                // @ts-ignore
+                const typeSorting = searchParams.get('sort')!
+
                 newFilter = {...newFilter, 'typeSorting': typeSorting}
             }
             if (searchParams?.get('ivi_rating_10_gte')) {
@@ -116,10 +136,12 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
                 const arrDir = listDir.filter(i => StrNameDirReplace?.includes(i.nameEN))
 
-                // @ts-ignore
+
                 if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
-                    // @ts-ignore
-                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
+
+                    newFilter = {
+                        ...newFilter,
+                        'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
                             'idMember': arrDir[0].id,
                             'idProfession': 1
                         }]
@@ -130,7 +152,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         'arrDirMembersEN': [arrDir[0].nameEN]
                     }
                 } else {
-                    // @ts-ignore
+
                     newFilter = {...newFilter, 'arrMembersFilterDto': [{'idMember': arrDir[0].id, 'idProfession': 1}]}
                     newFilterText = {
                         ...newFilterText,
@@ -139,7 +161,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                     }
                 }
             }
-
 
             if (searchParams?.get('actor')) {
 
@@ -151,8 +172,10 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
 
                 if (newFilter.hasOwnProperty('arrMembersFilterDto')) {
-                    // @ts-ignore
-                    newFilter = {...newFilter, 'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
+
+                    newFilter = {
+                        ...newFilter,
+                        'arrMembersFilterDto': [...newFilter.arrMembersFilterDto, {
                             'idMember': arrActor[0].id,
                             'idProfession': 2
                         }]
@@ -163,7 +186,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         'arrActorMembersEN': [arrActor[0].nameEN]
                     }
                 } else {
-                    // @ts-ignore
+
                     newFilter = {...newFilter, 'arrMembersFilterDto': [{'idMember': arrActor[0].id, 'idProfession': 2}]}
                     newFilterText = {
                         ...newFilterText,
@@ -171,12 +194,8 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                         'arrActorMembersEN': [arrActor[0].nameEN]
                     }
                 }
-
             }
 
-            //
-            // console.log(newFilterText)
-            // console.log(newFilter)
             dispatch(getFilterObj(
                 {
                     ...newFilter,
@@ -187,7 +206,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                     ...newFilterText,
                 }
             ))
-
 
             const fetchData = async () => {
                 setLoading(false)
@@ -208,15 +226,9 @@ export default function FilmsList({genres, countries, listDir, listActor, search
             }
 
             fetchData()
-
-
-            // console.log(searchPar)
-
-        }
-        ,
+        },
         [searchPar]
     )
-
 
     const nextListFilms = (part) => {
         try {
@@ -233,7 +245,6 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 .then(response => response.json())
                 .then(data => {
                     setFilmsList(prev => [...prev, ...data])
-                    // console.log(filmsList)
                 })
         } catch (error) {
             console.log(error.message)
@@ -241,10 +252,15 @@ export default function FilmsList({genres, countries, listDir, listActor, search
 
     }
 
-
     return (
         <>
-            {!loading && <Skeleton/>}
+            {!loading &&
+                <div className={styles.cardList}>
+                    {new Array(7).map((index) => <div key={index}><Skeleton/>
+                        </div>
+                    )}
+                </div>
+            }
 
             <div className={styles.cardList}>
                 {loading &&
@@ -256,7 +272,7 @@ export default function FilmsList({genres, countries, listDir, listActor, search
                 {filmsList.length > 0 &&
                     filmsList.length % 28 === 0 &&
                     <button className={styles.movies__btn} onClick={() => nextListFilms(filterObj.part)}>
-                        Показать еще
+                        {t('btn')}
                     </button>}
             </div>
         </>

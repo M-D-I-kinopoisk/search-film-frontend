@@ -4,25 +4,27 @@ import styles from './filmCard.module.scss'
 
 import {RiBookmarkLine, RiMagicLine, RiStarLine} from 'react-icons/ri'
 import {MdOutlineHideSource} from 'react-icons/md'
-import {funcDeclination} from '../../utils/funcDeclination'
+import {funcDeclination} from '@/utils/funcDeclination'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {Film} from '@/components/Film/FilmInfo/FilmInfo'
-import React from 'react'
+import {useState} from 'react'
+
 import {useDispatch, useSelector} from 'react-redux'
-import {getFilmId, selectFilms} from '../../redux/FilmsSlice'
-import {useLocale} from 'next-intl'
 
-interface FilmCard {
-    film: Film
-}
+import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
+import {useLocale, useTranslations} from 'next-intl'
 
-const FilmCard = ({film}: FilmCard) => {
+import {FilmCardProps} from '@/types/components/FilmCard'
+
+const FilmCard = ({film}: FilmCardProps) => {
+
     const locale = useLocale()
 
-    const [visible, setVisible] = React.useState(false)
+    const [visible, setVisible] = useState(false)
+    const t = useTranslations('FilmCard')
+
     const {filmId} = useSelector(selectFilms)
     const dispatch = useDispatch()
     const onMouseHandler = (id) => {
@@ -76,7 +78,7 @@ const FilmCard = ({film}: FilmCard) => {
                                 </div>
                             </div>
                             <div className={styles.graphChart}>
-                                <div className={styles.name}>сюжет</div>
+                                <div className={styles.name}>{t('plot')}</div>
                                 <div className={styles.graph}>
                                     <div className={styles.graphProgress}></div>
                                 </div>
@@ -87,7 +89,7 @@ const FilmCard = ({film}: FilmCard) => {
                                 </div>
                                 {film.genres.slice(0, 1).map((genre) => (
                                     <div className={styles.text}
-                                         key={genre.id}>{locale === 'ru' ? genre.nameRU : genre.nameEN }</div>
+                                         key={genre.id}>{locale === 'ru' ? genre.nameRU : genre.nameEN}</div>
                                 ))}
                                 <div
                                     className={styles.text}>{funcDeclination(film.duration, ['минута', 'минуты', 'минут'])}</div>
@@ -108,7 +110,7 @@ const FilmCard = ({film}: FilmCard) => {
                 </div>
                 <div className={styles.text__section}>
                     <div className={styles.title}>{locale === 'ru'  ? film.nameRU : (film.nameEN ? film.nameEN : film.nameRU) }</div>
-                    <div className={styles.extra}>Бесплатно</div>
+                    <div className={styles.extra}>{t('free')}</div>
                 </div>
             </Link>
         </div>

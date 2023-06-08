@@ -1,6 +1,6 @@
-import Link from 'next/link'
+'use client'
 
-import {useRouter} from 'next/router'
+import Link from 'next/link'
 
 import {RiHome6Line} from 'react-icons/ri'
 import {RiFolderTransferLine} from 'react-icons/ri'
@@ -8,22 +8,15 @@ import {BiSearch} from 'react-icons/bi'
 import {CgMoreAlt} from 'react-icons/cg'
 import {RxDesktop} from 'react-icons/rx'
 
-import {en} from '../../../../public/locales/en'
-import {ru} from '../../../../public/locales/ru'
-
 import style from './TabBar.module.scss'
-
+import {useTranslations} from 'next-intl'
+import {signOut, useSession} from 'next-auth/react'
 
 const TabBar = () => {
-
+    const {data: session} = useSession()
     let route = '/'
 
-    // const {locale, route} = useRouter()
-
-    const t = ru
-
-    // const t = locale === 'en' ? en : ru
-
+    const t = useTranslations('TabBar')
 
     return (
         <div className={style.tabBar}>
@@ -33,7 +26,7 @@ const TabBar = () => {
                     className={route === '/' ? `${style.tabBar__itemGlowImage} ${style.tabBar__itemGlowImage_active}` : `${style.tabBar__itemGlowImage}`}></div>
                 <div className={style.tabBar__items}>
                     <RiHome6Line size={20}/>
-                    <span className={style.tabBar__itemCaption}>{t.tabBar.title1}</span>
+                    <span className={style.tabBar__itemCaption}>{t('title1')}</span>
                 </div>
             </Link>
             <Link href={'/movies'}
@@ -42,30 +35,43 @@ const TabBar = () => {
                     className={route === '/movies' ? `${style.tabBar__itemGlowImage} ${style.tabBar__itemGlowImage_active}` : `${style.tabBar__itemGlowImage}`}></div>
                 <div className={style.tabBar__items}>
                     <RiFolderTransferLine size={20}/>
-                    <span className={style.tabBar__itemCaption}>{t.tabBar.title2}</span>
+                    <span className={style.tabBar__itemCaption}>{t('title2')}</span>
                 </div>
             </Link>
             <Link href={'https://www.ivi.ru/movies?ivi_search'} className={style.tabBar__group}>
                 <div className={style.tabBar__itemGlowImage}></div>
                 <div className={style.tabBar__items}>
                     <BiSearch size={20}/>
-                    <span className={style.tabBar__itemCaption}>{t.tabBar.title3}</span>
+                    <span className={style.tabBar__itemCaption}>{t('title3')}</span>
                 </div>
             </Link>
             <Link href={'https://www.ivi.ru/tvplus'} className={style.tabBar__group}>
                 <div className={style.tabBar__itemGlowImage}></div>
                 <div className={style.tabBar__items}>
                     <RxDesktop size={20}/>
-                    <span className={style.tabBar__itemCaption}>{t.tabBar.title4}</span>
+                    <span className={style.tabBar__itemCaption}>{t('title4')}</span>
                 </div>
             </Link>
-            <Link href={'/'} className={style.tabBar__group}>
-                <div className={style.tabBar__itemGlowImage}></div>
-                <div className={style.tabBar__items}>
-                    <CgMoreAlt size={20}/>
-                    <span className={style.tabBar__itemCaption}>{t.tabBar.title5}</span>
+            {session?.user?.token || session?.user?.name ?
+                <div className={style.tabBar__group} onClick={() => signOut({
+                    redirect: false
+                })}>
+                    <div className={style.tabBar__itemGlowImage}></div>
+                    <div className={style.tabBar__items}>
+                        <CgMoreAlt size={20}/>
+                        <span className={`${style.tabBar__itemCaption} ${style.exit}`}>{t('title6')}</span>
+                    </div>
+                </div> :
+                <div className={style.tabBar__group}>
+                    <div className={style.tabBar__itemGlowImage}></div>
+                    <div className={style.tabBar__items}>
+                        <CgMoreAlt size={20}/>
+                        <span className={style.tabBar__itemCaption}>{t('title5')}</span>
+                    </div>
                 </div>
-            </Link>
+
+            }
+
         </div>
     )
 }

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import ActorFilms from '@/components/Actor/ActorFilms'
 import BackButton from '@/components/UI/BackButton/BackButton'
 import Breadcrumbs from '@/components/UI/Breadcrumbs/Breadcrumbs'
+import {useTranslations} from 'next-intl/dist/src/react-server'
 
 type Props = {
     params: {
@@ -39,6 +40,7 @@ const Actor = async ({params: {id}}: Props) => {
     const actor = await getActor(id)
     const actorFilms = await getActorFilms(id)
 
+    // const t = useTranslations('Index')
     return (
         <div className={styles.wrapper}>
            <BackButton/>

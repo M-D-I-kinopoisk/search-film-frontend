@@ -1,17 +1,17 @@
-import AdminFilms from '@/components/Admin/AdminFilms/AdminFilms'
-import AdminGenres from '@/components/Admin/AdminGenres/AdminGenres'
 import styles from './admin.module.scss'
+import Admin from '@/components/Admin/Admin'
+
 
 export const metadata = {
     title: 'Admin Ivi',
 }
 
-export default async function Admin() {
+export default async function Page() {
+
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
-                <AdminFilms/>
-                <AdminGenres/>
+                <Admin/>
             </div>
         </div>
     )

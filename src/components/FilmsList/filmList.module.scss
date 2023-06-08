@@ -2,7 +2,10 @@
   display: flex;
   gap: 17px;
   flex-wrap: wrap;
-  justify-content: center;
+
+  @media (max-width: 935px) {
+    justify-content: center;
+  }
 }
 
 .filmCard {
