@@ -1,12 +1,13 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import FilmInfo, { infoContentProps } from '../../components/Film/FilmInfo/FilmInfo'
+import React from 'react'
+import { render, screen, fireEvent } from '@testing-library/react'
+import FilmInfo from '../../components/Film/FilmInfo/FilmInfo'
+import { NextIntlProvider } from 'next-intl'
 
 describe('FilmInfo', () => {
-  const film: infoContentProps['film'] = {
-    id: '1',
+  const film = {
+    id: 1,
     imageName: '',
-    country: { nameRU: 'countrynameRU' },
+    country: { nameRU: 'countrynameRU', nameEN: '' },
     year: 2021,
     rating: 8,
     ageRating: '16+',
@@ -16,42 +17,65 @@ describe('FilmInfo', () => {
     genres: [{ id: '1', nameRU: 'драма', nameEN: 'nameEN' },
     { id: '2', nameRU: 'комедия', nameEN: 'nameEN' }],
     countRating: 100,
-  };
-  const filmInfo: infoContentProps['filmInfo'] = {
+  }
+  const filmInfo = {
     trailerLink: 'https://example.com/trailer',
     text: 'Описание фильма',
-  };
+  }
   const actors = [
     {
       member: {
-        id: '2',
+        id: 2,
         nameEN: 'nameEN',
         nameRU: 'nameRU',
         imageName: 'https://vk.com/images/camera_100.png'
       },
       profession: {
-        nameRU: 'profession'
+        nameRU: 'nameRU',
+        nameEN: 'profession'
       },
       id: '1'
     }
   ]
 
+  const rederedComponent = <NextIntlProvider
+    messages={{
+      'FilmInfo': {
+        'title': 'Рейтинг Иви',
+        'btn': 'Трейлер',
+        'btn2': 'Бесплатные фильмы',
+        'toggle': 'Свернуть детали',
+        'toggle1': 'Детали о фильме',
+        'toggle2': 'Свернуть',
+        'toggle3': 'Читать дальше',
+        'title1': 'Интересный сюжет',
+        'title2': 'Оценить'
+      },
+      'MainFilmInfo': {
+        'title': 'Фильм',
+        'text': 'Рус'
+      }
+    }}
+    locale={'ru'}>
+    <FilmInfo film={film} filmInfo={filmInfo} actors={actors} />
+  </NextIntlProvider>
+
   it('should render InfoContent component with expected props', () => {
-    render(<FilmInfo film={film} filmInfo={filmInfo} actors={actors} />);
-    expect(screen.getByText('Бесплатные фильмы')).toBeInTheDocument();
-    expect(screen.getByText('Детали о фильме')).toBeInTheDocument();
-    expect(screen.getByText('Оценить')).toBeInTheDocument();
-  });
+    render(rederedComponent)
+    expect(screen.getByText('Бесплатные фильмы')).toBeInTheDocument()
+    expect(screen.getByText('Детали о фильме')).toBeInTheDocument()
+    expect(screen.getByText('Оценить')).toBeInTheDocument()
+  })
 
   it('should toggle visibility of WatchOptions on click', () => {
-    render(<FilmInfo film={film} filmInfo={filmInfo} actors={actors} />);
-    expect(screen.queryByText('Свернуть детали')).not.toBeInTheDocument();
-    expect(screen.getByText('Детали о фильме')).toBeInTheDocument();
-    fireEvent.click(screen.getByText('Детали о фильме'));
-    expect(screen.getByText('Свернуть детали')).toBeInTheDocument();
-    expect(screen.queryByText('Детали о фильме')).not.toBeInTheDocument();
-    fireEvent.click(screen.getByText('Свернуть детали'));
-    expect(screen.queryByText('Свернуть детали')).not.toBeInTheDocument();
-    expect(screen.getByText('Детали о фильме')).toBeInTheDocument();
-  });
-});
+    render(rederedComponent)
+    expect(screen.queryByText('Свернуть детали')).not.toBeInTheDocument()
+    expect(screen.getByText('Детали о фильме')).toBeInTheDocument()
+    fireEvent.click(screen.getByText('Детали о фильме'))
+    expect(screen.getByText('Свернуть детали')).toBeInTheDocument()
+    expect(screen.queryByText('Детали о фильме')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByText('Свернуть детали'))
+    expect(screen.queryByText('Свернуть детали')).not.toBeInTheDocument()
+    expect(screen.getByText('Детали о фильме')).toBeInTheDocument()
+  })
+})

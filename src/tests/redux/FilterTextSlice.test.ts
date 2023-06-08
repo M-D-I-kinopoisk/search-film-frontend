@@ -1,5 +1,5 @@
-import { getFilterTextObj } from '../../redux/FilterTextSlice';
-import FilterTextSlice from '../../redux/FilterTextSlice';
+import { getFilterTextObj } from '../../redux/FilterTextSlice'
+import FilterTextSlice from '../../redux/FilterTextSlice'
 
 describe('Проверка FilterTextSlice', () => {
     it(('Проверка возврата store при пустом action'), () => {

@@ -1,13 +1,13 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import MainFilmInfo from '../../components/Film/FilmInfo/MainFilmInfo/MainFilmInfo';
-import { infoContentProps } from '../../components/Film/FilmInfo/FilmInfo'
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import MainFilmInfo from '../../components/Film/FilmInfo/MainFilmInfo/MainFilmInfo'
+import { NextIntlProvider } from 'next-intl'
 
 describe('MainFilmInfo', () => {
-    const film: infoContentProps['film'] = {
-        id: '1',
+    const film = {
+        id: 1,
         imageName: 'https://vk.com/images/camera_100.png',
-        country: { nameRU: 'Россия' },
+        country: { nameRU: 'Россия', nameEN: 'countrynameRU' },
         year: 2002,
         rating: 8,
         ageRating: '16+',
@@ -20,11 +20,20 @@ describe('MainFilmInfo', () => {
     }
 
     it('should render MainInfo component with expected props', () => {
-        render(<MainFilmInfo film={film} />);
-        expect(screen.getByText(`${film.nameRU} (Фильм ${film.year})`)).toBeInTheDocument();
-        expect(screen.getByText(`${film.year} ${film.duration} минут ${film.ageRating}`)).toBeInTheDocument();
-        expect(screen.getByText('драма')).toBeInTheDocument();
-        expect(screen.getByText('комедия')).toBeInTheDocument();
-        expect(screen.getByText('FullHD')).toBeInTheDocument();
-    });
-});
+        render(
+            <NextIntlProvider messages={{
+                'MainFilmInfo': {
+                    'title': 'Фильм',
+                    'text': 'Рус'
+                }
+            }} locale={'ru'}>
+                <MainFilmInfo film={film} />
+            </NextIntlProvider>
+        )
+        expect(screen.getByText(`${film.nameRU} (Фильм ${film.year})`)).toBeInTheDocument()
+        expect(screen.getByText(`${film.year} ${film.duration} минут ${film.ageRating}`)).toBeInTheDocument()
+        expect(screen.getByText('драма')).toBeInTheDocument()
+        expect(screen.getByText('комедия')).toBeInTheDocument()
+        expect(screen.getByText('FullHD')).toBeInTheDocument()
+    })
+})

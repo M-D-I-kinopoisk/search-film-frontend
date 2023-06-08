@@ -1,5 +1,5 @@
-import { toggle } from '../../redux/AuthToggleSlice';
-import AuthToggleSlice from '../../redux/AuthToggleSlice';
+import { toggle } from '../../redux/AuthToggleSlice'
+import AuthToggleSlice from '../../redux/AuthToggleSlice'
 
 describe('Проверка FilmsSlice', () => {
     const initialState = {

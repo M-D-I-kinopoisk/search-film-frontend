@@ -1,5 +1,5 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import React from 'react'
+import { render, screen } from '@testing-library/react'
 import ActorFilms from '../../components/Actor/ActorFilms' 
 
 describe('ActorFilms', () => {
@@ -17,23 +17,23 @@ describe('ActorFilms', () => {
         id: '1'
       }
     }
-  ];
+  ]
 
   it('renders title', () => {
-    render(<ActorFilms actorFilms={actorFilms} />);
-    const titleElement = screen.getByText('Полная фильмография');
-    expect(titleElement).toBeInTheDocument();
-  });
+    render(<ActorFilms actorFilms={actorFilms} />)
+    const titleElement = screen.getByText('Полная фильмография')
+    expect(titleElement).toBeInTheDocument()
+  })
 
   it('renders profession list', () => {
-    render(<ActorFilms actorFilms={actorFilms} />);
-    const professionElement = screen.getByText('Актер');
-    expect(professionElement).toBeInTheDocument();
-  });
+    render(<ActorFilms actorFilms={actorFilms} />)
+    const professionElement = screen.getByText('Актер')
+    expect(professionElement).toBeInTheDocument()
+  })
 
   it('renders film list', () => {
-    render(<ActorFilms actorFilms={actorFilms} />);
-    const filmElement = screen.getByText('Фильм');
-    expect(filmElement).toBeInTheDocument();
-  });
-});
+    render(<ActorFilms actorFilms={actorFilms} />)
+    const filmElement = screen.getByText('Фильм')
+    expect(filmElement).toBeInTheDocument()
+  })
+})

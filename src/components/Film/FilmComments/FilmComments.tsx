@@ -47,7 +47,7 @@ const FilmComments = ({id, filmComments}: Comments) => {
 
                 <button onClick={() => modalOpenHandler()}
                         className={styles.addComment}>
-                    Оставить комментарий
+                    <span>Оставить комментарий</span>
                 </button>
             </div>
 

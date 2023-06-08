@@ -8,8 +8,6 @@
     "start": "next start",
     "lint": "next lint",
     "sb": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",
     "cypress:open": "cypress open"
