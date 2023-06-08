@@ -8,13 +8,9 @@ import {FiShare} from 'react-icons/fi'
 import {MdOndemandVideo} from 'react-icons/md'
 import MainFilmInfo from '@/components/Film/FilmInfo/MainFilmInfo/MainFilmInfo'
 
-export type FilmInfoProps = {
-    filmInfo: {
-        trailerLink: string
-    }
-}
+import {FilmInfoProps} from '@/types/components/Film'
 
-const MainTrailer = ({filmInfo}: FilmInfoProps) => {
+const MainTrailer = ({filmInfo, film}: FilmInfoProps) => {
     const userButtons = [
         {icon: <BsPlay size={26} color='rgba(255,255,255,.72)'/>, text: 'Трейлер', nameClass: 'trailerButton'},
         {icon: <BsBookmark size={16} color='rgba(255,255,255,.72)'/>, nameClass: 'markerButton'},
@@ -23,7 +19,9 @@ const MainTrailer = ({filmInfo}: FilmInfoProps) => {
 
     return (
         <div className={styles.trailerContent}>
-            {/*<MainFilmInfo/>*/}
+            <div className={styles.mainInfoContainer}>
+                <MainFilmInfo film={film}/>
+            </div>
             <div className={styles.video}>
                 <div className={styles.trailerWrapper}>
                     <iframe src={filmInfo.trailerLink} className={styles.trailer} frameBorder={0}></iframe>

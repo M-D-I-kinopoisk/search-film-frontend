@@ -5,41 +5,37 @@ import styles from './filmCreatorsItem.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
+import {CreatorsItemProps} from '@/types/components/Film'
 
-type CreatorsItemProps = {
-    inModal?: any,
-    actor: Actor
-}
-
-const FilmCreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
+const FilmCreatorsItem = ({actor, inModal}: CreatorsItemProps) => {
 
     return (
         <>
             {inModal ?
-                <Link href={`/person/${actor.member.id}`} className={styles.modalCreatorsLink}>
-                    <div className={styles.modalCreatorsItemImg}>
-                        {actor.member.imageName === null ?
-                            <Image alt='Создатель'
-                                   width={88}
-                                   height={88}
-                                   src='https://static.thenounproject.com/png/5034901-200.png'/> :
-                            <Image alt='Создатель'
-                                   width={88}
-                                   height={88}
-                                   src={actor.member.imageName}/>}
-                    </div>
+                <>
+                    <Link href={`/person/${actor.member.id}`} className={styles.modalCreatorsLink}>
+                        <div className={styles.modalCreatorsItemImg}>
+                            {actor.member.imageName === null ?
+                                <Image alt='Создатель'
+                                       width={88}
+                                       height={88}
+                                       src='https://static.thenounproject.com/png/5034901-200.png'/> :
+                                <Image alt='Создатель'
+                                       width={88}
+                                       height={88}
+                                       src={actor.member.imageName}/>}
+                        </div>
 
-                    <div className={styles.modalCreatorsItemName}>
-                        {actor.member.nameRU}
-                    </div>
+                        <div className={styles.modalCreatorsItemName}>
+                            {actor.member.nameRU}
+                        </div>
 
-                    <div className={styles.modalFilmsCount}>
-                        9 фильмов
-                    </div>
-                </Link>
+                        <div className={styles.modalFilmsCount}>
+                            9 фильмов
+                        </div>
+                    </Link></>
                 :
-                <Link href={`/person/${actor.member.id}`} className={styles.creatorsLink}>
+                <><Link href={`/person/${actor.member.id}`} className={styles.creatorsLink}>
                     {actor.member.imageName === null ?
                         <Image alt='Создатель'
                                width={88}
@@ -58,7 +54,7 @@ const FilmCreatorsItem = ({inModal, actor}: CreatorsItemProps) => {
                     <div className={styles.creatorsItemJob}>
                         {actor.profession.nameRU}
                     </div>
-                </Link>
+                </Link></>
             }
         </>
     )

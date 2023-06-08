@@ -1,7 +1,17 @@
 .cardList {
   display: flex;
-  gap: 10px;
+  gap: 17px;
   flex-wrap: wrap;
+
+  @media (max-width: 935px) {
+    justify-content: center;
+  }
+}
+
+.filmCard {
+  width: 165px;
+  height: 241px;
+  margin-bottom: 40px;
 }
 
 

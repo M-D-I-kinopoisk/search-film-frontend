@@ -1,21 +1,11 @@
-import {withAuth} from 'next-auth/middleware'
-import {NextResponse} from 'next/server'
-import type {NextRequest} from 'next/server'
+import createMiddleware from 'next-intl/middleware'
 
-export default withAuth(
-    function middleware(request: NextRequest) {
+export default createMiddleware({
+    locales: ['ru', 'en'],
 
-        if (request.nextUrl.pathname.startsWith('/admin') && request.nextauth.token?.role?.name !== 'ADMIN') {
-            return NextResponse.rewrite(new URL('/', request.url))
-        }
-    },
-    {
-        callbacks: {
-            authorized: ({token}) => !!token
-        },
-    }
-)
+    defaultLocale: 'ru'
+})
 
 export const config = {
-    matcher: ['/admin/:path*'],
+    matcher: ['/((?!api|_next|.*\\..*).*)']
 }

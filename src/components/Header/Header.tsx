@@ -2,11 +2,6 @@
 
 import {useEffect, useState} from 'react'
 
-import {useRouter} from 'next/router'
-
-import {en} from '../../../public/locales/en'
-import {ru} from '../../../public/locales/ru'
-
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -19,16 +14,17 @@ import {MdOutlineNotifications} from 'react-icons/md'
 import {FiUser} from 'react-icons/fi'
 
 import styles from './header.module.scss'
-import {signIn, signOut, useSession} from 'next-auth/react'
-
+import { useSession} from 'next-auth/react'
+import {useTranslations} from 'next-intl'
+import {toggle} from '@/redux/AuthToggleSlice'
+import {useDispatch} from 'react-redux'
 
 const Header = () => {
 
     const {data: session} = useSession()
 
-    // console.log(session)
 
-
+    const t = useTranslations('header')
 
     const [headerModule, setHeaderModule] = useState(false)
 
@@ -37,6 +33,8 @@ const Header = () => {
     const [scrollList, setScrollList] = useState(0)
 
     const [listGenres, setListGenres] = useState<[] | any>([])
+
+    const dispatch = useDispatch()
 
 
     useEffect(() => {
@@ -48,10 +46,13 @@ const Header = () => {
         fetchData()
     }, [])
 
+    const openAuth = () => {
+        dispatch(toggle({
+            authorization: true,
+            registration: false
+        }))
+    }
 
-    // const {locale} = useRouter()
-
-    const t = ru
 
 
     const handleMouseEnter = (e) => {
@@ -104,7 +105,7 @@ const Header = () => {
                     }
 
 
-                    {/*<Locales/>*/}
+                    <Locales/>
 
                     <div className={styles.header__rightContainer}>
                         <Link
@@ -113,7 +114,7 @@ const Header = () => {
                             href={
                                 'https://www.ivi.ru/login?action=%2Fuser%2Fsubscription&from=top_menu&redirect_url=%2F&buy=true&type=subscriptionChange&renew_period=2592000&subscription_id=6'
                             }>
-                            {t.header.title7}
+                            {t('title7')}
                         </Link>
                     </div>
                     <div className={styles.header__rightSearch}>
@@ -122,7 +123,7 @@ const Header = () => {
                             className={styles.header__btnSearch}
                             href={'https://www.ivi.ru/?ivi_search'}>
                             <BiSearch size={20}/>
-                            {t.header.title8}
+                            {t('title8')}
                         </Link>
                     </div>
                     <div
@@ -139,12 +140,12 @@ const Header = () => {
                     </div>
                     <div
                         id='header-user'
+                        onClick={ session?.user?.token || session?.user?.name ? undefined : openAuth}
                         onMouseEnter={(e) => handleMouseEnter(e)}
                         className={styles.header__rightUser}>
-                        {session?.user?.token ?
+                        {session?.user?.token || session?.user?.name ?
                             <div id='header-user' className={styles.userActive} title='Войти в профиль'>
-                                {session?.user?.role?.name === 'ADMIN' ? 'A' : ''}
-
+                                {session?.user?.role?.name === 'ADMIN' ? 'A' : 'П'}
                             </div> :
                             <div id='header-user' className={styles.header__btnUser} >
                                 <FiUser size={20}/>

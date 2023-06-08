@@ -60,6 +60,42 @@
 
 @media(max-width: 1160px) {
   .mainInfo {
-    display: none;
+    text-align: left;
+
+    h2 {
+      text-align: left;
+
+      width: 100%;
+
+      line-height: 40px;
+      font-size: 36px;
+    }
+
+    .params {
+      justify-content: left;
+    }
+  }
+}
+
+@media(max-width: 880px) {
+  .mainInfo {
+    text-align: center;
+
+    h2 {
+      text-align: center;
+    }
+
+    .params {
+      justify-content: center;
+    }
+  }
+}
+
+@media(max-width: 600px) {
+  .mainInfo {
+    h2 {
+      font-size: 42px;
+      line-height: 44px;
+    }
   }
 }

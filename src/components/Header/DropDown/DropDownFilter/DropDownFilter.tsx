@@ -1,16 +1,20 @@
 'use client'
 
-
 import Link from 'next/link'
+
+import {useLocale} from 'next-intl'
+import {useTranslations} from 'next-intl'
 
 import style from './dropDownFilter.module.scss'
 
-
 const DropDownFilter = ({list}) => {
+    const locale = useLocale()
+    const t = useTranslations('DropDownFilter')
+
     return (
         <>
             <div>
-                <p style={{color: 'white', marginBottom: '15px'}}>Жанры</p>
+                <p style={{color: 'white', marginBottom: '15px'}}>{t('title')}</p>
                 <ul className={style.dropDown__genres}>
                     {list.genres.map((element, idx) => {
                         return (
@@ -20,7 +24,7 @@ const DropDownFilter = ({list}) => {
                                         prefetch={false}
                                         className={style.dropDown__a}
                                         href={`/movies/${element.nameEN}`}>
-                                        {element.nameRU}
+                                        {locale === 'ru' ? element.nameRU : element.nameEN}
                                     </Link>
                                 </li>
                             </div>
@@ -29,7 +33,7 @@ const DropDownFilter = ({list}) => {
                 </ul>
             </div>
             <div className={style.dropDown__countryYearsBlock}>
-                <p style={{color: 'white', marginBottom: '15px'}}>Страны</p>
+                <p style={{color: 'white', marginBottom: '15px'}}>{t('title2')}</p>
                 <ul className={style.dropDown__country}>
                     {list.country.map((element, idx) => {
                         return (
@@ -37,7 +41,7 @@ const DropDownFilter = ({list}) => {
                                 <Link className={style.dropDown__a}
                                       prefetch={false}
                                       href={element.href}>
-                                    {element.name}
+                                    {locale === 'ru' ? element.name : element.nameEN}
                                 </Link>
                             </li>
                         )
@@ -49,7 +53,7 @@ const DropDownFilter = ({list}) => {
                         marginTop: '15px',
                         marginBottom: '10px',
                     }}>
-                    Годы
+                    {t('title3')}
                 </p>
                 <ul className={style.dropDown__country}>
                     {list.years.map((element, idx) => {
@@ -58,7 +62,7 @@ const DropDownFilter = ({list}) => {
                                 <Link className={style.dropDown__a}
                                       prefetch={false}
                                       href={element.href}>
-                                    {element.name}
+                                    {locale === 'ru' ? element.name : element.nameEN}
                                 </Link>
                             </li>
                         )

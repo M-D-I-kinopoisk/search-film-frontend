@@ -1,10 +1,21 @@
 import NextAuth, {NextAuthOptions} from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-// import {User} from '@/types/interface'
+import GoogleProvider from 'next-auth/providers/google'
+import VkProvider from 'next-auth/providers/vk'
+import {User} from '@/types/interface'
+
 
 export const authOptions: NextAuthOptions = {
-    // Configure one or more authentication providers
+    
     providers: [
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+        }),
+        VkProvider({
+            clientId: process.env.VK_CLIENT_ID as string,
+            clientSecret: process.env.VK_CLIENT_SECRET as string
+        }),
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
@@ -17,7 +28,7 @@ export const authOptions: NextAuthOptions = {
                     method: 'POST',
                     body: JSON.stringify({
                         email: credentials?.email,
-                        password:  credentials?.password,
+                        password: credentials?.password,
                     }),
                     headers: {
                         'Content-Type': 'application/json'
@@ -25,32 +36,30 @@ export const authOptions: NextAuthOptions = {
                 })
                 const user = await res.json()
 
-                if (user) {
-                    // Any object returned will be saved in `user` property of the JWT
+                if (user.token || user.name) {
+                  
                     return user
                 } else {
-                    // If you return null then an error will be displayed advising the user to check their details.
+           
                     return null
-
-                    // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+                    
                 }
             }
-        })
+        }),
     ],
-    pages : {
-        signIn : '/',
-        signOut : '/',
-        error : '/'
+    pages: {
+        signIn: '/',
+        signOut: '/',
     },
-    session : {
-      strategy : 'jwt'
+    session: {
+        strategy: 'jwt'
     },
-    callbacks : {
+    callbacks: {
         async jwt({token, user}) {
-            return { ...token, ...user}
+            return {...token, ...user}
         },
         async session({session, token, user}) {
-            session.user = token
+                session.user = token as User
             return session
         }
     }

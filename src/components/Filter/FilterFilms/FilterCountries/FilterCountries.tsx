@@ -1,12 +1,21 @@
+'use client'
+
 import styles from './filterCountries.module.scss'
-import { useSelector} from 'react-redux'
+
+import {useSelector} from 'react-redux'
 import {selectFilter} from '@/redux/FilterSlice'
-import { selectFilterText} from '@/redux/FilterTextSlice'
+import {selectFilterText} from '@/redux/FilterTextSlice'
+
 import {BsCheckLg} from 'react-icons/bs'
-import { useRouter, useSearchParams} from 'next/navigation'
 
+import {useRouter, useSearchParams} from 'next/navigation'
+import {useLocale} from 'next-intl'
 
-const FilterCountries = ({countries}) => {
+import {CountriesProps} from '@/types/components/Filter'
+
+const FilterCountries = ({countries}: CountriesProps) => {
+
+    const locale = useLocale()
 
     const router = useRouter()
 
@@ -25,7 +34,7 @@ const FilterCountries = ({countries}) => {
                     const strGenres = filterTextObj.hasOwnProperty('arrGenresEN') ?
                         filterTextObj.arrGenresEN.join('+') :
                         ''
-                    router.push(`movies/${strGenres}?${searchParams.toString()}`,)
+                    router.push(`movies/${strGenres}?${searchParams?.toString()}`,)
 
                 } else {
                     const filterListNameCountriesEN = filterTextObj.arrCountriesEN.filter((str) => str !== nameCountriesEN)
@@ -33,7 +42,7 @@ const FilterCountries = ({countries}) => {
                     const strGenres = filterTextObj.hasOwnProperty('arrGenresEN') ?
                         filterTextObj.arrGenresEN.join('+') :
                         ''
-                    router.push(`/movies/${strGenres}/${str.toLowerCase()}?${searchParams.toString()}`,)
+                    router.push(`/movies/${strGenres}/${str.toLowerCase()}?${searchParams?.toString()}`,)
                 }
             } else {
 
@@ -41,7 +50,7 @@ const FilterCountries = ({countries}) => {
                 const strGenres = filterTextObj.hasOwnProperty('arrGenresEN') ?
                     filterTextObj.arrGenresEN.join('+') :
                     ''
-                router.push(`/movies/${strGenres}/${str.toLowerCase()}?${searchParams.toString()}`,)
+                router.push(`/movies/${strGenres}/${str.toLowerCase()}?${searchParams?.toString()}`,)
 
             }
         } else {
@@ -49,7 +58,7 @@ const FilterCountries = ({countries}) => {
             const strGenres = filterTextObj.hasOwnProperty('arrGenresEN') ?
                 filterTextObj.arrGenresEN.join('+') :
                 ''
-            router.push(`/movies/${strGenres}/${nameCountriesEN.toLowerCase()}?${searchParams.toString()}`,)
+            router.push(`/movies/${strGenres}/${nameCountriesEN.toLowerCase()}?${searchParams?.toString()}`,)
         }
     }
 
@@ -59,7 +68,7 @@ const FilterCountries = ({countries}) => {
             {countries.map((element, inx) => {
                 return <li key={inx} className={styles.country__item}>
                     <button onClick={() => filterCountries(element.id, element.nameRU, element.nameEN)}>
-                        {element.nameRU}
+                        {locale === 'ru' ? element.nameRU : element.nameEN}
                     </button>
                     {filterObj.arrIdCountries?.includes(element.id) ?
                         <div className={styles.country__checkbox_active}>

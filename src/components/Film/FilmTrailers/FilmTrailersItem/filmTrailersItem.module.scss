@@ -93,8 +93,12 @@
   }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 420px) {
   .modalTrailers {
+    width: 100%;
+  }
+
+  .trailersContainer {
     width: 100%;
   }
 }

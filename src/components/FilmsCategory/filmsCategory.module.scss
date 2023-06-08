@@ -26,3 +26,11 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 520px) {
+  .films {
+    &__title {
+      width: 100%;
+    }
+  }
+}

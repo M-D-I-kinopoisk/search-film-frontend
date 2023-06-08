@@ -5,9 +5,8 @@ import modalClasses from '@/components/UI/CommentForm/commentForm.module.scss'
 
 import Image from 'next/image'
 
-import FilmCommentsItem from '../FilmComments/FilmCommentsItem/FilmCommentsItem'
-import FilmCreatorsItem from '../FilmCreators/FilmCreatorsItem/FilmCreatorsItem'
-import FilmTrailersItem from '../FilmTrailers/FilmTrailersItem/FilmTrailersItem'
+import FilmModalComments from '@/components/Film/FilmModal/FilmModalComments/FilmModalComments'
+import FilmModalTrailer from '@/components/Film/FilmModal/FilmModalTrailer/FilmModalTrailer'
 
 import {BsChevronRight} from 'react-icons/bs'
 import {RxLapTimer} from 'react-icons/rx'
@@ -18,24 +17,17 @@ import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 
 import {funcDeclination} from '@/utils/funcDeclination'
 
-import {Actor, Film, FilmInfo} from '@/components/Film/FilmInfo/FilmInfo'
-import {Comment} from '@/components/Film/FilmComments/FilmComments'
-
 import {useRouter} from 'next/navigation'
 import {useSession} from 'next-auth/react'
 
 import {RiUserLine} from 'react-icons/ri'
 import {useState} from 'react'
 
-type MyModalProps = {
-    actors: Actor[],
-    filmInfo: FilmInfo,
-    filmComments: Comment[],
-    film: Film,
-    id: string
-}
+import {FilmModalProps} from '@/types/components/Film'
 
-const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => {
+import FilmCreatorsItem from '@/components/Film/FilmCreators/FilmCreatorsItem/FilmCreatorsItem'
+
+const FilmModal = ({actors, filmInfo, filmComments, film, id}: FilmModalProps) => {
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
     const router = useRouter()
@@ -70,10 +62,10 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
 
         setValue('')
 
-        newComment()
+        postNewComment()
     }
 
-    async function newComment() {
+    async function postNewComment() {
         try {
             const response = await fetch('http://localhost:12120/api/comments', {
                 method: 'POST',
@@ -139,7 +131,8 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
                                                     <div className={styles.directorsItems}>
                                                         {actors.map((actor: any) =>
                                                             (actor.profession.nameRU === item ?
-                                                                <FilmCreatorsItem key={actor.id} actor={actor}/> : ''))}
+                                                                <FilmCreatorsItem key={actor.key} actor={actor}
+                                                                                  inModal={true}/> : ''))}
                                                     </div>
                                                 </div>
                                             ))}
@@ -162,8 +155,8 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
                                             </form>
                                             <div>
                                                 {filmComments.map((comment) =>
-                                                    <FilmCommentsItem key={comment.id} inModal={true}
-                                                                      comment={comment}/>
+                                                    <FilmModalComments key={comment.id} inModal={true}
+                                                                       comment={comment}/>
                                                 )}
                                                 <AiOutlineLike size={20} fill='#fff'/>
 
@@ -177,7 +170,7 @@ const FilmModal = ({actors, filmInfo, filmComments, film, id}: MyModalProps) => 
 
                                     {modalOpen.value === 'trailers' &&
                                         <div className={styles.trailers}>
-                                            <FilmTrailersItem filmInfo={filmInfo} inModal={true}/>
+                                            <FilmModalTrailer filmInfo={filmInfo} inModal={true}/>
                                         </div>
                                     }
                                 </div>

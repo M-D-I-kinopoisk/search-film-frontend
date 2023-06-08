@@ -5,27 +5,26 @@ import {useEffect, useRef, useState} from 'react'
 import {BsChevronCompactDown, BsChevronCompactUp} from 'react-icons/bs'
 import {MdOutlineSort} from 'react-icons/md'
 
-import { useSelector} from 'react-redux'
-import { selectFilter} from '@/redux/FilterSlice'
+import {useSelector} from 'react-redux'
+import {selectFilter} from '@/redux/FilterSlice'
 
 import styles from './filterSort.module.scss'
-import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
+import {useTranslations} from 'next-intl'
 
 const FilterSort = () => {
+    const t = useTranslations('FilterSort')
 
     const pathname = usePathname()
-
     const router = useRouter()
 
     const searchParams = useSearchParams()
 
     const [sortToggle, SetSortToggle] = useState(false)
-
     const modalRef = useRef<HTMLDivElement>(null)
 
     const {filterObj} = useSelector(selectFilter)
-
 
 
     useEffect(() => {
@@ -47,9 +46,8 @@ const FilterSort = () => {
 
     function sort(str) {
 
-
         let url = '/movies'
-        if (searchParams.toString()) {
+        if (searchParams?.toString()) {
 
             if (searchParams.has('sort')) {
 
@@ -66,23 +64,22 @@ const FilterSort = () => {
         }
     }
 
-
     return (
         <div className={styles.sort}>
             <div className={styles.sort__block} ref={modalRef}>
                 <div className={styles.sort__group} onClick={() => SetSortToggle(!sortToggle)}>
                     <MdOutlineSort style={{transform: ' scale(-1, 1)'}} size={20}/>
                     <p className={styles.sort__title}>
-                        {filterObj.typeSorting === 'year' && 'По дате выхода'}
-                        {filterObj.typeSorting === 'rating' && 'По рейтингу Кинопоиска'}
-                        {filterObj.typeSorting === 'countRating' && 'По кол-ву оценок Кинопоиска'}
-                        {filterObj.typeSorting === 'alphabetRU' && 'По алфавиту'}
+                        {filterObj.typeSorting === 'year' && t('title1')}
+                        {filterObj.typeSorting === 'rating' && t('title2')}
+                        {filterObj.typeSorting === 'countRating' && t('title3')}
+                        {filterObj.typeSorting === 'alphabetRU' && t('title4')}
                     </p>
                     {sortToggle ? (<div style={{pointerEvents: 'none'}}><BsChevronCompactUp size={20}/></div>) :
                         (<div style={{pointerEvents: 'none'}}><BsChevronCompactDown size={20}/></div>)}
                 </div>
                 {sortToggle && <div className={styles.sort__dropDown}>
-                    <p className={styles.sort__dropDown_title}>Сортировать</p>
+                    <p className={styles.sort__dropDown_title}>{t('title')}</p>
                     <div className={styles.sort__dropDown_item}>
                         {filterObj.typeSorting === 'countRating' &&
                             <div className={styles.sort__dropDown_active}></div>}
@@ -90,7 +87,7 @@ const FilterSort = () => {
                             <p className={filterObj.typeSorting === 'countRating' ?
                                 `${styles.sort__dropDown_text} ${styles.sort__text_active} ` :
                                 styles.sort__dropDown_text}>
-                                Кол-ву оценок Кинопоиска</p>
+                                {t('text1')}</p>
                         </button>
                     </div>
                     <div className={styles.sort__dropDown_item}>
@@ -100,7 +97,7 @@ const FilterSort = () => {
                             <p className={filterObj.typeSorting === 'rating' ?
                                 `${styles.sort__dropDown_text} ${styles.sort__text_active} ` :
                                 styles.sort__dropDown_text}>
-                                Рейтингу Кинопоиска</p>
+                                {t('text2')}</p>
                         </button>
                     </div>
                     <div className={styles.sort__dropDown_item}>
@@ -110,7 +107,7 @@ const FilterSort = () => {
                             <p className={filterObj.typeSorting === 'year' ?
                                 `${styles.sort__dropDown_text} ${styles.sort__text_active} ` :
                                 styles.sort__dropDown_text}>
-                                Дате выход</p>
+                                {t('text3')}</p>
                         </button>
                     </div>
                     <div className={styles.sort__dropDown_item}>
@@ -120,7 +117,7 @@ const FilterSort = () => {
                             <p className={filterObj.typeSorting === 'alphabetRU' ?
                                 `${styles.sort__dropDown_text} ${styles.sort__text_active} ` :
                                 styles.sort__dropDown_text}>
-                                Алфавиту</p>
+                                {t('text4')}</p>
                         </button>
                     </div>
                 </div>}

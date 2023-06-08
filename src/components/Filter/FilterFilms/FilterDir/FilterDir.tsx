@@ -1,3 +1,5 @@
+'use client'
+
 import {useState} from 'react'
 
 import {GiFilmProjector} from 'react-icons/gi'
@@ -7,21 +9,20 @@ import Input from '@/components/UI/Input/Input'
 
 import styles from './filterDir.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
+import {useLocale} from 'next-intl'
 
+import {ListDirProps} from '@/types/components/Filter'
 
-const FilterDir = ({listDir}) => {
-
+const FilterDir = ({listDir}: ListDirProps) => {
+    const locale = useLocale()
     const pathname = usePathname()
+
     const router = useRouter()
+
     const searchParams = useSearchParams()
 
     const [inputDir, setInputDir] = useState('')
-
-
-
     const [newListDir, setNewListDir] = useState<[] | any>([])
-
-
 
 
     function searchDir(e) {
@@ -40,7 +41,7 @@ const FilterDir = ({listDir}) => {
     const filterDir = (id, nameDir, nameDirEN) => {
 
         let url = '/movies'
-        if (searchParams.toString()) {
+        if (searchParams?.toString()) {
             if (searchParams.has('dir')) {
                 const valueStr = ('dir=' + searchParams.get('dir')).replaceAll(' ', '+')
                 const newStr = searchParams.toString().replace(valueStr, `dir=${nameDirEN}`)
@@ -62,20 +63,17 @@ const FilterDir = ({listDir}) => {
                    type={'text'}
                    value={inputDir}
                    search={true}
-                   onChange={(e) => searchDir(e)}
-            />
+                   onChange={(e) => searchDir(e)}/>
             <div className={styles.filterDir__list}>
                 {newListDir.map((item, inx) => {
-                        if (inx <= 9)
-                            return (<div key={inx} className={styles.filterDir}>
-                                <button onClick={() => filterDir(item.id, item.nameRU, item.nameEN)}>
-                                    <GiFilmProjector color={'rgb(234, 0, 61)'} size={20}/>
-                                    <span>{item.nameRU}</span>
-                                </button>
-                            </div>)
-                    }
-                )
-                }
+                    if (inx <= 9)
+                        return (<div key={inx} className={styles.filterDir}>
+                            <button onClick={() => filterDir(item.id, item.nameRU, item.nameEN)}>
+                                <GiFilmProjector color={'rgb(234, 0, 61)'} size={20}/>
+                                <span>{locale === 'ru' ? item.nameRU : item.nameEN}</span>
+                            </button>
+                        </div>)
+                })}
             </div>
         </div>
     )

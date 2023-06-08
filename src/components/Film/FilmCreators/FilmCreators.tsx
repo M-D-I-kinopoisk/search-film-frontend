@@ -1,6 +1,6 @@
 'use client'
 
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 
 import styles from './filmCreators.module.scss'
 
@@ -8,21 +8,40 @@ import FilmCreatorsItem from './FilmCreatorsItem/FilmCreatorsItem'
 
 import {useDispatch, useSelector} from 'react-redux'
 import {selectFilms} from '@/redux/FilmsSlice'
-import {Actor} from '@/components/Film/FilmInfo/FilmInfo'
 import {setOpenModal} from '@/redux/FilmsSlice'
+
 import {useRouter} from 'next/navigation'
+import {useTranslations} from 'next-intl'
 
+import {CreatorsProps} from '@/types/components/Film'
 
-interface Creators {
-    actors: Actor[]
-    id: string
-}
-
-const FilmCreators = ({actors, id}: Creators) => {
+const FilmCreators = ({actors, id}: CreatorsProps) => {
     const router = useRouter()
-
+    const t = useTranslations('FilmCreators')
     const {modalOpen} = useSelector(selectFilms)
     const dispatch = useDispatch()
+
+    const getNumActorsToDisplay = () => {
+        if (typeof window !== 'undefined') {
+            return window.innerWidth >= 880 ? 10 : 4
+        }
+        return 4
+    }
+
+    const [numActorsToDisplay, setNumActorsToDisplay] = useState(getNumActorsToDisplay())
+
+    useEffect(() => {
+        const handleResize = () => {
+            setNumActorsToDisplay(getNumActorsToDisplay())
+        }
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize)
+
+            return () => {
+                window.removeEventListener('resize', handleResize)
+            }
+        }
+    }, [])
 
     useEffect(() => {
         if (modalOpen.modalState) {
@@ -44,15 +63,15 @@ const FilmCreators = ({actors, id}: Creators) => {
     return (
         <div className={styles.creators}>
             <div className={styles.creatorsTitle}>
-                Актёры и создатели
+                {t('title')}
             </div>
             <div className={styles.creatorsItems}>
-                {actors.slice(0, 10).map((actor) => (
-                    <FilmCreatorsItem actor={actor} key={actor.id}/>
+                {actors.slice(0, numActorsToDisplay).map((actor) => (
+                        <FilmCreatorsItem actor={actor} key={actor.id} inModal={true}/>
                 ))}
                 <button onClick={() => modalOpenHandler()}
                         className={styles.moreCreators}>
-                    Еще
+                    {t('title1')}
                 </button>
             </div>
         </div>

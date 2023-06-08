@@ -1,0 +1,64 @@
+.filmNav {
+  display: flex;
+  padding: 24px 22px 24px 22px;
+
+  li {
+    color: hsla(0, 0%, 100%, .56);
+    font-size: 17px;
+
+    font-weight: 500;
+    line-height: 20px;
+
+    transition: 0.4s;
+
+    &:before {
+      background-color: hsla(0, 0%, 100%, .56);
+
+      content: "";
+
+      display: inline-block;
+
+      height: 2px;
+      width: 2px;
+
+      margin-bottom: 3px;
+      margin-left: 7px;
+      margin-right: 7px;
+    }
+
+    &:first-child {
+      &:before {
+        content: none;
+      }
+    }
+
+    a {
+      transition: 0.4s;
+      color: hsla(0, 0%, 100%, .72);
+    }
+
+    &:hover {
+      transition: 70ms;
+
+      a {
+        color: #ffffff;
+        transition: 70ms;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1160px) {
+  .filmNav {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 440px) {
+  .filmNav {
+    li {
+      font-size: 12px;
+    }
+  }
+}

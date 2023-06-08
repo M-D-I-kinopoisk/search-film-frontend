@@ -1,21 +1,19 @@
 'use client'
 
-import styles from '@/app/person/[id]/actor.module.scss'
-import Image from 'next/image'
-import {useRouter} from 'next/navigation'
+import styles from './backButton.module.scss'
 
-export default function BackButton () {
-    
+import {useRouter} from 'next/navigation'
+import {AiOutlineLeft} from 'react-icons/ai'
+import {useTranslations} from 'next-intl'
+
+export default function BackButton() {
+    const t = useTranslations('BackButton')
     const router = useRouter()
-    
-    
+
     return (
         <div className={styles.backLink} onClick={() => router.back()}>
-            <Image alt='Назад'
-                   width={20}
-                   height={24}
-                   src='/img/left-arrow.png'/>
-            <span>Назад</span>
+            <AiOutlineLeft fill='white' size={20}/>
+            <span>{t('title')}</span>
         </div>
     )
 }

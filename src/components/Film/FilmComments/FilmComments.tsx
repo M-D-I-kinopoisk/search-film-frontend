@@ -10,26 +10,12 @@ import {selectFilms, setOpenModal} from '@/redux/FilmsSlice'
 import {useRouter} from 'next/navigation'
 import {useEffect} from 'react'
 
-export type Comment = {
-    id: number,
-    idFilm: number,
-    idUser: number,
-    prevId: number,
-    childrenCount: number,
-    profile: {
-        profileName: string
-    },
-    createdAt: string,
-    text: string,
-    title: string
-}
+import {Navigation} from 'swiper'
+import {Swiper, SwiperSlide} from 'swiper/react'
 
-interface Comments {
-    id: string,
-    filmComments: Comment[]
-}
+import {Comments} from '@/types/components/Film'
 
-const CommentList = ({id, filmComments}: Comments) => {
+const FilmComments = ({id, filmComments}: Comments) => {
     const router = useRouter()
 
     const dispatch = useDispatch()
@@ -51,7 +37,6 @@ const CommentList = ({id, filmComments}: Comments) => {
         router.push(`film/${id}/comments`)
     }
 
-
     return (
         <div className={styles.comments}>
             <div className={styles.commentsTop}>
@@ -67,12 +52,41 @@ const CommentList = ({id, filmComments}: Comments) => {
             </div>
 
             <ul className={styles.commentsItems}>
-                {filmComments.map((comment) => (
-                    <FilmCommentsItem key={comment.id} comment={comment}/>
-                ))}
+                {filmComments.length <= 4 ?
+                    <div className={styles.filmContainer}>
+                        {filmComments.map((comment) => (
+                            <FilmCommentsItem key={comment.id} comment={comment}/>
+                        ))}
+                    </div> :
+                    <Swiper className='slider__comments'
+                            spaceBetween={25}
+                            speed={700}
+                            modules={[Navigation]}
+                            navigation={true}
+                            breakpoints={{
+                                1160: {
+                                    slidesPerView: 4,
+                                    slidesPerGroup: 4
+                                }, 880: {
+                                    slidesPerView: 3,
+                                    slidesPerGroup: 3
+                                }, 520: {
+                                    slidesPerView: 2,
+                                    slidesPerGroup: 2
+                                }, 200: {
+                                    slidesPerView: 1,
+                                    slidesPerGroup: 1
+                                }
+                            }}>
+                        {filmComments.map((comment) => (
+                            <SwiperSlide key={comment.id}>
+                                <FilmCommentsItem comment={comment}/>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>}
             </ul>
         </div>
     )
 }
 
-export default CommentList
+export default FilmComments

@@ -1,5 +1,6 @@
-import {useRouter} from 'next/router'
+'use client'
 
+import {useTranslations} from 'next-intl'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -8,128 +9,121 @@ import {IoCallOutline} from 'react-icons/io5'
 import {MdVolumeOff} from 'react-icons/md'
 import {MdDesktopMac} from 'react-icons/md'
 
-import {en} from '../../../public/locales/en'
-import {ru} from '../../../public/locales/ru'
-
 import styles from './footer.module.scss'
 
-
 const Footer = () => {
-
-    // const {locale} = useRouter()
-
-    const t =  ru
+    const t = useTranslations('footer')
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.footer}>
                 <div className={styles.footer__topBlock}>
                     <div className={styles.footer__column}>
-                        <p className={styles.footer__title}>{t.footer.item1.title}</p>
+                        <p className={styles.footer__title}>{t('item1.title')}</p>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={
                                 'https://corp.ivi.ru/?_gl=1%2Alvn2xf%2A_ga%2AMTMxNTY0MzcwMS4xNjgxMjE0Mzc5%2A_ga_GETQ4387MJ%2AMTY4MTQ4MjkyMy42LjEuMTY4MTUwNzAzNy42MC4wLjA.'
                             }>
-                            {t.footer.item1.text1}
+                            {t('item1.text1')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://corp.ivi.ru/career/#career-vacancy-block'}>
-                            {t.footer.item1.text2}
+                            {t('item1.text2')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/pages/beta/'}>
-                            {t.footer.item1.text3}
+                            {t('item1.text3')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/info/partners'}>
-                            {t.footer.item1.text4}
+                            {t('item1.text4')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://corp.ivi.ru/advertisers/'}>
-                            {t.footer.item1.text5}
+                            {t('item1.text5')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/info/agreement'}>
-                            {t.footer.item1.text6}
+                            {t('item1.text6')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/info/confidential'}>
-                            {t.footer.item1.text7}
+                            {t('item1.text7')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/info/goryachaya-liniya-komplaens'}>
-                            {t.footer.item1.text8}
+                            {t('item1.text8')}
                         </Link>
                     </div>
                     <div className={styles.footer__column}>
-                        <p className={styles.footer__title}>{t.footer.item2.title}</p>
+                        <p className={styles.footer__title}>{t('item2.title')}</p>
                         <Link prefetch={false} className={styles.footer__link} href={'/'}>
-                            {t.footer.item2.text1}
+                            {t('item2.text1')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/new'}>
-                            {t.footer.item2.text2}
+                            {t('item2.text2')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/movies'}>
-                            {t.footer.item2.text3}
+                            {t('item2.text3')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/series'}>
-                            {t.footer.item2.text4}
+                            {t('item2.text4')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/animation'}>
-                            {t.footer.item2.text5}
+                            {t('item2.text5')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/tvplus'}>
-                            {t.footer.item2.text6}
+                            {t('item2.text6')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={styles.footer__link}
                             href={'https://www.ivi.ru/goodmovies'}>
-                            {t.footer.item2.text7}
+                            {t('item2.text7')}
                         </Link>
                         <Link
                             prefetch={false}
                             className={`${styles.footer__link} ${styles.gradient} `}
                             href={'https://www.ivi.ru/cert'}>
-                            {t.footer.item2.text8}
+                            {t('item2.text8')}
                         </Link>
                     </div>
                     <div className={styles.footer__column}>
-                        <p className={styles.footer__title}>{t.footer.item3.title}</p>
-                        <span>{t.footer.item3.text1}</span>
-                        <span>{t.footer.item3.text2}</span>
-                        <button className={styles.footer__btnChat}>{t.footer.item3.text3}</button>
+                        <p className={styles.footer__title}>{t('item3.title')}</p>
+                        <span>{t('item3.text1')}</span>
+                        <span>{t('item3.text2')}</span>
+                        <button className={styles.footer__btnChat}>{t('item3.text3')}</button>
                         <div className={styles.footer__btnGroup}>
                             <button className={styles.footer__btn}>
                                 <GoMail size={16}/>
@@ -145,7 +139,7 @@ const Footer = () => {
                                 href={'https://ask.ivi.ru/?_gl=1*fa2mrd*_ga*MTMxNTY0MzcwMS4xNjgxMjE0Mzc5*_ga_GETQ4387MJ*MTY4MTU2Njc5MS44LjEuMTY4MTU2NzI1My4zLjAuMA..'}>
                                 ask.ivi.ru
                             </Link>
-                            <span>{t.footer.item3.text4}</span>
+                            <span>{t('item3.text4')}</span>
                         </div>
                     </div>
                     <div className={styles.footer__column}>
@@ -154,7 +148,7 @@ const Footer = () => {
                             <div className={styles.footer__widget}>
                                 <MdVolumeOff size={60} color={'#fff'}/>
                             </div>
-                            <span className={styles.footer__widgetText}>{t.footer.item4.title}</span>
+                            <span className={styles.footer__widgetText}>{t('item4.title')}</span>
                         </Link>
                     </div>
                 </div>
@@ -168,7 +162,7 @@ const Footer = () => {
                                 <Image src={'https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/appleLogo.svg'}
                                        alt={'apple'} width={20} height={20}/>
                                 <div>
-                                    <p className={styles.footer__smartBtn_title}>{t.footer.item5.text1}</p>
+                                    <p className={styles.footer__smartBtn_title}>{t('item5.text1')}</p>
                                     <p className={styles.footer__smartBtn_text}>App Store</p>
                                 </div>
                             </Link>
@@ -179,7 +173,7 @@ const Footer = () => {
                                 <Image src={'https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/googlePlayLogo.svg'}
                                        alt={'apple'} width={20} height={20}/>
                                 <div>
-                                    <p className={styles.footer__smartBtn_title}>{t.footer.item5.text2}</p>
+                                    <p className={styles.footer__smartBtn_title}>{t('item5.text2')}</p>
                                     <p className={styles.footer__smartBtn_text}>Goggle Play</p>
                                 </div>
                             </Link>
@@ -189,7 +183,7 @@ const Footer = () => {
                                 href={'https://www.ivi.ru/pages/tvsmart/'}>
                                 <MdDesktopMac size={20}/>
                                 <div>
-                                    <p className={styles.footer__smartBtn_title}>{t.footer.item5.text3}</p>
+                                    <p className={styles.footer__smartBtn_title}>{t('item5.text3')}</p>
                                     <p className={styles.footer__smartBtn_text}>Smart TV</p>
                                 </div>
                             </Link>
@@ -201,7 +195,7 @@ const Footer = () => {
                                        alt={'apple'} width={20} height={20}/>
                                 <div>
 
-                                    <p className={styles.footer__smartBtn_text}>{t.footer.item5.text4}</p>
+                                    <p className={styles.footer__smartBtn_text}>{t('item5.text4')}</p>
                                 </div>
                             </Link>
                         </div>

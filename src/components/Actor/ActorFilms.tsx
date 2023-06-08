@@ -5,9 +5,18 @@ import {Fragment, useState} from 'react'
 import styles from './actorFilms.module.scss'
 
 import {funcDeclination} from '@/utils/funcDeclination'
+
 import ActorFilm from '@/components/Actor/ActorFilm/ActorFilm'
 
-const ActorFilms = ({actorFilms}) => {
+import {useParams, useSearchParams} from 'next/navigation'
+
+import {actorFilmsProps} from '@/types/components/Actor'
+
+const ActorFilms = ({actorFilms}: actorFilmsProps) => {
+
+    const searchParams = useSearchParams()
+    const params = useParams()
+
     const [active, setActive] = useState(0)
     const [visible, setVisible] = useState(false)
 
