@@ -10,9 +10,9 @@ import styles from './filterActor.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {useLocale} from 'next-intl'
 
-import {ListActor} from '@/types/components/Filter'
+import {ListActorProps} from '@/types/components/Filter'
 
-const FilterActor = ({listActor}: ListActor) => {
+const FilterActor = ({listActor}: ListActorProps) => {
 
     const locale = useLocale()
 

@@ -16,9 +16,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
 import {useLocale, useTranslations} from 'next-intl'
 
-import {FilmCard} from '@/types/components/FilmCard'
+import {FilmCardProps} from '@/types/components/FilmCard'
 
-const FilmCard = ({film}: FilmCard) => {
+const FilmCard = ({film}: FilmCardProps) => {
 
     const locale = useLocale()
 

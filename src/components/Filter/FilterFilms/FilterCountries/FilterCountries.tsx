@@ -11,9 +11,9 @@ import {BsCheckLg} from 'react-icons/bs'
 import {useRouter, useSearchParams} from 'next/navigation'
 import {useLocale} from 'next-intl'
 
-import {Countries} from '@/types/components/Filter'
+import {CountriesProps} from '@/types/components/Filter'
 
-const FilterCountries = ({countries}: Countries) => {
+const FilterCountries = ({countries}: CountriesProps) => {
 
     const locale = useLocale()
 

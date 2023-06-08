@@ -10,13 +10,9 @@ import FilmCard from '@/components/FilmCard/FilmCard'
 
 import styles from './adminFilms.module.scss'
 
-
 export default function AdminFilms() {
 
     const {data: session, status} = useSession()
-
-
-
 
     const [inputSearch, setInputSearch] = useState<string>('')
 

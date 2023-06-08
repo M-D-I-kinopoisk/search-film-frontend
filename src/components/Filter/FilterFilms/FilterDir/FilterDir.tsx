@@ -11,9 +11,9 @@ import styles from './filterDir.module.scss'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {useLocale} from 'next-intl'
 
-import {ListDir} from '@/types/components/Filter'
+import {ListDirProps} from '@/types/components/Filter'
 
-const FilterDir = ({listDir}: ListDir) => {
+const FilterDir = ({listDir}: ListDirProps) => {
     const locale = useLocale()
     const pathname = usePathname()
 

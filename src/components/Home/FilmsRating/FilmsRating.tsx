@@ -10,9 +10,9 @@ import {Navigation} from 'swiper'
 
 import {useTranslations} from 'next-intl'
 
-import {FilmsRating} from '@/types/components/Home'
+import {FilmsRatingProps} from '@/types/components/Home'
 
-const FilmsRating = ({ratingFilms}: FilmsRating) => {
+const FilmsRating = ({ratingFilms}: FilmsRatingProps) => {
     const t = useTranslations('FilmsRating')
 
     const topFilmsImg = [

@@ -1,4 +1,4 @@
-export interface FilmBreadCrumbs {
+export interface FilmBreadCrumbsProps {
     name: string,
     genres:
         {
@@ -63,7 +63,7 @@ export type Genre = {
     nameEN: string
 }
 
-export interface FilmGenres {
+export interface FilmGenresProps {
     genres: Genre[]
 }
 
@@ -108,7 +108,7 @@ export interface FilmInfoProps {
     film: Film
 }
 
-export interface FilmModalCommentItem {
+export interface FilmModalCommentItemProps {
     comment: Comment
 }
 
@@ -148,6 +148,6 @@ export interface FilmTrailersState {
 }
 
 
-export interface AllDevices {
+export interface AllDevicesProps {
     film: Film
 }
