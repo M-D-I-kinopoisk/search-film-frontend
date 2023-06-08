@@ -1,0 +1,79 @@
+.skeleton {
+ display: flex;
+  flex-direction: column;
+}
+
+.imgBlock {
+  display: flex;
+  width: 165px;
+  height: 241px;
+  margin-bottom: 5px;
+  background: linear-gradient(279deg, #1f1b2e, #27253d, #242036);
+  background-size: 600% 600%;
+  border-radius: 10px;
+  -webkit-animation: AnimationName 3s ease infinite;
+  -moz-animation: AnimationName 3s ease infinite;
+  animation: AnimationName 3s ease infinite;
+}
+
+
+.textBlock {
+  display: flex;
+  width: 145px;
+  height: 18px;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  background: linear-gradient(279deg, #1f1b2e, #27253d, #242036);
+  background-size: 600% 600%;
+  -webkit-animation: AnimationName 3s ease infinite;
+  -moz-animation: AnimationName 3s ease infinite;
+  animation: AnimationName 3s ease infinite;
+}
+
+.nextTextBlock {
+  display: flex;
+  width: 125px;
+  height: 15px;
+  border-radius: 12px;
+  background: linear-gradient(279deg, #1f1b2e, #27253d, #242036);
+  background-size: 600% 600%;
+  -webkit-animation: AnimationName 3s ease infinite;
+  -moz-animation: AnimationName 3s ease infinite;
+  animation: AnimationName 3s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
