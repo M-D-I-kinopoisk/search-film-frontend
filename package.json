@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "sb": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "jest",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@mui/base": "^5.0.0-alpha.126",

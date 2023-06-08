@@ -33,8 +33,11 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "/*.ts",
+    "/.tsx",
+    ".next/types/**/.ts",
+    "jest.config.js",
+    "babel.config.js",
     ".next/types/**/*.ts"
   ],
   "exclude": [

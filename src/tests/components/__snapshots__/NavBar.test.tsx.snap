@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar NavBar renders without crashing  1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <nav
+        class="navbar"
+      >
+        <ul
+          class="navbar__ul"
+        >
+          <li
+            class="navbar__li"
+          >
+            <a
+              class="navbar__a"
+              href="/"
+              title="Мой Иви"
+            >
+              Мой Иви
+            </a>
+          </li>
+          <li
+            class="navbar__li"
+          >
+            <a
+              class="navbar__a"
+              href="https://www.ivi.ru/new"
+              title="Что нового"
+            >
+              Что нового
+            </a>
+          </li>
+          <li
+            class="navbar__li"
+            id="header-movies"
+          >
+            <a
+              class="navbar__a"
+              href="/movies"
+              id="header-movies"
+              title="Фильмы онлайн"
+            >
+              Фильмы
+            </a>
+          </li>
+          <li
+            class="navbar__li"
+            id="header-series"
+          >
+            <a
+              class="navbar__a"
+              href="https://www.ivi.ru/series"
+              id="header-series"
+              title="Сериалы онлайн"
+            >
+              Сериалы
+            </a>
+          </li>
+          <li
+            class="navbar__li"
+            id="header-animation"
+          >
+            <a
+              class="navbar__a"
+              href="https://www.ivi.ru/animation"
+              id="header-animation"
+              title="Мультфильмы онлайн"
+            >
+              Мультфильмы
+            </a>
+          </li>
+          <li
+            class="navbar__li"
+          >
+            <a
+              class="navbar__a"
+              href="https://www.ivi.ru/tvplus"
+              id="header-tv"
+              title="TV+"
+            >
+              TV+
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </body>,
+  "container": <div>
+    <nav
+      class="navbar"
+    >
+      <ul
+        class="navbar__ul"
+      >
+        <li
+          class="navbar__li"
+        >
+          <a
+            class="navbar__a"
+            href="/"
+            title="Мой Иви"
+          >
+            Мой Иви
+          </a>
+        </li>
+        <li
+          class="navbar__li"
+        >
+          <a
+            class="navbar__a"
+            href="https://www.ivi.ru/new"
+            title="Что нового"
+          >
+            Что нового
+          </a>
+        </li>
+        <li
+          class="navbar__li"
+          id="header-movies"
+        >
+          <a
+            class="navbar__a"
+            href="/movies"
+            id="header-movies"
+            title="Фильмы онлайн"
+          >
+            Фильмы
+          </a>
+        </li>
+        <li
+          class="navbar__li"
+          id="header-series"
+        >
+          <a
+            class="navbar__a"
+            href="https://www.ivi.ru/series"
+            id="header-series"
+            title="Сериалы онлайн"
+          >
+            Сериалы
+          </a>
+        </li>
+        <li
+          class="navbar__li"
+          id="header-animation"
+        >
+          <a
+            class="navbar__a"
+            href="https://www.ivi.ru/animation"
+            id="header-animation"
+            title="Мультфильмы онлайн"
+          >
+            Мультфильмы
+          </a>
+        </li>
+        <li
+          class="navbar__li"
+        >
+          <a
+            class="navbar__a"
+            href="https://www.ivi.ru/tvplus"
+            id="header-tv"
+            title="TV+"
+          >
+            TV+
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
