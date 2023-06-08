@@ -2,9 +2,9 @@
 
 import styles from './filmCard.module.scss'
 
-import {RiBookmarkLine, RiMagicLine, RiStarLine} from 'react-icons/ri'
-import {MdOutlineHideSource} from 'react-icons/md'
-import {funcDeclination} from '@/utils/funcDeclination'
+import { RiBookmarkLine, RiMagicLine, RiStarLine } from 'react-icons/ri'
+import { MdOutlineHideSource } from 'react-icons/md'
+import { funcDeclination } from '@/utils/funcDeclination'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,9 +16,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getFilmId, selectFilms} from '@/redux/FilmsSlice'
 import {useLocale, useTranslations} from 'next-intl'
 
-import {FilmCard} from '@/types/components/FilmCard'
+import {FilmCardType} from '@/types/components/FilmCard'
 
-const FilmCard = ({film}: FilmCard) => {
+const FilmCard = ({film}: FilmCardType) => {
 
     const locale = useLocale()
 
@@ -26,6 +26,7 @@ const FilmCard = ({film}: FilmCard) => {
     const t = useTranslations('FilmCard')
 
     const {filmId} = useSelector(selectFilms)
+
     const dispatch = useDispatch()
     const onMouseHandler = (id) => {
         dispatch(getFilmId(id))
@@ -35,22 +36,23 @@ const FilmCard = ({film}: FilmCard) => {
     return (
         <div className={styles.linkContainer}>
             <Link onMouseEnter={() => onMouseHandler(film.id)}
-                  onMouseLeave={() => setVisible(false)}
-                  href={`/film/${film.id}`} className={styles.link}>
+                onMouseLeave={() => setVisible(false)}
+                href={`/film/${film.id}`} className={styles.link}>
                 <div className={styles.image__section}>
                     {visible && filmId === film.id && <div className={styles.visible}>
                         <div className={styles.hoards}>
-                            <div className={styles.icon}>
-                                <RiBookmarkLine size={25} fill={'#fff'}/>
+                            <div className={styles.icon}
+                                data-testid='bookmark-icon'>
+                                <RiBookmarkLine size={25} fill={'#fff'} />
                             </div>
                             <div className={styles.icon}>
-                                <RiMagicLine size={25} fill={'#fff'}/>
+                                <RiMagicLine size={25} fill={'#fff'} />
                             </div>
                             <div className={styles.icon}>
-                                <RiStarLine size={25} fill={'#fff'}/>
+                                <RiStarLine size={25} fill={'#fff'} />
                             </div>
                             <div className={styles.icon}>
-                                <MdOutlineHideSource size={25} fill={'#fff'}/>
+                                <MdOutlineHideSource size={25} fill={'#fff'} />
                             </div>
                         </div>
                         <div className={styles.content}>
@@ -90,6 +92,7 @@ const FilmCard = ({film}: FilmCard) => {
                                 {film.genres.slice(0, 1).map((genre) => (
                                     <div className={styles.text}
                                          key={genre.id}>{locale === 'ru' ? genre.nameRU : genre.nameEN}</div>
+
                                 ))}
                                 <div
                                     className={styles.text}>{funcDeclination(film.duration, ['минута', 'минуты', 'минут'])}</div>
@@ -101,12 +104,12 @@ const FilmCard = ({film}: FilmCard) => {
                             src={'/img/static-filmImage.jpg'}
                             width={170}
                             height={100}
-                            alt='Film'/>
+                            alt='Film' />
                         :
                         <Image src={`http://localhost:12120/api/films/images/${film.imageName}`}
-                               width={170}
-                               height={200}
-                               alt='image none'/>}
+                            width={170}
+                            height={200}
+                            alt='image none' />}
                 </div>
                 <div className={styles.text__section}>
                     <div className={styles.title}>{locale === 'ru'  ? film.nameRU : (film.nameEN ? film.nameEN : film.nameRU) }</div>

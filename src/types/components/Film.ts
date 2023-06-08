@@ -63,7 +63,7 @@ export type Genre = {
     nameEN: string
 }
 
-export interface FilmGenres {
+export interface IFilmGenres {
     genres: Genre[]
 }
 

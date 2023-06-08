@@ -25,7 +25,7 @@ const WatchAllDevices = ({film}: AllDevices) => {
 
             <div className={styles.devicesImages}>
                 <Image className={styles.frameImg}
-                       alt='frame'
+                       alt='tvFrame'
                        width={536}
                        height={272}
                        src='https://www.ivi.ru/images/_ds/watchAllDevices/tv-without-poster.png'/>
@@ -37,13 +37,13 @@ const WatchAllDevices = ({film}: AllDevices) => {
                        src='https://www.ivi.ru/images/_ds/watchAllDevices/ipad-without-poster.png'/>
 
                 <Image className={styles.mainIpadImg}
-                       alt='frame'
+                       alt='mainIpadImg'
                        width={184}
                        height={250}
                        src={`http://localhost:12120/api/films/images/${film.imageName}`}/>
 
                 <Image className={styles.mainTvImg}
-                       alt='frame'
+                       alt='mainTvImg'
                        width={337}
                        height={350}
                        src={`http://localhost:12120/api/films/images/${film.imageName}`}/>
