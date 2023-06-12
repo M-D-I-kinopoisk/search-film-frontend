@@ -1,7 +1,7 @@
-import FilmCard from '@/components/FilmCard/FilmCard';
-import { render, screen, fireEvent } from '@testing-library/react';
+import FilmCard from '../../components/FilmCard/FilmCard'
+import { render, screen, fireEvent } from '@testing-library/react'
 import * as reduxHooks from 'react-redux'
-import { NextIntlProvider } from "next-intl";
+import { NextIntlProvider } from 'next-intl'
 
 jest.mock('react-redux')
 
@@ -22,24 +22,24 @@ const testFilm = {
   genres: [{ id: '1', nameRU: 'драма', nameEN: 'nameEN' },
   { id: '2', nameRU: 'комедия', nameEN: 'nameEN' }],
   countRating: 100,
-};
+}
 
 test('calls dispatch on mouse enter', () => {
   mockedUseSelector.mockReturnValue('123')
-  const dispatchMock = jest.fn();
-  mockedDispatch.mockReturnValue(dispatchMock);
+  const dispatchMock = jest.fn()
+  mockedDispatch.mockReturnValue(dispatchMock)
   
   render(
     <NextIntlProvider messages={{
-      "FilmCard": {
-        "free": "Free",
-        "plot": "Plot Summary"
+      'FilmCard': {
+        'free': 'Free',
+        'plot': 'Plot Summary'
       }
     }} locale={'ru'}>
       <FilmCard film={testFilm} />
     </NextIntlProvider>
-  );
-  const linkElement = screen.getByRole('link');
-  fireEvent.mouseEnter(linkElement);
-  expect(dispatchMock).toHaveBeenCalledWith({ type: 'films/getFilmId', payload: testFilm.id });
-});
+  )
+  const linkElement = screen.getByRole('link')
+  fireEvent.mouseEnter(linkElement)
+  expect(dispatchMock).toHaveBeenCalledWith({ type: 'films/getFilmId', payload: testFilm.id })
+})

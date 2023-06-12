@@ -1,13 +1,13 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import MainTrailer from '../../components/Film/FilmMainTrailer/MainTrailer';
-import { NextIntlProvider } from "next-intl";
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import MainTrailer from '../../components/Film/FilmMainTrailer/MainTrailer'
+import { NextIntlProvider } from 'next-intl'
 
 describe('MainTrailer', () => {
     const filmInfo = {
         trailerLink: 'https://www.youtube.com/embed/123456',
         text: ''
-    };
+    }
 
     const testFilm = {
         id: 123,
@@ -22,46 +22,46 @@ describe('MainTrailer', () => {
         genres: [{ id: '1', nameRU: 'драма', nameEN: 'nameEN' },
         { id: '2', nameRU: 'комедия', nameEN: 'nameEN' }],
         countRating: 100,
-    };
+    }
 
     it('should render the trailer', () => {
         render(
             <NextIntlProvider messages={{
-                "MainFilmInfo": {
-                    "title": "Фильм",
-                    "text": "Рус"
+                'MainFilmInfo': {
+                    'title': 'Фильм',
+                    'text': 'Рус'
                 }
             }} locale={'ru'}>
                 <MainTrailer filmInfo={filmInfo} film={testFilm} />
             </NextIntlProvider>
-        );
-        const trailer = screen.getByText('Трейлер');
-        expect(trailer).toBeInTheDocument();
-    });
+        )
+        const trailer = screen.getByText('Трейлер')
+        expect(trailer).toBeInTheDocument()
+    })
 
     it('should render the marker and share buttons', () => {
         render(<NextIntlProvider messages={{
-            "MainFilmInfo": {
-                "title": "Фильм",
-                "text": "Рус"
+            'MainFilmInfo': {
+                'title': 'Фильм',
+                'text': 'Рус'
             }
         }} locale={'ru'}>
             <MainTrailer filmInfo={filmInfo} film={testFilm} />
-        </NextIntlProvider>);
-        const userButtons = screen.getAllByTestId('user-button');
-        expect(userButtons).toHaveLength(4);
-    });
+        </NextIntlProvider>)
+        const userButtons = screen.getAllByTestId('user-button')
+        expect(userButtons).toHaveLength(4)
+    })
 
     it('should render the free films button', () => {
         render(<NextIntlProvider messages={{
-            "MainFilmInfo": {
-                "title": "Фильм",
-                "text": "Рус"
+            'MainFilmInfo': {
+                'title': 'Фильм',
+                'text': 'Рус'
             }
         }} locale={'ru'}>
             <MainTrailer filmInfo={filmInfo} film={testFilm} />
-        </NextIntlProvider>);
-        const freeFilmsButton = screen.getByText('Бесплатные фильмы');
-        expect(freeFilmsButton).toBeInTheDocument();
-    });
-});
+        </NextIntlProvider>)
+        const freeFilmsButton = screen.getByText('Бесплатные фильмы')
+        expect(freeFilmsButton).toBeInTheDocument()
+    })
+})

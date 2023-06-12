@@ -1,5 +1,5 @@
-import { getFilterObj } from '../../redux/FilterSlice';
-import FilterSlice from '../../redux/FilterSlice';
+import { getFilterObj } from '../../redux/FilterSlice'
+import FilterSlice from '../../redux/FilterSlice'
 
 describe('Проверка FilterSlice', () => {
     const initialFilterObj = {

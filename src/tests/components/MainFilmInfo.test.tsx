@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import MainFilmInfo from '../../components/Film/FilmInfo/MainFilmInfo/MainFilmInfo';
-import { NextIntlProvider } from "next-intl";
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import MainFilmInfo from '../../components/Film/FilmInfo/MainFilmInfo/MainFilmInfo'
+import { NextIntlProvider } from 'next-intl'
 
 describe('MainFilmInfo', () => {
     const film = {
@@ -22,18 +22,18 @@ describe('MainFilmInfo', () => {
     it('should render MainInfo component with expected props', () => {
         render(
             <NextIntlProvider messages={{
-                "MainFilmInfo": {
-                    "title": "Фильм",
-                    "text": "Рус"
+                'MainFilmInfo': {
+                    'title': 'Фильм',
+                    'text': 'Рус'
                 }
             }} locale={'ru'}>
                 <MainFilmInfo film={film} />
             </NextIntlProvider>
-        );
-        expect(screen.getByText(`${film.nameRU} (Фильм ${film.year})`)).toBeInTheDocument();
-        expect(screen.getByText(`${film.year} ${film.duration} минут ${film.ageRating}`)).toBeInTheDocument();
-        expect(screen.getByText('драма')).toBeInTheDocument();
-        expect(screen.getByText('комедия')).toBeInTheDocument();
-        expect(screen.getByText('FullHD')).toBeInTheDocument();
-    });
-});
+        )
+        expect(screen.getByText(`${film.nameRU} (Фильм ${film.year})`)).toBeInTheDocument()
+        expect(screen.getByText(`${film.year} ${film.duration} минут ${film.ageRating}`)).toBeInTheDocument()
+        expect(screen.getByText('драма')).toBeInTheDocument()
+        expect(screen.getByText('комедия')).toBeInTheDocument()
+        expect(screen.getByText('FullHD')).toBeInTheDocument()
+    })
+})

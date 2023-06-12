@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import {useState} from 'react'
+import { useState } from 'react'
 
-import {MdDesktopMac} from 'react-icons/md'
+import { MdDesktopMac } from 'react-icons/md'
 
 import styles from './headerBanner.module.scss'
 
@@ -14,6 +14,7 @@ const HeaderBanner = () => {
     return (
         <div className={styles.headerBanner}>
             <div
+                data-testid='headerBanner__topBlock'
                 className={styles.headerBanner__topBlock}
                 onMouseEnter={() => setToggleBlock(true)}
                 onMouseLeave={() => setToggleBlock(false)}>
@@ -111,6 +112,7 @@ const HeaderBanner = () => {
                 </div>
                 <div className={styles.headerBanner__toggleBlock}>
                     <div
+                        data-testid='headerBanner__detailsBlock'
                         className={
                             toggleBlock
                                 ? `${styles.headerBanner__detailsBlock} ${styles.headerBanner__detailsBlock_active}`
@@ -137,7 +139,7 @@ const HeaderBanner = () => {
                             toggleBlock
                                 ? `${styles.headerBanner__detailsBlock2} ${styles.headerBanner__detailsBlock2_active}`
                                 : `${styles.headerBanner__detailsBlock2}`}
-                        style={{position: 'absolute', top: '-65px'}}>
+                        style={{ position: 'absolute', top: '-65px' }}>
                         <Link
                             className={styles.headerBanner__detailsBtn}
                             href={'https://www.ivi.ru/profile/subscription'}>
@@ -152,7 +154,7 @@ const HeaderBanner = () => {
             <Link
                 className={styles.headerBanner__btnSmartTV}
                 href={'https://www.ivi.ru/pages/tvsmart/'}>
-                <MdDesktopMac size={20}/>
+                <MdDesktopMac size={20} />
                 Смотреть на SmartTV
             </Link>
         </div>

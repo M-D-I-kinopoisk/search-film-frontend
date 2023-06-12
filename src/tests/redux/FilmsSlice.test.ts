@@ -1,5 +1,5 @@
-import { getFilmId, setOpenModal, getComment } from '../../redux/FilmsSlice';
-import FilmsSlice from '../../redux/FilmsSlice';
+import { getFilmId, setOpenModal, getComment } from '../../redux/FilmsSlice'
+import FilmsSlice from '../../redux/FilmsSlice'
 
 describe('Проверка FilmsSlice', () => {
     const initialState = {
